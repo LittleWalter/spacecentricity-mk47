@@ -1,0 +1,9 @@
+#!/bin/sh
+#  _           _ _     _
+# | |         (_) |   | |
+# | |__  _   _ _| | __| |
+# | '_ \| | | | | |/ _` |
+# | |_) | |_| | | | (_| |
+# |_.__/ \__,_|_|_|\__,_|
+# Project root wrapper to QMK keymap compilation helper
+exec ./scripts/build.sh "$@"

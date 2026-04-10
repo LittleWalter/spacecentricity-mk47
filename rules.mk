@@ -1,0 +1,24 @@
+# CONSOLE_ENABLE = yes
+# DEBUG_ENABLE = yes
+MOUSEKEY_ENABLE = yes
+RGB_MATRIX_ENABLE = yes
+TAP_DANCE_ENABLE = yes
+
+SRC += custom_keys.c
+SRC += rgb.c
+SRC += macros/macros.c
+SRC += macros/mac_macos.c
+SRC += macros/mac_programming.c
+SRC += macros/mac_terminal.c
+SRC += macros/mac_special_char.c
+SRC += macros/mac_vim.c
+SRC += tap_dance/tap_dance_actions.c
+SRC += tap_dance/td_chars.c
+SRC += tap_dance/td_macos.c
+SRC += tap_dance/td_media.c
+SRC += tap_dance/td_misc.c
+SRC += tap_dance/td_numpad.c
+SRC += tap_dance/td_programming.c
+SRC += tap_dance/td_terminal.c
+SRC += tap_dance/td_vim.c
+SRC += tapping_term.c
