@@ -50,7 +50,7 @@ This keymap uses QMK’s [quad‑tap dance pattern](https://docs.qmk.fm/features
 
 Most layer keys are momentary holds.
 
-The **Lower** and **Upper** keys behave the same, but you can **lock** them with tap‑and‑hold and **unlock** with a tap back to Base. 
+The **Lower** and **Upper** keys behave the same, but you can **lock** them with tap‑and‑hold and **unlock** with a tap back to Base.
 
 #### Access to Mouse & Function Keys
 
@@ -188,7 +188,7 @@ Window‑resize commands omit the `Esc` prefix to preserve compatibility with `<
 | Actions | Behavior |
 |---------|----------|
 | Tap | `za` (toggle fold under cursor)
-| Tap-and-Fold | `zM` (close all folds in buffer) |
+| Tap-and-Hold | `zM` (close all folds in buffer) |
 | Hold | `zR` (open all folds in buffer) |
 
 ### Programming
@@ -217,7 +217,7 @@ The **center-thumb key** (spacebar) opens core macOS functionality:
 |--------|----------|
 | Tap | Toggle [Spotlight Search](https://en.wikipedia.org/wiki/Spotlight_(Apple)) |
 | Double Tap | Toggle [Emoji & Symbols Menu](https://support.apple.com/guide/mac-help/use-emoji-and-symbols-on-mac-mchlp1560/mac) |
-| Hold | Open [Finder](https://en.wikipedia.org/wiki/Finder_(software)) | 
+| Hold | Open [Finder](https://en.wikipedia.org/wiki/Finder_(software)) |
 
 The **right‑thumb key** provides quick file‑deletion actions:
 

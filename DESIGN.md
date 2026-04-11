@@ -12,11 +12,11 @@ This page expands on the design decisions. It’s not required reading for using
 - [Release Statement](#release-statement)
 - [Bias](#bias)
 - [Layer Design Details](#layer-design-details)
-  - [Base](#base-modified-dvorak)
+  - [Base: Modified Dvorak](#base-modified-dvorak)
   - [Lower: Numpad](#lower-numpad)
   - [Upper: Primary Number Layer](#upper-primary-number-layer)
   - [Adjustment: Keyboard Settings](#adjustment-keyboard-settings)
-  - [Function: F1–F12](#function-f1-f12)
+  - [Function: `F1`–`F12`](#function-f1f12)
   - [Arrows](#arrows)
   - [Vim](#vim)
   - [Programming](#programming)
@@ -43,8 +43,9 @@ Every keyboard layout bakes in assumptions about language, workflow, and ergonom
 
 The layout is optimized around English letter frequency, English‑centric n‑grams, and punctuation patterns common in programming and Vim. Other languages will work, but the ergonomics and frequency assumptions are tuned specifically for English prose and code as indicated by the choice of the Dvorak alpha layout.
 
-> [!WARNING] 
+> [!WARNING]
 > **Operating System Keyboard Settings**
+>
 > To use this keymap, your input source must be set to _U.S._; otherwise, unexpected behavior may occur, including incorrect special‑character output.
 
 > [!TIP]
@@ -67,9 +68,9 @@ Navigation follows the familiar left‑down‑up‑right pattern. For example, `
 This keymap is designed for users of Vim, [Neovim](https://neovim.io/), and [Emacs](https://www.gnu.org/software/emacs/) configurations that support Vim‑style editing, including Evil Mode, [Doom Emacs](https://github.com/doomemacs/doomemacs), and [Spacemacs](https://www.spacemacs.org/). It also should be suitable for editors with Vim emulation layers, such as [Visual Studio Code](https://code.visualstudio.com/download)/[VSCodium](https://vscodium.com/) and [JetBrains IDEs](https://www.jetbrains.com/ides/), as well as browser extensions like [Vimium](https://vimium.github.io/). The goal is to make modal editing and navigation feel consistent across applications, regardless of the environment.
 
 > [!WARNING]
-> **Emacs Compatibility**  
-> This layout has not been tested with Evil Mode, Doom Emacs, and Spacemacs. 
-> Emacs can be sensitive to rapid modifier chords and mod‑tap timing. If you rely 
+> **Emacs Compatibility**
+> This layout has not been tested with Evil Mode, Doom Emacs, and Spacemacs.
+> Emacs can be sensitive to rapid modifier chords and mod‑tap timing. If you rely
 > heavily on `Ctrl`, `Meta`, or multi‑key sequences, you may need to adjust your QMK
 > tapping settings (e.g., `TAPPING_TERM`, `PERMISSIVE_HOLD`, or `IGNORE_MOD_TAP_INTERRUPT`)
 > to ensure smooth, reliable behavior.
@@ -102,7 +103,7 @@ August Dvorak devised the original [Dvorak keyboard layout](https://en.wikipedia
 This layer uses a modified Dvorak layout with a few intentional relocations:
 
 * `u`, `c` moved to the left and right thumbs
-  * Keeps a primary vowel under the left thumb 
+  * Keeps a primary vowel under the left thumb
   * Both letters are medium‑frequency in English, so neither thumb is overloaded during prose typing
   * Places Vim **undo** (`u`) under comfortable position
   * Gives the right thumb a high‑value operator (`c`) for easier change‑motions in Vim
@@ -111,7 +112,7 @@ This layer uses a modified Dvorak layout with a few intentional relocations:
   * Makes entering Vim insert mode slightly easier
 * `Esc` placed on the right‑hand center home key (formerly `i`)
   * Provides a fast, symmetric way to exit Vim modes
-  * Eliminates the awkward reach to the traditional top‑left corner 
+  * Eliminates the awkward reach to the traditional top‑left corner
 * `l` moved to the top row above `t` (replacing `c`)
   * Keeps a common consonant accessible without disrupting the new thumb assignments
 
@@ -124,7 +125,7 @@ I’m also not using Colemak(-DH), Workman, or other modern ergonomic layouts. I
 The top‑left corner key bundles together a small set of symbols via tap dance that map neatly onto Vim motions. Each action produces a different symbol, and in Vim these symbols correspond to common navigation or macro‑related commands. This keeps a handful of powerful search and structural‑navigation tools on **Base**, especially handy if you spend time in Vim or Vim‑style environments like [Vimium](https://vimium.github.io/).
 
 | Action | Char | Vim Meaning in Normal Mode |
-|--------|----------|-----|
+|--------|------|----------------------------|
 | Tap | `*` | Jump to next occurrence of the word under the cursor |
 | Double Tap | `%` | Jump to matching bracket/brace/parenthesis |
 | Tap-and-Hold | `@` | Run macro (`@a`, `@q`, etc.)|
@@ -135,7 +136,7 @@ The top-row `,` key gives **Base**-layer access to `|` and `&`.
 Observe that double-tap `;` behavior is redundant on **Base**, but it’s included for symmetry and consistency with other layers where it’s a bit more useful.
 
 | Action | Char | Notes |
-|--------|----------|-------|
+|--------|------|-------|
 | Tap | `,` | Jumps back in Vim character search (`f`, `t`, `F`, `T`) |
 | Double Tap | `;` |  Jumps forward in Vim character search (`f`, `t`, `F`, `T`) |
 | Tap-and-Hold | `|` | Useful for piping in shells and regex alternation |
@@ -144,7 +145,7 @@ Observe that double-tap `;` behavior is redundant on **Base**, but it’s includ
 The top‑row `'` key provides access to the straight single quote, the typographic apostrophe, the tilde, and the backtick.
 
 | Action | Char | Notes |
-|--------|----------|-------|
+|--------|------|-------|
 | Tap | `'` | Standard straight single quote used in code |
 | Double Tap | `’` |  Typographic apostrophe (closing smart single quote) |
 | Tap-and-Hold | `~` | Tilde; used in Vim for toggling case |
@@ -153,8 +154,8 @@ The top‑row `'` key provides access to the straight single quote, the typograp
 The lower-row `"` key gives **Base** access to straight double quote, `<`, `>`, and the corresponding typographic single quote.
 
 | Action | Char | Notes |
-|--------|------|-----|-------|
-| Tap | `"` | Standard straight double quote; Vim: select a register (`"a`, `"0`, `"*`, etc.) | 
+|--------|------|-------|
+| Tap | `"` | Standard straight double quote; Vim: select a register (`"a`, `"0`, `"*`, etc.) |
 | Double Tap | `‘` |  Typographic opening smart single quote |
 | Tap-and-Hold | `<` | Opening angle bracket; less-than operator; Vim: unindent (`<<`, `{count}<`), motions (`i<`, `a<`) |
 | Hold | `>` | Closing angle bracket; greater-than operator; Vim: indent (`>>`, `{count}>`), motions (`i>`, `a>`) |
@@ -174,8 +175,9 @@ Top‑row modifiers provide easy access for the index, middle, and ring fingers,
 | `Shift` (one shot) | Pinky | Lower | Double tap to lock, single tap to unlock |
 
 > [!TIP]
-> **What are `Hyper` and `Meh`?**  
-> *Meh* is the chord **`Ctrl+Shift+Alt`**, and *Hyper* is **`Ctrl+Shift+Alt+CMD/Super`**.  
+> **What are `Hyper` and `Meh`?**
+>
+> *Meh* is the chord **`Ctrl+Shift+Alt`**, and *Hyper* is **`Ctrl+Shift+Alt+CMD/Super`**.
 > These combinations are rarely used by applications, which makes them useful for creating
 > conflict‑free custom shortcuts. Many users bind them to window managers,
 > automation tools, or global hotkeys.
@@ -291,10 +293,11 @@ The `.` key remains in the standard Dvorak position but includes additional dot�
 
 > [!NOTE]
 > **Vertical Ellipsis**
+>
 > On macOS, the vertical ellipsis (⋮) is produced via a macro that opens the [Emoji & Symbols popover](https://support.apple.com/guide/mac-help/use-emoji-and-symbols-on-mac-mchlp1560/mac), searches for the symbol, and inserts it. This works reliably only in the default compact view; it will fail when the Expanded Character Viewer is enabled.
-> 
+>
 > This automation approach was chosen because the vertical ellipsis has no native keyboard shortcut and doesn’t require enabling the Unicode keyboard or using [AppleScript](https://en.wikipedia.org/wiki/AppleScript).
-> 
+>
 > On Linux and Microsoft Windows modes, the Unicode character is sent directly.
 
 The `+` key provides the full set of basic arithmetic symbols on a single middle‑finger key:
@@ -431,7 +434,7 @@ To make the layout easier to work with, this project uses a semantic naming sche
 The bottom row doesn’t map perfectly to finger usage, but for consistency the naming pattern is applied uniformly.
 
 > [!NOTE]
-> Throughout these documents, the rows are generally referred to as **top**, **home**, **lower**, and **bottom**. 
+> Throughout these documents, the rows are generally referred to as **top**, **home**, **lower**, and **bottom**.
 
 #### Naming Scheme
 
