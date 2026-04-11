@@ -69,6 +69,7 @@ This keymap is designed for users of Vim, [Neovim](https://neovim.io/), and [Ema
 
 > [!WARNING]
 > **Emacs Compatibility**
+>
 > This layout has not been tested with Evil Mode, Doom Emacs, and Spacemacs.
 > Emacs can be sensitive to rapid modifier chords and mod‑tap timing. If you rely
 > heavily on `Ctrl`, `Meta`, or multi‑key sequences, you may need to adjust your QMK
@@ -139,7 +140,7 @@ Observe that double-tap `;` behavior is redundant on **Base**, but it’s includ
 |--------|------|-------|
 | Tap | `,` | Jumps back in Vim character search (`f`, `t`, `F`, `T`) |
 | Double Tap | `;` |  Jumps forward in Vim character search (`f`, `t`, `F`, `T`) |
-| Tap-and-Hold | `|` | Useful for piping in shells and regex alternation |
+| Tap-and-Hold | `\|` | Useful for piping in shells and regex alternation |
 | Hold | `&` | Common in shells; repeats last substitution in Vim |
 
 The top‑row `'` key provides access to the straight single quote, the typographic apostrophe, the tilde, and the backtick.
@@ -160,7 +161,7 @@ The lower-row `"` key gives **Base** access to straight double quote, `<`, `>`, 
 | Tap-and-Hold | `<` | Opening angle bracket; less-than operator; Vim: unindent (`<<`, `{count}<`), motions (`i<`, `a<`) |
 | Hold | `>` | Closing angle bracket; greater-than operator; Vim: indent (`>>`, `{count}>`), motions (`i>`, `a>`) |
 
-####Modifiers
+#### Modifiers
 
 Top‑row modifiers provide easy access for the index, middle, and ring fingers, with additional options on the lower row for alternate holds and advanced shortcuts.
 
