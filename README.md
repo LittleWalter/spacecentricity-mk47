@@ -24,9 +24,10 @@ The MK‑47 is typically an in‑store Micro Center exclusive, but it’s occasi
 
 ## Layout
 
-This layout uses the standard **U.S. keyboard setting** in the operating system; using any other layout may lead to unexpected behavior.
-
 Each layer is presented as a rendered diagram generated with [keyboard-layout-editor.com](https://keyboard-layout-editor.com) for quick visual reference.
+
+> [!IMPORTANT]
+> This layout uses the standard **U.S. keyboard setting** in the operating system; using any other layout may lead to unexpected behavior.
 
 ### Legend
 
@@ -250,9 +251,17 @@ This layer is typically accessed with a _left‑palm tap_ on **Base**, using a t
 
 ## Using This Keymap with QMK
 
-This keymap lives outside the QMK tree. To use it, create a symbolic link inside your QMK keymaps directory.
+This keymap is maintained _outside_ the QMK source tree. To use it, create a symbolic link inside your local QMK checkout so QMK can see it as a normal keymap.
 
-### 📁 Create the Symlink
+### 🧲 Download the Keymap Source Code
+
+```bash
+mkdir -p ~/your/preferred/path/
+cd ~/your/preferred/path/
+git clone https://github.com/LittleWalter/spacecentricity-mk47
+```
+
+### 🔗 Create the Symlink
 
 ```bash
 cd ~/qmk_firmware/keyboards/inland/mk47/keymaps    # Inland MK-47 keymaps path

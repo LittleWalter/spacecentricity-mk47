@@ -43,13 +43,13 @@ Every keyboard layout bakes in assumptions about language, workflow, and ergonom
 
 The layout is optimized around English letter frequency, English‑centric n‑grams, and punctuation patterns common in programming and Vim. Other languages will work, but the ergonomics and frequency assumptions are tuned specifically for English prose and code as indicated by the choice of the Dvorak alpha layout.
 
-> [!WARNING]
+> [!IMPORTANT]
 > **Operating System Keyboard Settings**
 >
 > To use this keymap, your input source must be set to _U.S._; otherwise, unexpected behavior may occur, including incorrect special‑character output.
 
 > [!TIP]
-> Light multilingual support is avaliable on the arrow‑key layers, including common Spanish punctuation `¡`, `¿`, accented vowels (via combining acute), `ñ`/`Ñ`, and related symbols. This is likely more useful North Americans.
+> Light multilingual support is avaliable on the arrow‑key layers, including common Spanish punctuation `¡`, `¿`, accented vowels (via combining acute), `ñ`/`Ñ`, and related symbols. This is likely more useful for North Americans.
 
 ### Heavy Use of Layers
 
