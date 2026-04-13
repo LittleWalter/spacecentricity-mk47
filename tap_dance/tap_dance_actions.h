@@ -10,18 +10,19 @@ enum {                // │  Tap   │ 2xTap  │Tap+Hold│  Hold  │ Notes
     TD_ASTR = 0,      // │   *    │   %    │   @    │   #    │ Fun corner key for Vim commands on Base layer
     TD_BSPC,          // │  Bspc  │        │  Del   │  Bspc  │
     TD_C,             // │   c    │        │LOCK UPP│ MT(UPP)│ `c` on Tap; Lock Primary Number layer on Tap+Hold; Momentary Primary Number layer on Hold
-    TD_CIRC,          // │   ^    │        │   ¢    │   $    │
+    TD_CARET,         // │   ^    │        │   ¢    │   $    │
+    TD_CIRC,          // │   ◌̂    │   ◌̄    │   ◌̆    │   ◌̌    │ Combining circumflex on Tap; macron on 2xTap; breve on Tap+Hold; caron on Hold
     TD_COMM,          // │   ,    │   ;    │   |    │   &    │
-    TD_DOT,           // │   .    │   …    │   ⋮    │   •    │ Vertical ellipse requires Unicode input source set, and only U.S. keyboard on macOS
+    TD_DOT,           // │   .    │   …    │   ⋮    │   •    │ Triple tap: · (centered dot)
     TD_DLR,           // │   $    │   ¥    │   £    │   €    │
     TD_DQUO,          // │   "    │   ‘    │   <    │   >    │ Double quote on Tap; typographic opening smart single quote on 2xTap
     TD_EQL,           // │   =    │        │        │   ≠    │
-    TD_EXLM,          // │   !    │   ! ES │ grave  │ umlaut │ Spanish/Lang-related symbols on tap dances (macOS)
+    TD_EXLM,          // │   !    │   ¡    │   ◌̃    │   ◌̈    │
     TD_MINS,          // │   -    │        │   –    │   —    │ Hyphen/en dash/em dash
     TD_PLUS,          // │   +    │   -    │   /    │   *    │
     TD_PUNC,          // │  `, `  │   `; ` │  `: `  │   `. ` │ Punctuation + space bigrams
-    TD_QUES,          // │   ?    │   ¿    │ ˜ tilde│ ´ acute│ Spanish/Lang-related symbols on tap dances (macOS)
-    TD_QUOT,          // │   '    │   ’    │   ~    │   `    │ Single quote on Tap; typographic apostrophe/closing smart single quote on 2xTap 
+    TD_QUES,          // │   ?    │   ¿    │   ◌̀    │   ◌́    │
+    TD_QUOT,          // │   '    │   ’    │   ~    │   `    │ Single quote on Tap; typographic apostrophe/closing smart single quote on 2xTap
     TD_SPC,           // │  Spc   │        │  Enter │  LGUI  │ LGUI = LCMD = Super (Linux) = Windows key
     TD_TAB,           // │  Tab   │        │        │ Sft+Tab│ Sft+Tab = Reverse Tab
     TD_U,             // │   u    │        │LOCK LOW│ MT(LOW)│ `u` on Tap; Lock Numpad layer on Tap+Hold; Momentary Numpad layer on Hold
@@ -108,6 +109,7 @@ enum {                // │  Tap   │ 2xTap  │Tap+Hold│  Hold  │ Notes
                       // │        │        │        │        │
     TD_UNDO,          // │  CMD+Z │        │CMD+S+Z │  CMD+Z │ Defaults to macOS shortcuts, toggle OS for Linux/Windows on _FN layer
     TD_SMART_QUOTES,  // │   “|”  │        │        │  ‘|’   │ Smart double quotes w/ cursor inside on Tap; smart single quotes on Hold
+    TD_ANGLE_QUOTES,  // │   «|»  │        │        │  ‹|›   │ Angle double quotes w/ cursor inside on Tap; angle single quotes on Hold
 
     TD_COUNT // Sentinel value for tap_dance_actions array
 };

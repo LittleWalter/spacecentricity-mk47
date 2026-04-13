@@ -10,6 +10,7 @@ This page expands on the design decisions. It’s not required reading for using
 
 ## Table of Contents
 - [Release Statement](#release-statement)
+- [Thoughts on the Planck Form Factor](#thoughts-on-the-planck-form-factor)
 - [Bias](#bias)
 - [Layer Design Details](#layer-design-details)
   - [Base: Modified Dvorak](#base-modified-dvorak)
@@ -23,6 +24,7 @@ This page expands on the design decisions. It’s not required reading for using
   - [Terminal](#terminal)
   - [Apple macOS](#apple-macos)
   - [Mouse](#mouse)
+  - [Doom Classic](#doom-classic)
 - [RGB Matrix for the Planck MIT](#rgb-matrix-for-the-planck-mit)
 
 ## Release Statement
@@ -35,6 +37,16 @@ Because of its high learning curve, I don’t expect anyone to use this keymap a
 
 Most people will likely be better served by something more minimal. For instance, [Miryoku](https://github.com/manna-harbour/miryoku) adapted to Planck MIT and configured with a preferred alpha arrangement. Default keymaps tend to be generic and unoptimized, so even a simple ergonomic layout is usually a meaningful improvement, especially if it moves you away from QWERTY.
 
+## Thoughts on the Planck Form Factor
+
+The Planck’s biggest strength is its size. A 40% unibody board is extremely portable, easy to pack, and requires only a single cable: no split halves, no extra connectors, no desk sprawl. That simplicity makes it ideal as a travel board or a compact daily driver. As a bonus, inexpensive Nintendo Switch cases or even some stethoscope cases will neatly fit the board, often with room for cables and other accessories.
+
+The ortholinear grid also encourages a stable, centered typing posture. Because the board is so small, your hands stay close together and your thumbs can reliably reach the large keys without shifting your wrist position. Some users report increased ulnar deviation on small unibody layouts, but this varies widely. I personally don’t experience wrist twisting on the Planck, and the compact footprint actually helps me maintain a neutral posture. Split keyboards are the ergonomic rage these days, and rightfully so. However, I don’t gain much from using a split keyboard, though in general I would still recommend one for most typists if they have the option.
+
+There’s also a meaningful difference between the two common Planck variants. The 47‑key MIT layout uses a 2u spacebar, while the 48‑key Grid layout replaces it with two 1u keys. Some people prefer the Grid version because it offers more flexibility for thumb keys and layer access, while others like the MIT layout’s simplicity and larger spacebar. Spacecentricity is designed around the MIT variant, but the underlying ideas translate well to the 48‑key version.
+
+The biggest trade‑off is that the Planck demands heavy layer usage and rewards people who enjoy modal workflows. For users who prefer dedicated keys or who struggle with ortholinear spacing, the learning curve can feel steep. But for those who embrace layers, symmetry, and thumb‑centric design, the Planck offers a uniquely efficient and expressive platform—especially when paired with programmable firmware like QMK or [ZMK](https://zmk.dev/), which adds even more power (and another notch of complexity).
+
 ## Bias
 
 Every keyboard layout bakes in assumptions about language, workflow, and ergonomics. Spacecentricity is no different. The following sections outline those intentional biases and provide context for why the layout behaves the way it does and who it’s most likely to suit.
@@ -46,7 +58,7 @@ The layout is optimized around English letter frequency, English‑centric n‑g
 > [!IMPORTANT]
 > **Operating System Keyboard Settings**
 >
-> To use this keymap, your input source must be set to _U.S._; otherwise, unexpected behavior may occur, including incorrect special‑character output.
+> On macOS, the input source must be set to **ABC – Extended**. Other layouts may alter Option‑based characters or dead‑key behavior and can produce incorrect special‑character output. For Linux and Microsoft Windows, the standard US layout should work as expected.
 
 > [!TIP]
 > Light multilingual support is avaliable on the arrow‑key layers, including common Spanish punctuation `¡`, `¿`, accented vowels (via combining acute), `ñ`/`Ñ`, and related symbols. This is likely more useful for North Americans.
@@ -60,6 +72,14 @@ If a key or action ends up unused, I’ll either replace it with something more 
 ### Right-Hand Oriented
 
 Dvorak is naturally right‑hand dominant, and this layout leans into that by placing several high‑frequency actions and modal layers on the right side. At the same time, many modal layers — arrows, Vim, and programming n‑grams — are mirrored on the home row, allowing either hand to access the same functionality with a momentary hold. This keeps the layout more balanced in practice, reduces travel, and avoids over‑reliance on a single hand.
+
+### Thumb-Centric
+
+The thumbs do a disproportionate amount of work in this layout, as is typical of many Planck keymaps. On a small ortholinear board, they are the only digits capable of pressing keys without destabilizing hand position, so Spacecentricity assigns them high‑value roles: layer access, modifiers, and frequently used symbols. This reduces lateral finger travel and keeps the alphas anchored under the home row.
+
+Both thumbs are used symmetrically where possible, but the right thumb carries slightly more responsibility to complement Dvorak’s right‑hand bias. Momentary layer holds and tap-hold modifiers are placed under the thumbs to keep the rest of the fingers focused on text entry and editing. The goal is to make layer changes feel as natural as typing a letter, minimizing cognitive overhead and physical strain.
+
+The biggest difference between this keymap and many others is its heavier reliance on the thumbs for entering letters, symbols, and modal actions, shifting work away from the weaker fingers and reducing overall movement.
 
 ### Vim Keys Everywhere
 
@@ -81,6 +101,23 @@ This keymap is designed for users of Vim, [Neovim](https://neovim.io/), and [Ema
 Tap dances are used extensively to expose extra functionality without increasing finger travel. Many symbol keys support multi‑tap or tap‑hold behaviors that surface common Vim motions, programming operators, and punctuation variants.
 
 Tap dances are grouped logically so they’re relatively easy to remember. And when a key has room for more functionality, I’m not shy about giving it more to do — even if that introduces a bit of redundancy. I’ve also tried to make specialized characters on U.S. keyboards, such as the ellipsis (`…`), yen/yuan (`¥`), and approximation (`≈`), accessible without relying on keyboard shortcuts or navigating operating system menus. These aren’t strictly necessary, but they’re the kind of small design flourishes that make the keymap feel more complete.
+
+Here’s how I rank the typing difficulty of each tap dance:
+
+| Action | Difficulty |
+|--------|------------|
+| Tap | 1 (easiest) |
+| Double Tap | 3 |
+| Tap-and-Hold | 4 (hardest) |
+| Hold | 2 |
+
+This ranking reflects how much precision and timing each action requires in real typing. Tap‑and‑hold is the most demanding because it relies on both timing and intent, while simple taps remain the most effortless. As a consequence, the most important or frequently used behavior is assigned to the tap, while the least critical or most consequential behavior is placed on tap‑and‑hold, since it has the lowest risk of accidental activation.
+
+Note that the source code has support for triple tap and double-tap-and-hold dances that aren’t marked in the diagrams.
+
+Triple tap sits outside the spectrum of general use. They’re possible, but they require enough rhythmic precision that they’re best reserved for symbols you want available without being prominent. They act as a kind of deep storage: a place for useful but infrequent characters that don’t justify occupying a more ergonomic gesture, such as `·`, the centered dot. They’re deliberate enough that accidental activation is unlikely, though they can be mistyped as a double tap followed by a single tap or vice versa. In practice, the triple tap is more of an easter egg than part of the core typing workflow.
+
+Patterns like double‑tap‑and‑hold exist in theory, but they cross the line from ergonomics into keyboard choreography. At that point the gesture becomes harder to perform than the symbol or action is worth, so I avoid them entirely.
 
 ### Apple macOS Oriented
 
@@ -245,7 +282,7 @@ I mostly use these keys for volume control and quick play/pause actions.
 
 ### Lower: Numpad
 
-![Lower: Numpad with hexadecimal](assets/01_LOWER.png)
+![Lower: Numpad with hexadecimal](assets/02_LOWER.png)
 
 Rather than stuffing additional keys onto the left side, the Lower layer uses a mostly mirrored numpad layout so either hand can handle numeric entry and arithmetic operators. The only exception is `0`, which is right‑hand‑only.
 
@@ -259,7 +296,7 @@ This layer can be **locked** from **Base**; hit the **HOLD** key to exit.
 
 ### Upper: Primary Number Layer
 
-![Upper: Primary Numpad Layer](assets/02_UPPER.png)
+![Upper: Primary Numpad Layer](assets/03_UPPER.png)
 
 This is the workhorse layer for number and individual symbol input, except for `?`, `!`, `-`, `_`, and `\` which live on the more accessible arrow layers. I regularly use the comma–space bigram, but rely on the arrow layers for the comma itself.
 
@@ -291,11 +328,14 @@ The `.` key remains in the standard Dvorak position but includes additional dot�
 | Double Tap | `…` (horizontal ellipsis) |
 | Tap-and-Hold | `⋮` (vertical ellipsis) |
 | Hold | `•` (bullet) |
+| Triple Tap | `·` (centered dot) |
+
+The triple tap is used sparingly; the centered dot appears in mathematics and occasionally as a separator or visible‑whitespace marker, making it a good fit for a gesture that’s available but intentionally out of the way.
 
 > [!NOTE]
 > **Vertical Ellipsis**
 >
-> On macOS, the vertical ellipsis (⋮) is produced via a macro that opens the [Emoji & Symbols popover](https://support.apple.com/guide/mac-help/use-emoji-and-symbols-on-mac-mchlp1560/mac), searches for the symbol, and inserts it. This works reliably only in the default compact view; it will fail when the Expanded Character Viewer is enabled.
+> On macOS mode, the vertical ellipsis (⋮) is produced via a macro that opens the [Emoji & Symbols popover](https://support.apple.com/guide/mac-help/use-emoji-and-symbols-on-mac-mchlp1560/mac), searches for the symbol, and inserts it. This works reliably only in the default compact view; it will fail when the Expanded Character Viewer is enabled.
 >
 > This automation approach was chosen because the vertical ellipsis has no native keyboard shortcut and doesn’t require enabling the Unicode keyboard or using [AppleScript](https://en.wikipedia.org/wiki/AppleScript).
 >
@@ -317,7 +357,7 @@ The `+` key provides the full set of basic arithmetic symbols on a single middle
 
 ### Adjustment: Keyboard Settings
 
-![Adjustment: Keyboard Settings](assets/03_ADJ.png)
+![Adjustment: Keyboard Settings](assets/04_ADJ.png)
 
 The keyboard settings layer is the least developed, and most subject to rearrangement.
 
@@ -333,7 +373,7 @@ Copy/paste/undo behavior should work properly when switching operating systems; 
 
 ### Function: `F1`–`F12`
 
-![Function: F1–F12](assets/04_FN.png)
+![Function: F1–F12](assets/05_FN.png)
 
 #### F-Keys
 
@@ -352,26 +392,33 @@ The top‑row modifiers mirror **Base**, maintaining consistency across layers. 
 
 ### Arrows
 
-![Arrows: Right-Hand Side](assets/05_ARR_R.png)
+![Arrows: Right-Hand Side](assets/06_ARR_R.png)
 
-![Arrows: Left-Hand Side](assets/06_ARR_L.png)
+![Arrows: Left-Hand Side](assets/07_ARR_L.png)
 
 Holding either index finger on the home row activates a mirrored arrow‑navigation layer. These layers provide the most accessible versions of several high‑frequency symbols, including `,`, `-`, `_`, `?`, `!`, and `\`.
 
-* Arrow keys are under the active hand in Vim formation (`←`, `↓`, `↑`, `→`)
-* Cut / Copy / Paste / Undo / Redo mirrored across the top row
-  * I typically use Copy / Paste / Undo on the **HOLD**‑key side for one‑hand access
-* Zoom controls (`+`, `-`, reset) for quick browser scaling
-* Virtual desktop/workspace switching and browser tab navigation on the lower row
-  * `Alt-Control-←/→` may not work by default in some Linux desktop environments 
-* `?` and `!` include Spanish punctuation (`¡`, `¿`) and combining accents via tap dances for light multilingual support
-* The full dash set of hyphen (`-`), en dash (`–`), and em dash (`—`) available on the spacebar via tap dances
+* Arrow keys sit under the active hand in Vim formation (`←`, `↓`, `↑`, `→`).
+* Cut / Copy / Paste / Undo / Redo mirrored across the top row; the **HOLD**‑side is optimized for one‑hand use.
+* Zoom controls (`+`, `-`, reset) allow quick browser scaling.
+* Virtual desktop/workspace switching and browser tab navigation live on the lower row.
+  * Some Linux environments may not map `Alt-Control-←/→` by default to switch workspaces.
+* `?` and `!` include Spanish punctuation (`¡`, `¿`) and combining accents through tap dances for light multilingual support.
+* On macOS, the combining circumflex (`ˆ`) is available in the U.S. layout, but macron (`¯`), breve (`˘`), and caron (`ˇ`) require the **ABC – Extended** input source to produce the correct dead‑key sequences.
+  * For circumflex, the shortcut is `Option-i` for the U.S. layout and `Option-6` for **ABC – Extended**.
+* The full dash set of hyphen (`-`), en dash (`–`), and em dash (`—`) are available on the spacebar via tap dances.
+
+#### English Loanwords
+
+Tap dances on the arrow layers provide combining accents and extended punctuation, making it easy to type accented characters that appear in English [loanwords](https://en.wikipedia.org/wiki/Loanword). This includes forms such as à, á, â, ä, é, í, ñ, ó, ö, ú, and others.
+
+Common examples include à la, vis‑à‑vis, café, purée, déjà vu, naïve, doppelgänger, Zoë, jalapeño, piñata, and São Paulo. This keeps accented characters accessible without requiring users to memorize platform‑specific shortcuts or Unicode values.
 
 ### Vim
 
-![Vim: Right-Hand Side](assets/07_VIM_R.png)
+![Vim: Right-Hand Side](assets/08_VIM_R.png)
 
-![Vim: Left-Hand Side](assets/08_VIM_L.png)
+![Vim: Left-Hand Side](assets/09_VIM_L.png)
 
 These mirrored layers are designed for use with a mostly vanilla Vim setup. The focus is on movement, navigation, and viewport adjustments to reduce editing friction and keep your hands anchored on home row.
 
@@ -381,9 +428,9 @@ Vim commands that benefit from an `Esc` prefix include a built‑in delay, and c
 
 ### Programming
 
-![Programming: Right-Hand Side](assets/09_PROG_R.png)
+![Programming: Right-Hand Side](assets/10_PROG_R.png)
 
-![Programming: Left-Hand Side](assets/10_PROG_L.png)
+![Programming: Left-Hand Side](assets/11_PROG_L.png)
 
 These mirrored layers provide quick access to programming‑centric symbols and structures. Quotes, parentheses, brackets, braces, comparison operators, and common control‑flow keywords are arranged near the home row for minimal travel.
 
@@ -393,7 +440,7 @@ I tried to choose a small, generic set of coding n‑grams that work well across
 
 ### Terminal
 
-![Terminal](assets/11_TERM.png)
+![Terminal](assets/12_TERM.png)
 
 This layer centers on left‑hand navigation keys, with a handful of optional terminal‑focused macros layered in for convenience.
 
@@ -405,16 +452,17 @@ I may eventually add a few `tmux` commands here, if they complement the navigati
 
 ### Apple macOS
 
-![Apple macOS Layer](assets/12_MACOS.png)
+![Apple macOS Layer](assets/13_MACOS.png)
 
 This layer centralizes macOS actions that normally require awkward reaches, multi‑key chords, or leaving the keyboard entirely. Its goal is to make common system‑level tasks feel as fluid and low‑effort as text editing or navigation. Spotlight search, the emoji picker, Finder controls, screenshot tools, window management, and Trash operations all land in predictable positions that don’t break flow.
 
 Word and line movement follow the expected Vim pattern.
 
 Eventually, I’ll make a similar desktop Linux layer, with the **HOLD** on the opposite center key. This may be more challenging due to the wide variety of desktop environments and window managers, each with its own keyboard‑shortcut conventions.
+
 ### Mouse
 
-![Mouse Keys Layer](assets/13_MOUSE.png)
+![Mouse Keys Layer](assets/14_MOUSE.png)
 
 This layer is meant for short bursts of pointer use or as a fallback when a wireless mouse, trackball, or trackpad disconnects. It lets you make quick adjustments — selecting text, clicking UI elements, manipulating windows — without leaving home position.
 
@@ -423,6 +471,18 @@ Moving your hand to activate this layer isn’t ideal, so it’s primarily trigg
 I arranged the keys to make the learning curve as gentle as possible: **pointer movement** on the right, the main five **mouse buttons** on the left, and **scroll wheel** on the lower row and thumb cluster. This keeps everything predictable and easy to train. I also placed the navigation cluster, workspace switching, and tab movement here to provide a full range of movement tools on a single layer.
 
 The only minor downsides are the need for two‑hand operation and the practice required to get fully comfortable with mouse‑key accuracy. For example, pressing two directional keys produces diagonal movement, which takes a little time to internalize. With practice, muscle memory takes over and it becomes surprisingly natural. (I still prefer a finger trackball as my primary pointing device, but this layer is invaluable when the rechargeable battery goes flat, especially on a desktop.)
+
+### Doom Classic
+
+![Doom Classic layer](assets/01_DOOM.png)
+
+And finally, the most important question: can the Planck play Doom? It sure does!
+
+This layer is an optional game‑focused mode built around vanilla _Doom_ (1993). It replaces the typing layout with a tight movement cluster, dedicated strafing keys, and thumb‑accessible actions so your hands never leave position during play. Arrow and strafe keys sit under the right hand, while Left Click, Right Click, Space, and Shift live on the thumbs for fast firing, opening doors, and running.
+
+Weapon switching stays consistent with the rest of your layout: holding the right‑thumb key momentarily opens **Upper**, letting you press `1`–`7` without adding number keys to this layer.
+
+Arrows and mouse controls also make this layer usable for lightweight general navigation, using traditional T‑shaped clusters.
 
 ## RGB Matrix for the Planck MIT
 

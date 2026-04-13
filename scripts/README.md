@@ -6,7 +6,7 @@ For convenience, this directory contains small POSIX-compliant helper scripts fo
 > `keymap_name` is optional and defaults to `spacecentricity`.
 
 > [!TIP]
-> The helper scripts are committed with executable permissions.  
+> The helper scripts are committed with executable permissions.
 > If you run into permission issues, fix them with:
 > `chmod +x scripts/*.sh`
 

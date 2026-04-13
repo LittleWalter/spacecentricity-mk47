@@ -13,6 +13,11 @@ typedef enum {
     CHAR_COMB_GRAVE,         // Combining grave symbol (◌̀)
     CHAR_COMB_TILDE,         // Combining tilde symbol (◌̃)
     CHAR_COMB_UMLAUT,        // Combining umlaut symbol (◌̈)
+    CHAR_COMB_CIRCUMFLEX,    // Combining circumflex symbol (◌̂)
+    CHAR_COMB_CARON,         // Combining caron symbol (◌̌) — Requires "ABC Extended" macOS setting
+    CHAR_COMB_BREVE,         // Combining breve symbol (◌̆) — Requires "ABC Extended" macOS setting
+    CHAR_COMB_INV_BREVE,     // Combining inverted breve (◌̑)
+    CHAR_COMB_MACRON,        // Combining macron symbol (◌̄) — Requires "ABC Extended" macOS setting
     CHAR_CENT,               // Cent symbol (¢)
     CHAR_EURO,               // Euro pound symbol (€)
     CHAR_POUND,              // British pound symbol (£)
@@ -25,6 +30,7 @@ typedef enum {
     CHAR_ELLIPSIS,           // Three horizontal dots (…)
     CHAR_VERT_ELLIPSIS,      // Three vertical dots (⋮)
     CHAR_BULLET,             // Bullet symbol (•)
+    CHAR_CENTER_DOT,         // Centered dot (·)
     CHAR_SMART_QUOTE_LEFT,   // Smart single quote open (‘)
     CHAR_SMART_QUOTE_RIGHT,  // Smart single quote close (’)
     CHAR_SMART_DQUOTE_LEFT,  // Smart double quote open (“)

@@ -243,11 +243,11 @@ bool rgb_matrix_indicators_user(void) {
 
         /* Home Row Arrows (RHS): Hold Left Index Finger on Home Row
          * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
-         * │   CUT   │UNDO REDO│  PASTE  │  COPY   │         │         │         │ SEL ALL │  COPY   │  PASTE  │UNDO REDO│   CUT   │
+         * │   CUT   │UNDO REDO│  PASTE  │  COPY   │         │         │ «|» ‹|› │ SEL ALL │  COPY   │  PASTE  │UNDO REDO│   CUT   │
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-         * │    °    │    \    │ ! ¡ ◌̀ ◌̈ │    _    │<<HOLD>> │         │ ? ¿ ◌̃ ◌́ │    ←    │    ↓    │    ↑    │    →    │  ZOOM+  │
+         * │    °    │    \    │ ! ¡ ◌̃ ◌̈ │    _    │<<HOLD>> │         │ ? ¿ ◌̀ ◌́ │    ←    │    ↓    │    ↑    │    →    │  ZOOM+  │
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-         * │         │         │         │         │         │         │         │DESKTOP ←│DESKTOP →│  TAB ←  │  TAB →  │  ZOOM-  │
+         * │         │         │         │         │         │         │ ◌̂ ◌̄ ◌̆ ◌̌ │DESKTOP ←│DESKTOP →│  TAB ←  │  TAB →  │  ZOOM-  │
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
          * │         │         │         │         │         │   -       –   —   │ , ; | & │         │         │         │ ZOOM RS │
          * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
@@ -265,11 +265,11 @@ bool rgb_matrix_indicators_user(void) {
 
         /* Home Row Arrows (LHS): Hold Right Index Finger on Home Row
          * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
-         * │   CUT   │UNDO REDO│  PASTE  │  COPY   │ SEL ALL │         │         │         │  COPY   │  PASTE  │UNDO REDO│   CUT   │
+         * │   CUT   │UNDO REDO│  PASTE  │  COPY   │ SEL ALL │ «|» ‹|› │         │         │  COPY   │  PASTE  │UNDO REDO│   CUT   │
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-         * │  ZOOM+  │    ←    │    ↑    │    ↓    │    →    │ ? ¿ ◌̃ ◌́ │         │ <<HOLD>>│    _    │ ! ¡ ◌̀ ◌̈ │    \    │    °    │
+         * │  ZOOM+  │    ←    │    ↑    │    ↓    │    →    │ ? ¿ ◌̀ ◌́ │         │ <<HOLD>>│    _    │ ! ¡ ◌̃ ◌̈ │    \    │    °    │
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-         * │  ZOOM-  │  TAB ←  │  TAB →  │DESKTOP ←│DESKTOP →│         │         │         │         │         │         │         │
+         * │  ZOOM-  │  TAB ←  │  TAB →  │DESKTOP ←│DESKTOP →│ ◌̂ ◌̄ ◌̆ ◌̌ │         │         │         │         │         │         │
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
          * │ ZOOM RS │         │         │         │ , ; | & │   -       –   —   │         │         │         │         │         │
          * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
@@ -506,9 +506,9 @@ bool rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color(LED_ROW1_RIGHT_RING,   SPRING_GREEN); // Move Up
             rgb_matrix_set_color(LED_ROW1_RIGHT_PINKY,  SPRING_GREEN); // Move Right
             // Mouse Button Keys (Interact)
-            rgb_matrix_set_color(LED_ROW1_LEFT_MIDDLE, ORANGE); // Left
-            rgb_matrix_set_color(LED_ROW1_LEFT_INDEX,  ORANGE); // Right
-            rgb_matrix_set_color(LED_ROW1_LEFT_RING,   ORANGE); // Middle
+            rgb_matrix_set_color(LED_ROW1_LEFT_MIDDLE, ORANGE); // Left Click
+            rgb_matrix_set_color(LED_ROW1_LEFT_INDEX,  ORANGE); // Right Click
+            rgb_matrix_set_color(LED_ROW1_LEFT_RING,   ORANGE); // Middle Click
             rgb_matrix_set_color(LED_ROW2_LEFT_MIDDLE, ORANGE); // Back
             rgb_matrix_set_color(LED_ROW2_LEFT_INDEX,  ORANGE); // Forward
             // Mouse Wheel Keys (Scroll/Navigate)
@@ -524,6 +524,37 @@ bool rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color(LED_ROW0_RIGHT_MIDDLE, GREEN); // Page Down
             rgb_matrix_set_color(LED_ROW0_RIGHT_RING,   GREEN); // Page Up
             rgb_matrix_set_color(LED_ROW0_RIGHT_PINKY,  GREEN); // End
+            break;
+
+        /* Classic Doom Layer
+         * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
+         * │   ESC   │         │         │    ↑    │         │         │         │         │Pointer ↑│         │         │         │
+         * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+         * │  ⇥   ⇤  │ Strife ←│    ←    │    ↓    │    →    │ Strife →│         │Pointer ←│Pointer ↓│Pointer →│ Strife →│    ↵    │
+         * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+         * │         │         │         │ Strife ↓│         │         │         │         │         │         │         │         │
+         * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+         * │         │         │         │         │Lft Click│                   │Rgt Click│         │         │         │         │
+         * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
+         */
+        case _DOOM:
+            rgb_off();
+            // Exit Mouse Mode Layer: Tap Bottom Left Key
+            set_layer_key_color(LED_CORNER_BOTTOM_LEFT);
+            // Mouse Pointer Movement Keys (Move/Go)
+            rgb_matrix_set_color(LED_ROW0_RIGHT_MIDDLE, SPRING_GREEN); // Move Up
+            rgb_matrix_set_color(LED_ROW1_RIGHT_INDEX,  SPRING_GREEN); // Move Left
+            rgb_matrix_set_color(LED_ROW1_RIGHT_MIDDLE, SPRING_GREEN); // Move Down
+            rgb_matrix_set_color(LED_ROW1_RIGHT_RING,   SPRING_GREEN); // Move Right
+            // Mouse Button Keys (Interact)
+            rgb_matrix_set_color(LED_THUMB_LEFT,  ORANGE); // Left Click
+            rgb_matrix_set_color(LED_THUMB_RIGHT, ORANGE); // Right Click
+            // Arrow Keys
+            rgb_matrix_set_color(LED_ROW0_LEFT_MIDDLE, GREEN); // Up
+            rgb_matrix_set_color(LED_ROW1_LEFT_RING,   GREEN); // Left
+            rgb_matrix_set_color(LED_ROW1_LEFT_MIDDLE, GREEN); // Down
+            rgb_matrix_set_color(LED_ROW1_LEFT_INDEX,  GREEN); // Right
+            break;
     }
 
     return true;

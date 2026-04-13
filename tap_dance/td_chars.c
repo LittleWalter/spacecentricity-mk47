@@ -233,7 +233,7 @@ void eql_reset(tap_dance_state_t *state, void *user_data) {
 }
 
 // ──────────────────────────────
-// TD_QUES Cross Platform ? ¿ ◌̃ ◌́
+// TD_QUES Cross Platform ? ¿ ◌̀ ◌́
 // ──────────────────────────────
 
 // Instance of 'td_tap_t' for the TD_QUES quad tap dance
@@ -250,12 +250,14 @@ void ques_finished(tap_dance_state_t *state, void *user_data) {
         case TD_DOUBLE_TAP: // `¿` (Spanish inverted question mark)
             special_char_macro(CHAR_INV_QUES);
             break;
-        case TD_SINGLE_HOLD: // ◌́ (combining accent mark)
+        case TD_SINGLE_HOLD: // ◌́ (combining acute mark)
             special_char_macro(CHAR_COMB_ACUTE);
             break;
-        case TD_DOUBLE_HOLD: // ◌̃ (combining tilde)
-            special_char_macro(CHAR_COMB_TILDE);
+        case TD_DOUBLE_HOLD: // `◌̀` (combining grave accent mark)
+            special_char_macro(CHAR_COMB_GRAVE);
             break;
+        case TD_TRIPLE_TAP:
+            tap_code16(KC_QUES);
         case TD_DOUBLE_SINGLE_TAP: tap_code16(KC_QUES); register_code16(KC_QUES); break;
         default: break;
     }
@@ -272,7 +274,7 @@ void ques_reset(tap_dance_state_t *state, void *user_data) {
 }
 
 // ──────────────────────────────
-// TD_EXLM Cross Platform ! ¡ ◌̀ ◌̈
+// TD_EXLM Cross Platform ! ¡ ◌̃ ◌̈
 // ──────────────────────────────
 
 // Instance of 'td_tap_t' for the TD_EXLM quad tap dance
@@ -292,9 +294,11 @@ void exlm_finished(tap_dance_state_t *state, void *user_data) {
         case TD_SINGLE_HOLD: // `◌̈` (combining umlaut)
             special_char_macro(CHAR_COMB_UMLAUT);
             break;
-        case TD_DOUBLE_HOLD: // `◌̀` (combining grave accent mark)
-            special_char_macro(CHAR_COMB_GRAVE);
+        case TD_DOUBLE_HOLD: // ◌̃ (combining tilde)
+            special_char_macro(CHAR_COMB_TILDE);
             break;
+        case TD_TRIPLE_TAP:
+            tap_code16(KC_EXLM);
         case TD_DOUBLE_SINGLE_TAP: tap_code16(KC_EXLM); register_code16(KC_EXLM); break;
         default: break;
     }
@@ -737,19 +741,19 @@ void c_reset(tap_dance_state_t *state, void *user_data) {
 }
 
 // ──────────────────────────────
-// TD_CIRC                 ^  ¢ $
+// TD_CARET                ^  ¢ $
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_CIRC (`^`, circumflex) tap dances
-static td_tap_t circ_tap_state = {
+// Instance of 'td_tap_t' for the TD_CARET tap dances
+static td_tap_t caret_tap_state = {
     .is_press_action = true,
     .state = TD_NONE
 };
 
-// Send the appropriate symbol for TD_CIRC
-void circ_finished(tap_dance_state_t *state, void *user_data) {
-    circ_tap_state.state = cur_dance(state);
-    switch (circ_tap_state.state) {
+// Send the appropriate symbol for TD_CARET
+void caret_finished(tap_dance_state_t *state, void *user_data) {
+    caret_tap_state.state = cur_dance(state);
+    switch (caret_tap_state.state) {
         case TD_SINGLE_TAP:  register_code16(KC_CIRC); break; // `^`
         case TD_SINGLE_HOLD: register_code16(KC_DLR);  break; // `$`
         case TD_DOUBLE_HOLD: // `¢`
@@ -760,9 +764,9 @@ void circ_finished(tap_dance_state_t *state, void *user_data) {
     }
 }
 
-// Release any keys pressed by TD_CIRC and reset the state
-void circ_reset(tap_dance_state_t *state, void *user_data) {
-    switch (circ_tap_state.state) {
+// Release any keys pressed by TD_CARET and reset the state
+void caret_reset(tap_dance_state_t *state, void *user_data) {
+    switch (caret_tap_state.state) {
         case TD_SINGLE_TAP:  unregister_code16(KC_CIRC); break;
         case TD_SINGLE_HOLD: unregister_code16(KC_DLR);  break;
         case TD_DOUBLE_HOLD:
@@ -770,6 +774,45 @@ void circ_reset(tap_dance_state_t *state, void *user_data) {
         case TD_DOUBLE_SINGLE_TAP: unregister_code16(KC_CIRC); break;
         default: break;
     }
+    caret_tap_state.state = TD_NONE;
+}
+
+// ──────────────────────────────
+// TD_CIRC                ◌̂ ◌̄ ◌̆ ◌̌
+// ──────────────────────────────
+
+// Instance of 'td_tap_t' for the TD_CIRC quad tap dance
+static td_tap_t circ_tap_state = {
+    .is_press_action = true,
+    .state = TD_NONE
+};
+
+// Send the appropriate symbol or layer for TD_CIRC
+void circ_finished(tap_dance_state_t *state, void *user_data) {
+    circ_tap_state.state = cur_dance(state);
+    switch (circ_tap_state.state) {
+        case TD_SINGLE_TAP: // `◌̂` (combining circumflex)
+            special_char_macro(CHAR_COMB_CIRCUMFLEX);
+            break;
+        case TD_DOUBLE_TAP: // `◌̄` (combining macron)
+            special_char_macro(CHAR_COMB_MACRON);
+            break;
+        case TD_SINGLE_HOLD: // `◌̌` (combining caron)
+            special_char_macro(CHAR_COMB_CARON);
+            break;
+        case TD_DOUBLE_HOLD: // `◌̆` (combining breve)
+            special_char_macro(CHAR_COMB_BREVE);
+            break;
+        case TD_DOUBLE_SINGLE_TAP:
+            special_char_macro(CHAR_COMB_CIRCUMFLEX);
+            special_char_macro(CHAR_COMB_CIRCUMFLEX);
+            break;
+        default: break;
+    }
+}
+
+// Release any keys pressed by TD_CIRC and reset the state
+void circ_reset(tap_dance_state_t *state, void *user_data) {
     circ_tap_state.state = TD_NONE;
 }
 
@@ -787,8 +830,8 @@ static td_tap_t smart_quotes_tap_state = {
 void smart_quotes_finished(tap_dance_state_t *state, void *user_data) {
     smart_quotes_tap_state.state = cur_dance(state);
     switch (smart_quotes_tap_state.state) {
-        case TD_SINGLE_TAP:  smart_double_quotes_macro(); break; // `^`
-        case TD_SINGLE_HOLD: smart_single_quotes_macro(); break; // `$`
+        case TD_SINGLE_TAP:  smart_double_quotes_macro(); break; // “|”
+        case TD_SINGLE_HOLD: smart_single_quotes_macro(); break; // ‘|’
         case TD_DOUBLE_SINGLE_TAP:
             smart_double_quotes_macro();
             smart_double_quotes_macro();
@@ -800,6 +843,35 @@ void smart_quotes_finished(tap_dance_state_t *state, void *user_data) {
 // Release any keys pressed by TD_SMART_QUOTES and reset the state
 void smart_quotes_reset(tap_dance_state_t *state, void *user_data) {
     smart_quotes_tap_state.state = TD_NONE;
+}
+
+// ──────────────────────────────
+// TD_ANGLE_QUOTES
+// ──────────────────────────────
+
+// Instance of 'td_tap_t' for the TD_ANGLE_QUOTES tap dances
+static td_tap_t angle_quotes_tap_state = {
+    .is_press_action = true,
+    .state = TD_NONE
+};
+
+// Send the appropriate symbols for TD_ANGLE_QUOTES
+void angle_quotes_finished(tap_dance_state_t *state, void *user_data) {
+    angle_quotes_tap_state.state = cur_dance(state);
+    switch (angle_quotes_tap_state.state) {
+        case TD_SINGLE_TAP:  double_angle_quotes_macro(); break; // «|»
+        case TD_SINGLE_HOLD: single_angle_quotes_macro(); break; // ‹|›
+        case TD_DOUBLE_SINGLE_TAP:
+            double_angle_quotes_macro();
+            double_angle_quotes_macro();
+            break;
+        default: break;
+    }
+}
+
+// Release any keys pressed by TD_ANGLE_QUOTES and reset the state
+void angle_quotes_reset(tap_dance_state_t *state, void *user_data) {
+    angle_quotes_tap_state.state = TD_NONE;
 }
 
 // ──────────────────────────────
@@ -842,7 +914,7 @@ void dlr_reset(tap_dance_state_t *state, void *user_data) {
 }
 
 // ──────────────────────────────
-// TD_DOT                 . … ⋮ •
+// TD_DOT               . … ⋮ • ·
 // ──────────────────────────────
 
 // Instance of 'td_tap_t' for the TD_DOT quad tap dances
@@ -858,6 +930,9 @@ void dot_finished(tap_dance_state_t *state, void *user_data) {
         case TD_SINGLE_TAP: register_code16(KC_DOT); break; // `.`
         case TD_DOUBLE_TAP: // `…` (horizontal ellipsis)
             special_char_macro(CHAR_ELLIPSIS);
+            break;
+        case TD_TRIPLE_TAP: // `·` (centered dot)
+            special_char_macro(CHAR_CENTER_DOT);
             break;
         case TD_SINGLE_HOLD: // `•`
             special_char_macro(CHAR_BULLET);

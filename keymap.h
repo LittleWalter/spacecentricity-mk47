@@ -39,6 +39,8 @@
 #define KP9_LSFT MT(MOD_LSFT, KC_P9)
 
 /*** LT/TO Keycodes: Layers ***********************************/
+
+// TIP: LT only supports layers 0-15
                                       // │   Tap   │  Hold   │
 #define ESC_MACOS LT(_MACOS,  KC_ESC) // │   ESC   │  macOS  │
 #define E_VIM_R   LT(_VIM_R,  KC_E)   // │    e    │ Vim RHS │
@@ -51,6 +53,9 @@
 #define ZERO_ADJ  LT(_ADJ,    KC_P0)  // │ Numpad 0│  F1-F12 │
 
 #define BASE TO(_BASE)
+#define DOOM TG(_DOOM)
+
+#define RCLK_UPPER LT(_UPPER, MS_BTN2)
 
 /*** TD Keycodes: Tap Dances **********************************/
 
@@ -59,22 +64,23 @@
 #define U_LOWER TD(TD_U)
 
 // Char Keys
-#define ASTR TD(TD_ASTR)
-#define BSPC TD(TD_BSPC)
-#define CIRC TD(TD_CIRC)
-#define COMM TD(TD_COMM)
-#define DLR  TD(TD_DLR)
-#define DOT  TD(TD_DOT)
-#define DQUO TD(TD_DQUO)
-#define EQL  TD(TD_EQL)
-#define EXLM TD(TD_EXLM)
-#define MINS TD(TD_MINS)
-#define PLUS TD(TD_PLUS)
-#define PUNC TD(TD_PUNC)
-#define QUES TD(TD_QUES)
-#define QUOT TD(TD_QUOT)
-#define SPC  TD(TD_SPC)
-#define TAB  TD(TD_TAB)
+#define ASTR  TD(TD_ASTR)
+#define BSPC  TD(TD_BSPC)
+#define CARET TD(TD_CARET)
+#define CIRC  TD(TD_CIRC)
+#define COMM  TD(TD_COMM)
+#define DLR   TD(TD_DLR)
+#define DOT   TD(TD_DOT)
+#define DQUO  TD(TD_DQUO)
+#define EQL   TD(TD_EQL)
+#define EXLM  TD(TD_EXLM)
+#define MINS  TD(TD_MINS)
+#define PLUS  TD(TD_PLUS)
+#define PUNC  TD(TD_PUNC)
+#define QUES  TD(TD_QUES)
+#define QUOT  TD(TD_QUOT)
+#define SPC   TD(TD_SPC)
+#define TAB   TD(TD_TAB)
 
 #define LPRN TD(TD_LPRN)
 #define RPRN TD(TD_RPRN)
@@ -162,6 +168,7 @@
 // Miscellaneous
 #define UNDO         TD(TD_UNDO)
 #define SMART_QUOTES TD(TD_SMART_QUOTES)
+#define ANGLE_QUOTES TD(TD_ANGLE_QUOTES)
 
 /*** Other Keycodes *******************************************/
 
@@ -172,6 +179,7 @@
 // ─────────────────────────────────────────────────────────────
 enum layers {
     _BASE,      // Modified Programmer Dvorak
+    _DOOM,      // Classic Doom layer
     _LOWER,     // Numpad (hold left thumb)
     _UPPER,     // Home row number and symbols layer (hold right thumb)
     _ADJ,       // Keyboard settings and adjustments (hold left thumb, then right thumb)
@@ -182,7 +190,7 @@ enum layers {
     _VIM_L,     // Vim navigation layer (hold right middle finger on home row)
     _PROG_R,    // Programming-related bigrams (hold left ring finger on home row)
     _PROG_L,    // Programming-related bigrams (hold right ring finger on home row)
-    _MACOS,     // macOS shortcuts
     _TERM,      // Terminal emulator macros (hold M key down, right index finger)
-    _MOUSE      // Mouse layer (tap left corner key w/ palm)
+    _MACOS,     // macOS shortcuts
+    _MOUSE,     // Mouse layer (tap left corner key w/ palm)
 };

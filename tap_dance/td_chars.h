@@ -12,12 +12,15 @@ void astr_reset(tap_dance_state_t *state, void *user_data);
 // TD_BSC
 void bspc_finished(tap_dance_state_t *state, void *user_data);
 void bspc_reset(tap_dance_state_t *state, void *user_data);
-// TD_CIRC
-void circ_finished(tap_dance_state_t *state, void *user_data);
-void circ_reset(tap_dance_state_t *state, void *user_data);
 // TD_C
 void c_finished(tap_dance_state_t *state, void *user_data);
 void c_reset(tap_dance_state_t *state, void *user_data);
+// TD_CARET
+void caret_finished(tap_dance_state_t *state, void *user_data);
+void caret_reset(tap_dance_state_t *state, void *user_data);
+// TD_CIRC
+void circ_finished(tap_dance_state_t *state, void *user_data);
+void circ_reset(tap_dance_state_t *state, void *user_data);
 // TD_COMM
 void comm_finished(tap_dance_state_t *state, void *user_data);
 void comm_reset(tap_dance_state_t *state, void *user_data);
@@ -63,6 +66,9 @@ void u_reset(tap_dance_state_t *state, void *user_data);
 // TD_SMART_QUOTES
 void smart_quotes_finished(tap_dance_state_t *state, void *user_data);
 void smart_quotes_reset(tap_dance_state_t *state, void *user_data);
+// TD_ANGLE_QUOTES
+void angle_quotes_finished(tap_dance_state_t *state, void *user_data);
+void angle_quotes_reset(tap_dance_state_t *state, void *user_data);
 
 // TD_LPRN
 void lprn_finished(tap_dance_state_t *state, void *user_data);

@@ -22,12 +22,17 @@ The MK‑47 has become a popular entry‑level option for people interested in e
 
 The MK‑47 is typically an in‑store Micro Center exclusive, but it’s occasionally available for shipping within the U.S. depending on stock. If you don’t live near a Micro Center, checking eBay and similar marketplaces is often worthwhile, as units show up there fairly regularly.
 
+> [!TIP]
+> Not familiar with Planck keyboards? See this brief [video by Jack Humbert](https://www.youtube.com/watch?v=bEPg8kk84gw) introducing the Planck.
+
 ## Layout
 
 Each layer is presented as a rendered diagram generated with [keyboard-layout-editor.com](https://keyboard-layout-editor.com) for quick visual reference.
 
 > [!IMPORTANT]
-> This layout uses the standard **U.S. keyboard setting** in the operating system; using any other layout may lead to unexpected behavior.
+> On macOS, this keymap expects the system input source to be **ABC – Extended**. Other layouts may change how certain Option‑based characters or dead‑key sequences behave and can lead to inconsistent output.
+>
+> Linux and Microsoft Windows should use the standard US layout, which matches the assumptions of the firmware and keeps behavior consistent across platforms.
 
 ### Legend
 
@@ -41,6 +46,9 @@ This keymap uses QMK’s [quad‑tap dance pattern](https://docs.qmk.fm/features
 | **2** | Double Tap |
 | **3** | Tap-and-Hold |
 | **4** | Hold |
+
+> [!NOTE]
+> Triple‑tap actions are supported but not shown in the diagram because they are used only for rare or “deep‑storage” functions. When a key includes a triple‑tap action, it is mentioned in that key’s description.
 
 > [!NOTE]
 > See the [README](assets/README.md) for hex color values in the [`assets/`](assets/) directory.
@@ -70,7 +78,7 @@ The media cluster lives out of the way on the bottom left. Note that  **Mute Tab
 
 ### Lower: Numpad
 
-![Lower: Numpad with hexadecimal](assets/01_LOWER.png)
+![Lower: Numpad with hexadecimal](assets/02_LOWER.png)
 
 Tap the **HELD** key when this layer is **locked** to return to **Base**.
 
@@ -80,7 +88,7 @@ Momentary hold `0` to access **Adjustment** layer to change keyboard settings.
 
 ### Upper: Primary Number Layer
 
-![Upper: Primary Numpad Layer](assets/02_UPPER.png)
+![Upper: Primary Numpad Layer](assets/03_UPPER.png)
 
 Tap the **HELD** key when this layer is **locked** to return to **Base**.
 
@@ -92,11 +100,22 @@ Activating **Caps Lock** turns this key — and the entire **Base** layer — re
 
 Smart quotes live on the lower row, inserting paired curly quotes with the cursor centered for fancy, typographic writing. Tap for double smart quotes; hold for single smart quotes. Use these macros if you prefer not to rely on OS‑ or app‑level substitutions.
 
-On macOS, the vertical ellipsis (⋮) has no direct keyboard shortcut and is produced with a macro that uses compact the [Emoji & Symbols popover](https://support.apple.com/guide/mac-help/use-emoji-and-symbols-on-mac-mchlp1560/mac). On Linux and Microsoft Windows modes, the Unicode character is sent directly.
+The `.` key remains in the standard Dvorak position but includes additional dot‑related tap dances:
+
+| Action | Behavior |
+|--------|----------|
+| Tap | `.` (dot/period) |
+| Double Tap | `…` (horizontal ellipsis) |
+| Tap-and-Hold | `⋮` (vertical ellipsis) |
+| Hold | `•` (bullet) |
+| Triple Tap | `·` (centered dot) |
+
+> [!NOTE]
+> On macOS mode, the **vertical ellipsis** (⋮) has no direct keyboard shortcut and is produced with a macro that uses compact the [Emoji & Symbols popover](https://support.apple.com/guide/mac-help/use-emoji-and-symbols-on-mac-mchlp1560/mac). On Linux and Microsoft Windows modes, the Unicode character is sent directly.
 
 ### Adjustment: Keyboard Settings
 
-![Adjustment: Keyboard Settings](assets/03_ADJ.png)
+![Adjustment: Keyboard Settings](assets/04_ADJ.png)
 
 The **OS MODE** key switches the keyboard’s active operating‑system profile. It adjusts copy/paste behavior, special symbol mappings, and virtual desktop/workspace navigation to match the selected OS.
 
@@ -115,15 +134,15 @@ The backlight color indicates which OS is currently active:
 
 ### Function: `F1`–`F12`
 
-![Function: F1–F12](assets/04_FN.png)
+![Function: F1–F12](assets/05_FN.png)
 
 Provides `F1`–`F12` and modifier combinations for shortcut execution. The home and top rows mirror the **Upper** layer’s number layout, and the lower row includes a redundant, standard linear layout for familiarity and ease of use.
 
 ### Arrows
 
-![Arrows: Right-Hand Side](assets/05_ARR_R.png)
+![Arrows: Right-Hand Side](assets/06_ARR_R.png)
 
-![Arrows: Left-Hand Side](assets/06_ARR_L.png)
+![Arrows: Left-Hand Side](assets/07_ARR_L.png)
 
 Spanish punctuation and combining diacritics are available on home row for light multilingual support.
 
@@ -133,7 +152,7 @@ Spanish punctuation and combining diacritics are available on home row for light
 |--------|----------|
 | Tap | `?` |
 | Double Tap | `¿` |
-| Tap-and-Hold | `˜` (combining tilde) |
+| Tap-and-Hold | `ˋ` (combining grave) |
 | Hold | `´` (combining acute) |
 
 **Ring-finger keys**
@@ -142,14 +161,26 @@ Spanish punctuation and combining diacritics are available on home row for light
 |--------|----------|
 | Tap | `!` |
 | Double Tap | `¡` |
-| Tap-and-Hold | `ˋ` (combining grave) |
+| Tap-and-Hold | `˜` (combining tilde) |
 | Hold | `¨` (combining umlaut) |
+
+**Lower row accent keys**
+
+| Action | Behavior |
+|--------|----------|
+| Tap | `ˆ` (combining circumflex) |
+| Double Tap | `¯` (combining macron) |
+| Tap-and-Hold | `˘` (combining breve) |
+| Hold | `ˇ` (combining caron) |
+
+> [!WARNING]
+> On macOS, the lower row combining marks rely on the **ABC – Extended** input source. Other layouts do not provide the required dead‑key sequences and will produce incorrect output.
 
 ### Vim
 
-![Vim: Right-Hand Side](assets/07_VIM_R.png)
+![Vim: Right-Hand Side](assets/08_VIM_R.png)
 
-![Vim: Left-Hand Side](assets/08_VIM_L.png)
+![Vim: Left-Hand Side](assets/09_VIM_L.png)
 
 These layers provide ergonomic access to common Vim navigation, window management, and viewport‑control commands, optimized for modal editing.
 
@@ -194,9 +225,9 @@ Window‑resize commands omit the `Esc` prefix to preserve compatibility with `<
 
 ### Programming
 
-![Programming: Right-Hand Side](assets/09_PROG_R.png)
+![Programming: Right-Hand Side](assets/10_PROG_R.png)
 
-![Programming: Left-Hand Side](assets/10_PROG_L.png)
+![Programming: Left-Hand Side](assets/11_PROG_L.png)
 
 Paired characters (quotes, brackets, braces) automatically place the cursor inside. This is the primary purpose of the layer, since these keys sit directly under the home row. However, many editors and IDEs already provide similar behavior, so this layer is optional.
 
@@ -204,13 +235,13 @@ C-style programming keywords and operators are included for completeness, and ma
 
 ### Terminal
 
-![Terminal](assets/11_TERM.png)
+![Terminal](assets/12_TERM.png)
 
 An optional convenience layer centered on left‑hand navigation (`Home`, `Page Up`, `Page Down`, `End` under the home row) and a handful of shell‑adjacent shortcuts. The “terminal keys” are intentionally lightweight — more for comfort and fun than necessity — since shell history, aliases, and muscle memory usually handle most workflows.
 
 ### Apple macOS
 
-![Apple macOS Layer](assets/12_MACOS.png)
+![Apple macOS Layer](assets/13_MACOS.png)
 
 The **center-thumb key** (spacebar) opens core macOS functionality:
 
@@ -245,9 +276,15 @@ The **center key** provides window and device controls:
 
 ### Mouse
 
-![Mouse Keys Layer](assets/13_MOUSE.png)
+![Mouse Keys Layer](assets/14_MOUSE.png)
 
 This layer is typically accessed with a _left‑palm tap_ on **Base**, using a taller keycap (flat SA Row 3) for easier targeting while keeping the hands in home position for quick entry and exit.
+
+### Doom Classic
+
+![Doom Classic layer](assets/01_DOOM.png)
+
+An optional compact gaming layer modeled after vanilla _Doom_ (1993), built around a tight movement cluster, dedicated strafing keys, and thumb‑based actions for firing, opening doors, and running. Quick weapon switching is handled through the **Upper** layer, and the layout also works as a simple arrows‑plus‑mouse‑keys mode using traditional T‑shaped clusters for general navigation.
 
 ## Using This Keymap with QMK
 
@@ -256,7 +293,7 @@ This keymap is maintained _outside_ the QMK source tree. To use it, create a sym
 ### 🧲 Download the Keymap Source Code
 
 ```bash
-mkdir -p ~/your/preferred/path/
+mkdir -p ~/your/preferred/path/      # Optional: create a directory
 cd ~/your/preferred/path/
 git clone https://github.com/LittleWalter/spacecentricity-mk47
 ```
@@ -288,7 +325,7 @@ qmk flash -kb inland/mk47 -km spacecentricity
 ```
 
 > [!TIP]
-> To enter bootloader mode and install the new firmware, hold the **top-left key** down while plugging the keyboard in. Alternatively, hit the key assigned to `QK_BOOTLOADER`/`QK_BOOT` on the keymap.
+> To enter bootloader mode and install the new firmware, hold the **top-left key** down while plugging the keyboard in. Alternatively, press the key assigned to `QK_BOOTLOADER`/`QK_BOOT` on the keymap.
 
 ### 🔧 Helper Scripts (Optional)
 

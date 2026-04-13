@@ -16,24 +16,25 @@ tap_dance_action_t tap_dance_actions[TD_COUNT] = {
     // ─────────────────────────────────────────────────────────────
     // Character Tap Dances
     // ─────────────────────────────────────────────────────────────
-    [TD_ASTR] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, astr_finished, astr_reset),
-    [TD_BSPC] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, bspc_finished, bspc_reset),
-    [TD_CIRC] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, circ_finished, circ_reset),
-    [TD_COMM] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, comm_finished, comm_reset),
-    [TD_C]    = ACTION_TAP_DANCE_FN_ADVANCED(NULL, c_finished,    c_reset),
-    [TD_DLR]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dlr_finished,  dlr_reset),
-    [TD_DOT]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dot_finished,  dot_reset),
-    [TD_DQUO] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dquo_finished, dquo_reset),
-    [TD_EQL]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, eql_finished,  eql_reset),
-    [TD_EXLM] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, exlm_finished, exlm_reset),
-    [TD_MINS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, mins_finished, mins_reset),
-    [TD_PLUS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, plus_finished, plus_reset),
-    [TD_PUNC] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, punc_finished, punc_reset),
-    [TD_QUES] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, ques_finished, ques_reset),
-    [TD_QUOT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, quot_finished, quot_reset),
-    [TD_SPC]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, spc_finished,  spc_reset),
-    [TD_TAB]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, tab_finished,  tab_reset),
-    [TD_U]    = ACTION_TAP_DANCE_FN_ADVANCED(NULL, u_finished,    u_reset),
+    [TD_ASTR]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, astr_finished,  astr_reset),
+    [TD_BSPC]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, bspc_finished,  bspc_reset),
+    [TD_C]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL, c_finished,     c_reset),
+    [TD_CARET] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, caret_finished, caret_reset),
+    [TD_CIRC]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, circ_finished,  circ_reset),
+    [TD_COMM]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, comm_finished,  comm_reset),
+    [TD_DLR]   = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dlr_finished,   dlr_reset),
+    [TD_DOT]   = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dot_finished,   dot_reset),
+    [TD_DQUO]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dquo_finished,  dquo_reset),
+    [TD_EQL]   = ACTION_TAP_DANCE_FN_ADVANCED(NULL, eql_finished,   eql_reset),
+    [TD_EXLM]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, exlm_finished,  exlm_reset),
+    [TD_MINS]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, mins_finished,  mins_reset),
+    [TD_PLUS]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, plus_finished,  plus_reset),
+    [TD_PUNC]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, punc_finished,  punc_reset),
+    [TD_QUES]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, ques_finished,  ques_reset),
+    [TD_QUOT]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, quot_finished,  quot_reset),
+    [TD_SPC]   = ACTION_TAP_DANCE_FN_ADVANCED(NULL, spc_finished,   spc_reset),
+    [TD_TAB]   = ACTION_TAP_DANCE_FN_ADVANCED(NULL, tab_finished,   tab_reset),
+    [TD_U]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL, u_finished,     u_reset),
 
     [TD_LPRN] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, lprn_finished, lprn_reset),
     [TD_RPRN] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, rprn_finished, rprn_reset),
@@ -134,7 +135,8 @@ tap_dance_action_t tap_dance_actions[TD_COUNT] = {
     // Miscellaneous Tap Dances
     // ─────────────────────────────────────────────────────────────
     [TD_UNDO]         = ACTION_TAP_DANCE_FN_ADVANCED(NULL, undo_finished, undo_reset),
-    [TD_SMART_QUOTES] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, smart_quotes_finished, smart_quotes_reset)
+    [TD_SMART_QUOTES] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, smart_quotes_finished, smart_quotes_reset),
+    [TD_ANGLE_QUOTES] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, angle_quotes_finished, angle_quotes_reset)
 };
 
 /* Return an integer that corresponds to what kind of tap dance should be executed.

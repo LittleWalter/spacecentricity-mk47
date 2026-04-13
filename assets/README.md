@@ -6,7 +6,7 @@ These graphics provide quick visual references for each layer in the keymap.
 
 All graphics were created with [keyboard-layout-editor.com](https://www.keyboard-layout-editor.com) and exported as PNG images using [Ungoogled Chromium](https://ungoogled-software.github.io/).
 
-Filenames use a numeric prefix to keep layers ordered consistently with the keymap itself. For example, `00_BASE.png` corresponds to the base layer, `01_LOWER.png` to the numpad layer, etc.
+Filenames use a numeric prefix to keep layers ordered consistently with the keymap itself. For example, `00_BASE.png` corresponds to the base layer, `02_LOWER.png` to the numpad layer, etc.
 
 ## 🎨 Color Conventions
 
