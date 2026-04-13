@@ -8,9 +8,6 @@
 
 os_t current_os = OS_MACOS; // Default to Apple macOS
 
-// Tracking where the mouse layer was triggered
-static uint8_t mouse_return_layer = _BASE;
-
 // Intercepts custom keycodes and runs their associated macros and miscellenous
 // non-macros. This function handles all higher‑level behaviors that aren't
 // simple keypresses, including programming bigrams (e.g., ", ", "; ", ": ",
@@ -260,17 +257,34 @@ void zoom_reset(void) {
 // Miscellaneous
 // ─────────────────────────────────────────────────────────────
 
-// Toggle mouse layer, go back to previous layer
+// Toggle mouse layer, go back to previous layer. Since DOOM is accessed via MOUSE, we handle the
+// expected behavior logic here to avoid future issues.
 void toggle_mouse(void) {
     const uint8_t current = get_highest_layer(layer_state);
-    if (current == _MOUSE) {
-        // Turn mouse layer OFF
-        layer_off(_MOUSE);
-        layer_on(mouse_return_layer);
-    } else {
-        // Turn mouse layer ON
-        mouse_return_layer = current; // Remember where we came from
-        layer_on(_MOUSE);
+
+    switch (current) {
+        // If we're in MOUSE, turn it off and go back to the highest non-MOUSE, non-DOOM layer
+        case _MOUSE:
+            // Turn off mouse
+            layer_off(_MOUSE);
+
+            // Compute previous layer using bit masks, ignoring MOUSE and DOOM
+            uint32_t state_without_mouse_doom =
+                layer_state & ~(1UL << _MOUSE) & ~(1UL << _DOOM);
+
+            uint8_t prev = get_highest_layer(state_without_mouse_doom);
+
+            // Go back to that layer (BASE, LOWER, UPPER, etc.)
+            layer_move(prev);
+            break;
+        // If we're in DOOM and hit the mouse toggle, treat it as "I'm done, go to BASE"
+        case _DOOM:
+            layer_off(_DOOM);
+            layer_move(_BASE);
+            break;
+        // Otherwise, we're in BASE, LOWER, UPPER, etc. → turn MOUSE on
+        default:
+            layer_on(_MOUSE);
     }
 }
 
