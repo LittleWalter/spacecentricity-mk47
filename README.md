@@ -30,9 +30,9 @@ The MK‑47 is typically an in‑store Micro Center exclusive, but it’s occasi
 Each layer is presented as a rendered diagram generated with [keyboard-layout-editor.com](https://keyboard-layout-editor.com) for quick visual reference.
 
 > [!IMPORTANT]
-> On macOS, this keymap expects the system input source to be **ABC – Extended**. Other layouts may change how certain Option‑based characters or dead‑key sequences behave and can lead to inconsistent output.
->
-> Linux and Microsoft Windows should use the standard US layout, which matches the assumptions of the firmware and keeps behavior consistent across platforms.
+> On macOS, this keymap is designed to be used with the **ABC – Extended** input source. Other layouts may alter how Option‑based characters or dead‑key sequences behave, leading to inconsistent output. Apple provides this input source for English‑language users who need a more complete set of diacritical marks and international symbols without switching to a separate language layout. This input source does not interfere with standard system shortcuts.
+> 
+> Because Linux and Microsoft Windows accept Unicode directly from HID, the standard US layout works correctly when the keyboard is used in those modes.
 
 ### Legend
 

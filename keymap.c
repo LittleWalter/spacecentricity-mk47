@@ -36,10 +36,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
  */
 [_DOOM] = LAYOUT_planck_mit(
-    KC_ESC, ____,       ____,    KC_UP,      ____,    ____,       ____,     ____,       MS_UP,   ____,    ____,       ____,
-    TAB,    A(KC_LEFT), KC_LEFT, KC_DOWN,    KC_RGHT, A(KC_RGHT), ____,     MS_LEFT,    MS_DOWN, MS_RGHT, A(KC_RGHT), KC_ENT,
-    ____,   ____,       ____,    A(KC_DOWN), ____,    ____,       ____,     ____,       ____,    ____,    ____,       ____,
-    BASE,   MUTE,       VOLD,    VOLU,       MS_BTN1, MT(MOD_LSFT, KC_SPC), RCLK_UPPER, HOME,    PGDN,    PGUP,       END
+    KC_ESC, ____,        ____,    KC_UP,       ____,    ____,        ____, ____,       MS_UP,   ____,    ____,        ____,
+    TAB,    STRAFE_LEFT, KC_LEFT, KC_DOWN,     KC_RGHT, STRAFE_RGHT, ____, MS_LEFT,    MS_DOWN, MS_RGHT, STRAFE_RGHT, KC_ENT,
+    ____,   ____,        ____,    STRAFE_DOWN, ____,    ____,        ____, ____,       ____,    ____,    ____,        ____,
+    BASE,   MUTE,        VOLD,    VOLU,        MS_BTN1,     SPC_LSFT,      RCLK_UPPER, HOME,    PGDN,    PGUP,        END
 ),
 
 /* Numpad Layer: Hold Left Thumb Key
@@ -133,10 +133,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ZOOM+/-/RS changes browser size: increase, decrease, and reset
  */
 [_ARR_R] = LAYOUT_planck_mit(
-    CUT,  UNDO,    PASTE, COPY,    ____, ____, ANGLE_QUOTES, ALL,      COPY,      PASTE,      UNDO,       CUT,
-    DEG,  KC_BSLS, EXLM,  KC_UNDS, ____, ____, QUES,         KC_LEFT,  KC_DOWN,   KC_UP,      KC_RGHT,    ZOOM_IN,
-    ____, ____,    ____,  ____,    ____, ____, CIRC,         VDT_LEFT, VDT_RIGHT, C(KC_PGUP), C(KC_PGDN), ZOOM_OUT,
-    ____, ____,    ____,  ____,    ____,         MINS,       COMM,     ____,      ____,       ____,       ZOOM_RESET
+    CUT,  UNDO,    PASTE, COPY,    ____, ____, ANGLE_QUOTES, ALL,      COPY,      PASTE,    UNDO,     CUT,
+    DEG,  KC_BSLS, EXLM,  KC_UNDS, ____, ____, QUES,         KC_LEFT,  KC_DOWN,   KC_UP,    KC_RGHT,  ZOOM_IN,
+    ____, ____,    ____,  ____,    ____, ____, CIRC,         VDT_LEFT, VDT_RIGHT, TAB_LEFT, TAB_RGHT, ZOOM_OUT,
+    ____, ____,    ____,  ____,    ____,         MINS,       COMM,     ____,      ____,     ____,     ZOOM_RESET
 ),
 
 /* Home Row Arrows (LHS): Hold Right Index Finger on Home Row
@@ -154,10 +154,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ZOOM+/-/RS changes browser size: increase, decrease, and reset
  */
 [_ARR_L] = LAYOUT_planck_mit(
-    CUT,        UNDO,       PASTE,      COPY,     ALL,       ANGLE_QUOTES, ____, ____, COPY,    PASTE, UNDO,    CUT,
-    ZOOM_IN,    KC_LEFT,    KC_UP,      KC_DOWN,  KC_RGHT,   QUES,         ____, ____, KC_UNDS, EXLM,  KC_BSLS, DEG,
-    ZOOM_OUT,   C(KC_PGDN), C(KC_PGUP), VDT_LEFT, VDT_RIGHT, CIRC,         ____, ____, ____,    ____,  ____,    ____,
-    ZOOM_RESET, ____,       ____,       ____,     COMM,             MINS,        ____, ____,    ____,  ____,    ____
+    CUT,        UNDO,     PASTE,    COPY,     ALL,       ANGLE_QUOTES, ____, ____, COPY,    PASTE, UNDO,    CUT,
+    ZOOM_IN,    KC_LEFT,  KC_UP,    KC_DOWN,  KC_RGHT,   QUES,         ____, ____, KC_UNDS, EXLM,  KC_BSLS, DEG,
+    ZOOM_OUT,   TAB_LEFT, TAB_RGHT, VDT_LEFT, VDT_RIGHT, CIRC,         ____, ____, ____,    ____,  ____,    ____,
+    ZOOM_RESET, ____,     ____,     ____,     COMM,             MINS,        ____, ____,    ____,  ____,    ____
 ),
 
 /* (Neo)Vim (RHS): Hold Left Middle Finger on Home Row
@@ -282,18 +282,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
  * │   CUT   │UNDO REDO│  PASTE  │  COPY   │ SEL ALL │DESKTOP ←│DESKTOP →│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │ ⌫   ⌦ ⌫ │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │         │         │Mid Click│Lft Click│Rgt Click│   ESC   │         │Pointer ←│Pointer ↓│Pointer ↑│Pointer →│    ↵    │
+ * │         │         │Mid Click│Lft Click│Rgt Click│   ESC   │  DOOM   │Pointer ←│Pointer ↓│Pointer ↑│Pointer →│    ↵    │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │         │         │         │  Back   │ Forward │  TAB ←  │  TAB →  │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │         │
+ * │DESKTOP ←│         │         │  Back   │ Forward │  TAB ←  │  TAB →  │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │DESKTOP →│
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │  BACK   │🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │ Wheel ↑ │      Wheel ↓      │ Wheel ↑ │ SEL ALL │  COPY   │  PASTE  │UNDO REDO│
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
  */
 [_MOUSE] = LAYOUT_planck_mit(
-    CUT,      UNDO, PASTE,   COPY,    ALL,     VDT_LEFT,   VDT_RIGHT,  HOME,    PGDN,    PGUP,    END,     BSPC,
-    ____,     ____, MS_BTN3, MS_BTN1, MS_BTN2, KC_ESC,     TO(_DOOM),  MS_LEFT, MS_DOWN, MS_UP,   MS_RGHT, KC_ENT,
-    ____,     ____, ____,    MS_BTN4, MS_BTN5, C(KC_PGUP), C(KC_PGDN), MS_WHLR, MS_WHLU, MS_WHLD, MS_WHLL, ____,
-    TG_MOUSE, MUTE, VOLD,    VOLU,    MS_WHLU,        MS_WHLD,         MS_WHLU, ALL,     COPY,    PASTE,   UNDO
+    CUT,      UNDO, PASTE,   COPY,    ALL,     VDT_LEFT, VDT_RIGHT, HOME,    PGDN,    PGUP,    END,     BSPC,
+    ____,     ____, MS_BTN3, MS_BTN1, MS_BTN2, KC_ESC,   DOOM,      MS_LEFT, MS_DOWN, MS_UP,   MS_RGHT, KC_ENT,
+    VDT_LEFT, ____, ____,    MS_BTN4, MS_BTN5, TAB_LEFT, TAB_RGHT,  MS_WHLR, MS_WHLU, MS_WHLD, MS_WHLL, VDT_RIGHT,
+    TG_MOUSE, MUTE, VOLD,    VOLU,    MS_WHLU,        MS_WHLD,      MS_WHLU, ALL,     COPY,    PASTE,   UNDO
 )
 
 };

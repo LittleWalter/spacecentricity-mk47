@@ -26,6 +26,7 @@
 #define R_RSFT    MT(MOD_RSFT, KC_R)
 #define SCLN_LSFT MT(MOD_LSFT, KC_SCLN)
 #define SLSH_HYPR MT(MOD_HYPR, KC_SLSH)
+#define SPC_LSFT  MT(MOD_LSFT, KC_SPC)
 #define UNDS_MEH  MT(MOD_MEH,  KC_UNDS)
 #define V_MEH     MT(MOD_MEH,  KC_V)
 #define Z_HYPR    MT(MOD_HYPR, KC_Z)
@@ -52,10 +53,10 @@
 #define T_VIM_L   LT(_VIM_L,  KC_T)   // │    t    │ Vim LHS │
 #define ZERO_ADJ  LT(_ADJ,    KC_P0)  // │ Numpad 0│  F1-F12 │
 
-#define BASE TO(_BASE)
-#define DOOM TG(_DOOM)
+#define RCLK_UPPER LT(_UPPER, MS_BTN2) // Doom
 
-#define RCLK_UPPER LT(_UPPER, MS_BTN2)
+#define BASE TO(_BASE)
+#define DOOM TO(_DOOM)
 
 /*** TD Keycodes: Tap Dances **********************************/
 
@@ -173,6 +174,16 @@
 /*** Other Keycodes *******************************************/
 
 #define MACOS_EMOJI_MENU LGUI(C(KC_SPC))
+
+// Browser Navigation
+#define TAB_LEFT C(KC_PGUP)
+#define TAB_RGHT C(KC_PGDN)
+
+// Doom Movement
+#define STRAFE_LEFT A(KC_LEFT)
+#define STRAFE_RGHT A(KC_RGHT)
+#define STRAFE_UP   A(KC_UP)
+#define STRAFE_DOWN A(KC_DOWN)
 
 // ─────────────────────────────────────────────────────────────
 // Layers Names

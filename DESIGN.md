@@ -58,7 +58,9 @@ The layout is optimized around English letter frequency, English‑centric n‑g
 > [!IMPORTANT]
 > **Operating System Keyboard Settings**
 >
-> On macOS, the input source must be set to **ABC – Extended**. Other layouts may alter Option‑based characters or dead‑key behavior and can produce incorrect special‑character output. For Linux and Microsoft Windows, the standard US layout should work as expected.
+> On macOS, the input source must be set to **ABC – Extended**. Other layouts may alter Option‑based characters or dead‑key behavior and can produce incorrect special‑character output. This input source does not appear to conflict with system or application shortcuts and behaves similarly to the standard US layout in that regard.
+>
+> For Linux and Microsoft Windows, the standard US layout should work as expected.
 
 > [!TIP]
 > Light multilingual support is avaliable on the arrow‑key layers, including common Spanish punctuation `¡`, `¿`, accented vowels (via combining acute), `ñ`/`Ñ`, and related symbols. This is likely more useful for North Americans.
@@ -119,9 +121,29 @@ Triple tap sits outside the spectrum of general use. They’re possible, but the
 
 Patterns like double‑tap‑and‑hold exist in theory, but they cross the line from ergonomics into keyboard choreography. At that point the gesture becomes harder to perform than the symbol or action is worth, so I avoid them entirely.
 
+### Macros
+
+Macros serve a different but complementary purpose to tap dances. Where tap dances expose additional characters or motions through rhythmic input, macros automate multi‑step actions that would otherwise interrupt flow. They’re used for repeated n‑gram patterns, editor commands, and generic system tasks such as opening the Trash folder on macOS.
+
+Macros in this layout follow a few principles:
+
+* They should reduce cognitive load, not add to it. A macro should replace a tedious sequence you already perform, not introduce a new workflow you have to remember.
+* They should be predictable, easy to remember, and assist with typing flow.
+* They should reduce or eliminate friction and help keep the hands anchored to home position during repetitive tasks.
+* They should never compete with typing. No macro should be placed on a gesture that risks accidental activation during normal text entry.
+* They should complement software, not replace it. QMK allows arbitrarily long macros, but firmware is best for short, deterministic sequences. Anything more complex belongs directly in the editor, shell, or OS.
+
+The original ZSA Oryx‑based versions of this layout were constrained by the platform’s macro limits, which shaped how early versions were designed.[^oryx-macro-limit] Moving to QMK removed those constraints and made it possible to integrate macros more naturally with the tap‑dance system.
+
+[^oryx-macro-limit]: As of April 2025, ZSA Oryx macros are [limited to 25 steps](https://blog.zsa.io/longer-oryx-macros/), up from the original — and frankly tiny — [5‑step limit](https://blog.zsa.io/macro-expansion/). QMK places no practical limit on macro length, though beyond a certain point software‑level automation is usually a better fit than firmware. And for the love of security, never store passwords or other sensitive data in macros. Also note that Oryx cannot combine tap dances with macros.
+
 ### Apple macOS Oriented
 
-While the layout includes Linux and Microsoft Windows modes, it is primarily designed around macOS workflows. Additional Linux support is planned for the future.
+Apple macOS is the primary target platform for this layout, even though Linux and Microsoft Windows modes are included for cross-platform support.
+
+With an **OS Mode** key, you can select your current operating system to get the appropriate keyboard shortcuts for copy/paste, window management, and virtual desktop/workspace commands. Special characters are also output correctly depending on the selected OS.
+
+Additional Linux support is planned for the future.
 
 > [!WARNING]
 > Linux and Microsoft Windows support is currently untested.
@@ -280,6 +302,11 @@ From left to right, the three media keys use the following tap‑dance behaviors
 
 I mostly use these keys for volume control and quick play/pause actions.
 
+#### Other Keys
+
+* `Tab` on tap and `Shift-Tab` on hold lives on the first column of home row.
+*  `Enter` is also available as a tap‑and‑hold gesture on the spacebar, offering an alternative to the pinky key.
+
 ### Lower: Numpad
 
 ![Lower: Numpad with hexadecimal](assets/02_LOWER.png)
@@ -407,12 +434,13 @@ Holding either index finger on the home row activates a mirrored arrow‑navigat
 * On macOS, the combining circumflex (`ˆ`) is available in the U.S. layout, but macron (`¯`), breve (`˘`), and caron (`ˇ`) require the **ABC – Extended** input source to produce the correct dead‑key sequences.
   * For circumflex, the shortcut is `Option-i` for the U.S. layout and `Option-6` for **ABC – Extended**.
 * The full dash set of hyphen (`-`), en dash (`–`), and em dash (`—`) are available on the spacebar via tap dances.
+* Cursor‑centered angled‑quote macros are included for completeness in French and formal Spanish typography.
 
 #### English Loanwords
 
-Tap dances on the arrow layers provide combining accents and extended punctuation, making it easy to type accented characters that appear in English [loanwords](https://en.wikipedia.org/wiki/Loanword). This includes forms such as à, á, â, ä, é, í, ñ, ó, ö, ú, and others.
+Tap dances on the arrow layers provide combining accents and extended punctuation, making it easy to type accented characters that appear in English [loanwords](https://en.wikipedia.org/wiki/Loanword)—most commonly from French, Spanish, and German, with a smaller set from Portuguese, where only a few words retain their original accents. This includes forms such as à, á, â, ä, é, í, ñ, ó, ö, ú, and others. The accessibility of accented characters reduces the need for users to memorize platform‑specific shortcuts or Unicode values.
 
-Common examples include à la, vis‑à‑vis, café, purée, déjà vu, naïve, doppelgänger, Zoë, jalapeño, piñata, and São Paulo. This keeps accented characters accessible without requiring users to memorize platform‑specific shortcuts or Unicode values.
+In contemporary English writing, accented forms appear more consistently than in the past. Modern style guides and digital typography increasingly preserve the original spelling of borrowed words, especially in food, culture, and proper names. As a result, accented loanwords such as à la, à propos, vis‑à‑vis, café, crème brûlée, cliché, touché, résumé, déjà vu, naïve, über, doppelgänger, jalapeño, piñata, and place names such as São Paulo, as well as personal names like Zoë, Chloë, José or Beyoncé, are now common in everyday text.
 
 ### Vim
 
@@ -476,13 +504,15 @@ The only minor downsides are the need for two‑hand operation and the practice 
 
 ![Doom Classic layer](assets/01_DOOM.png)
 
-And finally, the most important question: can the Planck play Doom? It sure does!
+And finally, the most important question: can the Planck play _Doom_? It sure does!
 
-This layer is an optional game‑focused mode built around vanilla _Doom_ (1993). It replaces the typing layout with a tight movement cluster, dedicated strafing keys, and thumb‑accessible actions so your hands never leave position during play. Arrow and strafe keys sit under the right hand, while Left Click, Right Click, Space, and Shift live on the thumbs for fast firing, opening doors, and running.
+This layer is an optional game‑focused mode built around vanilla _Doom_ (1993) ports. It replaces the typing layout with a tight movement cluster, dedicated strafing keys, and thumb‑accessible actions so your hands never leave position during play. Arrow and strafe keys sit under the left hand, while Left Click, Right Click, Space, and Shift live on the thumbs for fast firing, opening doors, and running.
 
 Weapon switching stays consistent with the rest of your layout: holding the right‑thumb key momentarily opens **Upper**, letting you press `1`–`7` without adding number keys to this layer.
 
 Arrows and mouse controls also make this layer usable for lightweight general navigation, using traditional T‑shaped clusters.
+
+This layer serves as a generic gaming template that you can refactor into your preferred control scheme.
 
 ## RGB Matrix for the Planck MIT
 
