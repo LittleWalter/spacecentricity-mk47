@@ -141,6 +141,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 zoom_reset();
             }
             return false;
+        case APP: // Trigger App Switching key when held
+            if (record->event.pressed) {
+                app_switch(true);
+            } else {
+                app_switch(false);
+            }
+            return false;
 
         // ─────────────────────────────────────────────────────────────
         // Miscellaneous (Non-Macros)
@@ -253,12 +260,23 @@ void zoom_reset(void) {
     tap_code16(current_os == OS_MACOS ? LGUI(KC_0) : C(KC_0));
 }
 
+// Triggers operating system application switcher key: CMD for macOS or ALT for Linux and Windows.
+// The passed Boolean means that the modifier key is currently held by the user.
+void app_switch(const bool is_active) {
+    const uint8_t modifier = MOD_BIT(current_os == OS_MACOS ? KC_LGUI : KC_LALT);
+    if (is_active) {
+        register_mods(modifier); // Hold the modifer down to activate app switcher
+    } else {
+        unregister_mods(modifier); // Release when done
+    }
+}
+
 // ─────────────────────────────────────────────────────────────
 // Miscellaneous
 // ─────────────────────────────────────────────────────────────
 
-// Toggle mouse layer, go back to previous layer. Since DOOM is accessed via MOUSE, we handle the
-// expected behavior logic here to avoid future issues.
+// Toggle the mouse layer and return to the previous layer. Because DOOM is entered through the
+// MOUSE layer, its expected behavior is handled here to avoid conflicts with future layer logic.
 void toggle_mouse(void) {
     const uint8_t current = get_highest_layer(layer_state);
 

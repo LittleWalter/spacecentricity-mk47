@@ -32,7 +32,7 @@ Each layer is presented as a rendered diagram generated with [keyboard-layout-ed
 > [!IMPORTANT]
 > On macOS, this keymap is designed to be used with the **ABC – Extended** input source. Other layouts may alter how Option‑based characters or dead‑key sequences behave, leading to inconsistent output. Apple provides this input source for English‑language users who need a more complete set of diacritical marks and international symbols without switching to a separate language layout. This input source does not interfere with standard system shortcuts.
 > 
-> Because Linux and Microsoft Windows accept Unicode directly from HID, the standard US layout works correctly when the keyboard is used in those modes.
+> Because Linux and Microsoft Windows accept Unicode directly from [HID](https://en.wikipedia.org/wiki/Human_interface_device), the standard US layout works correctly when the keyboard is used in those modes.
 
 ### Legend
 
@@ -144,9 +144,9 @@ Provides `F1`–`F12` and modifier combinations for shortcut execution. The home
 
 ![Arrows: Left-Hand Side](assets/07_ARR_L.png)
 
-Spanish punctuation and combining diacritics are available on home row for light multilingual support.
+Spanish punctuation and combining diacritics sit on the home row for light multilingual support.
 
-**Center keys**
+**Center Keys**
 
 | Action | Behavior |
 |--------|----------|
@@ -155,7 +155,7 @@ Spanish punctuation and combining diacritics are available on home row for light
 | Tap-and-Hold | `ˋ` (combining grave) |
 | Hold | `´` (combining acute) |
 
-**Ring-finger keys**
+**Ring-Finger Keys**
 
 | Action | Behavior |
 |--------|----------|
@@ -164,7 +164,7 @@ Spanish punctuation and combining diacritics are available on home row for light
 | Tap-and-Hold | `˜` (combining tilde) |
 | Hold | `¨` (combining umlaut) |
 
-**Lower row accent keys**
+**Lower Row Accent Keys**
 
 | Action | Behavior |
 |--------|----------|
@@ -176,6 +176,12 @@ Spanish punctuation and combining diacritics are available on home row for light
 > [!WARNING]
 > On macOS, the lower row combining marks rely on the **ABC – Extended** input source. Other layouts do not provide the required dead‑key sequences and will produce incorrect output.
 
+**Application Switching**
+
+Hold the center key to activate the application switcher. macOS uses `CMD`; Linux and Microsoft Windows use `LALT`.
+
+Tap `Tab` or `Shift–Tab` on the bottom row to navigate.
+
 ### Vim
 
 ![Vim: Right-Hand Side](assets/08_VIM_R.png)
@@ -186,7 +192,7 @@ These layers provide ergonomic access to common Vim navigation, window managemen
 
 Movements that interact with counts (`<number>movement`) intentionally omit the `Esc` prefix to preserve numeric prefixes and avoid breaking repeatable motions.
 
-#### Home Row Navigation Cluster
+**Home Row Navigation Cluster**
 
 | Action | Behavior |
 |--------|----------|
@@ -197,7 +203,7 @@ Movements that interact with counts (`<number>movement`) intentionally omit the 
 
 WORD and wrapped‑line motions omit the `Esc` prefix to maintain compatibility with `<count>`‑prefixed movements.
 
-#### Bottom Row Navigation Cluster
+**Bottom Row Navigation Cluster**
 
 | Action | Behavior |
 |--------|----------|
@@ -208,14 +214,14 @@ WORD and wrapped‑line motions omit the `Esc` prefix to maintain compatibility 
 
 Window‑resize commands omit the `Esc` prefix to preserve compatibility with `<count>`‑based resizing.
 
-#### Center Navigation Cluster
+**Center Navigation Cluster**
 
 | Actions | Behavior |
 |---------|----------|
 | Tap | `zt`, `zz`, `zb` (scroll viewport to top / center / bottom) |
 | Hold | `H`, `M`, `L` (move cursor to top / middle / bottom of screen) |
 
-#### Folds
+**Folds**
 
 | Actions | Behavior |
 |---------|----------|

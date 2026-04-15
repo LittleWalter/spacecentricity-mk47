@@ -45,7 +45,7 @@ The ortholinear grid also encourages a stable, centered typing posture. Because 
 
 There’s also a meaningful difference between the two common Planck variants. The 47‑key MIT layout uses a 2u spacebar, while the 48‑key Grid layout replaces it with two 1u keys. Some people prefer the Grid version because it offers more flexibility for thumb keys and layer access, while others like the MIT layout’s simplicity and larger spacebar. Spacecentricity is designed around the MIT variant, but the underlying ideas translate well to the 48‑key version.
 
-The biggest trade‑off is that the Planck demands heavy layer usage and rewards people who enjoy modal workflows. For users who prefer dedicated keys or who struggle with ortholinear spacing, the learning curve can feel steep. But for those who embrace layers, symmetry, and thumb‑centric design, the Planck offers a uniquely efficient and expressive platform—especially when paired with programmable firmware like QMK or [ZMK](https://zmk.dev/), which adds even more power (and another notch of complexity).
+The biggest trade‑off is that the Planck demands heavy layer usage and rewards people who enjoy modal workflows. For users who prefer dedicated keys or who struggle with ortholinear spacing, the learning curve can feel steep. But for those who embrace layers, symmetry, and thumb‑centric design, the Planck offers a uniquely efficient and expressive platform—especially when paired with programmable firmware like QMK or [ZMK](https://zmk.dev/) for wireless support, which adds even more power (and another notch of complexity).
 
 ## Bias
 
@@ -121,9 +121,9 @@ Triple tap sits outside the spectrum of general use. They’re possible, but the
 
 Patterns like double‑tap‑and‑hold exist in theory, but they cross the line from ergonomics into keyboard choreography. At that point the gesture becomes harder to perform than the symbol or action is worth, so I avoid them entirely.
 
-### Macros
+### Little Automations with Macros
 
-Macros serve a different but complementary purpose to tap dances. Where tap dances expose additional characters or motions through rhythmic input, macros automate multi‑step actions that would otherwise interrupt flow. They’re used for repeated n‑gram patterns, editor commands, and generic system tasks such as opening the Trash folder on macOS.
+Macros serve a different but complementary purpose to tap dances. Where tap dances expand key access through timed input patterns, macros automate multi‑step actions into a single trigger. They’re used for repeated n‑gram patterns, editor commands, and small system tasks such as opening the Trash folder on macOS.
 
 Macros in this layout follow a few principles:
 
@@ -132,6 +132,7 @@ Macros in this layout follow a few principles:
 * They should reduce or eliminate friction and help keep the hands anchored to home position during repetitive tasks.
 * They should never compete with typing. No macro should be placed on a gesture that risks accidental activation during normal text entry.
 * They should complement software, not replace it. QMK allows arbitrarily long macros, but firmware is best for short, deterministic sequences. Anything more complex belongs directly in the editor, shell, or OS.
+* They should lean toward generality so the keyboard can be used across multiple systems without specific configurations.
 
 The original ZSA Oryx‑based versions of this layout were constrained by the platform’s macro limits, which shaped how early versions were designed.[^oryx-macro-limit] Moving to QMK removed those constraints and made it possible to integrate macros more naturally with the tap‑dance system.
 
@@ -427,6 +428,8 @@ Holding either index finger on the home row activates a mirrored arrow‑navigat
 
 * Arrow keys sit under the active hand in Vim formation (`←`, `↓`, `↑`, `→`).
 * Cut / Copy / Paste / Undo / Redo mirrored across the top row; the **HOLD**‑side is optimized for one‑hand use.
+* App switching lives on the center key when held; tap `Tab` or `Shift–Tab` on the bottom row to navigate.
+  * Uses `CMD` on macOS and `LALT` on Linux and Microsoft Windows.
 * Zoom controls (`+`, `-`, reset) allow quick browser scaling.
 * Virtual desktop/workspace switching and browser tab navigation live on the lower row.
   * Some Linux environments may not map `Alt-Control-←/→` by default to switch workspaces.
@@ -435,6 +438,17 @@ Holding either index finger on the home row activates a mirrored arrow‑navigat
   * For circumflex, the shortcut is `Option-i` for the U.S. layout and `Option-6` for **ABC – Extended**.
 * The full dash set of hyphen (`-`), en dash (`–`), and em dash (`—`) are available on the spacebar via tap dances.
 * Cursor‑centered angled‑quote macros are included for completeness in French and formal Spanish typography.
+
+> [!TIP]
+> **Apple macOS Setting**
+> 
+> To show the Application Switcher on all displays, run the following command in the terminal:
+> `defaults write com.apple.dock appswitcher-all-displays -bool true`  
+>
+> Then restart the Dock with:
+> `killall Dock`.[^macOS-app-switcher]
+
+[^macOS-app-switcher]: macOS Application Switcher tip sourced from [StackOverflow](https://superuser.com/questions/670252/cmdtab-app-switcher-is-on-the-wrong-monitor).
 
 #### English Loanwords
 

@@ -122,42 +122,42 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
  * │   CUT   │UNDO REDO│  PASTE  │  COPY   │         │         │ «|» ‹|› │ SEL ALL │  COPY   │  PASTE  │UNDO REDO│   CUT   │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │    °    │    \    │ ! ¡ ◌̃ ◌̈ │    _    │<<HOLD>> │         │ ? ¿ ◌̀ ◌́ │    ←    │    ↓    │    ↑    │    →    │  ZOOM+  │
+ * │    °    │    \    │ ! ¡ ◌̃ ◌̈ │    _    │<<HOLD>> │APPSWITCH│ ? ¿ ◌̀ ◌́ │    ←    │    ↓    │    ↑    │    →    │  ZOOM+  │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │         │         │         │         │         │         │ ◌̂ ◌̄ ◌̆ ◌̌ │DESKTOP ←│DESKTOP →│  TAB ←  │  TAB →  │  ZOOM-  │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │         │         │         │         │         │   -       –   —   │ , ; | & │         │         │         │ ZOOM RS │
+ * │         │         │         │         │         │   -       –   —   │ , ; | & │         │ SFT+TAB │   TAB   │ ZOOM RS │
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
  * DESKTOP ←/→ changes desktop workspaces
  * TAB ←/→ changes browser tabs
  * ZOOM+/-/RS changes browser size: increase, decrease, and reset
  */
 [_ARR_R] = LAYOUT_planck_mit(
-    CUT,  UNDO,    PASTE, COPY,    ____, ____, ANGLE_QUOTES, ALL,      COPY,      PASTE,    UNDO,     CUT,
-    DEG,  KC_BSLS, EXLM,  KC_UNDS, ____, ____, QUES,         KC_LEFT,  KC_DOWN,   KC_UP,    KC_RGHT,  ZOOM_IN,
-    ____, ____,    ____,  ____,    ____, ____, CIRC,         VDT_LEFT, VDT_RIGHT, TAB_LEFT, TAB_RGHT, ZOOM_OUT,
-    ____, ____,    ____,  ____,    ____,         MINS,       COMM,     ____,      ____,     ____,     ZOOM_RESET
+    CUT,  UNDO,    PASTE, COPY,    ____, ____, ANGLE_QUOTES, ALL,      COPY,      PASTE,     UNDO,     CUT,
+    DEG,  KC_BSLS, EXLM,  KC_UNDS, ____, APP,  QUES,         KC_LEFT,  KC_DOWN,   KC_UP,     KC_RGHT,  ZOOM_IN,
+    ____, ____,    ____,  ____,    ____, ____, CIRC,         VDT_LEFT, VDT_RIGHT, TAB_LEFT,  TAB_RGHT, ZOOM_OUT,
+    ____, ____,    ____,  ____,    ____,         MINS,       COMM,     ____,      S(KC_TAB), KC_TAB,   ZOOM_RESET
 ),
 
 /* Home Row Arrows (LHS): Hold Right Index Finger on Home Row
  * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
  * │   CUT   │UNDO REDO│  PASTE  │  COPY   │ SEL ALL │ «|» ‹|› │         │         │  COPY   │  PASTE  │UNDO REDO│   CUT   │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │  ZOOM+  │    ←    │    ↑    │    ↓    │    →    │ ? ¿ ◌̀ ◌́ │         │ <<HOLD>>│    _    │ ! ¡ ◌̃ ◌̈ │    \    │    °    │
+ * │  ZOOM+  │    ←    │    ↑    │    ↓    │    →    │ ? ¿ ◌̀ ◌́ │APPSWITCH│ <<HOLD>>│    _    │ ! ¡ ◌̃ ◌̈ │    \    │    °    │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │  ZOOM-  │  TAB ←  │  TAB →  │DESKTOP ←│DESKTOP →│ ◌̂ ◌̄ ◌̆ ◌̌ │         │         │         │         │         │         │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │ ZOOM RS │         │         │         │ , ; | & │   -       –   —   │         │         │         │         │         │
+ * │ ZOOM RS │ SFT+TAB │   TAB   │         │ , ; | & │   -       –   —   │         │         │         │         │         │
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
  * DESKTOP ←/→ changes virtual desktop workspaces
  * TAB ←/→ changes browser tabs
  * ZOOM+/-/RS changes browser size: increase, decrease, and reset
  */
 [_ARR_L] = LAYOUT_planck_mit(
-    CUT,        UNDO,     PASTE,    COPY,     ALL,       ANGLE_QUOTES, ____, ____, COPY,    PASTE, UNDO,    CUT,
-    ZOOM_IN,    KC_LEFT,  KC_UP,    KC_DOWN,  KC_RGHT,   QUES,         ____, ____, KC_UNDS, EXLM,  KC_BSLS, DEG,
-    ZOOM_OUT,   TAB_LEFT, TAB_RGHT, VDT_LEFT, VDT_RIGHT, CIRC,         ____, ____, ____,    ____,  ____,    ____,
-    ZOOM_RESET, ____,     ____,     ____,     COMM,             MINS,        ____, ____,    ____,  ____,    ____
+    CUT,        UNDO,      PASTE,    COPY,     ALL,       ANGLE_QUOTES, ____, ____, COPY,    PASTE, UNDO,    CUT,
+    ZOOM_IN,    KC_LEFT,   KC_UP,    KC_DOWN,  KC_RGHT,   QUES,         APP,  ____, KC_UNDS, EXLM,  KC_BSLS, DEG,
+    ZOOM_OUT,   TAB_LEFT,  TAB_RGHT, VDT_LEFT, VDT_RIGHT, CIRC,         ____, ____, ____,    ____,  ____,    ____,
+    ZOOM_RESET, S(KC_TAB),KC_TAB,    ____,     COMM,             MINS,        ____, ____,    ____,  ____,    ____
 ),
 
 /* (Neo)Vim (RHS): Hold Left Middle Finger on Home Row
@@ -291,7 +291,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_MOUSE] = LAYOUT_planck_mit(
     CUT,      UNDO, PASTE,   COPY,    ALL,     VDT_LEFT, VDT_RIGHT, HOME,    PGDN,    PGUP,    END,     BSPC,
-    ____,     ____, MS_BTN3, MS_BTN1, MS_BTN2, KC_ESC,   DOOM,      MS_LEFT, MS_DOWN, MS_UP,   MS_RGHT, KC_ENT,
+    TAB,      APP,  MS_BTN3, MS_BTN1, MS_BTN2, KC_ESC,   DOOM,      MS_LEFT, MS_DOWN, MS_UP,   MS_RGHT, KC_ENT,
     VDT_LEFT, ____, ____,    MS_BTN4, MS_BTN5, TAB_LEFT, TAB_RGHT,  MS_WHLR, MS_WHLU, MS_WHLD, MS_WHLL, VDT_RIGHT,
     TG_MOUSE, MUTE, VOLD,    VOLU,    MS_WHLU,        MS_WHLD,      MS_WHLU, ALL,     COPY,    PASTE,   UNDO
 )

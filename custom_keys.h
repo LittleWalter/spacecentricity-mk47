@@ -66,7 +66,8 @@ enum custom_keycodes {
     // ─────────────────────────────────────────────────────────────
     TG_MOUSE,             // Toggle Mouse/previous layer
     MOUSE_FN,             // Mouse layer on tap, Function keys layer on hold
-    TG_OS                 // Toggles current operating system mode
+    TG_OS,                // Toggles current operating system mode
+    APP                   // Application switching key on hold; CMD or ALT
 };
 
 // Intercepts custom keycodes and runs their associated macros and miscellenous
@@ -119,6 +120,10 @@ void zoom_out(void);
 // Browser shortcut: zoom reset (100%); defaults to CMD+0 for macOS, otherwise
 // uses LCTL+0 for Microsoft Windows and Linux
 void zoom_reset(void);
+
+// Triggers operating system application switcher key: CMD for macOS or ALT for Linux and Windows.
+// The passed Boolean means that the modifier key is currently held by the user.
+void app_switch(const bool is_active);
 
 // ─────────────────────────────────────────────────────────────
 // Miscellaneous
