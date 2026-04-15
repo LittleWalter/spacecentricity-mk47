@@ -19,6 +19,13 @@ os_t current_os = OS_MACOS; // Default to Apple macOS
 // Most logic functionally decomposed.
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     static uint16_t mouse_key_timer; // Tracking key hold time, SEE:MOUSE_FN branch
+
+    // Semantic punctuation: auto-cap next alpha
+    if (auto_cap_next && record->event.pressed) {
+        add_oneshot_mods(MOD_LSFT);
+        auto_cap_next = false;
+    }
+
     switch (keycode) {
         // ─────────────────────────────────────────────────────────────
         // Terminal Macros

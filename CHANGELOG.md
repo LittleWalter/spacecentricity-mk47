@@ -12,6 +12,14 @@
 
 ---
 
+## 2026-04/14-TU
+- Added application switching keys on **Arrow** and **Mouse** layers.
+  - Uses `CMD` for macOS; otherwise `LALT`.
+  - Tap `TAB`/`LSFT-TAB` to navigate the menu.
+- Changed semantic punctuation tap-dance key on **Upper** layer to support `!␣` and `?␣`
+  - All end-of-sentence bigrams support auto-capitalizing the next character via oneshot `LSFT`.
+  - Removed `;␣` and `:␣` because they appear less frequently in prose; I noticed I didn’t really use these bigrams much.
+ 
 ## 2026-04/13-MO
 - Added the **Doom Classic** layer (first draft). The layer is accessible via a tap on the **Mouse** layer.
 - Updated arrow‑key layers and expanded multilingual support.

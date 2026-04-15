@@ -96,6 +96,17 @@ Punctuation–space bigrams directly above the **HELD** key.
 
 Activating **Caps Lock** turns this key — and the entire **Base** layer — red for visual feedback. When active, **Base** will blink to make the state more noticeable.
 
+#### Semantic Punctuation
+
+Directly above the **HELD** key lives a prose‑oriented semantic punctuation key. It emits punctuation‑space bigrams, and for sentence‑ending marks it automatically capitalizes the next alphabetic character.
+
+| Action | Behavior | Notes |
+|--------|----------|-------|
+| Tap | `,␣` (comma-space) | Mid-sentence separator |
+| Double Tap | `!␣` (exclamation-space) | Triggers auto-capitalization |
+| Tap-and-Hold | `?␣` (question-space) | Triggers auto-capitalization |
+| Hold | `.␣` (period-space) | Triggers auto-capitalization |
+
 #### Special Characters
 
 Smart quotes live on the lower row, inserting paired curly quotes with the cursor centered for fancy, typographic writing. Tap for double smart quotes; hold for single smart quotes. Use these macros if you prefer not to rely on OS‑ or app‑level substitutions.

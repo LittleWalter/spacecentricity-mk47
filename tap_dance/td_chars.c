@@ -84,7 +84,7 @@ void comm_reset(tap_dance_state_t *state, void *user_data) {
 }
 
 // ──────────────────────────────
-// TD_PUNC space appended , ; : .
+// TD_PUNC space appended , ! ? .
 // ──────────────────────────────
 
 // Instance of 'td_tap_t' for the TD_PUNC quad tap dance
@@ -98,9 +98,9 @@ void punc_finished(tap_dance_state_t *state, void *user_data) {
     punc_tap_state.state = cur_dance(state);
     switch (punc_tap_state.state) {
         case TD_SINGLE_TAP:  punc_space_macro(KC_COMM); break; // `, ` comma-space bigram
-        case TD_DOUBLE_TAP:  punc_space_macro(KC_SCLN); break; // `; ` semicolon-space bigram
-        case TD_SINGLE_HOLD: punc_space_macro(KC_DOT);  break; // `. ` dot/period-space bigram
-        case TD_DOUBLE_HOLD: punc_space_macro(KC_COLN); break; // `: ` colon-space bigram
+        case TD_DOUBLE_TAP:  punc_space_macro(KC_EXLM); break; // `! ` exclamation-space bigram w/ auto cap
+        case TD_SINGLE_HOLD: punc_space_macro(KC_DOT);  break; // `. ` dot/period-space bigram w/ auto cap
+        case TD_DOUBLE_HOLD: punc_space_macro(KC_QUES); break; // `? ` question-space bigram w/ auto cap
         case TD_DOUBLE_SINGLE_TAP: punc_space_macro(KC_COMM); punc_space_macro(KC_COMM); break;
         default: break;
     }

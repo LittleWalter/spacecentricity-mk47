@@ -20,7 +20,7 @@ enum {                // │  Tap   │ 2xTap  │Tap+Hold│  Hold  │ Notes
     TD_EXLM,          // │   !    │   ¡    │   ◌̃    │   ◌̈    │
     TD_MINS,          // │   -    │        │   –    │   —    │ Hyphen/en dash/em dash
     TD_PLUS,          // │   +    │   -    │   /    │   *    │
-    TD_PUNC,          // │  `, `  │   `; ` │  `: `  │   `. ` │ Punctuation + space bigrams
+    TD_PUNC,          // │  `, `  │   `! ` │  `? `  │   `. ` │ Punctuation + space bigrams; sentence-ending symbols auto capitalize the next char
     TD_QUES,          // │   ?    │   ¿    │   ◌̀    │   ◌́    │
     TD_QUOT,          // │   '    │   ’    │   ~    │   `    │ Single quote on Tap; typographic apostrophe/closing smart single quote on 2xTap
     TD_SPC,           // │  Spc   │        │  Enter │  LGUI  │ LGUI = LCMD = Super (Linux) = Windows key

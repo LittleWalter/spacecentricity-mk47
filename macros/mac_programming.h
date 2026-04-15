@@ -2,6 +2,8 @@
 
 #include QMK_KEYBOARD_H
 
+extern bool auto_cap_next;
+
 // ─────────────────────────────────────────────────────────────
 // Programming Macro Function Parameter Types
 // ─────────────────────────────────────────────────────────────

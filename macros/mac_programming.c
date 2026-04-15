@@ -5,16 +5,20 @@
 // Prose & Programming N-Grams
 // ──────────────────────────────
 
+bool auto_cap_next = false;
+
 // Punctuation-comma bigrams
 void punc_space_macro(const uint16_t punc_keycode) {
     mod_state_t saved = mod_state_save_and_clear();
 
     switch (punc_keycode) {
-        case KC_COLN: // `: `
-        case KC_COMM: // `, `
+        // Capitalize the next alpha char for these end-of-sentence symbols
         case KC_DOT:  // `. `
         case KC_EXLM: // `! `
         case KC_QUES: // `? `
+            auto_cap_next = true;
+        case KC_COLN: // `: `
+        case KC_COMM: // `, `
         case KC_SCLN: // `; `
             tap_code16(punc_keycode);
             tap_code(KC_SPC);

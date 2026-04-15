@@ -75,6 +75,8 @@ If a key or action ends up unused, I’ll either replace it with something more 
 
 Dvorak is naturally right‑hand dominant, and this layout leans into that by placing several high‑frequency actions and modal layers on the right side. At the same time, many modal layers — arrows, Vim, and programming n‑grams — are mirrored on the home row, allowing either hand to access the same functionality with a momentary hold. This keeps the layout more balanced in practice, reduces travel, and avoids over‑reliance on a single hand.
 
+Any layers that aren’t already mirrored can be reoriented for left‑handed users.
+
 ### Thumb-Centric
 
 The thumbs do a disproportionate amount of work in this layout, as is typical of many Planck keymaps. On a small ortholinear board, they are the only digits capable of pressing keys without destabilizing hand position, so Spacecentricity assigns them high‑value roles: layer access, modifiers, and frequently used symbols. This reduces lateral finger travel and keeps the alphas anchored under the home row.
@@ -343,10 +345,22 @@ Notable rearrangements:
 #### Symbols
 
 * Parentheses, brackets, and braces are arranged symmetrically and accessed primarily with the index and middle fingers as tap dances.
-* Common punctuation-space bigrams are on the key above the **HELD** key.
 * `“”` and `‘’` smart‑quote pairs insert with the cursor centered for typographic writing without relying on operating‑system auto‑substitution.
   * This lower-row key is tucked out of the way to reduce accidental activation.
 * The bottom row largely copies **Base**, but the spacebar position outputs equality‑related symbols.
+
+Above the **HELD** key sits a semantic punctuation tap‑dance key:
+
+| Action | Behavior | Notes |
+|--------|----------|-------|
+| Tap | `,␣` (comma-space) | Mid-sentence separator |
+| Double Tap | `!␣` (exclamation-space) | Triggers auto-capitalization |
+| Tap-and-Hold | `?␣` (question-space) | Triggers auto-capitalization |
+| Hold | `.␣` (period-space) | Triggers auto-capitalization |
+
+End‑of‑sentence marks automatically capitalize the next character.
+
+The `;␣` and `:␣` bigrams were removed because they appear less frequently in prose and don’t benefit as much from semantic treatment.
 
 The `.` key remains in the standard Dvorak position but includes additional dot‑related tap dances:
 
