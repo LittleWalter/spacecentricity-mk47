@@ -22,6 +22,7 @@ tap_dance_action_t tap_dance_actions[TD_COUNT] = {
     [TD_CARET] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, caret_finished, caret_reset),
     [TD_CIRC]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, circ_finished,  circ_reset),
     [TD_COMM]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, comm_finished,  comm_reset),
+    [TD_DEL]   = ACTION_TAP_DANCE_FN_ADVANCED(NULL, del_finished,   del_reset),
     [TD_DLR]   = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dlr_finished,   dlr_reset),
     [TD_DOT]   = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dot_finished,   dot_reset),
     [TD_DQUO]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dquo_finished,  dquo_reset),

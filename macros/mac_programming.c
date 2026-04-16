@@ -5,6 +5,7 @@
 // Prose & Programming N-Grams
 // ──────────────────────────────
 
+// Auto-capitalization flag for next character
 bool auto_cap_next = false;
 
 // Punctuation-comma bigrams

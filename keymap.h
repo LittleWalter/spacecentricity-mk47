@@ -70,6 +70,7 @@
 #define CARET TD(TD_CARET)
 #define CIRC  TD(TD_CIRC)
 #define COMM  TD(TD_COMM)
+#define DEL   TD(TD_DEL)
 #define DLR   TD(TD_DLR)
 #define DOT   TD(TD_DOT)
 #define DQUO  TD(TD_DQUO)

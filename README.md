@@ -31,7 +31,7 @@ Each layer is presented as a rendered diagram generated with [keyboard-layout-ed
 
 > [!IMPORTANT]
 > On macOS, this keymap is designed to be used with the **ABC – Extended** input source. Other layouts may alter how Option‑based characters or dead‑key sequences behave, leading to inconsistent output. Apple provides this input source for English‑language users who need a more complete set of diacritical marks and international symbols without switching to a separate language layout. This input source does not interfere with standard system shortcuts.
-> 
+>
 > Because Linux and Microsoft Windows accept Unicode directly from [HID](https://en.wikipedia.org/wiki/Human_interface_device), the standard US layout works correctly when the keyboard is used in those modes.
 
 ### Legend
@@ -60,6 +60,16 @@ This keymap uses QMK’s [quad‑tap dance pattern](https://docs.qmk.fm/features
 Most layer keys are momentary holds.
 
 The **Lower** and **Upper** keys behave the same, but you can **lock** them with tap‑and‑hold and **unlock** with a tap back to Base.
+
+#### `Backspace` Key
+
+The top-right corner key is a semantic `Backspace`, available on multiple layers:
+
+| Action | Behavior | Notes |
+|--------|----------|-------|
+| Tap | Delete previous character | Sends `Backspace` |
+| Tap-and-Hold | Delete to beginning of line | Implemented as `LSFT‑LCTL‑Left` → `Backspace` |
+| Hold | Delete previous word |  macOS: `LALT-Backspace`; Linux/Windows: `LCTL-Backspace` |
 
 #### Access to Mouse & Function Keys
 
@@ -92,9 +102,17 @@ Momentary hold `0` to access **Adjustment** layer to change keyboard settings.
 
 Tap the **HELD** key when this layer is **locked** to return to **Base**.
 
-Punctuation–space bigrams directly above the **HELD** key.
-
 Activating **Caps Lock** turns this key — and the entire **Base** layer — red for visual feedback. When active, **Base** will blink to make the state more noticeable.
+
+#### `Del` Key
+
+The top-right corner key provides a forward delete, analogous to the **Base** layer’s semantic `Backspace`:
+
+| Action | Behavior | Notes |
+|--------|----------|-------|
+| Tap | Delete next character | Sends `Del` |
+| Tap-and-Hold | Delete to end of line | Implemented as `LSFT‑LCTL‑Right` → `Del` |
+| Hold | Delete next word |  macOS: `LALT‑Del`; Linux/Windows: `LCTL‑Del` |
 
 #### Semantic Punctuation
 
@@ -189,7 +207,7 @@ Spanish punctuation and combining diacritics sit on the home row for light multi
 
 **Application Switching**
 
-Hold the center key to activate the application switcher. macOS uses `CMD`; Linux and Microsoft Windows use `LALT`.
+Hold the center key to activate the application switcher. macOS uses `CMD`; Linux and Microsoft Windows uses `LALT`.
 
 Tap `Tab` or `Shift–Tab` on the bottom row to navigate.
 

@@ -8,11 +8,12 @@
 
 enum {                // │  Tap   │ 2xTap  │Tap+Hold│  Hold  │ Notes
     TD_ASTR = 0,      // │   *    │   %    │   @    │   #    │ Fun corner key for Vim commands on Base layer
-    TD_BSPC,          // │  Bspc  │        │  Del   │  Bspc  │
+    TD_BSPC,          // │  Bspc  │        │BspcLine│BspcWord│
     TD_C,             // │   c    │        │LOCK UPP│ MT(UPP)│ `c` on Tap; Lock Primary Number layer on Tap+Hold; Momentary Primary Number layer on Hold
     TD_CARET,         // │   ^    │        │   ¢    │   $    │
     TD_CIRC,          // │   ◌̂    │   ◌̄    │   ◌̆    │   ◌̌    │ Combining circumflex on Tap; macron on 2xTap; breve on Tap+Hold; caron on Hold
     TD_COMM,          // │   ,    │   ;    │   |    │   &    │
+    TD_DEL,           // │  Del   │        │Del Line│Del Word│
     TD_DOT,           // │   .    │   …    │   ⋮    │   •    │ Triple tap: · (centered dot)
     TD_DLR,           // │   $    │   ¥    │   £    │   €    │
     TD_DQUO,          // │   "    │   ‘    │   <    │   >    │ Double quote on Tap; typographic opening smart single quote on 2xTap

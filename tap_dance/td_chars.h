@@ -24,6 +24,9 @@ void circ_reset(tap_dance_state_t *state, void *user_data);
 // TD_COMM
 void comm_finished(tap_dance_state_t *state, void *user_data);
 void comm_reset(tap_dance_state_t *state, void *user_data);
+// TD_DEL
+void del_finished(tap_dance_state_t *state, void *user_data);
+void del_reset(tap_dance_state_t *state, void *user_data);
 // TD_DLR
 void dlr_finished(tap_dance_state_t *state, void *user_data);
 void dlr_reset(tap_dance_state_t *state, void *user_data);

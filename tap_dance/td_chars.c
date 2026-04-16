@@ -1,8 +1,9 @@
 #include "td_chars.h"
-#include "tap_dance_actions.h"
+#include "custom_keys.h"
 #include "keymap.h"
 #include "macros/mac_programming.h"
 #include "macros/mac_special_char.h"
+#include "tap_dance_actions.h"
 
 // ─────────────────────────────────────────────────────────────
 //  Char Key Function Definitions
@@ -365,7 +366,7 @@ void mins_reset(tap_dance_state_t *state, void *user_data) {
 }
 
 // ──────────────────────────────
-// TD_BSPC                ⌫   ⌦ ⌫
+// TD_BSPC               ⌫  ⌫L ⌫w
 // ──────────────────────────────
 
 // Instance of 'td_tap_t' for the TD_BSPC quad tap dance
@@ -378,16 +379,21 @@ static td_tap_t bspc_tap_state = {
 void bspc_finished(tap_dance_state_t *state, void *user_data) {
     bspc_tap_state.state = cur_dance(state);
     switch (bspc_tap_state.state) {
-        case TD_SINGLE_TAP:  register_code16(KC_BSPC); break; // ⌫ Backspace
-        case TD_SINGLE_HOLD: register_code16(KC_BSPC); break; // ⌫ Continuous Backspace
-        case TD_DOUBLE_HOLD: register_code16(KC_DEL);  break; // ⌦ Delete
-        case TD_DOUBLE_TAP:
-        case TD_DOUBLE_SINGLE_TAP:
-            tap_code16(KC_BSPC);
+        case TD_SINGLE_TAP: // ⌫ Backspace
             register_code16(KC_BSPC);
+            break;
+        case TD_SINGLE_HOLD: // ⌫ previous word
+            register_code16(current_os == OS_MACOS ? A(KC_BSPC) : C(KC_BSPC));
+            break;
+        case TD_DOUBLE_HOLD: // ⌫ to BOL
+            tap_code16(C(S(KC_LEFT)));
+            tap_code(KC_BSPC);
             break;
         case TD_TRIPLE_TAP:
             tap_code16(KC_BSPC);
+            // fallthru
+        case TD_DOUBLE_TAP:
+        case TD_DOUBLE_SINGLE_TAP:
             tap_code16(KC_BSPC);
             register_code16(KC_BSPC);
             break;
@@ -398,16 +404,75 @@ void bspc_finished(tap_dance_state_t *state, void *user_data) {
 // Release any keys pressed by TD_BSPC and reset the state
 void bspc_reset(tap_dance_state_t *state, void *user_data) {
     switch (bspc_tap_state.state) {
-        case TD_SINGLE_TAP:  unregister_code16(KC_BSPC); break;
-        case TD_SINGLE_HOLD: unregister_code16(KC_BSPC); break;
-        case TD_DOUBLE_HOLD: unregister_code16(KC_DEL);  break;
+        case TD_SINGLE_TAP:
+            unregister_code16(KC_BSPC);
+            break;
+        case TD_SINGLE_HOLD:
+            unregister_code16(current_os == OS_MACOS ? A(KC_BSPC) : C(KC_BSPC));
+            break;
         case TD_DOUBLE_TAP:
         case TD_DOUBLE_SINGLE_TAP:
         case TD_TRIPLE_TAP:
-            unregister_code16(KC_BSPC); break;
+            unregister_code16(KC_BSPC);
+            break;
         default: break;
     }
     bspc_tap_state.state = TD_NONE;
+}
+
+// ──────────────────────────────
+// TD_DEL                ⌦  ⌦L ⌦w
+// ──────────────────────────────
+
+// Instance of 'td_tap_t' for the TD_DEL quad tap dance
+static td_tap_t del_tap_state = {
+    .is_press_action = true,
+    .state = TD_NONE
+};
+
+// Send the appropriate delete key for TD_DEL
+void del_finished(tap_dance_state_t *state, void *user_data) {
+    del_tap_state.state = cur_dance(state);
+    switch (del_tap_state.state) {
+        case TD_SINGLE_TAP: // ⌦ Delete
+            register_code16(KC_DEL);
+            break;
+        case TD_SINGLE_HOLD: // ⌦ next word
+            register_code16(current_os == OS_MACOS ? A(KC_DEL) : C(KC_DEL));
+            break;
+        case TD_DOUBLE_HOLD: // ⌫ to EOL
+            tap_code16(S(KC_END));
+            tap_code(KC_DEL);
+            break;
+        case TD_TRIPLE_TAP:
+            tap_code16(KC_DEL);
+            // fallthru
+        case TD_DOUBLE_TAP:
+        case TD_DOUBLE_SINGLE_TAP:
+            tap_code16(KC_DEL);
+            register_code16(KC_DEL);
+            break;
+        default: break;
+    }
+}
+
+// Release any keys pressed by TD_DEL and reset the state
+void del_reset(tap_dance_state_t *state, void *user_data) {
+    switch (del_tap_state.state) {
+        case TD_SINGLE_TAP:
+            unregister_code16(KC_DEL);
+            break;
+        case TD_SINGLE_HOLD:
+            unregister_code16(current_os == OS_MACOS ? A(KC_DEL) : C(KC_DEL));
+            break;
+        case TD_DOUBLE_TAP:
+        case TD_DOUBLE_SINGLE_TAP:
+        case TD_TRIPLE_TAP:
+            unregister_code16(KC_DEL);
+            break;
+        default: break;
+    }
+    del_tap_state.state = TD_NONE;
 }
 
 // ──────────────────────────────

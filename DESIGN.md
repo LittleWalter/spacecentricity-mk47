@@ -163,7 +163,7 @@ The **Base** layer packs in as much functionality as I can comfortably manage wi
 
 August Dvorak devised the original [Dvorak keyboard layout](https://en.wikipedia.org/wiki/Dvorak_keyboard_layout) layout in the 1930s. While it offers many advantages over QWERTY, it also includes some letter‑placement quirks for modern computer use. For example, `i` sits off the home position while `u` sits on it, despite their relative frequencies in English. With a programmable keyboard, it becomes possible to place keys in positions that make personal sense rather than following predefined layouts.
 
-This layer uses a modified Dvorak layout with a few intentional relocations:
+This layer uses a modified Dvorak layout with a few intentional relocations based on relative frequencies[^English-letter-frequency]:
 
 * `u`, `c` moved to the left and right thumbs
   * Keeps a primary vowel under the left thumb
@@ -174,7 +174,7 @@ This layer uses a modified Dvorak layout with a few intentional relocations:
   * Higher-frequency vowel than `u`
   * Makes entering Vim insert mode slightly easier
 * `Esc` placed on the right‑hand center home key (formerly `i`)
-  * Provides a fast, symmetric way to exit Vim modes
+  * Provides a fast, symmetric way to exit Vim modes—critical in modal editing
   * Eliminates the awkward reach to the traditional top‑left corner
 * `l` moved to the top row above `t` (replacing `c`)
   * Keeps a common consonant accessible without disrupting the new thumb assignments
@@ -182,6 +182,8 @@ This layer uses a modified Dvorak layout with a few intentional relocations:
 I briefly experimented with a QWERTY layer in a multi‑alpha setup, but dropped it quickly because QWERTY feels uncomfortable to me on ortholinear and column‑staggered boards. Fortunately, muscle memory stays separate enough that I can still type QWERTY on standard keyboards without issue. Of course, YMMV juggling multiple alpha maps and physical keyboard layouts.
 
 I’m also not using Colemak(-DH), Workman, or other modern ergonomic layouts. I originally learned Dvorak as an OS‑level setting on laptops, and it still feels like the most natural foundation for me. My preference is driven by comfort and RSI reduction rather than raw typing speed.
+
+[^English-letter-frequency]: According to [Wikipedia](https://en.wikipedia.org/wiki/Letter_frequency), `u` and `c` appear at 2.8%, `i` at 7.0%, and `l` at 4.0%. These shifts may change the typing performance of some bigrams compared to their traditional positions. In practice, I haven’t noticed any negative effects—if anything, these placements feel more comfortable than those in Dvorak Simplified.
 
 #### Symbols
 
@@ -273,7 +275,7 @@ This key is primarily accessed via _left‑palm_ presses using a taller flat SA 
 | Action | Behavior |
 |--------|----------|
 | Tap | **Mouse** Layer |
-| Hold (≈350 ms or longer) | **Function** layer (F1–F12) |
+| Hold (≈350 ms or longer) | **Function** layer (`F1`–`F12`) |
 
 #### Navigation Cluster
 
@@ -307,9 +309,17 @@ I mostly use these keys for volume control and quick play/pause actions.
 
 #### Other Keys
 
-* `Tab` on tap and `Shift-Tab` on hold lives on the first column of home row.
-*  `Enter` is also available as a tap‑and‑hold gesture on the spacebar, offering an alternative to the pinky key.
+* `Tab` on tap and `Shift-Tab` on hold live on the first column of home row.
+*  `Enter` is also available as a tap‑and‑hold gesture on the spacebar, offering an ergonomic alternative to the pinky key.
 
+Since corner keys have a higher access cost, they should provide higher‑value or more expressive functionality. The `Backspace` key in the top‑right corner is semantic and appears in the same position across multiple layers:
+
+| Action | Behavior | Notes |
+|--------|----------|-------|
+| Tap | Delete previous character | Sends `Backspace` |
+| Tap-and-Hold | Delete to beginning of line | Implemented as `LSFT‑LCTL‑Left` → `Backspace` |
+| Hold | Delete previous word |  macOS: `LALT-Backspace`; Linux/Windows: `LCTL-Backspace` |
+ 
 ### Lower: Numpad
 
 ![Lower: Numpad with hexadecimal](assets/02_LOWER.png)
@@ -360,7 +370,7 @@ Above the **HELD** key sits a semantic punctuation tap‑dance key:
 
 End‑of‑sentence marks automatically capitalize the next character.
 
-The `;␣` and `:␣` bigrams were removed because they appear less frequently in prose and don’t benefit as much from semantic treatment.
+Originally, `;␣` and `:␣` bigrams were placed on this key; they were removed because they appear less frequently in prose and don’t benefit as much from semantic treatment.
 
 The `.` key remains in the standard Dvorak position but includes additional dot‑related tap dances:
 
@@ -395,7 +405,7 @@ The `+` key provides the full set of basic arithmetic symbols on a single middle
 #### Other Keys
 
 * `Backspace` is placed on the left thumb key, allowing home-position access.
-* `Delete` is placed on the top-right key, where `Backspace` is located on **Base**.
+* Semantic `Del` is placed on the top-right key, where the analogous semantic `Backspace` is located on **Base**.
 
 ### Adjustment: Keyboard Settings
 

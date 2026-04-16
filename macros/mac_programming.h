@@ -2,6 +2,7 @@
 
 #include QMK_KEYBOARD_H
 
+// Auto-capitalization flag for next character
 extern bool auto_cap_next;
 
 // ─────────────────────────────────────────────────────────────
