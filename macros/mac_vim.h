@@ -46,6 +46,14 @@ typedef enum {
     VC_SUB_BUF_GLOBAL  // `:bufdo %s///g | update` (sub in open buffers)
 } vim_commandline_t;
 
+// Vim deletion actions
+typedef enum {
+    DEL_PREV_WORD,     // `db` (delete previous word)
+    DEL_PREV_BIG_WORD, // `dB` (delete previous WORD)
+    DEL_BOL,           // `d^` (delete to beginning of current line)
+    DEL_EOL            // `d$` (delete to end of current line)
+} delete_t;
+
 // Vim fold actions
 typedef enum {
     FOLD_TOGGLE,    // `za`
@@ -94,3 +102,6 @@ void vim_fold_macro(const fold_t fold);
 
 // Switches to previously active buffer (CTRL-6)
 void vim_buffer_toggle_macro(void);
+
+// Deletion actions
+void vim_delete_macro(const delete_t del_action);

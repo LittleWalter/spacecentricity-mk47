@@ -52,6 +52,9 @@ void winr_reset(tap_dance_state_t *state, void *user_data);
 // TD_SUB
 void sub_finished(tap_dance_state_t *state, void *user_data);
 void sub_reset(tap_dance_state_t *state, void *user_data);
+// TD_VIM_DEL
+void vim_del_finished(tap_dance_state_t *state, void *user_data);
+void vim_del_reset(tap_dance_state_t *state, void *user_data);
 // TD_FOLD
 void fold_finished(tap_dance_state_t *state, void *user_data);
 void fold_reset(tap_dance_state_t *state, void *user_data);

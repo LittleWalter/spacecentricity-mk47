@@ -85,6 +85,7 @@ tap_dance_action_t tap_dance_actions[TD_COUNT] = {
     [TD_WINR]      = ACTION_TAP_DANCE_FN_ADVANCED(NULL, winr_finished,      winr_reset),
 
     [TD_SUB]       = ACTION_TAP_DANCE_FN_ADVANCED(NULL, sub_finished,      sub_reset),
+    [TD_VIM_DEL]   = ACTION_TAP_DANCE_FN_ADVANCED(NULL, vim_del_finished,  vim_del_reset),
     [TD_FOLD]      = ACTION_TAP_DANCE_FN_ADVANCED(NULL, fold_finished,     fold_reset),
     [TD_WRITE]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL, write_finished,    write_reset),
     [TD_QUIT]      = ACTION_TAP_DANCE_FN_ADVANCED(NULL, quit_finished,     quit_reset),

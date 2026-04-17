@@ -162,9 +162,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* (Neo)Vim (RHS): Hold Left Middle Finger on Home Row
  * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
- * │         │         │         │         │         │         │ zt    H │za  zM zR│ ½PD BOT │ ½PU TOP │         │ BUF TOGL│
+ * │         │         │         │         │         │         │ zt    H │za  zM zR│ ½PD BOT │ ½PU TOP │         │ DEL bB^$│
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │         │    A    │    D    │<<HOLD>> │VIEWPORT+│:qa  :qa!│ zz    M │B gE E←J←│ gj   << │ gk   >> │W E E→ J→│         │
+ * │         │    A    │    D    │<<HOLD>> │VIEWPORT+│:qa  :qa!│ zz    M │B gE E←J←│ gj   << │ gk   >> │W E E→ J→│ BUF TOGL│
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │         │         │         │         │VIEWPORT-│         │ zb    L │ :%s///g │ :w  :wa │         │         │         │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
@@ -173,17 +173,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Bottom row: Move Vim window splits (Tap), resize (2xTap), change buffers (Hold), change tabs (Tap+Hold)
  */
 [_VIM_R] = LAYOUT_planck_mit(
-    ____, ____,    ____,    ____, ____,    ____, HIGH, FOLD,   HALF_PGDN, HALF_PGUP, ____, BUF_TOGGLE,
-    ____, S(KC_A), S(KC_D), ____, C(KC_Y), QUIT, MID,  B,      GJ,        GK,        W,    ____,
+    ____, ____,    ____,    ____, ____,    ____, HIGH, FOLD,   HALF_PGDN, HALF_PGUP, ____, VIM_DEL,
+    ____, S(KC_A), S(KC_D), ____, C(KC_Y), QUIT, MID,  B,      GJ,        GK,        W,    BUF_TOGGLE,
     ____, ____,    ____,    ____, C(KC_E), ____, LOW,  SUB,    WRITE,     ____,      ____, ____,
     ____, ____,    ____,    ____, ____,     KC_COLN,   KC_ESC, WINL,      WIND,      WINU, WINR
 ),
 
 /* (Neo)Vim (LHS): Hold Right Middle Finger on Home Row
  * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
- * │ BUF TOGL│         │ ½PU TOP │ ½PD BOT │za  zM zR│ zt    H │         │         │         │         │         │         │
+ * │ DEL bB^$│         │ ½PU TOP │ ½PD BOT │za  zM zR│ zt    H │         │         │         │         │         │         │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │         │B gE E←J←│ gk   >> │ gj   << │W E E→ J→│ zz    M │:qa  :qa!│VIEWPORT+│ <<HOLD>>│    D    │    A    │         │
+ * │ BUF TOGL│B gE E←J←│ gk   >> │ gj   << │W E E→ J→│ zz    M │:qa  :qa!│VIEWPORT+│ <<HOLD>>│    D    │    A    │         │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │         │         │         │   :w    │ :%s///g │ zb    L │         │VIEWPORT-│         │         │         │         │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
@@ -192,8 +192,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Bottom row: Move Vim window splits (Tap), resize (2xTap), change buffers (Hold), change tabs (Tap+Hold)
  */
 [_VIM_L] = LAYOUT_planck_mit(
-    BUF_TOGGLE, ____, HALF_PGUP, HALF_PGDN, FOLD,   HIGH, ____, ____,    ____, ____,    ____,    ____,
-    ____,       B,    GK,        GJ,        W,      MID,  QUIT, C(KC_Y), ____, S(KC_D), S(KC_A), ____,
+    VIM_DEL,    ____, HALF_PGUP, HALF_PGDN, FOLD,   HIGH, ____, ____,    ____, ____,    ____,    ____,
+    BUF_TOGGLE, B,    GK,        GJ,        W,      MID,  QUIT, C(KC_Y), ____, S(KC_D), S(KC_A), ____,
     ____,       ____, ____,      WRITE,     SUB,    LOW,  ____, C(KC_E), ____, ____,    ____,    ____,
     WINL,       WINU, WIND,      WINR,      KC_ESC,   KC_COLN,  ____,    ____, ____,    ____,    ____
 ),

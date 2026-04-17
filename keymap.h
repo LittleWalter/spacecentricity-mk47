@@ -119,6 +119,7 @@
 #define WINR      TD(TD_WINR)
 
 #define SUB       TD(TD_SUB)
+#define VIM_DEL   TD(TD_VIM_DEL)
 #define FOLD      TD(TD_FOLD)
 #define WRITE     TD(TD_WRITE)
 #define QUIT      TD(TD_QUIT)

@@ -354,6 +354,37 @@ void sub_reset(tap_dance_state_t *state, void *user_data) {
 }
 
 // ────────────────────────────────
+// TD_VIM_DEL   `db` `dB` `d^` `d$`
+// ────────────────────────────────
+
+// Instance of 'td_tap_t' for the TD_VIM_DEL tap and hold dance.
+static td_tap_t vim_del_tap_state = {
+    .is_press_action = true,
+    .state = TD_NONE
+};
+
+// Send the appropriate Vim command for TD_VIM_DEL
+void vim_del_finished(tap_dance_state_t *state, void *user_data) {
+    vim_del_tap_state.state = cur_dance(state);
+    switch (vim_del_tap_state.state) {
+        case TD_SINGLE_TAP:  vim_delete_macro(DEL_PREV_WORD);     break; // `db` delete previous word
+        case TD_DOUBLE_TAP:  vim_delete_macro(DEL_PREV_BIG_WORD); break; // `dB` delete previous WORD
+        case TD_DOUBLE_HOLD: vim_delete_macro(DEL_BOL);           break; // `d^` delete BOL
+        case TD_SINGLE_HOLD: vim_delete_macro(DEL_EOL);           break; // `d$` delete EOL
+        case TD_DOUBLE_SINGLE_TAP:
+            vim_delete_macro(DEL_PREV_WORD);
+            vim_delete_macro(DEL_PREV_WORD);
+            break;
+        default: break;
+    }
+}
+
+// Release any keys pressed by TD_FOLD and reset the state
+void vim_del_reset(tap_dance_state_t *state, void *user_data) {
+    vim_del_tap_state.state = TD_NONE;
+}
+
+// ────────────────────────────────
 // TD_FOLD           `za` `zM` `zR`
 // ────────────────────────────────
 

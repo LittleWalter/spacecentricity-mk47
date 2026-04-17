@@ -250,6 +250,15 @@ Window‑resize commands omit the `Esc` prefix to preserve compatibility with `<
 | Tap | `zt`, `zz`, `zb` (scroll viewport to top / center / bottom) |
 | Hold | `H`, `M`, `L` (move cursor to top / middle / bottom of screen) |
 
+**Semantic Deletion Key**
+
+| Action | Behavior | Notes |
+|--------|----------|-------|
+| Tap | `db` (delete previous word) | Moves right one column to mimic standard OS word‑deletion behavior |
+| Double Tap | `dB` (delete previous WORD) | Also includes the right‑movement for consistency |
+| Tap-and-Hold | `d^` (delete to beginning of line) | Deletes everything back to the first non‑whitespace character |
+| Hold | `d$` (delete to end of line) | Deletes everything to the right of (and under) the cursor |
+
 **Folds**
 
 | Actions | Behavior |

@@ -296,3 +296,25 @@ void vim_buffer_toggle_macro(void) {
 
     mod_state_restore(&saved);
 }
+
+// Deletion actions
+void vim_delete_macro(const delete_t del_action) {
+    mod_state_t saved = mod_state_save_and_clear();
+
+    // Move cursor one column to the right to mimic standard OS deletion behavior
+    if (del_action == DEL_PREV_WORD || del_action == DEL_PREV_BIG_WORD) {
+        tap_code(KC_RGHT);
+    }
+
+    vim_esc_helper();
+    tap_code(KC_D);
+    switch (del_action) {
+        case DEL_PREV_WORD:     tap_code(KC_B);      break; // `db`
+        case DEL_PREV_BIG_WORD: tap_code16(S(KC_B)); break; // `dB`
+        case DEL_BOL:           tap_code16(KC_CIRC); break; // `d^`
+        case DEL_EOL:           tap_code16(KC_DLR);  break; // `d$`
+        default: break;
+    }
+
+    mod_state_restore(&saved);
+}

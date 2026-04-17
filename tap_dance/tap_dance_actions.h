@@ -72,6 +72,7 @@ enum {                // │  Tap   │ 2xTap  │Tap+Hold│  Hold  │ Notes
                       // │        │        │        │        │
     TD_WRITE,         // │   :w   │        │        │  :wa   │ Vim: Write/save current buffer on Tap; write/save all open buffers on Hold
     TD_SUB,           // │ :%s///g│        │        │:bufdo..│ Vim: substitute all in current buffer on Tap; substitute in all buffers on Hold
+    TD_VIM_DEL,       // │   db   │   dB   │   d^   │   d$   │ Vim: delete word/WORD/BOL/EOL
     TD_FOLD,          // │   za   │        │   zM   │   zR   │ Vim: toggle fold under cursor under Tap; close all folds on Tap+Hold; open all folds on Hold
     TD_QUIT,          // │  :qa   │        │        │  :qa!  │ Vim: Safely quit all on Tap; Quit all w/o saving buffers on Hold
                       // │        │        │        │        │

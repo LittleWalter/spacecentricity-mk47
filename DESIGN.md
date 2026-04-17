@@ -69,7 +69,7 @@ The layout is optimized around English letter frequency, English‑centric n‑g
 
 Most custom keymaps use only a few layers, often three or four, to keep the learning curve shallow and the cognitive load low. Spacecentricity takes the opposite approach. It has over a dozen layers, many of them bilaterally mirrored, with possibly more as the design evolves. Not every key on every layer is essential, but each layer has a clear purpose, and many exist to group related behaviors or fill unused real estate with logical themes. The result is a system that favors expressiveness and modal clarity over minimalism.
 
-If a key or action ends up unused, I’ll either replace it with something more useful or make it inert with a `KC_NO` “no operation” signal.
+If a key or action ends up unused, misfired, or mistyped too often, I’ll eventually replace it with something more useful or disable it with a `KC_NO` “no operation” signal. Layers should earn their keep; anything that adds friction without providing meaningful value gets refined or removed.
 
 ### Right-Hand Oriented
 
@@ -104,7 +104,7 @@ This keymap is designed for users of Vim, [Neovim](https://neovim.io/), and [Ema
 
 Tap dances are used extensively to expose extra functionality without increasing finger travel. Many symbol keys support multi‑tap or tap‑hold behaviors that surface common Vim motions, programming operators, and punctuation variants.
 
-Tap dances are grouped logically so they’re relatively easy to remember. And when a key has room for more functionality, I’m not shy about giving it more to do — even if that introduces a bit of redundancy. I’ve also tried to make specialized characters on U.S. keyboards, such as the ellipsis (`…`), yen/yuan (`¥`), and approximation (`≈`), accessible without relying on keyboard shortcuts or navigating operating system menus. These aren’t strictly necessary, but they’re the kind of small design flourishes that make the keymap feel more complete.
+They’re organized in logical clusters so they’re relatively easy to internalize. When a key has room for more functionality, I’m not shy about giving it more to do, even if that introduces a bit of redundancy. I’ve also made space for specialized characters that are awkward to type or hard to remember — the ellipsis (`…`), yen/yuan (`¥`), approximation (`≈`), and various diacritics for other languages — without relying on OS menus or obscure shortcuts. These aren’t strictly necessary, but they’re the kind of small design flourishes that make the keymap feel more complete.
 
 Here’s how I rank the typing difficulty of each tap dance:
 
@@ -181,9 +181,11 @@ This layer uses a modified Dvorak layout with a few intentional relocations base
 
 I briefly experimented with a QWERTY layer in a multi‑alpha setup, but dropped it quickly because QWERTY feels uncomfortable to me on ortholinear and column‑staggered boards. Fortunately, muscle memory stays separate enough that I can still type QWERTY on standard keyboards without issue. Of course, YMMV juggling multiple alpha maps and physical keyboard layouts.
 
-I’m also not using Colemak(-DH), Workman, or other modern ergonomic layouts. I originally learned Dvorak as an OS‑level setting on laptops, and it still feels like the most natural foundation for me. My preference is driven by comfort and RSI reduction rather than raw typing speed.
+I’m also not using Colemak(-DH), Workman, or other modern ergonomic layouts. I originally learned Dvorak as an OS‑level setting on laptops, and it still feels like the most natural foundation for me. My preference is driven by comfort and RSI reduction rather than raw typing speed.[^alt-alpha]
 
-[^English-letter-frequency]: According to [Wikipedia](https://en.wikipedia.org/wiki/Letter_frequency), `u` and `c` appear at 2.8%, `i` at 7.0%, and `l` at 4.0%. These shifts may change the typing performance of some bigrams compared to their traditional positions. In practice, I haven’t noticed any negative effects—if anything, these placements feel more comfortable than those in Dvorak Simplified.
+[^English-letter-frequency]: According to [Wikipedia](https://en.wikipedia.org/wiki/Letter_frequency), `u` and `c` appear at 2.8%, `i` at 7.0%, and `l` at 4.0%. These relocations may alter the performance of some bigrams or trigrams compared to their traditional positions; I haven’t analyzed these effects formally. In practice, I haven’t noticed any drawbacks — if anything, the new placements feel more comfortable than those in Dvorak Simplified.
+
+[^alt-alpha]: Several modern ergonomic alpha layouts exist beyond Dvorak, including [Colemak](https://colemak.com/), [Colemak Mod-DH](https://colemakmods.github.io/mod-dh/), [Workman](https://workmanlayout.org/), Semimak, [Gallium](https://github.com/GalileoBlues/Gallium/), and the German‑optimized [Neo](https://www.neo-layout.org/) layout. These designs generally improve same‑finger avoidance, hand balance, and symbol ergonomics compared to both QWERTY and stock Dvorak. Spacecentricity uses a modified Dvorak base simply because it aligns well with my modal editing habits, thumb‑centric design, and long‑standing muscle memory. The broader principles in this keymap — mirrored layers, semantic editing, thumb‑driven modifiers, and modal workflows — can be adapted to any alpha layout, though the positions of core Vim commands would shift relative to my layout.
 
 #### Symbols
 
@@ -467,18 +469,18 @@ Holding either index finger on the home row activates a mirrored arrow‑navigat
 > **Apple macOS Setting**
 > 
 > To show the Application Switcher on all displays, run the following command in the terminal:
-> `defaults write com.apple.dock appswitcher-all-displays -bool true`  
+> 
+> `defaults write com.apple.dock appswitcher-all-displays -bool true`
 >
-> Then restart the Dock with:
-> `killall Dock`.[^macOS-app-switcher]
+> Then restart the Dock with: `killall Dock`.[^macOS-app-switcher]
 
 [^macOS-app-switcher]: macOS Application Switcher tip sourced from [StackOverflow](https://superuser.com/questions/670252/cmdtab-app-switcher-is-on-the-wrong-monitor).
 
 #### English Loanwords
 
-Tap dances on the arrow layers provide combining accents and extended punctuation, making it easy to type accented characters that appear in English [loanwords](https://en.wikipedia.org/wiki/Loanword)—most commonly from French, Spanish, and German, with a smaller set from Portuguese, where only a few words retain their original accents. This includes forms such as à, á, â, ä, é, í, ñ, ó, ö, ú, and others. The accessibility of accented characters reduces the need for users to memorize platform‑specific shortcuts or Unicode values.
+Tap dances on the arrow layers provide combining accents and extended punctuation, making it easy to type accented characters that appear in English [loanwords](https://en.wikipedia.org/wiki/Loanword). These words most commonly originate from French, Spanish, and German, with a smaller set from Portuguese, where only a few retain their original accents. This includes forms such as à, á, â, ä, é, í, ñ, ó, ö, ú, and others. The accessibility of accented characters reduces the need for users to memorize platform‑specific shortcuts or Unicode values.
 
-In contemporary English writing, accented forms appear more consistently than in the past. Modern style guides and digital typography increasingly preserve the original spelling of borrowed words, especially in food, culture, and proper names. As a result, accented loanwords such as à la, à propos, vis‑à‑vis, café, crème brûlée, cliché, touché, résumé, déjà vu, naïve, über, doppelgänger, jalapeño, piñata, and place names such as São Paulo, as well as personal names like Zoë, Chloë, José or Beyoncé, are now common in everyday text.
+In contemporary English writing, accented forms appear more consistently than in the past. Modern style guides and digital typography increasingly preserve the original spelling of borrowed words, especially in food, culture, and proper names. As a result, accented loanwords such as à la, à propos, vis-à-vis, voilà, café, crème brûlée, pâté, cliché, touché, résumé, déjà vu, naïve, über, doppelgänger, and jalapeño — along with place names like São Paulo and personal names like Zoë, Chloë, José, or Beyoncé — are now common in everyday text.
 
 ### Vim
 
@@ -488,7 +490,7 @@ In contemporary English writing, accented forms appear more consistently than in
 
 These mirrored layers are designed for use with a mostly vanilla Vim setup. The focus is on movement, navigation, and viewport adjustments to reduce editing friction and keep your hands anchored on home row.
 
-Assigning `Esc` to the thumbs provides multiple reliable ways to reach it from home position.
+Assigning `Esc` to the thumbs provides multiple reliable ways to reach it from home position. The deletion key in the top‑right corner follows the same semantic‑deletion philosophy as the `Backspace` and `Del` tap‑dance keys, but its motions are implemented using Vim’s native delete commands and therefore focus on word‑ and line‑level editing rather than character‑level deletion.
 
 Vim commands that benefit from an `Esc` prefix include a built‑in delay, and command‑line macros (`:`) use an additional delay. These pauses help accommodate plugin latency and improve execution reliability. Repeatable motions that rely on count prefixes are intentionally excluded to preserve `<count>movement` behavior.
 
