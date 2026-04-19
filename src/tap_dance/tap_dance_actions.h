@@ -28,6 +28,8 @@ enum {                // │  Tap   │ 2xTap  │Tap+Hold│  Hold  │ Notes
     TD_TAB,           // │  Tab   │        │        │ Sft+Tab│ Sft+Tab = Reverse Tab
     TD_U,             // │   u    │        │LOCK LOW│ MT(LOW)│ `u` on Tap; Lock Numpad layer on Tap+Hold; Momentary Numpad layer on Hold
                       // │        │        │        │        │
+    TD_CAPS,          // │CapsWord│        │        │CapsLock│
+                      // │        │        │        │        │
     TD_LPRN,          // │   (    │   [    │   <    │   {    │
     TD_RPRN,          // │   )    │   ]    │   >    │   }    │
     TD_LBRC,          // │   [    │   (    │   {    │   <    │

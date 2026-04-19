@@ -1,5 +1,5 @@
 #include "tapping_term.h"
-#include "keymap.h"
+#include "src/core/keymap.h"
 
 // Home‑row layer/mod keys can misfire during fast touch typing because 150–180ms
 // TAPPING_TERM is sometimes too short for hand alternations and natural rolls.

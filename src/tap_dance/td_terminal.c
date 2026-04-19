@@ -1,6 +1,6 @@
 #include "td_terminal.h"
 #include "tap_dance_actions.h"
-#include "macros/mac_terminal.h"
+#include "src/macros/mac_terminal.h"
 
 // ─────────────────────────────────────────────────────────────
 // Terminal Commands

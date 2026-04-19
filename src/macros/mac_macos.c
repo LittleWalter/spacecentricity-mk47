@@ -5,15 +5,32 @@
 // Apple macOS Macro Function Declarations
 // ─────────────────────────────────────────────────────────────
 
-// Opens macOS Finder
-void open_finder_macos(void) {
+static void open_spotlight_search(const spotlight_t search) {
     mod_state_t saved = mod_state_save_and_clear();
 
     tap_code16(LGUI(KC_SPC)); // Open Spotlight Search
     wait_ms(MACOS_DIALOG_DELAY);
-    SEND_STRING("finder" SS_TAP(X_ENTER));
+    switch (search) {
+        case SL_FINDER:
+            SEND_STRING("finder" SS_TAP(X_ENTER));
+            break;
+        case SL_CALCULATOR:
+            SEND_STRING("calculator" SS_TAP(X_ENTER));
+            break;
+        default: break;
+    }
 
     mod_state_restore(&saved);
+}
+
+// Opens macOS Finder
+void open_finder_macos(void) {
+    open_spotlight_search(SL_FINDER);
+}
+
+// Opens macOS Calculator
+void open_calculator_macos(void) {
+    open_spotlight_search(SL_CALCULATOR);
 }
 
 // Opens Trash folder in macOS Finder.

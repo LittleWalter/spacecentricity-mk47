@@ -223,3 +223,23 @@ void keyword_macro(const keyword_t keyword, const bool with_space) {
     mod_state_restore(&saved);
 }
 
+// Common code annotations
+void notes_macro(const dev_notes_t note) {
+    mod_state_t saved = mod_state_save_and_clear();
+
+    switch (note) {
+        case DEV_FIXME:   SEND_STRING("FIXME: ");   break;
+        case DEV_INFO:    SEND_STRING("INFO: ");    break;
+        case DEV_NOTE:    SEND_STRING("NOTE: ");    break;
+        case DEV_REF:     SEND_STRING("REF: ");     break;
+        case DEV_TIP:     SEND_STRING("TIP: ");     break;
+        case DEV_TODO:    SEND_STRING("TODO: ");    break;
+        case DEV_WARNING: SEND_STRING("WARNING: "); break;
+        case DEV_SECTION: // A 78-column C-style section header
+            SEND_STRING("// ---------------------------------------------------------------------------");
+            tap_code(KC_ENT);
+            break;
+        default: break;
+    }
+    mod_state_restore(&saved);
+}

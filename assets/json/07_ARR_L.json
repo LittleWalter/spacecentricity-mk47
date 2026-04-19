@@ -274,10 +274,15 @@
       "a": 5,
       "fa": [
         1,
-        2
+        1,
+        6,
+        6,
+        0,
+        0,
+        6
       ]
     },
-    "WINDOW\nRESET\n\n\n\n\nZOOM",
+    "LEADER\nKEY\n\n\n\n\n★",
     {
       "c": "#B8F5D0",
       "a": 7,

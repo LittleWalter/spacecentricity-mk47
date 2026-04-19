@@ -5,6 +5,10 @@
 #define ONESHOT_TAP_TOGGLE 2   // double‑tap to lock
 #define ONESHOT_TIMEOUT 500    // ms before it cancels if unused
 
+#define LEADER_KEY_STRICT_KEY_PROCESSING
+#define LEADER_PER_KEY_TIMING
+#define LEADER_TIMEOUT 750 // ms
+
 // RGB LED settings for Planck layout
 #define RGB_MATRIX_LED_COUNT 47
 #define RGB_DI_PIN D3
@@ -27,3 +31,4 @@
 #define ENABLE_RGB_MATRIX_STARLIGHT_SMOOTH
 #define ENABLE_RGB_MATRIX_RIVERFLOW
 #define ENABLE_RGB_MATRIX_SPLASH
+#define ENABLE_RGB_MATRIX_JELLYBEAN_RAINDROPS

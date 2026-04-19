@@ -86,6 +86,10 @@ void lbrc_reset(tap_dance_state_t *state, void *user_data);
 void rbrc_finished(tap_dance_state_t *state, void *user_data);
 void rbrc_reset(tap_dance_state_t *state, void *user_data);
 
+// TD_CAPS
+void caps_finished(tap_dance_state_t *state, void *user_data);
+void caps_reset(tap_dance_state_t *state, void *user_data);
+
 // ─────────────────────────────
 // Navigational Key Functions
 // ─────────────────────────────
@@ -102,4 +106,3 @@ void pgup_reset(tap_dance_state_t *state, void *user_data);
 // TD_END
 void end_finished(tap_dance_state_t *state, void *user_data);
 void end_reset(tap_dance_state_t *state, void *user_data);
-

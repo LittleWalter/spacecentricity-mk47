@@ -1,5 +1,5 @@
 #include "rgb.h"
-#include "custom_keys.h"
+#include "src/core/custom_keys.h"
 
 // Caps Lock blink state w/ timer
 static caps_lock_t caps_lock = { false, 0 };
@@ -20,12 +20,12 @@ static void set_layer_key_color(uint8_t keyIndex) {
     rgb_matrix_set_color(keyIndex, PURE_WHITE);
 }
 
-// Sets RGB matrix to GOLD if OSM Shift is active and return true; otherwise, do nothing and return
-// false.
-static bool set_on_osm_shift_active(void) {
+// Sets RGB matrix to GOLD if OSM Shift or Caps Word is active and return true; otherwise, do
+// nothing and return false.
+static bool set_on_osm_shift_or_caps_word_active(void) {
     const bool osm_shift = (get_oneshot_mods() & MOD_MASK_SHIFT) ||
                            (get_oneshot_locked_mods() & MOD_MASK_SHIFT);
-    if (osm_shift) {
+    if (osm_shift || is_caps_word_on()) {
         rgb_matrix_set_color_all(GOLD);
         return true;
     }
@@ -79,7 +79,7 @@ bool rgb_matrix_indicators_user(void) {
         // Change Base layer only if OSM Shift or Caps Lock is currently active
         case _BASE:
             // OSM Shift
-            if (set_on_osm_shift_active()) {
+            if (set_on_osm_shift_or_caps_word_active()) {
                 return false;
             }
             // Caps Lock
@@ -554,6 +554,11 @@ bool rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color(LED_ROW1_LEFT_RING,   GREEN); // Left
             rgb_matrix_set_color(LED_ROW1_LEFT_MIDDLE, GREEN); // Down
             rgb_matrix_set_color(LED_ROW1_LEFT_INDEX,  GREEN); // Right
+            break;
+
+        case _LEADER:
+            rgb_off();
+            rgb_matrix_set_color_all(SPRING_GREEN);
             break;
     }
 

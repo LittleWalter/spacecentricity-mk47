@@ -1,8 +1,8 @@
 #pragma once
 
 #include QMK_KEYBOARD_H
-#include "tap_dance/tap_dance_actions.h"
-#include "macros/macros.h"
+#include "src/tap_dance/tap_dance_actions.h"
+#include "src/macros/macros.h"
 
 // ─────────────────────────────────────────────────────────────
 //  Simplifying Keycodes and Combinations
@@ -13,21 +13,17 @@
 #define OSM_ALT OSM(MOD_LALT)
 
 /*** MT Keycodes: Modifiers ***********************************/
-#define COLN_LSFT MT(MOD_LSFT, KC_COLN)
 #define DOT_LCTL  MT(MOD_LCTL, KC_DOT)
 #define F8_RALT   MT(MOD_RALT, KC_F8)
 #define F9_LALT   MT(MOD_LALT, KC_F9)
 #define G_RALT    MT(MOD_RALT, KC_G)
 #define L_RCTL    MT(MOD_RCTL, KC_L)
-#define MINS_MEH  MT(MOD_MEH,  KC_MINS)
-#define PERC_HYPR MT(MOD_HYPR, S(KC_5))
 #define P_LALT    MT(MOD_LALT, KC_P)
 #define Q_MEH     MT(MOD_MEH,  KC_Q)
 #define R_RSFT    MT(MOD_RSFT, KC_R)
 #define SCLN_LSFT MT(MOD_LSFT, KC_SCLN)
 #define SLSH_HYPR MT(MOD_HYPR, KC_SLSH)
 #define SPC_LSFT  MT(MOD_LSFT, KC_SPC)
-#define UNDS_MEH  MT(MOD_MEH,  KC_UNDS)
 #define V_MEH     MT(MOD_MEH,  KC_V)
 #define Z_HYPR    MT(MOD_HYPR, KC_Z)
 
@@ -83,6 +79,8 @@
 #define QUOT  TD(TD_QUOT)
 #define SPC   TD(TD_SPC)
 #define TAB   TD(TD_TAB)
+
+#define CAPS  TD(TD_CAPS)
 
 #define LPRN TD(TD_LPRN)
 #define RPRN TD(TD_RPRN)
@@ -206,4 +204,5 @@ enum layers {
     _TERM,      // Terminal emulator macros (hold M key down, right index finger)
     _MACOS,     // macOS shortcuts
     _MOUSE,     // Mouse layer (tap left corner key w/ palm)
+    _LEADER     // Leader layer
 };

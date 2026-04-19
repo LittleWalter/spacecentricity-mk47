@@ -456,9 +456,10 @@ Holding either index finger on the home row activates a mirrored arrow‑navigat
 * Cut / Copy / Paste / Undo / Redo mirrored across the top row; the **HOLD**‑side is optimized for one‑hand use.
 * App switching lives on the center key when held; tap `Tab` or `Shift–Tab` on the bottom row to navigate.
   * Uses `CMD` on macOS and `LALT` on Linux and Microsoft Windows.
-* Zoom controls (`+`, `-`, reset) allow quick browser scaling.
+* Zoom controls (`+`, `-`) allow quick browser scaling.
 * Virtual desktop/workspace switching and browser tab navigation live on the lower row.
   * Some Linux environments may not map `Alt-Control-←/→` by default to switch workspaces.
+* Leader activation is on the bottom‑corner key; see [LEADER.md](LEADER.md) for assigned mnemonic sequences.
 * `?` and `!` include Spanish punctuation (`¡`, `¿`) and combining accents through tap dances for light multilingual support.
 * On macOS, the combining circumflex (`ˆ`) is available in the U.S. layout, but macron (`¯`), breve (`˘`), and caron (`ˇ`) require the **ABC – Extended** input source to produce the correct dead‑key sequences.
   * For circumflex, the shortcut is `Option-i` for the U.S. layout and `Option-6` for **ABC – Extended**.
@@ -569,7 +570,7 @@ The bottom row doesn’t map perfectly to finger usage, but for consistency the 
 
 #### Naming Scheme
 
-The constants use zero‑based indexing and correspond one‑to‑one with the physical LED positions defined in [rgb.h](rgb.h).
+The constants use zero‑based indexing and correspond one‑to‑one with the physical LED positions defined in [rgb.h](/src/features/rgb.h).
 
 Main 4×12 grid LEDs, grouped by row, side, and ergonomic column:
 

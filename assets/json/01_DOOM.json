@@ -80,7 +80,7 @@
         9
       ]
     },
-    "STRIFE\n\n\n\nALT\n\n←",
+    "STRAFE\n\n\n\nALT\n\n←",
     {
       "c": "#3DED97",
       "a": 7,
@@ -107,7 +107,7 @@
         9
       ]
     },
-    "STRIFE\n\n\n\nALT\n\n→",
+    "STRAFE\n\n\n\nALT\n\n→",
     {
       "c": "#b2beb5",
       "a": 7
@@ -146,7 +146,7 @@
         9
       ]
     },
-    "STRIFE\n\n\n\nALT\n\n→",
+    "STRAFE\n\n\n\nALT\n\n→",
     {
       "c": "#cccccc",
       "a": 7,
@@ -176,7 +176,7 @@
         9
       ]
     },
-    "STRIFE\n\n\n\nALT\n\n↓",
+    "STRAFE\n\n\n\nALT\n\n↓",
     {
       "c": "#b2beb5",
       "a": 7
@@ -222,7 +222,10 @@
   ],
   [
     {
-      "c": "#80CBC4"
+      "c": "#80CBC4",
+      "fa": [
+        4
+      ]
     },
     "BASE",
     {

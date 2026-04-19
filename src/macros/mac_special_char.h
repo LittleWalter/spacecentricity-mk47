@@ -38,7 +38,20 @@ typedef enum {
     CHAR_ANGLE_QUOTE_LEFT,   // Left single guillemet (‹)
     CHAR_ANGLE_QUOTE_RIGHT,  // Right single guillemet (›)
     CHAR_ANGLE_DQUOTE_LEFT,  // Left double guillemet («)
-    CHAR_ANGLE_DQUOTE_RIGHT  // Right double guillemet (»)
+    CHAR_ANGLE_DQUOTE_RIGHT, // Right double guillemet (»)
+    // Emojis
+    CHAR_EMOJI_CRY,
+    CHAR_EMOJI_FIRE,
+    CHAR_EMOJI_HEART,
+    CHAR_EMOJI_LAUGH,
+    CHAR_EMOJI_POOP,
+    CHAR_EMOJI_ROTFL,
+    CHAR_EMOJI_SKULL,
+    CHAR_EMOJI_SMILE,
+    CHAR_EMOJI_SUNGLASSES,
+    CHAR_EMOJI_THINK,
+    CHAR_EMOJI_THUMB_UP,
+    CHAR_EMOJI_THUMB_DOWN,
 } special_char_t;
 
 // Various special characters such as `¿`, `€`, and combining symbols `◌́`

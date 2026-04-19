@@ -1,10 +1,10 @@
 #include "custom_keys.h"
-#include "macros/mac_programming.h"
-#include "macros/mac_special_char.h"
-#include "macros/mac_terminal.h"
-#include "macros/mac_vim.h"
-#include "rgb.h"
-#include "tapping_term.h"
+#include "src/features/rgb.h"
+#include "src/features/tapping_term.h"
+#include "src/macros/mac_programming.h"
+#include "src/macros/mac_special_char.h"
+#include "src/macros/mac_terminal.h"
+#include "src/macros/mac_vim.h"
 
 os_t current_os = OS_MACOS; // Default to Apple macOS
 

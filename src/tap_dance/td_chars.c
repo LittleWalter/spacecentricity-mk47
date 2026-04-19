@@ -1,8 +1,8 @@
 #include "td_chars.h"
-#include "custom_keys.h"
-#include "keymap.h"
-#include "macros/mac_programming.h"
-#include "macros/mac_special_char.h"
+#include "src/core/custom_keys.h"
+#include "src/core/keymap.h"
+#include "src/macros/mac_programming.h"
+#include "src/macros/mac_special_char.h"
 #include "tap_dance_actions.h"
 
 // ─────────────────────────────────────────────────────────────
@@ -796,9 +796,9 @@ void c_finished(tap_dance_state_t *state, void *user_data) {
 // Release any keys pressed by TD_C and reset the state
 void c_reset(tap_dance_state_t *state, void *user_data) {
     switch (c_tap_state.state) {
-        case TD_SINGLE_TAP:  unregister_code16(KC_C); break;
         case TD_SINGLE_HOLD: layer_off(_UPPER);       break;
         case TD_DOUBLE_TAP:
+        case TD_SINGLE_TAP:
         case TD_DOUBLE_SINGLE_TAP: unregister_code16(KC_C); break;
         default: break;
     }
@@ -1018,6 +1018,35 @@ void dot_reset(tap_dance_state_t *state, void *user_data) {
         default: break;
     }
     dot_tap_state.state = TD_NONE;
+}
+
+// ──────────────────────────────
+// TD_CAPS
+// ──────────────────────────────
+
+// Instance of 'td_tap_t' for the TD_CAPS quad tap dances
+static td_tap_t caps_tap_state = {
+    .is_press_action = true,
+    .state = TD_NONE
+};
+
+// Send the appropriate symbol for TD_CAPS
+void caps_finished(tap_dance_state_t *state, void *user_data) {
+    caps_tap_state.state = cur_dance(state);
+    switch (caps_tap_state.state) {
+        case TD_SINGLE_TAP:  caps_word_on(); break;
+        case TD_SINGLE_HOLD: tap_code(KC_CAPS); break;
+        case TD_DOUBLE_SINGLE_TAP:
+            caps_word_on();
+            caps_word_on();
+            break;
+        default: break;
+    }
+}
+
+// Release any keys pressed by TD_CAPS and reset the state
+void caps_reset(tap_dance_state_t *state, void *user_data) {
+    caps_tap_state.state = TD_NONE;
 }
 
 // ─────────────────────────────────────────────────────────────

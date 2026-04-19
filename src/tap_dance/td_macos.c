@@ -1,6 +1,6 @@
 #include "td_macos.h"
-#include "keymap.h"
-#include "macros/mac_macos.h"
+#include "src/core/keymap.h"
+#include "src/macros/mac_macos.h"
 #include "tap_dance_actions.h"
 
 // ─────────────────────────────────────────────────────────────

@@ -37,6 +37,8 @@ tap_dance_action_t tap_dance_actions[TD_COUNT] = {
     [TD_TAB]   = ACTION_TAP_DANCE_FN_ADVANCED(NULL, tab_finished,   tab_reset),
     [TD_U]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL, u_finished,     u_reset),
 
+    [TD_CAPS]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, caps_finished, caps_reset),
+
     [TD_LPRN] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, lprn_finished, lprn_reset),
     [TD_RPRN] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, rprn_finished, rprn_reset),
     [TD_LBRC] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, lbrc_finished, lbrc_reset),

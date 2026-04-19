@@ -1,8 +1,8 @@
 #pragma once
 
 #include QMK_KEYBOARD_H
-#include "keymap.h"
-#include "macros/macros.h"
+#include "src/core/keymap.h"
+#include "src/macros/macros.h"
 
 // ─────────────────────────────────────────────────────────────
 // Caps Lock: Active Blinking

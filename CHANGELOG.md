@@ -12,15 +12,22 @@
 
 ---
 
+## 2026-04/18-SA
+- Added experimental support for the [QMK Leader Key](https://docs.qmk.fm/features/leader_key), including a new alpha‑only layer for sequence handling.
+  - The Leader key is triggered from the bottom‑corner key on the **Arrow** layers.
+  - See [LEADER.md](LEADER.md) for documentation on available sequences.
+
 ## 2026-04/16-TH
-- Changed **Vim** layers: added semantic deletion key that mirrors `Backspace` and `Del`.
+- Updated **Vim** layers with a new semantic‑deletion key that mirrors `Backspace` and `Del`.
+- Converted `Caps Lock` on **Upper** to a tap dance: tap activates `Caps Word`; hold toggles `Caps Lock`.
+  - RGB of **Base** is gold when `Caps Word` is active.
 
 ## 2026-04/15-WE
-- Changed `Backspace` and `Del` keys to use semantic behaviors:
+- Updated `Backspace` and `Del` keys to use semantic behaviors:
   - Tap: delete character (`Backspace`/`Del`)
   - Tap-and-Hold: delete to beginning/end of line
   - Hold: Delete previous/next word
-- Change **Mouse** layer:
+- Updated **Doom** layer:
   - Added mouse‑wheel keys on the right side of the lower row in a Vim‑style arrangement.
   - Added a `Backspace` tap‑dance key to the top‑right corner.
 

@@ -1,6 +1,6 @@
 #include "td_vim.h"
 #include "tap_dance_actions.h"
-#include "macros/mac_vim.h"
+#include "src/macros/mac_vim.h"
 
 // ─────────────────────────────────────────────────────────────
 // Vim Tap Dance Function Definitions

@@ -1,6 +1,6 @@
 #include "mac_special_char.h"
-#include "custom_keys.h"
-#include "keymap.h"
+#include "src/core/custom_keys.h"
+#include "src/core/keymap.h"
 #include "macros.h"
 
 // Opens the Apple macOS Emoji & Symbol popup; it only works in the compact view
@@ -9,17 +9,46 @@ static void open_emoji_menu(const special_char_t symbol, const bool with_enter) 
     wait_ms(MACOS_EMOJI_MENU_DELAY);
 
     switch (symbol) {
+        // Characters
         case CHAR_VERT_ELLIPSIS:
             SEND_STRING("vertical ellipsis");
             break;
-        case CHAR_COMB_CARON:
-            SEND_STRING("caron");
+        // Emojis
+        case CHAR_EMOJI_CRY:
+            SEND_STRING("loudly crying face");
             break;
-        case CHAR_COMB_BREVE:
-            SEND_STRING("breve");
+        case CHAR_EMOJI_FIRE:
+            SEND_STRING("fire");
             break;
-        case CHAR_COMB_MACRON:
-            SEND_STRING("macron");
+        case CHAR_EMOJI_HEART:
+            SEND_STRING("red heart");
+            break;
+        case CHAR_EMOJI_LAUGH:
+            SEND_STRING("face with tears of joy");
+            break;
+        case CHAR_EMOJI_POOP:
+            SEND_STRING("pile of poop");
+            break;
+        case CHAR_EMOJI_ROTFL:
+            SEND_STRING("rolling on the floor laughing face");
+            break;
+        case CHAR_EMOJI_SMILE:
+            SEND_STRING("slightly smiling face");
+            break;
+        case CHAR_EMOJI_SKULL:
+            SEND_STRING("skull");
+            break;
+        case CHAR_EMOJI_SUNGLASSES:
+            SEND_STRING("smiling face with sunglasses");
+            break;
+        case CHAR_EMOJI_THINK:
+            SEND_STRING("thinking face");
+            break;
+        case CHAR_EMOJI_THUMB_UP:
+            SEND_STRING("thumbs up");
+            break;
+        case CHAR_EMOJI_THUMB_DOWN:
+            SEND_STRING("thumbs down");
             break;
         default: break;
     }
@@ -104,6 +133,18 @@ static void special_char_macos(const special_char_t special_char) {
             tap_code16(A(KC_SCLN));
             break;
         case CHAR_VERT_ELLIPSIS: // Vertical ellipsis (⋮)
+        case CHAR_EMOJI_CRY:
+        case CHAR_EMOJI_FIRE:
+        case CHAR_EMOJI_HEART:
+        case CHAR_EMOJI_LAUGH:
+        case CHAR_EMOJI_POOP:
+        case CHAR_EMOJI_ROTFL:
+        case CHAR_EMOJI_SMILE:
+        case CHAR_EMOJI_SKULL:
+        case CHAR_EMOJI_SUNGLASSES:
+        case CHAR_EMOJI_THINK:
+        case CHAR_EMOJI_THUMB_UP:
+        case CHAR_EMOJI_THUMB_DOWN:
             open_emoji_menu(special_char, true);
             break;
         case CHAR_SMART_QUOTE_LEFT: // Smart single quote open (‘)
@@ -170,6 +211,19 @@ static void special_char_unicode(const special_char_t special_char) {
         case CHAR_ANGLE_QUOTE_RIGHT:  SEND_STRING("›");      break;
         case CHAR_ANGLE_DQUOTE_LEFT:  SEND_STRING("«");      break;
         case CHAR_ANGLE_DQUOTE_RIGHT: SEND_STRING("»");      break;
+        // Emojis
+        case CHAR_EMOJI_CRY:          SEND_STRING("😭");     break;
+        case CHAR_EMOJI_FIRE:         SEND_STRING("🔥");     break;
+        case CHAR_EMOJI_HEART:        SEND_STRING("❤️");     break;
+        case CHAR_EMOJI_LAUGH:        SEND_STRING("😂");     break;
+        case CHAR_EMOJI_POOP:         SEND_STRING("💩");     break;
+        case CHAR_EMOJI_ROTFL:        SEND_STRING("🤣");     break;
+        case CHAR_EMOJI_SKULL:        SEND_STRING("💀");     break;
+        case CHAR_EMOJI_SMILE:        SEND_STRING("🙂");     break;
+        case CHAR_EMOJI_SUNGLASSES:   SEND_STRING("😎");     break;
+        case CHAR_EMOJI_THINK:        SEND_STRING("🤔");     break;
+        case CHAR_EMOJI_THUMB_UP:     SEND_STRING("👍");     break;
+        case CHAR_EMOJI_THUMB_DOWN:   SEND_STRING("👎");     break;
         default: break;
     }
 }

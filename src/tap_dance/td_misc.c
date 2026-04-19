@@ -1,6 +1,6 @@
 #include "td_misc.h"
 #include "tap_dance_actions.h"
-#include "custom_keys.h"
+#include "src/core/custom_keys.h"
 
 // ──────────────────────────────
 // TD_UNDO              Undo Redo

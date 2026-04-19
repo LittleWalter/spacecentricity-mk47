@@ -59,7 +59,7 @@ This keymap uses QMK’s [quad‑tap dance pattern](https://docs.qmk.fm/features
 
 Most layer keys are momentary holds.
 
-The **Lower** and **Upper** keys behave the same, but you can **lock** them with tap‑and‑hold and **unlock** with a tap back to Base.
+The **Lower** and **Upper** keys behave the same, but you can **lock** them with tap‑and‑hold and **unlock** with a tap back to **Base**.
 
 #### `Backspace` Key
 
@@ -102,7 +102,17 @@ Momentary hold `0` to access **Adjustment** layer to change keyboard settings.
 
 Tap the **HELD** key when this layer is **locked** to return to **Base**.
 
-Activating **Caps Lock** turns this key — and the entire **Base** layer — red for visual feedback. When active, **Base** will blink to make the state more noticeable.
+#### Caps Key
+
+The Caps key provides two related text‑entry modes, each with its own visual indicator on the **Base** layer:
+
+| Action | Behavior | Base RGB | Notes |
+|--------|----------|----------|-------|
+| Tap | Activates `Caps Word` | 🟡 Golden yellow while active | Automatically deactivates after 5 seconds of idle time |
+| Hold | Toggle `Caps Lock` | 🔴 Blinks red while active | Must be manually turned off |
+
+> [!TIP]
+> `Caps Word` temporarily capitalizes letters as you type and automatically turns itself off at the end of the word, making it ideal for acronyms, identifiers, and short uppercase sequences without toggling `Caps Lock`. See the [QMK documentation](https://docs.qmk.fm/features/caps_word) for more information.
 
 #### `Del` Key
 
@@ -175,6 +185,8 @@ Provides `F1`–`F12` and modifier combinations for shortcut execution. The home
 
 Spanish punctuation and combining diacritics sit on the home row for light multilingual support.
 
+The bottom‑corner keys activate mnemonic Leader sequences. See the [QMK Leader Key page](/LEADER.md) for the full list of available actions.
+
 **Center Keys**
 
 | Action | Behavior |
@@ -227,8 +239,8 @@ Movements that interact with counts (`<number>movement`) intentionally omit the 
 |--------|----------|
 | Tap | Move backward/forward by **WORD**; move down/up in a **wrapped line** |
 | Double Tap | Jump to end of previous/next **WORD** |
-| Tap-and-Hold | Navigate backward/forward through the **edit list** |
-| Hold | Navigate backward/forward through the **jump list**; **unindent/indent** current line |
+| Tap-and-Hold | Navigate backward/forward through the **edit list**; **unindent/indent** current line |
+| Hold | Navigate backward/forward through the **jump list** |
 
 WORD and wrapped‑line motions omit the `Esc` prefix to maintain compatibility with `<count>`‑prefixed movements.
 

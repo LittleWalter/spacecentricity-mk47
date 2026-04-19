@@ -74,6 +74,18 @@ typedef enum {
     KW_NIL        // `nil` reference keyword
 } keyword_t;
 
+// Code annotations
+typedef enum {
+    DEV_FIXME,   // `FIXME: `
+    DEV_INFO,    // `INFO: `
+    DEV_NOTE,    // `NOTE: `
+    DEV_REF,     // `REF: `
+    DEV_SECTION, // `// ──────…` 78-column section header
+    DEV_TIP,     // `TIP: `
+    DEV_TODO,    // `TODO: `
+    DEV_WARNING  // `WARNING: `
+} dev_notes_t;
+
 // ─────────────────────────────────────────────────────────────
 // Programming Macro Function Declarations
 // ─────────────────────────────────────────────────────────────
@@ -93,3 +105,6 @@ void code_macro(const code_t ngram);
 
 // Common keywords used by most programming languages
 void keyword_macro(const keyword_t keyword, const bool with_space);
+
+// Common code annotations
+void notes_macro(const dev_notes_t note);
