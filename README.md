@@ -149,8 +149,35 @@ The `.` key remains in the standard Dvorak position but includes additional dot�
 | Hold | `•` (bullet) |
 | Triple Tap | `·` (centered dot) |
 
+Additional triple‑tap symbols: `+` → `×` (multiplication, not the letter _x_), `[` → `≤`, `]` → `≥`.
+
 > [!NOTE]
 > On macOS mode, the **vertical ellipsis** (⋮) has no direct keyboard shortcut and is produced with a macro that uses compact the [Emoji & Symbols popover](https://support.apple.com/guide/mac-help/use-emoji-and-symbols-on-mac-mchlp1560/mac). On Linux and Microsoft Windows modes, the Unicode character is sent directly.
+
+#### Leader History
+
+The keyboard keeps a rolling history of the **ten most recent [Leader actions](https://docs.qmk.fm/features/leader_key)**—emoji (`😂`, `🍔`), surround pairs (`()`, `{}`), and developer code annotation prefixes (`TODO: `, `NOTE: `). Each successful Leader sequence is recorded automatically.
+
+You can replay these entries directly by holding the number keys:
+
+* **Hold** `0` → most recent
+* **Hold** `1` → second most recent
+* **Hold** `2` → third most recent
+* …up to `9`
+
+This provides a fast way to repeat common Leader actions without re‑entering their sequences.
+
+For details on how Leader actions are defined, see [LEADER.md](LEADER.md).
+
+#### Leader Favorites
+
+Leader Favorites let you pin up to ten frequently used Leader actions. They use the same number‑key positions as Leader History.
+
+* **Hold** a number key (`0`–`9`) → replay the Favorite in that slot
+* **Hold** `@` → toggle between **Favorites** and **History** (History is the default)
+  * The key’s RGB turns **green** when Favorites is active, and **off** otherwise
+
+To assign a Favorite, perform a Leader action, then **tap‑and‑hold** a number key to save the most recent sequence.
 
 ### Adjustment: Keyboard Settings
 
@@ -168,7 +195,7 @@ The backlight color indicates which OS is currently active:
 
 > [!WARNING]
 > Linux and Microsoft Windows behavior is currently untested!
-> 
+>
 > I’m unlikely to test Windows myself, but the functionality is included for completeness.
 
 ### Function: `F1`–`F12`
@@ -185,7 +212,7 @@ Provides `F1`–`F12` and modifier combinations for shortcut execution. The home
 
 Spanish punctuation and combining diacritics sit on the home row for light multilingual support.
 
-The bottom‑corner keys activate mnemonic Leader sequences. See the [QMK Leader Key page](/LEADER.md) for the full list of available actions.
+The bottom‑corner key activates mnemonic Leader sequences. See the [QMK Leader Key page](/LEADER.md) for the full list of available actions.
 
 **Center Keys**
 

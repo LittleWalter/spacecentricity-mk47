@@ -9,6 +9,9 @@
 // TD_ASTR
 void astr_finished(tap_dance_state_t *state, void *user_data);
 void astr_reset(tap_dance_state_t *state, void *user_data);
+// TD_AT
+void at_finished(tap_dance_state_t *state, void *user_data);
+void at_reset(tap_dance_state_t *state, void *user_data);
 // TD_BSC
 void bspc_finished(tap_dance_state_t *state, void *user_data);
 void bspc_reset(tap_dance_state_t *state, void *user_data);
@@ -89,6 +92,41 @@ void rbrc_reset(tap_dance_state_t *state, void *user_data);
 // TD_CAPS
 void caps_finished(tap_dance_state_t *state, void *user_data);
 void caps_reset(tap_dance_state_t *state, void *user_data);
+
+// ─────────────────────────────
+// Number Key Functions
+// ─────────────────────────────
+
+// TD_0
+void zero_finished(tap_dance_state_t *state, void *user_data);
+void zero_reset(tap_dance_state_t *state, void *user_data);
+// TD_1
+void one_finished(tap_dance_state_t *state, void *user_data);
+void one_reset(tap_dance_state_t *state, void *user_data);
+// TD_2
+void two_finished(tap_dance_state_t *state, void *user_data);
+void two_reset(tap_dance_state_t *state, void *user_data);
+// TD_3
+void three_finished(tap_dance_state_t *state, void *user_data);
+void three_reset(tap_dance_state_t *state, void *user_data);
+// TD_4
+void four_finished(tap_dance_state_t *state, void *user_data);
+void four_reset(tap_dance_state_t *state, void *user_data);
+// TD_5
+void five_finished(tap_dance_state_t *state, void *user_data);
+void five_reset(tap_dance_state_t *state, void *user_data);
+// TD_6
+void six_finished(tap_dance_state_t *state, void *user_data);
+void six_reset(tap_dance_state_t *state, void *user_data);
+// TD_7
+void seven_finished(tap_dance_state_t *state, void *user_data);
+void seven_reset(tap_dance_state_t *state, void *user_data);
+// TD_8
+void eight_finished(tap_dance_state_t *state, void *user_data);
+void eight_reset(tap_dance_state_t *state, void *user_data);
+// TD_9
+void nine_finished(tap_dance_state_t *state, void *user_data);
+void nine_reset(tap_dance_state_t *state, void *user_data);
 
 // ─────────────────────────────
 // Navigational Key Functions

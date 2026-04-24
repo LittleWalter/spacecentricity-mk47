@@ -36,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
  */
 [_DOOM] = LAYOUT_planck_mit(
-    KC_ESC, ____,        ____,    KC_UP,       ____,    ____,        ____,    ____,    MS_UP,   ____,    ____,        BSPC,
+    KC_ESC, ____,        ____,    KC_UP,       ____,    ____,        ____, ____,       MS_UP,   ____,    ____,        BSPC,
     TAB,    STRAFE_LEFT, KC_LEFT, KC_DOWN,     KC_RGHT, STRAFE_RGHT, ____, MS_LEFT,    MS_DOWN, MS_RGHT, STRAFE_RGHT, KC_ENT,
     ____,   ____,        ____,    STRAFE_DOWN, ____,    ____,        ____, MS_WHLR,    MS_WHLU, MS_WHLD, MS_WHLL,     ____,
     BASE,   MUTE,        VOLD,    VOLU,        MS_BTN1,     SPC_LSFT,      RCLK_UPPER, HOME,    PGDN,    PGUP,        END
@@ -67,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │    ~    │    7    │    5    │    1    │    3    │ ( [ < { │ ) ] > } │    2    │    0    │    4    │    6    │    ↵    │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │    %    │    \    │    _    │ [ ( { < │CAPS LOCK│ $ ¥ £ € │    @    │ , ! ? . │ ] ) } > │    -    │    ?    │ “|” ‘|’ │
+ * │    %    │    \    │    _    │ [ ( { < │CAPS LOCK│ $ ¥ £ € │@ LEADTOG│ , ! ? . │ ] ) } > │    -    │    ?    │ “|” ‘|’ │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │  MOUSE  │🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │    ⌫    │   =       ≈   ≠   │<<H>>BASE│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
@@ -75,9 +75,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ^   ¢ $ = ^ Jump to first char on current line in Vim (Tap), ¢ symbol for macOS (Tap+Hold), $ Jump to EOL in Vim
  */
 [_UPPER] = LAYOUT_planck_mit(
-    KC_GRV,   COMM,    KC_COLN, DOT,  KC_9,    KC_AMPR, KC_PIPE, KC_8, PLUS, KC_HASH, CARET,   DEL,
-    KC_TILD,  KC_7,    KC_5,    KC_1, KC_3,    LPRN,    RPRN,    KC_2, KC_0, KC_4,    KC_6,    KC_ENT,
-    KC_PERC,  KC_BSLS, KC_UNDS, LBRC, CAPS,    DLR,     KC_AT,   PUNC, RBRC, KC_MINS, KC_QUES, SMART_QUOTES,
+    KC_GRV,   COMM,    KC_COLN, DOT,  TD9,     KC_AMPR, KC_PIPE, TD8,  PLUS, KC_HASH, CARET,   DEL,
+    KC_TILD,  TD7,     TD5,     TD1,  TD3,     LPRN,    RPRN,    TD2,  TD0,  TD4,     TD6,     KC_ENT,
+    KC_PERC,  KC_BSLS, KC_UNDS, LBRC, CAPS,    DLR,     AT,      PUNC, RBRC, KC_MINS, KC_QUES, SMART_QUOTES,
     TG_MOUSE, MUTE,    VOLD,    VOLU, KC_BSPC,       EQL,        BASE, HOME, PGDN,    PGUP,    END
 ),
 
@@ -126,17 +126,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │         │         │         │         │         │         │ ◌̂ ◌̄ ◌̆ ◌̌ │DESKTOP ←│DESKTOP →│  TAB ←  │  TAB →  │  ZOOM-  │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │         │         │         │         │         │   -       –   —   │ , ; | & │         │    ⇤    │    ⇥    │  LEADER │
+ * │         │         │         │         │         │   -       –   —   │ , ; | & │         │    ⇤    │    ⇥    │ZOOMRESET│
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
  * DESKTOP ←/→ changes desktop workspaces
  * TAB ←/→ changes browser tabs
  * ZOOM+/-/RS changes browser size: increase, decrease, and reset
  */
 [_ARR_R] = LAYOUT_planck_mit(
-    CUT,  UNDO,    PASTE, COPY,    ____,    ____, ANGLE_QUOTES, ALL,      COPY,      PASTE,     UNDO,     CUT,
-    DEG,  KC_BSLS, EXLM,  KC_UNDS, ____,    APP,  QUES,         KC_LEFT,  KC_DOWN,   KC_UP,     KC_RGHT,  ZOOM_IN,
-    ____, ____,    ____,  ____,    ____,    ____, CIRC,         VDT_LEFT, VDT_RIGHT, TAB_LEFT,  TAB_RGHT, ZOOM_OUT,
-    ____, ____,    ____,  ____,    ____,         MINS,          COMM,     ____,      S(KC_TAB), KC_TAB,   QK_LEAD
+    CUT,  UNDO,    PASTE, COPY,    ____, ____, ANGLE_QUOTES, ALL,      COPY,      PASTE,     UNDO,     CUT,
+    DEG,  KC_BSLS, EXLM,  KC_UNDS, ____, APP,  QUES,         KC_LEFT,  KC_DOWN,   KC_UP,     KC_RGHT,  ZOOM_IN,
+    ____, ____,    ____,  ____,    ____, ____, CIRC,         VDT_LEFT, VDT_RIGHT, TAB_LEFT,  TAB_RGHT, ZOOM_OUT,
+    ____, ____,    ____,  ____,    ____,     MINS,           COMM,     ____,      S(KC_TAB), KC_TAB,   ZOOM_RESET
 ),
 
 /* Home Row Arrows (LHS): Hold Right Index Finger on Home Row
@@ -157,7 +157,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     CUT,      UNDO,      PASTE,    COPY,     ALL,       ANGLE_QUOTES, ____, ____, COPY,    PASTE, UNDO,    CUT,
     ZOOM_IN,  KC_LEFT,   KC_UP,    KC_DOWN,  KC_RGHT,   QUES,         APP,  ____, KC_UNDS, EXLM,  KC_BSLS, DEG,
     ZOOM_OUT, TAB_LEFT,  TAB_RGHT, VDT_LEFT, VDT_RIGHT, CIRC,         ____, ____, ____,    ____,  ____,    ____,
-    QK_LEAD,  S(KC_TAB), KC_TAB,   ____,     COMM,             MINS,        ____, ____,    ____,  ____,    ____
+    QK_LEAD, S(KC_TAB), KC_TAB,   ____,     COMM,             MINS,        ____, ____,    ____,  ____,    ____
 ),
 
 /* (Neo)Vim (RHS): Hold Left Middle Finger on Home Row
@@ -289,32 +289,55 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * │  BACK   │🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │ Wheel ↑ │      Wheel ↓      │ Wheel ↑ │ SEL ALL │  COPY   │  PASTE  │UNDO REDO│
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
  */
+#ifdef MOUSEKEY_ENABLE
 [_MOUSE] = LAYOUT_planck_mit(
     CUT,      UNDO, PASTE,   COPY,    ALL,     VDT_LEFT, VDT_RIGHT, HOME,    PGDN,    PGUP,    END,     BSPC,
     TAB,      APP,  MS_BTN3, MS_BTN1, MS_BTN2, KC_ESC,   DOOM,      MS_LEFT, MS_DOWN, MS_UP,   MS_RGHT, KC_ENT,
     VDT_LEFT, ____, ____,    MS_BTN4, MS_BTN5, TAB_LEFT, TAB_RGHT,  MS_WHLR, MS_WHLU, MS_WHLD, MS_WHLL, VDT_RIGHT,
     TG_MOUSE, MUTE, VOLD,    VOLU,    MS_WHLU,        MS_WHLD,      MS_WHLU, ALL,     COPY,    PASTE,   UNDO
 ),
+#endif
 
-/* Leader Layer
+#ifdef LEADER_ENABLE
+/* Leader Layer for alpha chars
  * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
- * │    *    │    ,    │    ;    │    .    │    p    │    y    │    f    │    g    │    l    │    r    │    '    │ ⌫  ⌫L ⌫w│
+ * │    *    │    ,    │    ;    │    .    │    p    │    y    │    f    │    g    │    l    │    r    │    '    │    ⌫    │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │    ⇥    │    a    │    o    │    e    │    i    │   ESC   │    d    │    h    │    t    │    n    │    s    │    ↵    │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │ OSM SFT │    /    │    q    │    j    │    k    │    x    │    b    │    m    │    w    │    v    │    z    │    "    │
+ * │  LSFT   │    /    │    q    │    j    │    k    │    x    │    b    │    m    │    w    │    v    │    z    │    "    │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │         │         │         │         │    u    │         ␣         │    c    │    ^    │    }    │    {    │    $    │
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
  * Dedicated layer used *only during Leader sequences*. All keys here are simple KC_ keys, ensuring Leader receives clean,
  * unambiguous keycodes without interference from tap-dance or mod-tap behavior on _BASE.
  */
-[_LEADER] = LAYOUT_planck_mit(
-    KC_ASTR,  KC_COMM, KC_SCLN, KC_DOT, KC_P, KC_Y,   KC_F, KC_G, KC_L,    KC_R,    KC_QUOT, BSPC,
-    KC_TAB,   KC_A,    KC_O,    KC_E,   KC_I, KC_ESC, KC_D, KC_H, KC_T,    KC_N,    KC_S,    KC_ENT,
-    OSM_SFT,  KC_SLSH, KC_Q,    KC_J,   KC_K, KC_X,   KC_B, KC_M, KC_W,    KC_V,    KC_Z,    KC_DQUO,
-    ____,     ____,    ____,    ____,   KC_U,    KC_SPC,    KC_C, KC_CIRC, KC_RCBR, KC_LCBR, KC_DLR
-)
+[_LEAD_ALPHA] = LAYOUT_planck_mit(
+    KC_ASTR, KC_COMM, KC_SCLN, KC_DOT, KC_P, KC_Y,   KC_F, KC_G, KC_L,    KC_R,    KC_QUOT, KC_BSPC,
+    KC_TAB,  KC_A,    KC_O,    KC_E,   KC_I, KC_ESC, KC_D, KC_H, KC_T,    KC_N,    KC_S,    KC_ENT,
+    KC_LSFT, KC_SLSH, KC_Q,    KC_J,   KC_K, KC_X,   KC_B, KC_M, KC_W,    KC_V,    KC_Z,    KC_DQUO,
+    ____,    ____,    ____,    ____,   KC_U,    KC_SPC,    KC_C, KC_CIRC, KC_RCBR, KC_LCBR, KC_DLR
+),
 
+/* Leader Layer for alpha chars
+ * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
+ * │    `    │ , ; | & │    :    │ . … ⋮ • │    9    │    &    │    |    │    8    │ + - / * │    #    │ ^   ¢ $ │ ⌦  ⌦L ⌦w│
+ * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+ * │    ~    │    7    │    5    │    1    │    3    │ ( [ < { │ ) ] > } │    2    │    0    │    4    │    6    │    ↵    │
+ * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+ * │    %    │    \    │    _    │ [ ( { < │CAPS LOCK│ $ ¥ £ € │    @    │ , ! ? . │ ] ) } > │    -    │    ?    │ “|” ‘|’ │
+ * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+ * │  MOUSE  │🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │    ⌫    │   =       ≈   ≠   │<<H>>BASE│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
+ * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
+ *  `0` and `1` under middle fingers to reduce strain of most commonly used digits, esp. in Vim
+ * ^   ¢ $ = ^ Jump to first char on current line in Vim (Tap), ¢ symbol for macOS (Tap+Hold), $ Jump to EOL in Vim
+ */
+[_LEAD_DIGIT] = LAYOUT_planck_mit(
+    KC_GRV,  KC_COMM, KC_COLN, KC_DOT,  KC_9,    KC_AMPR, KC_PIPE, KC_8,    KC_PLUS, KC_HASH, KC_CIRC, KC_DEL,
+    KC_TILD, KC_7,    KC_5,    KC_1,    KC_3,    KC_LPRN, KC_RPRN, KC_2,    KC_0,    KC_4,    KC_6,    KC_ENT,
+    KC_PERC, KC_BSLS, KC_UNDS, KC_LBRC, KC_CAPS, KC_DLR,  KC_AT,   KC_COMM, KC_RBRC, KC_MINS, KC_QUES, ____,
+    ____,    MUTE,    VOLD,    VOLU,    KC_BSPC,       EQL,        BASE,    KC_HOME, KC_PGDN, KC_PGUP, KC_END
+),
+#endif
 };
 // clang-format on

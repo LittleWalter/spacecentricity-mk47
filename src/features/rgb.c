@@ -1,4 +1,7 @@
+#ifdef RGB_MATRIX_ENABLE
+
 #include "rgb.h"
+#include "leader.h"
 #include "src/core/custom_keys.h"
 
 // Caps Lock blink state w/ timer
@@ -25,7 +28,14 @@ static void set_layer_key_color(uint8_t keyIndex) {
 static bool set_on_osm_shift_or_caps_word_active(void) {
     const bool osm_shift = (get_oneshot_mods() & MOD_MASK_SHIFT) ||
                            (get_oneshot_locked_mods() & MOD_MASK_SHIFT);
-    if (osm_shift || is_caps_word_on()) {
+
+#if defined(CAPS_WORD_ENABLE)
+    const bool caps_word = is_caps_word_on();
+#else
+    const bool caps_word = false;
+#endif
+
+    if (osm_shift || caps_word) {
         rgb_matrix_set_color_all(GOLD);
         return true;
     }
@@ -47,6 +57,28 @@ static bool set_on_caps_lock_active(void) {
     return false;
 }
 
+// Applies the leader pass/fail flash effect. When a leader sequence completes, leader_state.done
+// is set and this function temporarily overrides all RGB output, showing green for success or red
+// for failure until flash_timer expires. Once the flash ends, leader_state.done is cleared and
+// normal RGB resumes.
+#ifdef LEADER_ENABLE
+static bool leader_flash_check(void) {
+    if (leader_state.done) {
+        if (timer_elapsed(leader_state.flash_timer) < RGB_LEADER_PASS_FAIL_DELAY) {
+            if (leader_state.success) {
+                rgb_matrix_set_color_all(GREEN);
+            } else {
+                rgb_matrix_set_color_all(RED);
+            }
+        } else {
+            leader_state.done = false;
+        }
+        return true;
+    }
+    return false;
+}
+#endif
+
 // ─────────────────────────────────────────────────────────────
 // RGB Matrix
 // ─────────────────────────────────────────────────────────────
@@ -67,6 +99,13 @@ static bool set_on_caps_lock_active(void) {
 
 bool rgb_matrix_indicators_user(void) {
     uint8_t layer = get_highest_layer(layer_state);
+
+#ifdef LEADER_ENABLE
+    // If leader sequence is done proccessing, skip per-layer RGB matrix updates
+    if (leader_flash_check()) {
+        return false; // stop per-layer RGB from overwriting the flash
+    }
+#endif
 
     // Skip layer indicators when user hits RGB-related key on _FN; this allows you to see changes
     // immediately instead of back-and-forthing _BASE and _FN. Timer is (re)set inside the function
@@ -161,8 +200,19 @@ bool rgb_matrix_indicators_user(void) {
             // Decimal Point
             rgb_matrix_set_color(LED_ROW0_LEFT_MIDDLE,  CYAN);
 
+#ifdef LEADER_ENABLE
+            // Replay Leader History or Favorites
+            if (!leader_state.replay_history) {
+                rgb_matrix_set_color(LED_ROW2_RIGHT_CENTER, GREEN); // Replay Leader favorites on
+            }
+#endif
+
             if (host_keyboard_led_state().caps_lock) {
-                rgb_matrix_set_color(LED_ROW2_LEFT_INDEX, RED); // Caps Lock active
+                rgb_matrix_set_color(LED_ROW2_LEFT_INDEX, RED);  // Caps Lock active
+#ifdef CAPS_WORD_ENABLE
+            } else if (is_caps_word_on()) {
+                rgb_matrix_set_color(LED_ROW2_LEFT_INDEX, GOLD); // Caps Word active
+#endif
             } else {
                 caps_lock.timer = 0;
                 caps_lock.blink_state = false;
@@ -496,6 +546,7 @@ bool rgb_matrix_indicators_user(void) {
          * │  BACK   │🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │ Wheel ↑ │      Wheel ↓      │ Wheel ↑ │ SEL ALL │  COPY   │  PASTE  │UNDO REDO│
          * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
          */
+#ifdef MOUSEKEY_ENABLE
         case _MOUSE:
             rgb_off();
             // Exit Mouse Mode Layer: Tap Bottom Left Key
@@ -525,7 +576,7 @@ bool rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color(LED_ROW0_RIGHT_RING,   GREEN); // Page Up
             rgb_matrix_set_color(LED_ROW0_RIGHT_PINKY,  GREEN); // End
             break;
-
+#endif
         /* Classic Doom Layer
          * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
          * │   ESC   │         │         │    ↑    │         │         │         │         │Pointer ↑│         │         │ ⌫  ⌫L ⌫w│
@@ -556,11 +607,30 @@ bool rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color(LED_ROW1_LEFT_INDEX,  GREEN); // Right
             break;
 
-        case _LEADER:
+#ifdef LEADER_ENABLE
+        case _LEAD_ALPHA:
             rgb_off();
-            rgb_matrix_set_color_all(SPRING_GREEN);
+            rgb_matrix_set_color_all(NAVY); // dim blue
             break;
+
+        case _LEAD_DIGIT:
+            rgb_off();
+            // Numbers
+            rgb_matrix_set_color(LED_ROW1_RIGHT_MIDDLE, NAVY); // 0
+            rgb_matrix_set_color(LED_ROW1_LEFT_MIDDLE,  NAVY); // 1
+            rgb_matrix_set_color(LED_ROW1_RIGHT_INDEX,  NAVY); // 2
+            rgb_matrix_set_color(LED_ROW1_LEFT_INDEX,   NAVY); // 3
+            rgb_matrix_set_color(LED_ROW1_RIGHT_RING,   NAVY); // 4
+            rgb_matrix_set_color(LED_ROW1_LEFT_RING,    NAVY); // 5
+            rgb_matrix_set_color(LED_ROW1_RIGHT_PINKY,  NAVY); // 6
+            rgb_matrix_set_color(LED_ROW1_LEFT_PINKY,   NAVY); // 7
+            rgb_matrix_set_color(LED_ROW0_RIGHT_INDEX,  NAVY); // 8
+            rgb_matrix_set_color(LED_ROW0_LEFT_INDEX,   NAVY); // 9
+            break;
+#endif
     }
 
     return true;
 }
+
+#endif

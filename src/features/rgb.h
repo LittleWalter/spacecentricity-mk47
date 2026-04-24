@@ -1,8 +1,13 @@
 #pragma once
 
+#ifdef RGB_MATRIX_ENABLE
+
 #include QMK_KEYBOARD_H
 #include "src/core/keymap.h"
 #include "src/macros/macros.h"
+
+// ms to flash success/fail of leader sequence, 150-200 ms is the sweetspot
+#define RGB_LEADER_PASS_FAIL_DELAY 200
 
 // ─────────────────────────────────────────────────────────────
 // Caps Lock: Active Blinking
@@ -43,6 +48,7 @@ extern rgb_preview_t rgb_preview;
 #define GOLD          255, 215, 0
 #define GREEN         0, 255, 0
 #define MAGENTA       255, 0, 255
+#define NAVY          0, 0, 128
 #define NEON_MINT     80, 255, 230
 #define ORANGE        255, 69, 0
 #define PASTEL_CYAN   80, 220, 255
@@ -150,3 +156,5 @@ extern rgb_preview_t rgb_preview;
 // Corners
 #define LED_CORNER_BOTTOM_LEFT  36
 #define LED_CORNER_BOTTOM_RIGHT 46
+
+#endif

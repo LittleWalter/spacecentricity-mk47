@@ -9,18 +9,6 @@ extern bool auto_cap_next;
 // Programming Macro Function Parameter Types
 // ─────────────────────────────────────────────────────────────
 
-// Common surround symbol pairs
-typedef enum {
-    SUR_PAREN,      // () parenthesis
-    SUR_BRC,        // [] brackets
-    SUR_CBR,        // {} curly braces
-    SUR_VWS_CBR,    // {} curly braces w/ vertical whitespace
-    SUR_ABR,        // <> angle brackets
-    SUR_DQUO,       // "" double quotes
-    SUR_QUOT,       // '' single quotes
-    SUR_GRV,        // `` grave/backtick symbols
-} surround_char_t;
-
 // Common programming operators
 typedef enum {
     OP_ASSIGN,      // `=`  Standard assigment operator
@@ -95,10 +83,6 @@ void punc_space_macro(const uint16_t punc_keycode);
 
 // Programming language operators
 void prog_operator_macro(const operator_t operator, const bool extra_space);
-
-// Common surrounding characters: `()`, `[]`, `{}`, `<>`, double/single quotes, grave/backtick
-// symbols
-void surround_macro(const surround_char_t pair);
 
 // Various coding n-grams such as C-style comments, Markdown Images/Links, etc.
 void code_macro(const code_t ngram);

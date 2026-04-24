@@ -1,8 +1,11 @@
 #include "custom_keys.h"
+#include "keymap.h"
 #include "src/features/rgb.h"
+#include "src/features/leader.h"
 #include "src/features/tapping_term.h"
 #include "src/macros/mac_programming.h"
 #include "src/macros/mac_special_char.h"
+#include "src/macros/mac_surround.h"
 #include "src/macros/mac_terminal.h"
 #include "src/macros/mac_vim.h"
 
@@ -19,6 +22,13 @@ os_t current_os = OS_MACOS; // Default to Apple macOS
 // Most logic functionally decomposed.
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     static uint16_t mouse_key_timer; // Tracking key hold time, SEE:MOUSE_FN branch
+
+    // Track Leader sequence characters
+    if (leader_state.active && record->event.pressed) {
+        if (leader_state.size < LEADER_MAX_SEQUENCE_LENGTH) {
+            leader_state.buffer[leader_state.size++] = keycode;
+        }
+    }
 
     // Semantic punctuation: auto-cap next alpha
     if (auto_cap_next && record->event.pressed) {
@@ -160,9 +170,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         // Miscellaneous (Non-Macros)
         // ─────────────────────────────────────────────────────────────
         case TG_MOUSE: // Toggle mouse/previous layer
+#ifdef MOUSEKEY_ENABLE
             if (record->event.pressed) {
                 toggle_mouse();
             }
+#endif
             return false;
         case MOUSE_FN: // Tap for mouse layer, hold for function keys layer
             if (record->event.pressed) {
@@ -177,6 +189,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
 
+#ifdef RGB_MATRIX_ENABLE
         // ─────────────────────────────────────────────────────────────
         // RGB Matrix Keys
         // ─────────────────────────────────────────────────────────────
@@ -193,6 +206,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             rgb_preview.triggered = true;
             rgb_preview.timer = timer_read();
             break;
+#endif
     }
     return true;
 }
@@ -279,11 +293,12 @@ void app_switch(const bool is_active) {
 }
 
 // ─────────────────────────────────────────────────────────────
-// Miscellaneous
+// Mouse-related Function Definitions
 // ─────────────────────────────────────────────────────────────
 
 // Toggle the mouse layer and return to the previous layer. Because DOOM is entered through the
 // MOUSE layer, its expected behavior is handled here to avoid conflicts with future layer logic.
+#ifdef MOUSEKEY_ENABLE
 void toggle_mouse(void) {
     const uint8_t current = get_highest_layer(layer_state);
 
@@ -312,13 +327,16 @@ void toggle_mouse(void) {
             layer_on(_MOUSE);
     }
 }
+#endif
 
 // Switch to mouse layer on shorter key presses, otherwise go to function keys layer
 void mouse_fn(uint16_t mouse_key_timer) {
     uint16_t elapsed = timer_elapsed(mouse_key_timer);
     // Tap behavior
     if (elapsed < TAPPING_TERM + MOUSE_FN_DELAY) {
+#ifdef MOUSEKEY_ENABLE
         layer_on(_MOUSE);
+#endif
     }
     // Hold behavior delayed
     else if (elapsed > TAPPING_TERM + MOUSE_FN_DELAY) {

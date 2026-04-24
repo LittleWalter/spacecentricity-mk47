@@ -321,7 +321,7 @@ Since corner keys have a higher access cost, they should provide higher‑value 
 | Tap | Delete previous character | Sends `Backspace` |
 | Tap-and-Hold | Delete to beginning of line | Implemented as `LSFT‑LCTL‑Left` → `Backspace` |
 | Hold | Delete previous word |  macOS: `LALT-Backspace`; Linux/Windows: `LCTL-Backspace` |
- 
+
 ### Lower: Numpad
 
 ![Lower: Numpad with hexadecimal](assets/02_LOWER.png)
@@ -468,9 +468,9 @@ Holding either index finger on the home row activates a mirrored arrow‑navigat
 
 > [!TIP]
 > **Apple macOS Setting**
-> 
+>
 > To show the Application Switcher on all displays, run the following command in the terminal:
-> 
+>
 > `defaults write com.apple.dock appswitcher-all-displays -bool true`
 >
 > Then restart the Dock with: `killall Dock`.[^macOS-app-switcher]

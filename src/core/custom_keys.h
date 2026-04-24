@@ -67,7 +67,7 @@ enum custom_keycodes {
     TG_MOUSE,             // Toggle Mouse/previous layer
     MOUSE_FN,             // Mouse layer on tap, Function keys layer on hold
     TG_OS,                // Toggles current operating system mode
-    APP                   // Application switching key on hold; CMD or ALT
+    APP,                  // Application switching key on hold; CMD or ALT
 };
 
 // Intercepts custom keycodes and runs their associated macros and miscellenous

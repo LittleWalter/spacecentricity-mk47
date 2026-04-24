@@ -62,6 +62,7 @@
 
 // Char Keys
 #define ASTR  TD(TD_ASTR)
+#define AT    TD(TD_AT)
 #define BSPC  TD(TD_BSPC)
 #define CARET TD(TD_CARET)
 #define CIRC  TD(TD_CIRC)
@@ -79,6 +80,17 @@
 #define QUOT  TD(TD_QUOT)
 #define SPC   TD(TD_SPC)
 #define TAB   TD(TD_TAB)
+
+#define TD0   TD(TD_0)
+#define TD1   TD(TD_1)
+#define TD2   TD(TD_2)
+#define TD3   TD(TD_3)
+#define TD4   TD(TD_4)
+#define TD5   TD(TD_5)
+#define TD6   TD(TD_6)
+#define TD7   TD(TD_7)
+#define TD8   TD(TD_8)
+#define TD9   TD(TD_9)
 
 #define CAPS  TD(TD_CAPS)
 
@@ -204,5 +216,6 @@ enum layers {
     _TERM,      // Terminal emulator macros (hold M key down, right index finger)
     _MACOS,     // macOS shortcuts
     _MOUSE,     // Mouse layer (tap left corner key w/ palm)
-    _LEADER     // Leader layer
+    _LEAD_ALPHA,// Leader alpha layer
+    _LEAD_DIGIT // Leader number layer
 };

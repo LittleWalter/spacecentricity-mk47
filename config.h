@@ -1,3 +1,6 @@
+// Enable 32-layer support
+#define LAYER_STATE_32BIT
+
 // Enabled for tap dance functionality
 #define TAPPING_TERM 150       // ms
 #define TAPPING_TERM_PER_KEY   // allow specific time for specific keys

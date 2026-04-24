@@ -1,6 +1,7 @@
 #include "td_programming.h"
 #include "tap_dance_actions.h"
 #include "src/macros/mac_programming.h"
+#include "src/macros/mac_surround.h"
 
 // ─────────────────────────────────────────────────────────────
 //  Programming N-Gram Function Definitions

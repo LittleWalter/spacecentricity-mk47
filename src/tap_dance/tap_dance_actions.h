@@ -8,6 +8,7 @@
 
 enum {                // │  Tap   │ 2xTap  │Tap+Hold│  Hold  │ Notes
     TD_ASTR = 0,      // │   *    │   %    │   @    │   #    │ Fun corner key for Vim commands on Base layer
+    TD_AT,            // │   @    │        │        │ToggLEAD│ On hold: Toggle replay Leader History/Favorites
     TD_BSPC,          // │  Bspc  │        │BspcLine│BspcWord│
     TD_C,             // │   c    │        │LOCK UPP│ MT(UPP)│ `c` on Tap; Lock Primary Number layer on Tap+Hold; Momentary Primary Number layer on Hold
     TD_CARET,         // │   ^    │        │   ¢    │   $    │
@@ -27,6 +28,17 @@ enum {                // │  Tap   │ 2xTap  │Tap+Hold│  Hold  │ Notes
     TD_SPC,           // │  Spc   │        │  Enter │  LGUI  │ LGUI = LCMD = Super (Linux) = Windows key
     TD_TAB,           // │  Tab   │        │        │ Sft+Tab│ Sft+Tab = Reverse Tab
     TD_U,             // │   u    │        │LOCK LOW│ MT(LOW)│ `u` on Tap; Lock Numpad layer on Tap+Hold; Momentary Numpad layer on Hold
+                      // │        │        │        │        │
+    TD_0,             // │   0    │        │        │LEADER 0│
+    TD_1,             // │   1    │        │        │LEADER 1│
+    TD_2,             // │   2    │        │        │LEADER 2│
+    TD_3,             // │   3    │        │        │LEADER 3│
+    TD_4,             // │   4    │        │        │LEADER 4│
+    TD_5,             // │   5    │        │        │LEADER 5│
+    TD_6,             // │   6    │        │        │LEADER 6│
+    TD_7,             // │   7    │        │        │LEADER 7│
+    TD_8,             // │   8    │        │        │LEADER 8│
+    TD_9,             // │   9    │        │        │LEADER 9│
                       // │        │        │        │        │
     TD_CAPS,          // │CapsWord│        │        │CapsLock│
                       // │        │        │        │        │

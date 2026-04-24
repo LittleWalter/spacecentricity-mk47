@@ -17,6 +17,7 @@ tap_dance_action_t tap_dance_actions[TD_COUNT] = {
     // Character Tap Dances
     // ─────────────────────────────────────────────────────────────
     [TD_ASTR]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, astr_finished,  astr_reset),
+    [TD_AT]    = ACTION_TAP_DANCE_FN_ADVANCED(NULL, at_finished,    at_reset),
     [TD_BSPC]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, bspc_finished,  bspc_reset),
     [TD_C]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL, c_finished,     c_reset),
     [TD_CARET] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, caret_finished, caret_reset),
@@ -36,6 +37,17 @@ tap_dance_action_t tap_dance_actions[TD_COUNT] = {
     [TD_SPC]   = ACTION_TAP_DANCE_FN_ADVANCED(NULL, spc_finished,   spc_reset),
     [TD_TAB]   = ACTION_TAP_DANCE_FN_ADVANCED(NULL, tab_finished,   tab_reset),
     [TD_U]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL, u_finished,     u_reset),
+
+    [TD_0]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL, zero_finished,  zero_reset),
+    [TD_1]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL, one_finished,   one_reset),
+    [TD_2]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL, two_finished,   two_reset),
+    [TD_3]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL, three_finished, three_reset),
+    [TD_4]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL, four_finished,  four_reset),
+    [TD_5]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL, five_finished,  five_reset),
+    [TD_6]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL, six_finished,   six_reset),
+    [TD_7]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL, seven_finished, seven_reset),
+    [TD_8]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL, eight_finished, eight_reset),
+    [TD_9]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL, nine_finished,  nine_reset),
 
     [TD_CAPS]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, caps_finished, caps_reset),
 

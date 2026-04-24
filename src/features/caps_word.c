@@ -3,7 +3,7 @@
 
 // Caps Word behavior callback. Keys that should NOT deactivate Caps Word
 // (digits, Backspace, Delete, arrows, underscore, hyphen) must be listed here.
-// NOTE: Tap‑dance keys must be included explicitly since they bypass normal keycodes;
+// NOTE: Tap-dance keys must be included explicitly since they bypass normal keycodes;
 // refer to the constants defined in keymap.h.
 bool caps_word_press_user(uint16_t keycode) {
     switch (keycode) {
