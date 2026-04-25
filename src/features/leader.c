@@ -13,7 +13,8 @@ leader_state_t leader_state = {
     .active = false,
     .done = false,
     .success = false,
-    .replay_history = true,
+    .prev_active_replay_mode = LEADER_REPLAY_HISTORY,
+    .replay_mode = LEADER_REPLAY_HISTORY,
     .flash_timer = 0,
     .buffer = {0},
     .size = 0,
@@ -35,33 +36,48 @@ static const sequence_entry_t emoji_table[] = {
     { {KC_A, KC_L},     2, CHAR_EMOJI_ALARM },
     { {KC_A, KC_N},     2, CHAR_EMOJI_HALO },
     { {KC_A, KC_P},     2, CHAR_EMOJI_AIRPLANE },
+    { {KC_A, KC_U},     2, CHAR_EMOJI_AUTOMOBILE },
     { {KC_B, 0},        1, CHAR_EMOJI_BLUSH },
     { {KC_B, KC_E},     2, CHAR_EMOJI_BULLSEYE },
+    { {KC_B, KC_I},     2, CHAR_EMOJI_BICYCLE },
     { {KC_B, KC_K},     2, CHAR_EMOJI_BLOWING_KISS },
     { {KC_B, KC_R},     2, CHAR_EMOJI_BRAIN },
     { {KC_B, KC_T},     2, CHAR_EMOJI_BED },
-    { {KC_C, 0},        1, CHAR_EMOJI_CRY },
+    { {KC_B, KC_U},     2, CHAR_EMOJI_BUS },
+    { {KC_C, 0},        1, CHAR_EMOJI_CRYING },
     { {KC_C, KC_A},     2, CHAR_EMOJI_CAMERA },
+    { {KC_C, KC_B},     2, CHAR_EMOJI_CLIPBOARD },
+    { {KC_C, KC_C},     1, CHAR_EMOJI_CRYING_LOUDLY },
+    { {KC_C, KC_D},     2, CHAR_EMOJI_CLOUD },
     { {KC_C, KC_H},     2, CHAR_EMOJI_CHECK_MARK },
     { {KC_C, KC_L},     2, CHAR_EMOJI_CLAPPING },
     { {KC_C, KC_M},     2, CHAR_EMOJI_CHECK_MARK_BUTTON },
     { {KC_C, KC_O},     2, CHAR_EMOJI_COMPASS },
+    { {KC_C, KC_U},     2, CHAR_EMOJI_SCISSORS },
     { {KC_D, 0},        1, CHAR_EMOJI_SKULL },
     { {KC_D, KC_A},     2, CHAR_EMOJI_CALENDAR },
     { {KC_D, KC_E},     2, CHAR_EMOJI_DEVIL },
+    { {KC_D, KC_T},     2, CHAR_EMOJI_DESKTOP_COMPUTER },
+    { {KC_D, KC_R},     2, CHAR_EMOJI_CUP_WITH_STRAW },
     { {KC_E, 0},        1, CHAR_EMOJI_EYES },
     { {KC_E, KC_A},     2, CHAR_EMOJI_EARTH },
     { {KC_E, KC_E},     2, CHAR_EMOJI_DOUBLE_EXCLAMATION },
+    { {KC_E, KC_X},     2, CHAR_EMOJI_EXCLAMATION },
     { {KC_F, 0},        1, CHAR_EMOJI_FIRE },
+    { {KC_F, KC_D},     2, CHAR_EMOJI_FLOPPY_DISK },
+    { {KC_F, KC_F},     2, CHAR_EMOJI_FILE_FOLDER },
+    { {KC_F, KC_O},     2, CHAR_EMOJI_FILE_FOLDER_OPEN },
     { {KC_F, KC_P},     2, CHAR_EMOJI_FACEPALM },
     { {KC_F, KC_R},     2, CHAR_EMOJI_FRUSTRATED },
     { {KC_G, 0},        1, CHAR_EMOJI_GRIN },
     { {KC_G, KC_I},     2, CHAR_EMOJI_GIFT },
+    { {KC_G, KC_R},     2, CHAR_EMOJI_NAUSEATED },
     { {KC_G, KC_S},     2, CHAR_EMOJI_GRIN_SWEAT },
     { {KC_H, 0},        1, CHAR_EMOJI_HEART },
     { {KC_H, KC_A},     2, CHAR_EMOJI_HAMBURGER },
     { {KC_H, KC_E},     2, CHAR_EMOJI_HEART_EYES },
     { {KC_H, KC_H},     2, CHAR_EMOJI_HUG },
+    { {KC_H, KC_L},     2, CHAR_EMOJI_LINK },
     { {KC_H, KC_O},     2, CHAR_EMOJI_HOUSE },
     { {KC_H, KC_S},     2, CHAR_EMOJI_HANDSHAKE },
     { {KC_H, KC_T},     2, CHAR_EMOJI_HOLDING_TEARS },
@@ -71,19 +87,22 @@ static const sequence_entry_t emoji_table[] = {
     { {KC_I, KC_C},     2, CHAR_EMOJI_ICE_CUBE },
     { {KC_I, KC_N},     2, CHAR_EMOJI_INTERNET },
     { {KC_J, 0},        1, CHAR_EMOJI_CLOWN },
+    { {KC_J, KC_S},     2, CHAR_EMOJI_JOYSTICK },
     { {KC_K, 0},        1, CHAR_EMOJI_KEY },
+    { {KC_K, KC_B},     2, CHAR_EMOJI_KEYBOARD },
     { {KC_L, 0},        1, CHAR_EMOJI_LAUGH },
     { {KC_L, KC_B},     2, CHAR_EMOJI_LIGHT_BULB },
     { {KC_L, KC_C},     2, CHAR_EMOJI_LOCK_CLOSED },
-    { {KC_L, KC_I},     2, CHAR_EMOJI_LINK },
+    { {KC_L, KC_I},     2, CHAR_EMOJI_CLOUD_WITH_LIGHTNING },
     { {KC_L, KC_O},     2, CHAR_EMOJI_LOCK_OPEN },
     { {KC_L, KC_T},     2, CHAR_EMOJI_LAPTOP },
     { {KC_M, 0},        1, CHAR_EMOJI_EXPLODING_HEAD },
     { {KC_M, KC_B},     2, CHAR_EMOJI_MONEY_BAG },
+    { {KC_M, KC_C},     2, CHAR_EMOJI_MOTORCYCLE },
     { {KC_M, KC_E},     2, CHAR_EMOJI_MEMO },
     { {KC_M, KC_F},     2, CHAR_EMOJI_MELTING_FACE },
     { {KC_M, KC_G},     2, CHAR_EMOJI_MAGNIFYING_GLASS },
-    { {KC_M, KC_S},     2, CHAR_EMOJI_MILKSHAKE },
+    { {KC_M, KC_S},     2, CHAR_EMOJI_MOTOR_SCOOTER },
     { {KC_M, KC_U},     2, CHAR_EMOJI_MUSICAL_NOTES },
     { {KC_M, KC_W},     2, CHAR_EMOJI_MILKY_WAY },
     { {KC_N, 0},        1, CHAR_EMOJI_CRESCENT_MOON },
@@ -94,8 +113,11 @@ static const sequence_entry_t emoji_table[] = {
     { {KC_O, KC_K},     2, CHAR_EMOJI_OK },
     { {KC_P, 0},        1, CHAR_EMOJI_POOP },
     { {KC_P, KC_H},     2, CHAR_EMOJI_PHONE },
+    { {KC_P, KC_K},     2, CHAR_EMOJI_PACKAGE },
+    { {KC_P, KC_L},     2, CHAR_EMOJI_PLEADING },
     { {KC_P, KC_P},     2, CHAR_EMOJI_PUSHPIN_ROUND },
-    { {KC_P, KC_R},     2, CHAR_EMOJI_PRAY },
+    { {KC_P, KC_R},     2, CHAR_EMOJI_PRINTER },
+    { {KC_P, KC_T},     2, CHAR_EMOJI_PRAY },
     { {KC_Q, 0},        1, CHAR_EMOJI_THINK },
     { {KC_Q, KC_M},     2, CHAR_EMOJI_QUESTION_MARK },
     { {KC_R, 0},        1, CHAR_EMOJI_ROBOT },
@@ -103,9 +125,13 @@ static const sequence_entry_t emoji_table[] = {
     { {KC_R, KC_B},     2, CHAR_EMOJI_RAISED_EYEBROW },
     { {KC_R, KC_C},     2, CHAR_EMOJI_RECYCLE },
     { {KC_R, KC_F},     2, CHAR_EMOJI_TRIANGULAR_FLAG },
+    { {KC_R, KC_O},     2, CHAR_EMOJI_ROTFL },
     { {KC_S, 0},        1, CHAR_EMOJI_SMILE },
+    { {KC_S, KC_C},     2, CHAR_EMOJI_SCOOTER },
+    { {KC_S, KC_E},     2, CHAR_EMOJI_STARSTRUCK },
     { {KC_S, KC_F},     2, CHAR_EMOJI_MOAI },
     { {KC_S, KC_G},     2, CHAR_EMOJI_SUNGLASSES },
+    { {KC_S, KC_H},     2, CHAR_EMOJI_SHUSH },
     { {KC_S, KC_L},     2, CHAR_EMOJI_SLEEPING },
     { {KC_S, KC_M},     2, CHAR_EMOJI_SMIRK },
     { {KC_S, KC_N},     2, CHAR_EMOJI_SNOWFLAKE },
@@ -117,10 +143,13 @@ static const sequence_entry_t emoji_table[] = {
     { {KC_T, KC_A},     2, CHAR_EMOJI_TACO },
     { {KC_T, KC_D},     2, CHAR_EMOJI_THUMB_DOWN },
     { {KC_T, KC_E},     2, CHAR_EMOJI_THERMOMETER },
+    { {KC_T, KC_R},     2, CHAR_EMOJI_TRAIN },
     { {KC_T, KC_T},     2, CHAR_EMOJI_THUMB_DOWN },
     { {KC_T, KC_U},     2, CHAR_EMOJI_THUMB_UP },
     { {KC_U, 0},        1, CHAR_EMOJI_UPSIDE_DOWN },
     { {KC_V, 0},        1, CHAR_EMOJI_PEACE },
+    { {KC_V, KC_O},     2, CHAR_EMOJI_VOMITING },
+    { {KC_V, KC_X},     2, CHAR_EMOJI_SPIRAL_EYES },
     { {KC_W, 0},        1, CHAR_EMOJI_WINK },
     { {KC_W, KC_A},     2, CHAR_EMOJI_WARNING },
     { {KC_W, KC_C},     2, CHAR_EMOJI_JOKER },
@@ -134,6 +163,36 @@ static const sequence_entry_t emoji_table[] = {
     { {KC_Z, 0},        1, CHAR_EMOJI_PIZZA },
     { {KC_Z, KC_Z},     2, CHAR_EMOJI_ZZZ },
 };
+
+// ─────────────────────────────────────────────────────────────
+// Leader Replay Private Globals
+// ─────────────────────────────────────────────────────────────
+
+// Circular buffer of history entries
+static leader_entry_t leader_history[LEADER_HISTORY_SIZE];
+
+// Index of the next history slot to write into. Wraps around using modulo arithmetic.
+static uint8_t leader_history_index = 0;
+
+// Leader favorites save slots
+// TIP: Replace these init values w/ your favorites if you don't want these items blank when
+// booting keyboard.
+static leader_entry_t leader_favorites[LEADER_FAVORITES_SIZE] = {
+    { LEAD_NONE, 0 },
+    { LEAD_NONE, 0 },
+    { LEAD_NONE, 0 },
+    { LEAD_NONE, 0 },
+    { LEAD_NONE, 0 },
+    { LEAD_NONE, 0 },
+    { LEAD_NONE, 0 },
+    { LEAD_NONE, 0 },
+    { LEAD_NONE, 0 },
+    { LEAD_NONE, 0 },
+};
+
+// ─────────────────────────────────────────────────────────────
+// Leader Replay Function Definitions
+// ─────────────────────────────────────────────────────────────
 
 // Execute a stored leader sequence action.
 // The correct macro is chosen based on the entry's category.
@@ -154,32 +213,55 @@ static void run_leader_entry(const leader_entry_t entry) {
     }
 }
 
-// ─────────────────────────────────────────────────────────────
+// Replay a Leader entry (history or favorites) based on the current replay mode.
+void replay_leader(const uint8_t index) {
+    if (leader_state.replay_mode != LEADER_REPLAY_OFF) {
+        leader_state.replay_mode == LEADER_REPLAY_HISTORY ? run_leader_history(index)
+                                                          : run_leader_favorites(index);
+    }
+}
+
+// ──────────────────────────────
+// Leader Replay Toggles
+// ──────────────────────────────
+
+// Toggle replay mode on/off, restoring the last active mode when re-enabled.
+void toggle_leader_replay(void) {
+    if (leader_state.replay_mode == LEADER_REPLAY_OFF) {
+        leader_state.replay_mode = leader_state.prev_active_replay_mode;
+    } else {
+        leader_state.prev_active_replay_mode = leader_state.replay_mode;
+        leader_state.replay_mode = LEADER_REPLAY_OFF;
+    }
+}
+
+// Switch between History and Favorites replay (only when replay is active).
+void toggle_leader_replay_favorites(void) {
+    if (leader_state.replay_mode != LEADER_REPLAY_OFF) {
+        leader_state.replay_mode =
+            (leader_state.replay_mode == LEADER_REPLAY_HISTORY) ? LEADER_REPLAY_FAVORITES
+                                                                : LEADER_REPLAY_HISTORY;
+    }
+}
+
+// ──────────────────────────────
 // Leader History
-// ─────────────────────────────────────────────────────────────
-//
-// This subsystem records the last LEADER_HISTORY_SIZE successful
-// leader actions (emoji insertions, surround macros,
-// dev-note macros, etc.).
-//
-// Each entry stores:
-//   - the category of leader action (emoji, surround, dev note)
-//   - the specific macro name/value used
-//
-// The history is implemented as a ring buffer so it always
-// contains the most recent LEADER_HISTORY_SIZE entries without
-// shifting or reallocating memory.
-//
-// History replay occurs on _UPPER layer via hold tap-dance
-// on the number keys.
+// ──────────────────────────────
 
-// Circular buffer of history entries
-static leader_entry_t leader_history[LEADER_HISTORY_SIZE];
+/* The history subsystem records the last LEADER_HISTORY_SIZE successful leader actions
+ * (emoji insertions, surround macros, dev-note macros, etc.).
+ *
+ * Each entry stores:
+ *   - the category of leader action (emoji, surround, dev note)
+ *   - the specific macro name/value used
+ *
+ * The history is implemented as a ring buffer so it always contains the most recent
+ * LEADER_HISTORY_SIZE entries without shifting or reallocating memory.
+ *
+ * History replay occurs on _UPPER layer via hold tap-dance on the number keys.
+ */
 
-// Index of the next slot to write into. Wraps around using modulo arithmetic.
-static uint8_t leader_history_index = 0;
-
-// Returns true if two leader_entry_t values represent the same entry
+// Returns true if two leader_entry_t values represent the same entry.
 static bool equals(const leader_entry_t *a, const leader_entry_t *b) {
     return a->name == b->name && a->leader == b->leader;
 }
@@ -217,7 +299,7 @@ static void leader_history_push(leader_t leader, uint16_t name) {
 
 // Execute a stored history entry.
 // This is called from tap-dance or other triggers.
-void run_leader_history_entry(const uint8_t index) {
+void run_leader_history(const uint8_t index) {
     if (index < LEADER_HISTORY_SIZE) {
         leader_entry_t *e = leader_history_get(index);
         if (e && e->leader != LEAD_NONE) {
@@ -226,31 +308,16 @@ void run_leader_history_entry(const uint8_t index) {
     }
 }
 
-// ─────────────────────────────────────────────────────────────
+// ──────────────────────────────
 // Leader Favorites
-// ─────────────────────────────────────────────────────────────
+// ──────────────────────────────
 
-// TIP: Replace these init values w/ your favorites if you don't want these items blank when
-// booting keyboard.
-static leader_entry_t favorites[LEADER_FAVORITES_SIZE] = {
-    { LEAD_NONE, 0 },
-    { LEAD_NONE, 0 },
-    { LEAD_NONE, 0 },
-    { LEAD_NONE, 0 },
-    { LEAD_NONE, 0 },
-    { LEAD_NONE, 0 },
-    { LEAD_NONE, 0 },
-    { LEAD_NONE, 0 },
-    { LEAD_NONE, 0 },
-    { LEAD_NONE, 0 },
-};
-
-// Saves the last Leader sequence action into a given favorites index
-void save_leader_favorite(const uint8_t index) {
+// Saves the last Leader sequence action into a given favorites index.
+void save_leader_favorites(const uint8_t index) {
     if (index < LEADER_FAVORITES_SIZE) {
         const leader_entry_t *last_ptr = leader_history_get(0);
         if (last_ptr && last_ptr->leader != LEAD_NONE) {
-            favorites[index] = *last_ptr;
+            leader_favorites[index] = *last_ptr;
         }
     }
 }
@@ -258,12 +325,12 @@ void save_leader_favorite(const uint8_t index) {
 // Executes a stored favorites entry.
 void run_leader_favorites(const uint8_t index) {
     if (index < LEADER_FAVORITES_SIZE) {
-        run_leader_entry(favorites[index]);
+        run_leader_entry(leader_favorites[index]);
     }
 }
 
 // ─────────────────────────────────────────────────────────────
-// Leader Sequence Handler Functions
+// Leader Sequence Handler Function Definitions
 // ─────────────────────────────────────────────────────────────
 
 // Handles emoji Leader sequences; returns true on success.
@@ -281,6 +348,7 @@ static bool emoji_sequences(void) {
         // first and second key comparisons. This keeps the lookup O(N) but
         // significantly reduces the average number of iterations.
         //
+        // OPTIMIZE:
         // If the table grows much larger, consider switching to a 2D lookup
         // table or trie for O(1) or O(k) matching.
         if (leader_state.buffer[1] < e->seq[0]) {
@@ -363,10 +431,14 @@ static bool surround_sequences(void) {
 // Table of available annotation sequences leader sequences
 static const sequence_entry_t notes_table[] = {
     // Sequence  Length  Annotation
+    { {KC_B, 0},      1, DEV_BUG },
+    { {KC_C, 0},      2, DEV_CLEANUP },
+    { {KC_D, 0},      2, DEV_DEPRECATED },
     { {KC_F, 0},      1, DEV_FIXME },
-    { {KC_H, 0},      1, DEV_TIP },
-    { {KC_I, 0},      1, DEV_INFO },
+    { {KC_H, 0},      1, DEV_HACK },
+    { {KC_I, 0},      1, DEV_IMPORTANT },
     { {KC_N, 0},      1, DEV_NOTE },
+    { {KC_O, 0},      1, DEV_OPTIMIZE },
     { {KC_R, 0},      1, DEV_REF },
     { {KC_S, 0},      2, DEV_SECTION },
     { {KC_T, 0},      1, DEV_TODO },

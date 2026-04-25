@@ -17,10 +17,11 @@
 - Expanded the Leader emoji set with several new sequences.
   - Completed full coverage for `a`–`z` and added select two‑character combinations.
   - These sequences will likely need to be tuned after regular use.
-- Added Leader Key **History**: stores the last 10 executed macros. Accessible on the Upper layer by holding the number keys.
-- Added Leader Key **Favorites**: store up to 10 favorite macros, also accessible on the Upper layer via the number keys.
-  - Use the Favorites toggle (hold `@`) to switch between replaying Favorites and replaying History. Default mode replays the last 10 History items.
+- Added Leader Key **History** replay, which stores the last 10 executed macros. Accessible on the **Upper** layer by holding the number keys.
+- Added Leader Key **Favorites** replay, allowing up to 10 favorite macros, also accessed on the **Upper** layer via the number keys.
+  - Use the Favorites toggle (**hold** `@`) to switch between replaying Favorites and replaying History. Default mode replays the last 10 History items.
   - To assign a Favorite, **tap‑and‑hold** a number key to save the most recent Leader sequence.
+- Added on/off toggle for Leader Replay; **tap‑and‑hold** the `@` key to enable or disable it.
 - Introduced preprocessor guards across the keymap to ensure optional QMK features (RGB Matrix, Caps Word, Leader, Mouse Keys) can be safely disabled without breaking the build.
   - Tap Dance remains unguarded because it is a core dependency of this keymap.
 

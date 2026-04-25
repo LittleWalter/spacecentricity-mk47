@@ -187,19 +187,31 @@ void keyword_macro(const keyword_t keyword, const bool with_space) {
 void notes_macro(const dev_notes_t note) {
     mod_state_t saved = mod_state_save_and_clear();
 
+    bool with_space = true;
     switch (note) {
-        case DEV_FIXME:   SEND_STRING("FIXME: ");   break;
-        case DEV_INFO:    SEND_STRING("INFO: ");    break;
-        case DEV_NOTE:    SEND_STRING("NOTE: ");    break;
-        case DEV_REF:     SEND_STRING("REF: ");     break;
-        case DEV_TIP:     SEND_STRING("TIP: ");     break;
-        case DEV_TODO:    SEND_STRING("TODO: ");    break;
-        case DEV_WARNING: SEND_STRING("WARNING: "); break;
+        case DEV_BUG:        SEND_STRING("BUG:");        break;
+        case DEV_CLEANUP:    SEND_STRING("CLEANUP:");    break;
+        case DEV_DEPRECATED: SEND_STRING("DEPRECATED:"); break;
+        case DEV_FIXME:      SEND_STRING("FIXME:");      break;
+        case DEV_HACK:       SEND_STRING("HACK:");       break;
+        case DEV_IMPORTANT:  SEND_STRING("IMPORTANT:");  break;
+        case DEV_NOTE:       SEND_STRING("NOTE:");       break;
+        case DEV_OPTIMIZE:   SEND_STRING("OPTIMIZE:");   break;
+        case DEV_REF:        SEND_STRING("REF:");        break;
+        case DEV_TIP:        SEND_STRING("TIP:");        break;
+        case DEV_TODO:       SEND_STRING("TODO:");       break;
+        case DEV_WARNING:    SEND_STRING("WARNING:");    break;
         case DEV_SECTION: // A 78-column C-style section header
             SEND_STRING("// ---------------------------------------------------------------------------");
             tap_code(KC_ENT);
+            with_space = false;
             break;
         default: break;
     }
+
+    if (with_space) {
+        tap_code(KC_SPC);
+    }
+
     mod_state_restore(&saved);
 }

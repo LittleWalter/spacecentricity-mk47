@@ -1062,7 +1062,10 @@ void at_finished(tap_dance_state_t *state, void *user_data) {
 #ifdef LEADER_ENABLE
         case TD_SINGLE_HOLD:
             // Toggle leader history or favorites on number keys
-            leader_state.replay_history = !leader_state.replay_history;
+            toggle_leader_replay_favorites();
+            break;
+        case TD_DOUBLE_HOLD:
+            toggle_leader_replay();
             break;
 #endif
         default: break;
@@ -1093,13 +1096,8 @@ void zero_finished(tap_dance_state_t *state, void *user_data) {
     zero_tap_state.state = cur_dance(state);
     switch (zero_tap_state.state) {
 #ifdef LEADER_ENABLE
-        case TD_SINGLE_HOLD:
-            leader_state.replay_history ? run_leader_history_entry(0)
-                                        : run_leader_favorites(0);
-            break;
-        case TD_DOUBLE_HOLD:
-            save_leader_favorite(0);
-            break;
+        case TD_SINGLE_HOLD: replay_leader(0);         break;
+        case TD_DOUBLE_HOLD: save_leader_favorites(0); break;
 #endif
         case TD_TRIPLE_TAP:
             tap_code(KC_0);
@@ -1132,13 +1130,8 @@ void one_finished(tap_dance_state_t *state, void *user_data) {
     one_tap_state.state = cur_dance(state);
     switch (one_tap_state.state) {
 #ifdef LEADER_ENABLE
-        case TD_SINGLE_HOLD:
-            leader_state.replay_history ? run_leader_history_entry(1)
-                                        : run_leader_favorites(1);
-            break;
-        case TD_DOUBLE_HOLD:
-            save_leader_favorite(1);
-            break;
+        case TD_SINGLE_HOLD: replay_leader(1);         break;
+        case TD_DOUBLE_HOLD: save_leader_favorites(1); break;
 #endif
         case TD_TRIPLE_TAP:
             tap_code(KC_1);
@@ -1171,13 +1164,8 @@ void two_finished(tap_dance_state_t *state, void *user_data) {
     two_tap_state.state = cur_dance(state);
     switch (two_tap_state.state) {
 #ifdef LEADER_ENABLE
-        case TD_SINGLE_HOLD:
-            leader_state.replay_history ? run_leader_history_entry(2)
-                                        : run_leader_favorites(2);
-            break;
-        case TD_DOUBLE_HOLD:
-            save_leader_favorite(2);
-            break;
+        case TD_SINGLE_HOLD: replay_leader(2);         break;
+        case TD_DOUBLE_HOLD: save_leader_favorites(2); break;
 #endif
         case TD_TRIPLE_TAP:
             tap_code(KC_2);
@@ -1210,13 +1198,8 @@ void three_finished(tap_dance_state_t *state, void *user_data) {
     three_tap_state.state = cur_dance(state);
     switch (three_tap_state.state) {
 #ifdef LEADER_ENABLE
-        case TD_SINGLE_HOLD:
-            leader_state.replay_history ? run_leader_history_entry(3)
-                                        : run_leader_favorites(3);
-            break;
-        case TD_DOUBLE_HOLD:
-            save_leader_favorite(3);
-            break;
+        case TD_SINGLE_HOLD: replay_leader(3);         break;
+        case TD_DOUBLE_HOLD: save_leader_favorites(3); break;
 #endif
         case TD_TRIPLE_TAP:
             tap_code(KC_3);
@@ -1249,13 +1232,8 @@ void four_finished(tap_dance_state_t *state, void *user_data) {
     four_tap_state.state = cur_dance(state);
     switch (four_tap_state.state) {
 #ifdef LEADER_ENABLE
-        case TD_SINGLE_HOLD:
-            leader_state.replay_history ? run_leader_history_entry(4)
-                                        : run_leader_favorites(4);
-            break;
-        case TD_DOUBLE_HOLD:
-            save_leader_favorite(4);
-            break;
+        case TD_SINGLE_HOLD: replay_leader(4);         break;
+        case TD_DOUBLE_HOLD: save_leader_favorites(4); break;
 #endif
         case TD_TRIPLE_TAP:
             tap_code(KC_4);
@@ -1288,13 +1266,8 @@ void five_finished(tap_dance_state_t *state, void *user_data) {
     five_tap_state.state = cur_dance(state);
     switch (five_tap_state.state) {
 #ifdef LEADER_ENABLE
-        case TD_SINGLE_HOLD:
-            leader_state.replay_history ? run_leader_history_entry(5)
-                                        : run_leader_favorites(5);
-            break;
-        case TD_DOUBLE_HOLD:
-            save_leader_favorite(5);
-            break;
+        case TD_SINGLE_HOLD: replay_leader(5);         break;
+        case TD_DOUBLE_HOLD: save_leader_favorites(5); break;
 #endif
         case TD_TRIPLE_TAP:
             tap_code(KC_5);
@@ -1327,13 +1300,8 @@ void six_finished(tap_dance_state_t *state, void *user_data) {
     six_tap_state.state = cur_dance(state);
     switch (six_tap_state.state) {
 #ifdef LEADER_ENABLE
-        case TD_SINGLE_HOLD:
-            leader_state.replay_history ? run_leader_history_entry(6)
-                                        : run_leader_favorites(6);
-            break;
-        case TD_DOUBLE_HOLD:
-            save_leader_favorite(6);
-            break;
+        case TD_SINGLE_HOLD: replay_leader(6);         break;
+        case TD_DOUBLE_HOLD: save_leader_favorites(6); break;
 #endif
         case TD_TRIPLE_TAP:
             tap_code(KC_6);
@@ -1366,13 +1334,8 @@ void seven_finished(tap_dance_state_t *state, void *user_data) {
     seven_tap_state.state = cur_dance(state);
     switch (seven_tap_state.state) {
 #ifdef LEADER_ENABLE
-        case TD_SINGLE_HOLD:
-            leader_state.replay_history ? run_leader_history_entry(7)
-                                        : run_leader_favorites(7);
-            break;
-        case TD_DOUBLE_HOLD:
-            save_leader_favorite(7);
-            break;
+        case TD_SINGLE_HOLD: replay_leader(7);         break;
+        case TD_DOUBLE_HOLD: save_leader_favorites(7); break;
 #endif
         case TD_TRIPLE_TAP:
             tap_code(KC_7);
@@ -1405,13 +1368,8 @@ void eight_finished(tap_dance_state_t *state, void *user_data) {
     eight_tap_state.state = cur_dance(state);
     switch (eight_tap_state.state) {
 #ifdef LEADER_ENABLE
-        case TD_SINGLE_HOLD:
-            leader_state.replay_history ? run_leader_history_entry(8)
-                                        : run_leader_favorites(8);
-            break;
-        case TD_DOUBLE_HOLD:
-            save_leader_favorite(8);
-            break;
+        case TD_SINGLE_HOLD: replay_leader(8);         break;
+        case TD_DOUBLE_HOLD: save_leader_favorites(8); break;
 #endif
         case TD_TRIPLE_TAP:
             tap_code(KC_8);
@@ -1444,13 +1402,8 @@ void nine_finished(tap_dance_state_t *state, void *user_data) {
     nine_tap_state.state = cur_dance(state);
     switch (nine_tap_state.state) {
 #ifdef LEADER_ENABLE
-        case TD_SINGLE_HOLD:
-            leader_state.replay_history ? run_leader_history_entry(9)
-                                        : run_leader_favorites(9);
-            break;
-        case TD_DOUBLE_HOLD:
-            save_leader_favorite(9);
-            break;
+        case TD_SINGLE_HOLD: replay_leader(9);         break;
+        case TD_DOUBLE_HOLD: save_leader_favorites(9); break;
 #endif
         case TD_TRIPLE_TAP:
             tap_code(KC_9);

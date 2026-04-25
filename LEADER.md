@@ -22,29 +22,54 @@ While the Leader layer is active, the RGB matrix shifts to a dim navy blue to in
 | Sequence successful       | 🟢 Green | `0, 255, 0` | A valid Leader sequence was recognized     |
 | Sequence failed / timeout | 🔴 Red   | `255, 0, 0` | No matching sequence or sequence timed out |
 
+## Leader Replay
+
+Leader actions can be replayed from either **History** or **Favorites** via the holds of the **Upper** layer’s number keys.
+
+![Upper: Primary Numpad Layer](assets/03_UPPER.png)
+
+The `@` key toggles replay modes and provides visual feedback:
+
+| Action | `@` Key RGB | Meaning |
+|--------------------|-----|---------|
+| Tap-and-Hold | 🔴 Red when off | Replay **off** |
+| Hold | 🟢 Green | Leader **Favorites** mode |
+
+When the replay mode key is **red** (off), number-key holds do nothing. This eliminates accidental activation of Leader actions during normal typing.
+
+When the replay mode key is **green**, number‑key holds trigger Favorites; otherwise, they replay **History**
+
+By default, the keyboard boots into **History** replay mode with empty History and Favorites. These values are stored only in RAM to avoid unnecessary EEPROM wear.
+
 ### Leader History
 
-Each time a Leader sequence completes successfully, the keymap stores it in a rolling history of the last ten actions. Entries record both the _category_ of action (emoji, surround pair, developer annotation) and the _specific macro_ invoked. RGB matrix sequences are intentionally excluded.
+Each time a Leader sequence completes successfully, the keymap stores it in a rolling history of the **last ten actions**. Each entry records:
 
-History is replayed not through Leader itself, but via **hold‑actions on the number keys** in the **UPPER** layer:
+* The _category_ (emoji, surround pair, developer annotation)
+* The _specific macro_ invoked
+
+History is replayed not through Leader itself, but via **hold‑actions on the number keys** in the **Upper** layer:
 
 * Hold `0` → most recent
 * Hold `1` → second most recent
 * Hold `2` → third most recent
 * …up to `9`
 
-This provides a fast way to repeat frequently used Leader macros without re‑entering their sequences.
+This provides a fast way to repeat your most recent Leader macros without re‑entering their sequences.
 
 ### Leader Favorites
 
-Leader Favorites allow you to pin up to ten frequently used Leader actions for quick access. Like History, Favorites are replayed through **hold‑actions on the number keys** in the **UPPER** layer, using the same `0`–`9` positions.
+Favorites let you pin up to **ten** frequently used Leader actions for quick access.
 
-Favorites and History share the same keys, so the keyboard provides a mode toggle:
+Favorites use the _same number‑key holds_ (`0`–`9`) as History on the **Upper** layer.
 
-* **Hold** `@` → switch between **Favorites** and **History** replay
-  * The key’s RGB turns **green** when Favorites mode is active
+Because History and Favorites share the same keys, the keyboard uses a **mode toggle** (the `@` key) to switch between them.
 
-To assign a Favorite, complete a Leader sequence, then **tap‑and‑hold** a number key (`0`–`9`) to save the most recent action into that slot.
+To assign a Favorite:
+
+* Complete a Leader sequence.
+* **Tap‑and‑hold** a number key (`0`–`9`).
+* The most recent Leader action is saved into that Favorite slot.
 
 ## Supported Leader Sequences
 
@@ -52,118 +77,143 @@ To assign a Favorite, complete a Leader sequence, then **tap‑and‑hold** a nu
 
 ### Emoji Sequences
 
-Emoji sequences are prefixed with a second tap of the leader key (`★`). (Technically this is a `KC_NO` placeholder in the same physical position as the Leader key.)
+Emoji sequences are prefixed with a second tap of the leader key (`★`). (Internally, this is implemented as a `KC_NO` placeholder in the same physical position as the Leader key.)
 
-Below is a list of commonly used emoji characters and a few fun ones.
+This system provides fast, mnemonic access to a curated set of commonly used emoji—both practical ones (`🔗`, `✔`) and a few fun extras (`🌮`, `🗿`). The goal is to build intuitive muscle memory for the expressions and symbols you reach for most.
 
-Multi‑letter mnemonics are used when a single letter is already assigned or when clarity improves recall.
+Multi‑letter mnemonics are used when a single letter is already taken or when they improve clarity and recall. Exact sequences may be refined after some use.
 
-| Sequence         | Mnemonic               | Emoji                              |
-|------------------|------------------------|------------------------------------|
-| `★★a`            | Angry                  | 😡 Red Angry Face                  |
-| `★★aa`           | Angry Angry            | 🤬 Face with Symbols Over Mouth    |
-| `★★al`           | Alarm                  | ⏰ Alarm Clock                     |
-| `★★ap`           | Airplane               | ✈️ Airplane                        |
-| `★★an`           | Angel                  | 😇 Smiling Face with Halo          |
-| `★★b`            | Blush                  | 😊 Smiling Face with Smiling Eyes  |
-| `★★be`           | Bullseye               | 🎯 Bullseye                        |
-| `★★bk`           | Blow Kiss              | 😘 Face Blowing a Kiss             |
-| `★★br`           | Brain                  | 🧠 Brain                           |
-| `★★bt`           | Bedtime                | 🛏️ Bed                             |
-| `★★c`            | Cry/Crying             | 😭 Loudly Crying Face              |
-| `★★ca`           | Camera                 | 📷 Camera                          |
-| `★★ch`           | Check                  | ✔️ Check Mark Symbol               |
-| `★★cl`           | Clap                   | 👏 Clapping                        |
-| `★★cm`           | Check Mark             | ✅ Check Mark Button               |
-| `★★co`           | Compass                | 🧭 Compass                         |
-| `★★d`            | Death/Dead/Dying       | 💀 Skull                           |
-| `★★da`           | Date                   | 📅 Calendar                        |
-| `★★de`           | Devil                  | 😈 Smiling Face with Horns         |
-| `★★e`            | Eyes                   | 👀 Eyes                            |
-| `★★ea`           | Earth                  | 🌎 Globe Showing Americas          |
-| `★★ee`           | Exclamation Exclamation| ‼️Red Double Exclamation           |
-| `★★f`            | Fire                   | 🔥 Fire                            |
-| `★★fp`           | Facepalm               | 🤦 Person Facepalming              |
-| `★★fr`           | Frustrated             | 😤 Face with Steam From Nose       |
-| `★★g`            | Grin/Grinning          | 😁 Beaming Face with Smiling Eyes  |
-| `★★gi`           | Gift                   | 🎁 Present                         |
-| `★★gs`           | Grin w/ Sweat          | 😅 Grinning Face with Sweat        |
-| `★★h`            | Heart                  | ❤️ Red Heart                       |
-| `★★ha`           | Hamburger              | 🍔 Hamburger                       |
-| `★★he`           | Heart Eyes             | 😍 Smiling Face with Heart-Eyes    |
-| `★★hh`           | Huge Hug               | 🤗 Hugging Face                    |
-| `★★ho`           | Home/House             | 🏠 House                           |
-| `★★hs`           | Handshake              | 🤝 Handshake                       |
-| `★★ht`           | Holding Tears          | 🥹 Smiling Face Holding Back Tears |
-| `★★hu`           | Hundred                | 💯 Hundred Points Symbol           |
-| `★★hv`           | High Voltage           | ⚡️ High Voltage/Lightning Bolt     |
-| `★★i`            | Ice Cream              | 🍦 Soft Ice Cream                  |
-| `★★ic`           | Ice Cube               | 🧊 Ice                             |
-| `★★in`           | Internet               | 🌐 Globe with Meridians            |
-| `★★j`            | Joker/Jester           | 🤡 Clown                           |
-| `★★k`            | Key                    | 🔑 Key                             |
-| `★★l`            | Laugh                  | 😂 Face with Tears of Joy          |
-| `★★lb`           | Light Bulb             | 💡 Light Bulb                      |
-| `★★lc`           | Lock Closed            | 🔒 Closed Lock                     |
-| `★★li`           | Link                   | 🔗 Link Symbol                     |
-| `★★lo`           | Lock Open              | 🔒 Open Lock                       |
-| `★★lt`           | Laptop                 | 💻 Laptop                          |
-| `★★m`            | Mind Blown             | 🤯 Exploding Head                  |
-| `★★mb`           | Money Bag              | 💰 Money Bag                       |
-| `★★me`           | Memo                   | 📝 Memo                            |
-| `★★mf`           | Melting Face           | 🫠 Melting Face                    |
-| `★★mg`           | Magnifying Glass       | 🔎 Magnifying Glass Tilted Right   |
-| `★★ms`           | Milkshake              | 🥤 Cup with Straw                  |
-| `★★mw`           | Milky Way              | 🌌 Milky Way (Galaxy)              |
-| `★★mu`           | Music                  | 🎵 Musical Notes (Beamed 8th Notes)|
-| `★★n`            | Night                  | 🌙 Crescent Moon                   |
-| `★★na`           | Not Amused             | 😒 Unamused                        |
-| `★★ne`           | Neutral Emotion        | 😐 Neutral Face                    |
-| `★★no`           | No                     | 🙅 Person Gesturing No             |
-| `★★o`            | Oh no!                 | 😮 Surprised Face with Open Mouth  |
-| `★★ok`           | OK                     | 👌 OK Hand Sign                    |
-| `★★p`            | Poop                   | 💩 Pile of Poo                     |
-| `★★ph`           | Phone                  | 📞 Phone Receiver                  |
-| `★★pp`           | Pushpin                | 📍 Round Pushpin                   |
-| `★★pr`           | Pray                   | 🙏 Hands Pressed Together          |
-| `★★q`            | Questioning            | 🤔 Thinking Face                   |
-| `★★qm`           | Question Mark          | ❓ Red Question Mark               |
-| `★★r`            | Robot                  | 🤖 Robot Face                      |
-| `★★ra`           | Rain                   | 🌧️ Cloud with Rain                 |
-| `★★rb`           | Raised Brow            | 🤨 Face with Raised Eyebrow        |
-| `★★rc`           | Recycle                | ♻️ Recycling Symbol                |
-| `★★rf`           | Red Flag               | 🚩 Triangular Flag                 |
-| `★★s`            | Smile                  | 🙂 Slightly Smiling Face           |
-| `★★se`           | Star Eyes              | 🤩 Star-Struck                     |
-| `★★sf`           | Stoneface              | 🗿 Moai                            |
-| `★★sg`           | Sunglasses             | 😎 Smiling Face with Sunglasses    |
-| `★★sl`           | Sleeping               | 😴 Sleeping Face                   |
-| `★★sm`           | Smirk                  | 😏 Smirking Face                   |
-| `★★sn`           | Snow                   | ❄️ Snowflake                       |
-| `★★sp`           | Sparkles               | ✨ Sparkles                        |
-| `★★ss`           | Stop Sign              | 🛑 Red Octagonal Sign              |
-| `★★st`           | Star                   | ⭐️ Star                            |
-| `★★su`           | Sunny                  | ☀️ Sun                             |
-| `★★t` or `★★tu`  | Thumbs Up              | 👍 Thumbs Up                       |
-| `★★tt` or `★★td` | Thumbs Down            | 👎 Thumbs Down                     |
-| `★★ta`           | Taco                   | 🌮 Taco                            |
-| `★★te`           | Temperature            | 🌡️ Thermometer                     |
-| `★★u`            | Upside-Down            | 🙃 Upside-Down Face                |
-| `★★v`            | Victory/Peace Fingers  | ✌️ Peace Hand Sign                 |
-| `★★w`            | Wink                   | 😉 Winking Face                    |
-| `★★wa`           | Warning                | ⚠️ Warning                         |
-| `★★wc`           | Wildcard               | 🃏 Joker (Playing Card)            |
-| `★★we`           | Weary                  | 😩 Weary Face                      |
-| `★★wi`           | Wind                   | 💨 Gust of Wind                    |
-| `★★wm`           | World Map              | 🗺️ World Map                       |
-| `★★wn`           | Wireless Network       | 🛜 Wireless/WiFi                   |
-| `★★x`            | Expressionless         | 😑 Expressionless Face             |
-| `★★xm`           | Cross Mark             | ❌ Cross Mark Symbol               |
-| `★★y`            | Yay!                   | 🎉 Party Popper                    |
-| `★★z`            | Za                     | 🍕 Pizza                           |
-| `★★zz`           | Z’s                    | 💤 Zzz                             |
-
-The goal of these Leader sequences is to build fast, intuitive muscle memory for your most frequently used emojis. This set intentionally covers more than you’ll typically need, ensuring you always have a quick mnemonic for the expressions and symbols you reach for most.
+| Sequence         | Mnemonic               | Emoji                              | Category            |
+|------------------|------------------------|------------------------------------|---------------------|
+| `★★a`            | Angry                  | 😡 Red Angry Face                  | Emotion             |
+| `★★aa`           | Angry Angry            | 🤬 Face with Symbols Over Mouth    | Emotion             |
+| `★★al`           | Alarm                  | ⏰ Alarm Clock                     | Object / Time       |
+| `★★an`           | Angel                  | 😇 Smiling Face with Halo          | Emotion             |
+| `★★ap`           | Airplane               | ✈️ Airplane                        | Travel              |
+| `★★au`           | Automobile             | 🚗 Automobile/Car                  | Travel              |
+| `★★b`            | Blush                  | 😊 Smiling Face with Smiling Eyes  | Emotion             |
+| `★★be`           | Bullseye               | 🎯 Bullseye                        | Symbol              |
+| `★★bi`           | Bicycle/Bike           | 🚲 Bicycle                         | Travel              |
+| `★★bk`           | Blow Kiss              | 😘 Face Blowing a Kiss             | Emotion             |
+| `★★br`           | Brain                  | 🧠 Brain                           | Body                |
+| `★★bt`           | Bedtime                | 🛏️ Bed                             | Object / Sleep      |
+| `★★bu`           | Bus                    | 🚌 Bus                             | Travel              |
+| `★★c`            | Crying                 | 😢 Crying                          | Emotion             |
+| `★★ca`           | Camera                 | 📷 Camera                          | Object / Tech       |
+| `★★cb`           | Clipboard              | 📋 Clipboard (Paste Symbol)        | Object / Tech       |
+| `★★cc`           | Crying Crying          | 😭 Loudly Crying Face              | Emotion             |
+| `★★cd`           | Cloud                  | ☁️ Cloud                           | Nature / Tech       |
+| `★★ch`           | Check                  | ✔️ Check Mark Symbol               | Symbol              |
+| `★★cl`           | Clap                   | 👏 Clapping                        | Gesture             |
+| `★★cm`           | Check Mark             | ✅ Check Mark Button               | Symbol              |
+| `★★co`           | Compass                | 🧭 Compass                         | Travel / Navigation |
+| `★★cu`           | Cut                    | ✂️ Scissors (Cut Selection Symbol) | Object / Tech       |
+| `★★d`            | Death/Dead/Dying       | 💀 Skull                           | Symbol              |
+| `★★da`           | Date                   | 📅 Calendar                        | Object / Time       |
+| `★★de`           | Devil                  | 😈 Smiling Face with Horns         | Emotion             |
+| `★★dr`           | Drink                  | 🥤 Cup with Straw                  | Food                |
+| `★★dt`           | Desktop                | 🖥️ Desktop Computer                | Object / Tech       |
+| `★★e`            | Eyes                   | 👀 Eyes                            | Body / Reaction     |
+| `★★ea`           | Earth                  | 🌎 Globe Showing Americas          | Nature / Symbol     |
+| `★★ee`           | Exclamation Exclamation| ‼️Red Double Exclamation Marks     | Symbol              |
+| `★★ex`           | Exclamation            | ❗️Red Exclamation Mark             | Symbol              |
+| `★★f`            | Fire                   | 🔥 Fire                            | Nature / Symbol     |
+| `★★fd`           | Floppy Disk            | 💾 Floppy Disk (Save Symbol)       | Object / Tech       |
+| `★★ff`           | File Folder            | 📁 File Folder                     | Object / Tech       |
+| `★★fo`           | Folder Open            | 📂 Open File Folder                | Object / Tech       |
+| `★★fp`           | Facepalm               | 🤦 Person Facepalming              | Gesture             |
+| `★★fr`           | Frustrated             | 😤 Face with Steam From Nose       | Emotion             |
+| `★★g`            | Grin/Grinning          | 😁 Beaming Face with Smiling Eyes  | Emotion             |
+| `★★gi`           | Gift                   | 🎁 Present                         | Object              |
+| `★★gr`           | Gross                  | 🤢 Nauseated Face                  | Emotion             |
+| `★★gs`           | Grin w/ Sweat          | 😅 Grinning Face with Sweat        | Emotion             |
+| `★★h`            | Heart                  | ❤️ Red Heart                       | Symbol              |
+| `★★ha`           | Hamburger              | 🍔 Hamburger                       | Food                |
+| `★★he`           | Heart Eyes             | 😍 Smiling Face with Heart-Eyes    | Emotion             |
+| `★★hh`           | Huge Hug               | 🤗 Hugging Face                    | Emotion             |
+| `★★hl`           | Hyperlink              | 🔗 Link Symbol                     | Symbol / Tech       |
+| `★★ho`           | Home/House             | 🏠 House                           | Object / Place      |
+| `★★hs`           | Handshake              | 🤝 Handshake                       | Gesture             |
+| `★★ht`           | Holding Tears          | 🥹 Smiling Face Holding Back Tears | Emotion             |
+| `★★hu`           | Hundred                | 💯 Hundred Points Symbol           | Symbol              |
+| `★★hv`           | High Voltage           | ⚡️ High Voltage/Lightning Bolt     | Symbol              |
+| `★★i`            | Ice Cream              | 🍦 Soft Ice Cream                  | Food                |
+| `★★ic`           | Ice Cube               | 🧊 Ice                             | Object              |
+| `★★in`           | Internet               | 🌐 Globe with Meridians            | Symbol              |
+| `★★j`            | Joker/Jester           | 🤡 Clown                           | Emotion / Fun / Meme|
+| `★★js`           | Joystick               | 🕹 Video Game Joystick             | Object / Tech       |
+| `★★k`            | Key                    | 🔑 Key                             | Object              |
+| `★★kb`           | Keyboard               | ⌨️ Keyboard                        | Object / Tech       |
+| `★★l`            | Laugh                  | 😂 Face with Tears of Joy          | Emotion             |
+| `★★lb`           | Light Bulb             | 💡 Light Bulb                      | Object              |
+| `★★lc`           | Lock Closed            | 🔒 Closed Lock                     | Object              |
+| `★★li`           | Lightning              | 🌩 Cloud with Lightning            | Nature              |
+| `★★lo`           | Lock Open              | 🔒 Open Lock                       | Object              |
+| `★★lt`           | Laptop                 | 💻 Laptop                          | Object / Tech       |
+| `★★m`            | Mind Blown             | 🤯 Exploding Head                  | Emotion             |
+| `★★mb`           | Money Bag              | 💰 Money Bag                       | Object              |
+| `★★mc`           | Motorcycle             | 🏍 Motorcycle                      | Travel              |
+| `★★me`           | Memo                   | 📝 Memo                            | Object              |
+| `★★mf`           | Melting Face           | 🫠 Melting Face                    | Emotion             |
+| `★★mg`           | Magnifying Glass       | 🔎 Magnifying Glass Tilted Right   | Object              |
+| `★★ms`           | Motor Scooter          | 🛵 Motor Scooter                   | Travel              |
+| `★★mu`           | Music                  | 🎵 Musical Notes (Beamed 8th Notes)| Symbol              |
+| `★★mw`           | Milky Way              | 🌌 Milky Way (Galaxy)              | Nature              |
+| `★★n`            | Night                  | 🌙 Crescent Moon                   | Nature              |
+| `★★na`           | Not Amused             | 😒 Unamused                        | Emotion             |
+| `★★ne`           | Neutral Emotion        | 😐 Neutral Face                    | Emotion             |
+| `★★no`           | No                     | 🙅 Person Gesturing No             | Gesture             |
+| `★★o`            | Oh no!                 | 😮 Surprised Face with Open Mouth  | Emotion             |
+| `★★ok`           | OK                     | 👌 OK Hand Sign                    | Gesture             |
+| `★★p`            | Poop                   | 💩 Pile of Poo                     | Fun / Meme          |
+| `★★ph`           | Phone                  | 📞 Phone Receiver                  | Object              |
+| `★★pk`           | Package                | 📦 Package/Box                     | Object              |
+| `★★pl`           | Pleading               | 🥺 Pleading                        | Emotion             |
+| `★★pp`           | Pushpin                | 📍 Round Pushpin                   | Object / Travel     |
+| `★★pr`           | Printer                | 🖨️ Printer                         | Object / Tech       |
+| `★★pt`           | Palms Together         | 🙏 Hands Pressed Together (Praying)| Gesture             |
+| `★★q`            | Questioning            | 🤔 Thinking Face                   | Emotion             |
+| `★★qm`           | Question Mark          | ❓ Red Question Mark               | Symbol              |
+| `★★r`            | Robot                  | 🤖 Robot Face                      | Fun / Object        |
+| `★★ra`           | Rain                   | 🌧️ Cloud with Rain                 | Nature              |
+| `★★rb`           | Raised Brow            | 🤨 Face with Raised Eyebrow        | Emotion             |
+| `★★rc`           | Recycle                | ♻️ Recycling Symbol                | Symbol              |
+| `★★rf`           | Red Flag               | 🚩 Triangular Flag                 | Symbol              |
+| `★★ro`           | Rolling                | 🤣 Rolling on the Floor Laughing   | Emotion             |
+| `★★s`            | Smile                  | 🙂 Slightly Smiling Face           | Emotion             |
+| `★★sc`           | Scooter                | 🛴 Kick/Electric Scooter           | Travel              |
+| `★★se`           | Star Eyes              | 🤩 Star-Struck                     | Emotion             |
+| `★★sf`           | Stoneface              | 🗿 Moai                            | Emotion / Fun / Meme|
+| `★★sg`           | Sunglasses             | 😎 Smiling Face with Sunglasses    | Emotion             |
+| `★★sh`           | Shush                  | 🤫 Shushing Face                   | Emotion / Gesture   |
+| `★★sl`           | Sleeping               | 😴 Sleeping Face                   | Emotion             |
+| `★★sm`           | Smirk                  | 😏 Smirking Face                   | Emotion             |
+| `★★sn`           | Snow                   | ❄️ Snowflake                       | Nature              |
+| `★★sp`           | Sparkles               | ✨ Sparkles                        | Symbol              |
+| `★★ss`           | Stop Sign              | 🛑 Red Octagonal Sign              | Symbol              |
+| `★★st`           | Star                   | ⭐️ Star                            | Symbol              |
+| `★★su`           | Sunny                  | ☀️ Sun                             | Nature              |
+| `★★t` or `★★tu`  | Thumbs Up              | 👍 Thumbs Up                       | Gesture             |
+| `★★tt` or `★★td` | Thumbs Down            | 👎 Thumbs Down                     | Gesture             |
+| `★★ta`           | Taco                   | 🌮 Taco                            | Food                |
+| `★★te`           | Temperature            | 🌡️ Thermometer                     | Nature / Object     |
+| `★★tr`           | Train                  | 🚆 Train                           | Travel              |
+| `★★u`            | Upside-Down            | 🙃 Upside-Down Face                | Emotion             |
+| `★★v`            | Victory/Peace Fingers  | ✌️ Peace Hand Sign                 | Gesture             |
+| `★★vo`           | Vomiting               | 🤮 Vomiting Face                   | Emotion             |
+| `★★vx`           | Vortex                 | 😵‍💫 Spiral Eyes                     | Emotion             |
+| `★★w`            | Wink                   | 😉 Winking Face                    | Emotion             |
+| `★★wa`           | Warning                | ⚠️ Warning                         | Symbol              |
+| `★★wc`           | Wildcard               | 🃏 Joker (Playing Card)            | Object / Fun        |
+| `★★we`           | Weary                  | 😩 Weary Face                      | Emotion             |
+| `★★wi`           | Wind                   | 💨 Gust of Wind                    | Nature              |
+| `★★wm`           | World Map              | 🗺️ World Map                       | Travel / Navigation |
+| `★★wn`           | Wireless Network       | 🛜 Wireless/WiFi                   | Symbol / Tech       |
+| `★★x`            | Expressionless         | 😑 Expressionless Face             | Emotion             |
+| `★★xm`           | Cross Mark             | ❌ Cross Mark Symbol               | Symbol              |
+| `★★y`            | Yay!                   | 🎉 Party Popper                    | Emotion             |
+| `★★z`            | Za                     | 🍕 Pizza                           | Food                |
+| `★★zz`           | Z’s                    | 💤 Zzz                             | Symbol / Sleep      |
 
 > [!WARNING]
 > **macOS:** Emoji insertion relies on the compact _Emoji & Symbols_ popup. It will not work if the full Character Viewer is open. The emoji that appears in the **first** position of the popup can change based on system updates, personalization, or Apple’s internal ranking. Only emojis that appear as the top result will auto‑insert.
@@ -213,10 +263,14 @@ Some sequences use a prefixed `.` (dot) to avoid conflicts with surrounding Lead
 
 | Sequence | Mnemonic | Behavior |
 |----------|----------|----------|
+| `★b` | Bug | `BUG: ` |
+| `★.c` | Cleanup | `CLEANUP: ` |
+| `★.d` | Deprecated | `DEPRECATED: ` |
 | `★f` | Fix | `FIXME: ` |
-| `★h` | Help | `TIP: ` |
-| `★i` | Information | `INFO: ` |
+| `★h` | Hack | `HACK: ` |
+| `★i` | Important | `IMPORTANT: ` |
 | `★n` | Note | `NOTE: ` |
+| `★o` | Optimize | `OPTIMIZE: ` |
 | `★r` | Reference | `REF: ` |
 | `★.s` | Section Header | `// ------…` |
 | `★t` | TODO | `TODO: ` |

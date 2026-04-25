@@ -202,8 +202,10 @@ bool rgb_matrix_indicators_user(void) {
 
 #ifdef LEADER_ENABLE
             // Replay Leader History or Favorites
-            if (!leader_state.replay_history) {
+            if (leader_state.replay_mode == LEADER_REPLAY_FAVORITES) {
                 rgb_matrix_set_color(LED_ROW2_RIGHT_CENTER, GREEN); // Replay Leader favorites on
+            } else if (leader_state.replay_mode == LEADER_REPLAY_OFF) {
+                rgb_matrix_set_color(LED_ROW2_RIGHT_CENTER, RED);   // Replay Leader off
             }
 #endif
 

@@ -64,14 +64,19 @@ typedef enum {
 
 // Code annotations
 typedef enum {
-    DEV_FIXME,   // `FIXME: `
-    DEV_INFO,    // `INFO: `
-    DEV_NOTE,    // `NOTE: `
-    DEV_REF,     // `REF: `
-    DEV_SECTION, // `// ──────…` 78-column section header
-    DEV_TIP,     // `TIP: `
-    DEV_TODO,    // `TODO: `
-    DEV_WARNING  // `WARNING: `
+    DEV_BUG,        // `BUG: `
+    DEV_CLEANUP,    // `CLEANUP: `
+    DEV_DEPRECATED, // `DEPRECATED: `
+    DEV_FIXME,      // `FIXME: `
+    DEV_HACK,       // `HACK: `
+    DEV_IMPORTANT,  // `IMPORTANT: `
+    DEV_NOTE,       // `NOTE: `
+    DEV_OPTIMIZE,   // `OPTIMIZE: `
+    DEV_REF,        // `REF: `
+    DEV_SECTION,    // `// ──────…` 78-column section header
+    DEV_TIP,        // `TIP: `
+    DEV_TODO,       // `TODO: `
+    DEV_WARNING     // `WARNING: `
 } dev_notes_t;
 
 // ─────────────────────────────────────────────────────────────

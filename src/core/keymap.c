@@ -35,12 +35,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * │  BASE   │🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │Lft Click│   ␣           LSFT│Rgt Click│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
  */
+#ifdef MOUSEKEY_ENABLE
 [_DOOM] = LAYOUT_planck_mit(
     KC_ESC, ____,        ____,    KC_UP,       ____,    ____,        ____, ____,       MS_UP,   ____,    ____,        BSPC,
     TAB,    STRAFE_LEFT, KC_LEFT, KC_DOWN,     KC_RGHT, STRAFE_RGHT, ____, MS_LEFT,    MS_DOWN, MS_RGHT, STRAFE_RGHT, KC_ENT,
     ____,   ____,        ____,    STRAFE_DOWN, ____,    ____,        ____, MS_WHLR,    MS_WHLU, MS_WHLD, MS_WHLL,     ____,
     BASE,   MUTE,        VOLD,    VOLU,        MS_BTN1,     SPC_LSFT,      RCLK_UPPER, HOME,    PGDN,    PGUP,        END
 ),
+#endif
 
 /* Numpad Layer: Hold Left Thumb Key
  * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
@@ -321,22 +323,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Leader Layer for alpha chars
  * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
- * │    `    │ , ; | & │    :    │ . … ⋮ • │    9    │    &    │    |    │    8    │ + - / * │    #    │ ^   ¢ $ │ ⌦  ⌦L ⌦w│
+ * │    `    │    ,    │    :    │    .    │    9    │    &    │    |    │    8    │    +    │    #    │    ^    │    ⌦    │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │    ~    │    7    │    5    │    1    │    3    │ ( [ < { │ ) ] > } │    2    │    0    │    4    │    6    │    ↵    │
+ * │    ~    │    7    │    5    │    1    │    3    │    (    │    )    │    2    │    0    │    4    │    6    │    ↵    │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │    %    │    \    │    _    │ [ ( { < │CAPS LOCK│ $ ¥ £ € │    @    │ , ! ? . │ ] ) } > │    -    │    ?    │ “|” ‘|’ │
+ * │    %    │    \    │    _    │    [    │CAPS LOCK│    $    │    @    │    ,    │    ]    │    -    │    ?    │         │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │  MOUSE  │🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │    ⌫    │   =       ≈   ≠   │<<H>>BASE│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
+ * │         │🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │    ⌫    │         =         │         │    ⇱    │    ⇟    │    ⇞    │    ⇲    │
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
- *  `0` and `1` under middle fingers to reduce strain of most commonly used digits, esp. in Vim
- * ^   ¢ $ = ^ Jump to first char on current line in Vim (Tap), ¢ symbol for macOS (Tap+Hold), $ Jump to EOL in Vim
  */
 [_LEAD_DIGIT] = LAYOUT_planck_mit(
     KC_GRV,  KC_COMM, KC_COLN, KC_DOT,  KC_9,    KC_AMPR, KC_PIPE, KC_8,    KC_PLUS, KC_HASH, KC_CIRC, KC_DEL,
     KC_TILD, KC_7,    KC_5,    KC_1,    KC_3,    KC_LPRN, KC_RPRN, KC_2,    KC_0,    KC_4,    KC_6,    KC_ENT,
     KC_PERC, KC_BSLS, KC_UNDS, KC_LBRC, KC_CAPS, KC_DLR,  KC_AT,   KC_COMM, KC_RBRC, KC_MINS, KC_QUES, ____,
-    ____,    MUTE,    VOLD,    VOLU,    KC_BSPC,       EQL,        BASE,    KC_HOME, KC_PGDN, KC_PGUP, KC_END
+    ____,    MUTE,    VOLD,    VOLU,    KC_BSPC,       EQL,        ____,    KC_HOME, KC_PGDN, KC_PGUP, KC_END
 ),
 #endif
 };
