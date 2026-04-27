@@ -25,13 +25,25 @@
 
 // Animations Enabled
 #define ENABLE_RGB_MATRIX_CYCLE_LEFT_RIGHT       // rainbow that cycles horizontally
-#define ENABLE_RGB_MATRIX_CYCLE_UP_DOWN          // rainbow that cylces vertically
-#define ENABLE_RGB_MATRIX_DIGITAL_RAIN           // Matrix-style falling green code
-#define ENABLE_RGB_MATRIX_RAINBOW_MOVING_CHEVRON // chevron-shaped rainbow
+#define ENABLE_RGB_MATRIX_CYCLE_UP_DOWN          // rainbow that cycles vertically
+#define ENABLE_RGB_MATRIX_DIGITAL_RAIN           // Matrix‑style falling green code
+#define ENABLE_RGB_MATRIX_RAINBOW_MOVING_CHEVRON // chevron‑shaped rainbow motion
 #define ENABLE_RGB_MATRIX_TYPING_HEATMAP         // lights based on how often you type
-#define ENABLE_RGB_MATRIX_PIXEL_FRACTAL
-#define ENABLE_RGB_MATRIX_STARLIGHT
-#define ENABLE_RGB_MATRIX_STARLIGHT_SMOOTH
-#define ENABLE_RGB_MATRIX_RIVERFLOW
-#define ENABLE_RGB_MATRIX_SPLASH
-#define ENABLE_RGB_MATRIX_JELLYBEAN_RAINDROPS
+#define ENABLE_RGB_MATRIX_PIXEL_FRACTAL          // branching pixel fractal animation
+#define ENABLE_RGB_MATRIX_STARLIGHT              // random twinkling star pulses
+#define ENABLE_RGB_MATRIX_STARLIGHT_SMOOTH       // smoother, softer starlight effect
+#define ENABLE_RGB_MATRIX_RIVERFLOW              // flowing horizontal water‑like motion
+#define ENABLE_RGB_MATRIX_SPLASH                 // ripple effect radiating from keypresses
+#define ENABLE_RGB_MATRIX_JELLYBEAN_RAINDROPS    // colorful falling droplets across the board
+
+// Crowd‑Pleaser Animations
+#define ENABLE_RGB_MATRIX_SOLID_REACTIVE_WIDE      // wide reactive ripple on keypress
+#define ENABLE_RGB_MATRIX_SOLID_REACTIVE_NEXUS     // center‑out reactive pulse (fan favorite)
+#define ENABLE_RGB_MATRIX_SOLID_REACTIVE_MULTIWIDE // multi‑key wide ripples for fast typing
+#define ENABLE_RGB_MATRIX_RAINBOW_PINWHEEL         // spinning rainbow pinwheel
+#define ENABLE_RGB_MATRIX_RAINBOW_SPIRAL           // smooth spiraling rainbow motion
+#define ENABLE_RGB_MATRIX_BREATHING                // gentle breathing brightness cycle
+#define ENABLE_RGB_MATRIX_CYCLE_SPIRAL             // continuous rainbow spiral sweep
+#define ENABLE_RGB_MATRIX_CYCLE_PINWHEEL           // continuous rainbow pinwheel sweep
+
+#define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_RAINBOW_MOVING_CHEVRON

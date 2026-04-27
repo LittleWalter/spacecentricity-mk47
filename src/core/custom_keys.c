@@ -9,7 +9,34 @@
 #include "src/macros/mac_terminal.h"
 #include "src/macros/mac_vim.h"
 
-os_t current_os = OS_MACOS; // Default to Apple macOS
+os_t current_os = OS_MACOS; // Default to Apple macOS on boot
+
+// ─────────────────────────────────────────────────────────────
+// Custom Keycode Helpers
+// ─────────────────────────────────────────────────────────────
+
+#ifdef LEADER_ENABLE
+// Track Leader sequence characters
+static void leader_track(const uint16_t keycode) {
+    if (leader_state.enabled && leader_state.active) {
+        if (leader_state.size < LEADER_MAX_SEQUENCE_LENGTH) {
+            leader_state.buffer[leader_state.size++] = keycode;
+        }
+    }
+}
+#endif
+
+// Semantic punctuation: auto-cap next alpha
+static void auto_cap_next_char(void) {
+    if (auto_cap_next) {
+        add_oneshot_mods(MOD_LSFT);
+        auto_cap_next = false;
+    }
+}
+
+// ─────────────────────────────────────────────────────────────
+// Custom Keycodes
+// ─────────────────────────────────────────────────────────────
 
 // Intercepts custom keycodes and runs their associated macros and miscellenous
 // non-macros. This function handles all higher‑level behaviors that aren't
@@ -23,17 +50,12 @@ os_t current_os = OS_MACOS; // Default to Apple macOS
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     static uint16_t mouse_key_timer; // Tracking key hold time, SEE:MOUSE_FN branch
 
-    // Track Leader sequence characters
-    if (leader_state.active && record->event.pressed) {
-        if (leader_state.size < LEADER_MAX_SEQUENCE_LENGTH) {
-            leader_state.buffer[leader_state.size++] = keycode;
-        }
-    }
-
-    // Semantic punctuation: auto-cap next alpha
-    if (auto_cap_next && record->event.pressed) {
-        add_oneshot_mods(MOD_LSFT);
-        auto_cap_next = false;
+    // Keystroke preprocessing
+    if (record->event.pressed) {
+#ifdef LEADER_ENABLE
+        leader_track(keycode);
+#endif
+        auto_cap_next_char();
     }
 
     switch (keycode) {
@@ -187,6 +209,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 toggle_os();
             }
+            return false;
+        case TG_LEADER: // Toggle Leader Keys on/off
+#ifdef LEADER_ENABLE
+            if (record->event.pressed) {
+                toggle_leader();
+            }
+#endif
             return false;
 
 #ifdef RGB_MATRIX_ENABLE

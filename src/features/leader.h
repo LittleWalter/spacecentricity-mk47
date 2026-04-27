@@ -11,12 +11,17 @@
 // Leader prefixes for each command namespace
 #define EMOJI_LEADER   KC_NO    // Emoji sequences
 #define RGB_LEADER     KC_R     // RGB matrix controls
-#define DEV_LEADER     KC_DOT   // Developer / annotation commands
+#define DEV_LEADER     KC_DOT   // Developer annotations
+#define SYMBOL_LEADER  KC_SPC   // Symbol sequences
 
 // Email constants used by Leader sequences
 #define EMAIL_PRIMARY   "mail@example.com"
 #define EMAIL_SECONDARY "another@example.com"
 #define EMAIL_TERTIARY  "third@example.com"
+
+// ─────────────────────────────────────────────────────────────
+// Leader Data Types
+// ─────────────────────────────────────────────────────────────
 
 /*
  * Leader sequence table entry.
@@ -37,6 +42,14 @@ typedef struct {
     uint16_t name;   // Constants: CHAR_EMOJI_*, DEV_*, SUR_*
 } sequence_entry_t;
 
+// Loop iteration states for early exit optimizations of Leader sequence handlers
+typedef enum {
+    LOOP_OK,
+    LOOP_NEXT,
+    LOOP_EXIT
+} loop_state_t;
+
+// Leader replay states
 typedef enum {
     LEADER_REPLAY_OFF,
     LEADER_REPLAY_HISTORY,
@@ -47,6 +60,7 @@ typedef enum {
  * Leader state tracking.
  *
  * This struct represents the lifecycle of a Leader sequence:
+ *   enabled     - true if Leader Key is enabled; false disables sequences
  *   active      - true while a Leader sequence is in progress
  *   done        - set once the sequence has been fully processed
  *   success     - true if any handler recognized and executed the sequence
@@ -57,6 +71,7 @@ typedef enum {
  *   size        - number of keycodes stored in the buffer
  */
 typedef struct {
+    bool                 enabled;
     bool                 active;
     bool                 done;
     bool                 success;
@@ -69,6 +84,9 @@ typedef struct {
 } leader_state_t;
 
 extern leader_state_t leader_state;
+
+// Enable/disable Leader Key entry
+void toggle_leader(void);
 
 // ─────────────────────────────────────────────────────────────
 // Leader Replay
@@ -86,7 +104,8 @@ typedef enum {
     LEAD_NONE,
     LEAD_DEV_NOTE,
     LEAD_EMOJI,
-    LEAD_SURROUND
+    LEAD_SURROUND,
+    LEAD_SYMBOL
 } leader_t;
 
 typedef struct {

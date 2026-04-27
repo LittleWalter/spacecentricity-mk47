@@ -197,6 +197,7 @@ The top‑left corner key bundles together a small set of symbols via tap dance 
 | Double Tap | `%` | Jump to matching bracket/brace/parenthesis |
 | Tap-and-Hold | `@` | Run macro (`@a`, `@q`, etc.)|
 | Hold | `#` | Jump to previous occurrence of the word under the cursor |
+| Triple Tap | `×` | Multiplication |
 
 The top-row `,` key gives **Base**-layer access to `|` and `&`.
 
@@ -289,6 +290,7 @@ The navigation keys on the bottom row follow the Vim pattern of up, down, left, 
 | Double Tap | `^`, `}`, `{`, `$` Vim movement keys |
 | Tap-and-Hold | `h`, `j`, `k`, `l` Vim movement keys |
 | Hold | `←`, `↓`, `↑`, `→` arrow keys |
+| Triple Tap | `←`, `↓`, `↑`, `→` arrow symbols |
 
 This cluster is reused across several layers to keep navigation consistent and predictable. On the **Base** layer, it provides access to movement keys without switching layers, which is useful for one‑handed navigation when you’re not in home position.
 
@@ -403,6 +405,7 @@ The `+` key provides the full set of basic arithmetic symbols on a single middle
 | Double Tap | `-` (subraction) |
 | Tap-and-Hold | `/` (division) |
 | Hold | `*` (multiplication) |
+| Triple Tap | `×` (Unicode multiplication symbol) |
 
 #### Other Keys
 

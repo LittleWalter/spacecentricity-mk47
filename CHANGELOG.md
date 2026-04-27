@@ -12,6 +12,11 @@
 
 ---
 
+## 2026-04/26-SU
+- Added global _Leader Key toggle_ on the **Adjustment** layer
+  - Toggle key visual feedback: 🔵 Navy = enabled (default), 🔴 Red = disabled
+- Added _symbol Leader sequences_ (prefixed with `␣` / space) as the foundation for an expanded symbol library
+
 ## 2026‑04/24‑FR
 - Implemented RGB Matrix feedback for Leader sequences, including green flashes for successful completions and red flashes for failures or time‑outs.
 - Expanded the Leader emoji set with several new sequences.

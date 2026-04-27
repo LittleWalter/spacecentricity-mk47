@@ -1,7 +1,7 @@
-# NOTE: The following features can be safely disabled
+# NOTE: The following features can be safely disabled w/o breaking the build
 # - RGB_MATRIX_ENABLE: entire rgb.c is wrapped
 # - CAPS_WORD_ENABLE: only caps-word-specific calls are wrapped in rgb.c and td_chars.c
-# - LEADER_ENABLE: leader.c and leader-dependent code are wrapped in rgb.c
+# - LEADER_ENABLE: leader.c and leader-dependent code are wrapped in rgb.c, custom_keys.c
 # - MOUSEKEY_ENABLE: mouse layer + behavior wrapped; related keycodes unguarded
 #
 # TAP_DANCE_ENABLE is required for this keymap and not wrapped.

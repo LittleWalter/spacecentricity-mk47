@@ -2,13 +2,25 @@
 
 QMK includes [Leader Key functionality](https://docs.qmk.fm/features/leader_key), inspired by [Vim’s “leader” concept](https://stackoverflow.com/questions/1764263/what-is-the-leader-in-a-vimrc-file). A Leader key allows you to trigger multi‑key mnemonic sequences that expand into actions, text, or macros.
 
-Spacecentricity provides a curated set of Leader sequences for emoji insertion, RGB control, and text‑editing helpers. These sequences are:
+Spacecentricity provides a curated set of Leader sequences for emoji and symbol insertion, RGB control, and text‑editing helpers. These sequences are:
 
 * Mnemonic — designed to be easy to remember
 * Optional — they never interfere with normal typing
-* Low‑risk — unlikely to be triggered accidentally
+* Low‑risk — unlikely to be triggered accidentally and can be disabled
 
 Leader sequences may contain up to three keys, not counting the Leader key itself. This keeps them fast to type while still allowing a rich vocabulary of shortcuts.
+
+## Table of Contents
+
+- [Implementation Details](#implementation-details)
+- [Leader Replay](#leader-replay)
+  - [Leader History](#leader-history)
+  - [Leader Favorites](#leader-favorites)
+- [Supported Leader Sequences](#supported-leader-sequences)
+  - [Emoji Sequences](#emoji-sequences)
+  - [Symbol Sequences](#symbol-sequences)
+  - [Surrounding Sequences](#surrounding-sequences)
+  - [Code Annotation Sequences](#code-annotation-sequences)
 
 ## Implementation Details
 
@@ -21,6 +33,19 @@ While the Leader layer is active, the RGB matrix shifts to a dim navy blue to in
 | Waiting for sequence      | 🔵 Navy  | `0, 0, 128` | Leader mode active; expecting key input    |
 | Sequence successful       | 🟢 Green | `0, 255, 0` | A valid Leader sequence was recognized     |
 | Sequence failed / timeout | 🔴 Red   | `255, 0, 0` | No matching sequence or sequence timed out |
+
+![Adjustment: Keyboard Settings](assets/04_ADJ.png)
+
+To enable or disable all Leader functionality—including sequence entry and sequence replay—tap the **Leader Toggle** key on the **Adjustment** layer.
+
+The toggle key provides immediate visual feedback so you always know whether Leader mode is active:
+
+| Color    | Meaning |
+|----------|---------|
+| 🔵 Navy  | Leader sequences **enabled** (default) |
+| 🔴 Red   | Leader sequences **disabled** |
+
+When Leader mode is disabled, the keyboard will not enter the temporary Leader layer, will not wait for sequences, and will not replay previous sequences. This is useful if you want to prevent accidental activations or if you’re using software that conflicts with Leader timing.
 
 ## Leader Replay
 
@@ -45,7 +70,7 @@ By default, the keyboard boots into **History** replay mode with empty History a
 
 Each time a Leader sequence completes successfully, the keymap stores it in a rolling history of the **last ten actions**. Each entry records:
 
-* The _category_ (emoji, surround pair, developer annotation)
+* The _category_ (emoji/symbol, surround pair, developer annotation)
 * The _specific macro_ invoked
 
 History is replayed not through Leader itself, but via **hold‑actions on the number keys** in the **Upper** layer:
@@ -92,9 +117,12 @@ Multi‑letter mnemonics are used when a single letter is already taken or when 
 | `★★ap`           | Airplane               | ✈️ Airplane                        | Travel              |
 | `★★au`           | Automobile             | 🚗 Automobile/Car                  | Travel              |
 | `★★b`            | Blush                  | 😊 Smiling Face with Smiling Eyes  | Emotion             |
+| `★★ba`           | Bang                   | ❗️Red Exclamation Mark             | Symbol              |
+| `★★bb`           | Bang Bang              | ‼️Red Double Exclamation Marks     | Symbol              |
 | `★★be`           | Bullseye               | 🎯 Bullseye                        | Symbol              |
 | `★★bi`           | Bicycle/Bike           | 🚲 Bicycle                         | Travel              |
 | `★★bk`           | Blow Kiss              | 😘 Face Blowing a Kiss             | Emotion             |
+| `★★bq`           | Bang Question          | ⁉️Red Exclamation & Question Marks | Symbol              |
 | `★★br`           | Brain                  | 🧠 Brain                           | Body                |
 | `★★bt`           | Bedtime                | 🛏️ Bed                             | Object / Sleep      |
 | `★★bu`           | Bus                    | 🚌 Bus                             | Travel              |
@@ -111,20 +139,22 @@ Multi‑letter mnemonics are used when a single letter is already taken or when 
 | `★★d`            | Death/Dead/Dying       | 💀 Skull                           | Symbol              |
 | `★★da`           | Date                   | 📅 Calendar                        | Object / Time       |
 | `★★de`           | Devil                  | 😈 Smiling Face with Horns         | Emotion             |
+| `★★dl`           | Drool                  | 🤤 Drooling Face                   | Emotion             |
 | `★★dr`           | Drink                  | 🥤 Cup with Straw                  | Food                |
 | `★★dt`           | Desktop                | 🖥️ Desktop Computer                | Object / Tech       |
 | `★★e`            | Eyes                   | 👀 Eyes                            | Body / Reaction     |
 | `★★ea`           | Earth                  | 🌎 Globe Showing Americas          | Nature / Symbol     |
-| `★★ee`           | Exclamation Exclamation| ‼️Red Double Exclamation Marks     | Symbol              |
-| `★★ex`           | Exclamation            | ❗️Red Exclamation Mark             | Symbol              |
+| `★★ex`           | Exhale                 | 😮‍💨 Exhaling Face                   | Emotion             |
 | `★★f`            | Fire                   | 🔥 Fire                            | Nature / Symbol     |
 | `★★fd`           | Floppy Disk            | 💾 Floppy Disk (Save Symbol)       | Object / Tech       |
+| `★★fe`           | Fear                   | 😱 Screaming Face in Fear          | Emotion             |
 | `★★ff`           | File Folder            | 📁 File Folder                     | Object / Tech       |
 | `★★fo`           | Folder Open            | 📂 Open File Folder                | Object / Tech       |
 | `★★fp`           | Facepalm               | 🤦 Person Facepalming              | Gesture             |
 | `★★fr`           | Frustrated             | 😤 Face with Steam From Nose       | Emotion             |
 | `★★g`            | Grin/Grinning          | 😁 Beaming Face with Smiling Eyes  | Emotion             |
 | `★★gi`           | Gift                   | 🎁 Present                         | Object              |
+| `★★gm`           | Grimace/Grimacing      | 😬 Grimacing Face                  | Emotion             |
 | `★★gr`           | Gross                  | 🤢 Nauseated Face                  | Emotion             |
 | `★★gs`           | Grin w/ Sweat          | 😅 Grinning Face with Sweat        | Emotion             |
 | `★★h`            | Heart                  | ❤️ Red Heart                       | Symbol              |
@@ -178,6 +208,7 @@ Multi‑letter mnemonics are used when a single letter is already taken or when 
 | `★★ra`           | Rain                   | 🌧️ Cloud with Rain                 | Nature              |
 | `★★rb`           | Raised Brow            | 🤨 Face with Raised Eyebrow        | Emotion             |
 | `★★rc`           | Recycle                | ♻️ Recycling Symbol                | Symbol              |
+| `★★re`           | Relieved               | 😌 Relieved Face                   | Emotion             |
 | `★★rf`           | Red Flag               | 🚩 Triangular Flag                 | Symbol              |
 | `★★ro`           | Rolling                | 🤣 Rolling on the Floor Laughing   | Emotion             |
 | `★★s`            | Smile                  | 🙂 Slightly Smiling Face           | Emotion             |
@@ -212,6 +243,7 @@ Multi‑letter mnemonics are used when a single letter is already taken or when 
 | `★★x`            | Expressionless         | 😑 Expressionless Face             | Emotion             |
 | `★★xm`           | Cross Mark             | ❌ Cross Mark Symbol               | Symbol              |
 | `★★y`            | Yay!                   | 🎉 Party Popper                    | Emotion             |
+| `★★yf`           | Yay Face               | 🥳 Party Face                      | Emotion             |
 | `★★z`            | Za                     | 🍕 Pizza                           | Food                |
 | `★★zz`           | Z’s                    | 💤 Zzz                             | Symbol / Sleep      |
 
@@ -221,6 +253,52 @@ Multi‑letter mnemonics are used when a single letter is already taken or when 
 > When possible, I search using the emoji’s Unicode code point, but as of macOS 15 Sequoia the search field only accepts **single** code points. Fully qualified sequences (e.g., `U+2764 U+FE0F` for “red heart”) do not work in the search field. In those cases, I choose the most reliable search term to force the correct emoji to the top of the list; otherwise, it falls back to keyword search and leaves selection to the user.
 >
 > **Linux & Microsoft Windows:** Emoji are inserted as direct Unicode characters, so behavior is consistent and does not depend on an OS emoji picker.
+
+### Symbol Sequences
+
+Symbol sequences provide quick access to a curated set of Unicode symbols.
+
+This system offers a consistent, memorable way to insert symbols—some of which are also available elsewhere in the keymap, but are included here for completeness and ease of discovery. The symbol set will continue to grow and refine over time.
+
+Symbol sequences are prefixed with `␣` (space).
+
+| Sequence         | Mnemonic                | Symbol                             | Category                              |
+|------------------|-------------------------|------------------------------------|---------------------------------------|
+| `★␣␣`            | Space                   | `␣` Space                          | Whitespace                            |
+| `★␣⇥`            | Tab                     | `⇥` Forward Tab                    | Whitespace                            |
+| `★␣⇥⇥`           | Tab Tab                 | `⇤` Reverse Tab                    | Whitespace                            |
+| `★␣⎋`            | Escape                  | `⎋` Escape                         | Control / Whitespace                  |
+| `★␣⌫`            | Backspace               | `⌫` Backspace                      | Control / Editing                     |
+| `★␣⌫⌫`           | Backspace Backspace     | `⌦` Delete                         | Control / Editing                     |
+| `★␣↵`            | Enter                   | `↵` Enter                          | Control / Whitespace                  |
+| `★␣↵↵`           | Return                  | `⏎` Carriage Return                | Control / Whitespace                  |
+| `★␣ap`           | Approximate             | `≈` Approximation                  | Mathematics                           |
+| `★␣cd`           | Centered Dot            | `·` Centered Dot                   | Punctuation / Typography              |
+| `★␣cr`           | Copyright               | `©` Copyright                      | Legal / Symbols                       |
+| `★␣d`            | Down                    | `↓` Down Arrow                     | Direction / Navigation                |
+| `★␣dd`           | Down Double             | `⇓` Down Double Arrow              | Direction / Navigation                |
+| `★␣de`           | Degree                  | `°` Degree                         | Mathematics                           |
+| `★␣di`           | Divide                  | `÷` Division                       | Mathematics                           |
+| `★␣el`           | Ellipsis                | `…` Ellipsis                       | Punctuation / Typography              |
+| `★␣em`           | Em Dash                 | `—` Em Dash                        | Punctuation / Typography              |
+| `★␣en`           | En Dash                 | `–` En Dash                        | Punctuation / Typography              |
+| `★␣ge`           | Greater (Than or) Equal | `≥` Greater Than or Equal          | Mathematics                           |
+| `★␣i`            | Infinity                | `∞` Infinity                       | Mathematics                           |
+| `★␣l`            | Left                    | `←` Left Arrow                     | Direction / Navigation                |
+| `★␣ld`           | Left Double             | `⇐` Left Double Arrow              | Direction / Navigation                |
+| `★␣le`           | Less (Than or) Equal    | `≤` Less Than or Equal             | Mathematics                           |
+| `★␣mu`           | Multiply                | `×` Multiplication                 | Mathematics                           |
+| `★␣ne`           | Not Equal               | `≠` Inequality                     | Mathematics                           |
+| `★␣pa`           | Paragraph               | `¶` Pilcrow                        | Typography                            |
+| `★␣r`            | Right                   | `→` Right Arrow                    | Direction / Navigation                |
+| `★␣rd`           | Right Double            | `⇒` Right Double Arrow             | Direction / Navigation                |
+| `★␣re`           | Registered              | `®` Registered                     | Legal / Symbols                       |
+| `★␣se`           | Section                 | `§` Section Sign/Silcrow           | Typography                            |
+| `★␣st`           | Star                    | `★` Star                           | Miscellaneous Symbols                 |
+| `★␣tm`           | Trademark               | `™` Trademark                      | Legal / Symbols                       |
+| `★␣u`            | Up                      | `↑` Up Arrow                       | Direction / Navigation                |
+| `★␣ud`           | Up Double               | `⇑` Up Double Arrow                | Direction / Navigation                |
+| `★␣ve`           | Vertical Ellipsis       | `⋮` Vertical Ellipsis              | Punctuation / Typography              |
 
 ### RGB Sequences
 
@@ -254,7 +332,7 @@ Unlike the **Programming** layers—which place these on physical key positions 
 | `★q` | (Single) Quotes | `'▮'` |
 | `★s` | Square | `[▮]` |
 
-### Code Annotations
+### Code Annotation Sequences
 
 Short, structured developer notes inserted directly into comments.
 Each Leader sequence expands into a standardized annotation prefix.

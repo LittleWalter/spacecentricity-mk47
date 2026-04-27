@@ -85,9 +85,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Keyboard Settings & Adjustments: Hold Left Thumb Key, Then Right Thumb Key
  * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
- * │ BOOTLDR │         │         │         │         │         │         │         │RGB MODE-│RGB MODE+│         │         │
+ * │ BOOTLDR │         │         │         │         │         │         │         │RGB MODE-│RGB MODE+│         │    🔆   │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │         │         │    🔆   │    🔅   │         │         │         │RGB TOGL │   RGB-  │   RGB+  │         │         │
+ * │         │         │         │  ⭑  ⏻   │         │         │         │RGB TOGL │   RGB-  │   RGB+  │         │    🔅   │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │         │         │         │         │         │         │         │ OS Mode │ RGB HUE-│ RGB HUE+│SATURATN-│SATURATN+│
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
@@ -95,10 +95,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
  */
 [_ADJ] = LAYOUT_planck_mit(
-    QK_BOOT, ____, ____,    ____,    ____, ____, ____, ____,    RM_PREV, RM_NEXT, ____,    ____,
-    ____,    ____, KC_BRIU, KC_BRID, ____, ____, ____, RM_TOGG, RM_VALD, RM_VALU, ____,    ____,
-    ____,    ____, ____,    ____,    ____, ____, ____, TG_OS,   RM_HUED, RM_HUEU, RM_SATD, RM_SATU,
-    DB_TOGG, ____, ____,    ____,    ____,    ____,    ____,    RM_SPDD, RM_SPDU, ____,    ____
+    QK_BOOT, ____, ____, ____,      ____, ____, ____, ____,    RM_PREV, RM_NEXT, ____,    KC_BRIU,
+    ____,    ____, ____, TG_LEADER, ____, ____, ____, RM_TOGG, RM_VALD, RM_VALU, ____,    KC_BRID,
+    ____,    ____, ____, ____,      ____, ____, ____, TG_OS,   RM_HUED, RM_HUEU, RM_SATD, RM_SATU,
+    DB_TOGG, ____, ____, ____,      ____,    ____,    ____,    RM_SPDD, RM_SPDU, ____,    ____
 ),
 
 /* Function Keys & Modifiers: Hold Bottom Left Key w/ Palm for 350 ms to Activate

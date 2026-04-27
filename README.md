@@ -7,6 +7,28 @@ Each layer includes its own RGB matrix pattern, making it easy to see which laye
 > [!NOTE]
 > See [design notes](DESIGN.md) for deeper explanations of key placement and layer philosophy.
 
+## Table of Contents
+
+- [Keyboard](#keyboard)
+  - [Availability](#availability)
+- [Layout](#layout)
+  - [Legend](#legend)
+  - [Base: Modified Dvorak](#base-modified-dvorak)
+  - [Lower: Numpad](#lower-numpad)
+  - [Upper: Primary Number Layer](#upper-primary-number-layer)
+  - [Adjustment: Keyboard Settings](#adjustment-keyboard-settings)
+  - [Function: `F1`–`F12`](#function-f1f12)
+  - [Arrows](#arrows)
+  - [Vim](#vim)
+  - [Programming](#programming)
+  - [Terminal](#terminal)
+  - [Apple macOS](#apple-macos)
+  - [Mouse](#mouse)
+  - [Doom Classic](#doom-classic)
+- [Using This Keymap with QMK](#using-this-keymap-with-qmk)
+  - [Helper Scripts (Optional)](#-helper-scripts-optional)
+- [Layout Stability](#-layout-stability)
+
 ## Keyboard
 
 The [Inland MK-47](https://www.microcenter.com/product/661264/inland-47-keys-hot-swappable-rgb-wired-mechanical-keyboard) is an affordable **47‑key ortholinear mechanical keyboard** sold by Micro Center. Despite its low price, it includes features normally found on enthusiast‑grade boards:
@@ -86,6 +108,12 @@ This key is not momentary — it switches layers rather than holding them.
 
 The media cluster lives out of the way on the bottom left. Note that  **Mute Tab** (`Ctrl‑M` on hold) works in Firefox and Firefox‑based browsers, but not in most Chromium‑based browsers. Screen‑brightness controls sit on Tap‑and‑Hold for convenient access from the top layer.
 
+#### Special Characters
+
+The `*` key emits `×`(multiplication, not the letter _x_) on triple tap.
+
+The navigation cluster emits the arrow symbols on triple tap: `←`, `↓`, `↑`, `→`.
+
 ### Lower: Numpad
 
 ![Lower: Numpad with hexadecimal](assets/02_LOWER.png)
@@ -156,7 +184,9 @@ Additional triple‑tap symbols: `+` → `×` (multiplication, not the letter _x
 
 #### Leader Replay
 
-This keymap includes optional **Leader Replay** support, allowing you to repeat recent or favorited Leader actions using the number keys (`0`–`9`).
+This keymap includes optional Leader Replay support, allowing you to repeat recent or favorited Leader actions using holds of the number keys (`0`–`9`).
+
+Replay functionality can be enabled or disabled with the `@` toggle key, and the same key also switches between _History_ and _Favorites_ replay modes.
 
 See [LEADER.md](/LEADER.md) for full details.
 
@@ -193,7 +223,7 @@ Provides `F1`–`F12` and modifier combinations for shortcut execution. The home
 
 Spanish punctuation and combining diacritics sit on the home row for light multilingual support.
 
-The bottom-left corner key activates mnemonic Leader sequences. See the [QMK Leader Key page](/LEADER.md) for the full list of available actions.
+The bottom-left corner key activates mnemonic Leader sequences. See [LEADER.md](/LEADER.md) for the full list of available actions.
 
 **Center Keys**
 

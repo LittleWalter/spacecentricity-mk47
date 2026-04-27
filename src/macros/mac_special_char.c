@@ -48,7 +48,7 @@ static const special_char_entry_t special_chars[] = {
     { CHAR_DIVIDE,             "÷",  A(KC_SLSH),    NULL, false },
     { CHAR_GTE,                "≥",  A(KC_DOT),     NULL, false },
     { CHAR_LTE,                "≤",  A(KC_COMM),    NULL, false },
-    { CHAR_INFINITY,           "∞",  0,             "U+221E", false }, // A(KC_5) for US layout
+    { CHAR_INFINITY,           "∞",  0,             "U+221E", true }, // A(KC_5) for US layout
 
     // Dots & ellipses
     { CHAR_ELLIPSIS,           "…",  A(KC_SCLN),    NULL, false },
@@ -73,6 +73,30 @@ static const special_char_entry_t special_chars[] = {
     { CHAR_ARROW_RIGHT,        "→",  0, "U+2192", true },
     { CHAR_ARROW_UP,           "↑",  0, "U+2191", true },
     { CHAR_ARROW_DOWN,         "↓",  0, "U+2193", true },
+    { CHAR_DOUBLE_ARROW_LEFT,  "⇐",  0, "U+21D0", true },
+    { CHAR_DOUBLE_ARROW_RIGHT, "⇒",  0, "U+21D2", true },
+    { CHAR_DOUBLE_ARROW_UP,    "⇑",  0, "U+21D1", true },
+    { CHAR_DOUBLE_ARROW_DOWN,  "⇓",  0, "U+21D3", true },
+
+    // Whitespace/Control Symbols
+    { CHAR_COPYRIGHT,          "©",  A(KC_G), NULL, false },
+    { CHAR_REGISTERED,         "®",  A(KC_R), NULL, false },
+    { CHAR_TRADEMARK,          "™",  A(KC_2), NULL, false },
+    { CHAR_SECTION,            "§",  A(KC_5), NULL, false },
+    { CHAR_PARAGRAPH,          "¶",  A(KC_7), NULL, false },
+
+    // Whitespace/Control Symbols
+    { CHAR_OPEN_BOX,           "␣",  0, "U+2423", true }, // Space
+    { CHAR_CARRIAGE_RETURN,    "⏎",  0, "U+23CE", true },
+    { CHAR_ENTER,              "↵",  0, "U+21B5", true },
+    { CHAR_TAB,                "⇥",  0, "U+21E5", true },
+    { CHAR_TAB_REVERSE,        "⇤",  0, "U+21E4", true },
+    { CHAR_BACKSPACE,          "⌫",  0, "U+232B", true },
+    { CHAR_DELETE,             "⌦",  0, "U+2326", true },
+    { CHAR_ESCAPE,             "⎋",  0, "U+238B", true },
+
+    // Misc
+    { CHAR_STAR,               "★",  0, "U+2605", true },
 
     // ─────────────────────────────────────────────
     // Emojis (Unicode + macOS Emoji Menu popup)
@@ -89,7 +113,7 @@ static const special_char_entry_t special_chars[] = {
     { CHAR_EMOJI_AUTOMOBILE,           "🚗", 0, "U+1F697", true },
     { CHAR_EMOJI_BED,                  "🛏️", 0, "U+1F6CF", true },
     { CHAR_EMOJI_BICYCLE,              "🚲", 0, "U+1F6B2", true },
-    { CHAR_EMOJI_BLOWING_KISS,         "😘", 0, "U+1F618", true },
+    { CHAR_EMOJI_BLOW_KISS,            "😘", 0, "U+1F618", true },
     { CHAR_EMOJI_BLUSH,                "😊", 0, "U+1F60A", true },
     { CHAR_EMOJI_BRAIN,                "🧠", 0, "U+1F9E0", true },
     { CHAR_EMOJI_BULLSEYE,             "🎯", 0, "U+1F3AF", true },
@@ -99,7 +123,7 @@ static const special_char_entry_t special_chars[] = {
     { CHAR_EMOJI_CENSORED,             "🤬", 0, "U+1F92C", true },
     { CHAR_EMOJI_CHECK_MARK,           "✔",  0, "U+2714",  true },
     { CHAR_EMOJI_CHECK_MARK_BUTTON,    "✅", 0, "U+2705",  true },
-    { CHAR_EMOJI_CLAPPING,             "👏", 0, "U+1F44F", true },
+    { CHAR_EMOJI_CLAP,                 "👏", 0, "U+1F44F", true },
     { CHAR_EMOJI_CLIPBOARD,            "📋", 0, "U+1F4CB", true },
     { CHAR_EMOJI_CLOUD,                "☁️", 0, "cloud", true },
     { CHAR_EMOJI_CLOUD_WITH_LIGHTNING, "🌩", 0, "U+1F329", true },
@@ -107,14 +131,17 @@ static const special_char_entry_t special_chars[] = {
     { CHAR_EMOJI_COMPASS,              "🧭", 0, "U+1F9ED", true },
     { CHAR_EMOJI_CRESCENT_MOON,        "🌙", 0, "U+1F319", true },
     { CHAR_EMOJI_CROSS_MARK,           "❌", 0, "U+274C",  true },
-    { CHAR_EMOJI_CRYING,               "😢", 0, "U+1F622", true },
-    { CHAR_EMOJI_CRYING_LOUDLY,        "😭", 0, "U+1F62D", true },
+    { CHAR_EMOJI_CRY,                  "😢", 0, "U+1F622", true },
+    { CHAR_EMOJI_CRY_LOUDLY,           "😭", 0, "U+1F62D", true },
     { CHAR_EMOJI_CUP_WITH_STRAW,       "🥤", 0, "U+1F964", true },
     { CHAR_EMOJI_DESKTOP_COMPUTER,     "🖥️", 0, "U+1F5A5", true },
     { CHAR_EMOJI_DEVIL,                "😈", 0, "U+1F608", true },
-    { CHAR_EMOJI_DOUBLE_EXCLAMATION,   "‼️", 0, "U+203C",  true },
+    { CHAR_EMOJI_DOUBLE_EXCLAMATION,   "‼️", 0, "red double exclamation",  true },
+    { CHAR_EMOJI_DROOL,                "🤤", 0, "U+1F924", true },
     { CHAR_EMOJI_EARTH,                "🌎", 0, "U+1F30E", true },
     { CHAR_EMOJI_EXCLAMATION,          "❗️", 0, "U+2757",  true },
+    { CHAR_EMOJI_EXHALE,               "😮‍💨", 0, "exhaling",  true },
+    { CHAR_EMOJI_EXLM_QUES,            "⁉️", 0, "red exclamation question",  true },
     { CHAR_EMOJI_EXPLODING_HEAD,       "🤯", 0, "U+1F92F", true },
     { CHAR_EMOJI_EXPRESSIONLESS,       "😑", 0, "U+1F611", true },
     { CHAR_EMOJI_EYES,                 "👀", 0, "U+1F440", true },
@@ -126,6 +153,7 @@ static const special_char_entry_t special_chars[] = {
     { CHAR_EMOJI_FRUSTRATED,           "😤", 0, "U+1F624", true },
     { CHAR_EMOJI_GESTURING_NO,         "🙅", 0, "U+1F645", true },
     { CHAR_EMOJI_GIFT,                 "🎁", 0, "U+1F381", true },
+    { CHAR_EMOJI_GRIMACE,              "😬", 0, "U+1F62C", true },
     { CHAR_EMOJI_GRIN,                 "😁", 0, "U+1F601", true },
     { CHAR_EMOJI_GRIN_SWEAT,           "😅", 0, "U+1F605", true },
     { CHAR_EMOJI_HALO,                 "😇", 0, "U+1F607", true },
@@ -164,11 +192,12 @@ static const special_char_entry_t special_chars[] = {
     { CHAR_EMOJI_NEUTRAL,              "😐", 0, "U+1F610", true },
     { CHAR_EMOJI_OK,                   "👌", 0, "U+1F44C", true },
     { CHAR_EMOJI_PACKAGE,              "📦", 0, "U+1F4E6", true },
+    { CHAR_EMOJI_PARTY_FACE,           "🥳", 0, "U+1F973", true },
     { CHAR_EMOJI_PARTY_POPPER,         "🎉", 0, "U+1F389", true },
     { CHAR_EMOJI_PEACE,                "✌️", 0, "peace hand sign", true },
     { CHAR_EMOJI_PHONE,                "📞", 0, "U+1F4DE", true },
     { CHAR_EMOJI_PIZZA,                "🍕", 0, "U+1F355", true },
-    { CHAR_EMOJI_PLEADING,             "🥺", 0, "U+1F97A", true },
+    { CHAR_EMOJI_PLEAD,                "🥺", 0, "U+1F97A", true },
     { CHAR_EMOJI_POOP,                 "💩", 0, "U+1F4A9", true },
     { CHAR_EMOJI_PRAY,                 "🙏", 0, "U+1F64F", true },
     { CHAR_EMOJI_PRINTER,              "🖨", 0, "U+1F5A8", true },
@@ -177,10 +206,12 @@ static const special_char_entry_t special_chars[] = {
     { CHAR_EMOJI_RAIN_CLOUD,           "🌧️", 0, "cloud with rain", true },
     { CHAR_EMOJI_RAISED_EYEBROW,       "🤨", 0, "U+1F928", true },
     { CHAR_EMOJI_RECYCLE,              "♻️", 0, "recycling symbol green", true },
+    { CHAR_EMOJI_RELIEF,               "😌", 0, "U+1F60C", true },
     { CHAR_EMOJI_ROBOT,                "🤖", 0, "U+1F916", true },
     { CHAR_EMOJI_ROTFL,                "🤣", 0, "U+1F923", true },
     { CHAR_EMOJI_SCISSORS,             "✂️", 0, "scissors", true },
     { CHAR_EMOJI_SCOOTER,              "🛴", 0, "U+1F6F4", true },
+    { CHAR_EMOJI_SCREAM_IN_FEAR,       "😱", 0, "U+1F631", true },
     { CHAR_EMOJI_SHUSH,                "🤫", 0, "U+1F92B", true },
     { CHAR_EMOJI_SKULL,                "💀", 0, "U+1F480", true },
     { CHAR_EMOJI_SLEEPING,             "😴", 0, "U+1F634", true },

@@ -24,7 +24,12 @@
       "a": 5,
       "fa": [
         1,
-        7
+        7,
+        0,
+        0,
+        0,
+        0,
+        0
       ]
     },
     "RGB\n←\n\n\n\n\nMODE",
@@ -34,17 +39,12 @@
       "a": 7
     },
     "",
-    ""
-  ],
-  [
-    "",
-    "",
     {
       "c": "#cccccc",
       "a": 5,
       "fa": [
         1,
-        7,
+        1,
         0,
         0,
         0,
@@ -52,8 +52,21 @@
         6
       ]
     },
-    "SCREEN+\n\n\n\n\n\n🔆",
-    "SCREEN-\n\n\n\n\n\n🔅",
+    "SCREEN\n▲\n\n\n\n\n🔆"
+  ],
+  [
+    {
+      "c": "#b2beb5",
+      "a": 7
+    },
+    "",
+    "",
+    "",
+    {
+      "c": "#cccccc",
+      "a": 5
+    },
+    "LEADER\nON/OFF\n\n\n\n\n⭑⏻",
     {
       "c": "#b2beb5",
       "a": 7,
@@ -85,7 +98,7 @@
       "c": "#cccccc",
       "fa": [
         1,
-        0,
+        1,
         0,
         0,
         0,
@@ -93,16 +106,24 @@
         6
       ]
     },
-    "RGB-\n\n\n\n\n\n🔅",
-    "RGB+\n\n\n\n\n\n🔆",
+    "RGB\n▼\n\n\n\n\n🔅",
+    "RGB\n▲\n\n\n\n\n🔆",
     {
       "c": "#b2beb5",
       "a": 7
     },
     "",
-    ""
+    {
+      "c": "#cccccc",
+      "a": 5
+    },
+    "SCREEN\n▼\n\n\n\n\n🔅"
   ],
   [
+    {
+      "c": "#b2beb5",
+      "a": 7
+    },
     "",
     "",
     "",
@@ -113,14 +134,17 @@
     {
       "c": "#F8B8B5",
       "a": 5,
-      "f": 3
+      "fa": [
+        1,
+        1
+      ]
     },
     "\nMODE\n\n\n\n\nOS",
     {
       "c": "#cccccc",
       "fa": [
         1,
-        5,
+        1,
         0,
         0,
         0,
@@ -128,10 +152,10 @@
         4
       ]
     },
-    "RGB\n-\n\n\n\n\nHUE",
-    "RGB\n+\n\n\n\n\nHUE",
-    "RGB\n-\n\n\n\n\nSAT",
-    "RGB\n+\n\n\n\n\nSAT"
+    "RGB\n▼\n\n\n\n\nHUE",
+    "RGB\n▲\n\n\n\n\nHUE",
+    "RGB\n▼\n\n\n\n\nSAT",
+    "RGB\n▲\n\n\n\n\nSAT"
   ],
   [
     {
@@ -157,14 +181,10 @@
     "",
     {
       "c": "#cccccc",
-      "a": 5,
-      "f": 3
+      "a": 5
     },
-    "RGB\n-\n\n\n\n\nANIM",
-    {
-      "f": 3
-    },
-    "RGB\n+\n\n\n\n\nANIM",
+    "RGB\n▼\n\n\n\n\nANIM",
+    "RGB\n▲\n\n\n\n\nANIM",
     {
       "c": "#b2beb5",
       "a": 7

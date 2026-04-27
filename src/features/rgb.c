@@ -223,9 +223,9 @@ bool rgb_matrix_indicators_user(void) {
 
         /* Keyboard Settings & Adjustments: Hold Left Thumb Key, Then Right Thumb Key
          * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
-         * │ BOOTLDR │         │         │         │         │         │         │         │RGB MODE-│RGB MODE+│         │         │
+         * │ BOOTLDR │         │         │         │         │         │         │         │RGB MODE-│RGB MODE+│         │    🔆   │
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-         * │         │         │    🔆   │    🔅   │         │         │         │RGB TOGL │   RGB-  │   RGB+  │         │         │
+         * │         │         │         │  ⭑  ⏻   │         │         │         │RGB TOGL │   RGB-  │   RGB+  │         │    🔅   │
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
          * │         │         │         │         │         │         │         │ OS Mode │ RGB HUE-│ RGB HUE+│SATURATN-│SATURATN+│
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
@@ -252,8 +252,8 @@ bool rgb_matrix_indicators_user(void) {
             // Bootloader Mode Key
             rgb_matrix_set_color(LED_CORNER_TOP_LEFT, RED);
             // Computer Screen Brightness Keys
-            rgb_matrix_set_color(LED_ROW1_LEFT_MIDDLE, SPRING_GREEN);
-            rgb_matrix_set_color(LED_ROW1_LEFT_RING,   SPRING_GREEN);
+            rgb_matrix_set_color(LED_CORNER_TOP_RIGHT, SPRING_GREEN);
+            rgb_matrix_set_color(LED_ROW1_COL11,       SPRING_GREEN);
             // OS Toggle
             switch (current_os) {
                 case OS_MACOS: rgb_matrix_set_color(LED_ROW2_RIGHT_INDEX, ELECTRIC_BLUE); break;
@@ -261,6 +261,11 @@ bool rgb_matrix_indicators_user(void) {
                 case OS_WIN:   rgb_matrix_set_color(LED_ROW2_RIGHT_INDEX, RED);           break;
                 default: break;
             }
+#ifdef LEADER_ENABLE
+            // Leader Key Toggle
+            leader_state.enabled ? rgb_matrix_set_color(LED_ROW1_LEFT_MIDDLE, NAVY)
+                                 : rgb_matrix_set_color(LED_ROW1_LEFT_MIDDLE, RED);
+#endif
             break;
 
         /* Function Keys & Modifiers: Hold Bottom Left Key w/ Palm for 350 ms to Activate
