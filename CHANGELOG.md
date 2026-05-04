@@ -12,6 +12,25 @@
 
 ---
 
+## 2026-05/03-SU
+- Added **Temporary Lexical Case Modes**, a text‑transformation system for programming, shell, and writing workflows.
+  - Case modes:
+    - `camelCase` / `PascalCase`
+    - `snake_case` / `SCREAMING_SNAKE_CASE`
+    - `kebab-case`
+    - `dot.case`
+    - `path/to/case`
+    - `PUNC` mode (auto‑capitalizes after punctuation)
+  - `Space` acts as a temporary separator key, capitalizing the next character for `camelCase`/`PascalCase` or inserting the appropriate symbol for other modes.
+  - All case modes are temporary and automatically disable after a short idle timeout or when pressing non‑character keys (`Enter`, `Super`/`CMD`, etc.).
+    - For `path/to/case`, `KC_TAB` does not disable case mode to support shell tab completions.
+  - **Base** layer RGB matrix turns neon mint when any case mode is active.
+- Updated **Base** tap dances:
+  - Added “close active window” on tap-and-hold for `Esc`.
+  - Added `LSFT-Enter` on tap-and-hold for `Enter`.
+  - Added `…` on double tap, `⋮` on tap-and-hold for `.`.
+  - Added `;␣` on double tap, `:␣` on tap-and-hold for `;`.
+
 ## 2026-04/26-SU
 - Added global _Leader Key toggle_ on the **Adjustment** layer
   - Toggle key visual feedback: 🔵 Navy = enabled (default), 🔴 Red = disabled

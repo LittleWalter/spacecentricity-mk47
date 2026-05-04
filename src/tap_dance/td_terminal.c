@@ -1,5 +1,28 @@
+/*
+ * td_terminal.c — Tap Dance definitions for terminal and shell command shortcuts.
+ *
+ * This module implements tap-dance behaviors that streamline command-line
+ * workflows. Each tap dance triggers a commonly used terminal command,
+ * process-control signal, or shell navigation pattern. Commands are sent
+ * using terminal-specific macros defined in `mac_terminal.h`.
+ *
+ * Included tap dances:
+ *   - System monitors: btop / top / htop
+ *   - File viewing: cat / less / bat
+ *   - Shell control: clear, exit, SIGINT (Ctrl+C), SIGTSTP (Ctrl+Z), fg
+ *   - Path helpers: ./, ../, ~/
+ *   - Directory changes: cd, cd ..
+ *   - Sudo helpers: sudo, sudo !!
+ *   - Pipe helpers: | and spaced pipe variants
+ *
+ * The goal of this module is to centralize all terminal-oriented tap-dance
+ * logic so command-line interactions remain fast, consistent, and easy to
+ * maintain across the keymap.
+ */
+
 #include "td_terminal.h"
 #include "tap_dance_actions.h"
+#include "src/features/case_mode.h"
 #include "src/macros/mac_terminal.h"
 
 // ─────────────────────────────────────────────────────────────
@@ -20,10 +43,10 @@ static td_tap_t term_btop_tap_state = {
 void term_btop_finished(tap_dance_state_t *state, void *user_data) {
     term_btop_tap_state.state = cur_dance(state);
     switch (term_btop_tap_state.state) {
-        case TD_SINGLE_TAP:  mon_term_macro(COM_BTOP); break; // `btop`: fancy system monitor
         case TD_DOUBLE_TAP:  mon_term_macro(COM_TOP);  break; // `top`: basic system monitor
         case TD_SINGLE_HOLD: mon_term_macro(COM_HTOP); break; // `htop`: better than `top`
-        case TD_DOUBLE_SINGLE_TAP: mon_term_macro(COM_BTOP); mon_term_macro(COM_BTOP); break;
+        case TD_DOUBLE_SINGLE_TAP: mon_term_macro(COM_BTOP);
+        case TD_SINGLE_TAP:        mon_term_macro(COM_BTOP); break; // `btop`: fancy system monitor
         default: break;
     }
 }
@@ -47,10 +70,10 @@ static td_tap_t term_cat_tap_state = {
 void term_cat_finished(tap_dance_state_t *state, void *user_data) {
     term_cat_tap_state.state = cur_dance(state);
     switch (term_cat_tap_state.state) {
-        case TD_SINGLE_TAP:  view_term_macro(COM_CAT);  break; // `cat`: plaintext print file to console
         case TD_DOUBLE_TAP:  view_term_macro(COM_LESS); break; // `less`: universal pager
         case TD_SINGLE_HOLD: view_term_macro(COM_BAT);  break; // `bat`: fancy print file to console
-        case TD_DOUBLE_SINGLE_TAP: view_term_macro(COM_CAT); view_term_macro(COM_CAT); break;
+        case TD_DOUBLE_SINGLE_TAP: view_term_macro(COM_CAT);
+        case TD_SINGLE_TAP:        view_term_macro(COM_CAT);  break; // `cat`: plaintext print file to console
         default: break;
     }
 }
@@ -74,9 +97,9 @@ static td_tap_t term_cls_tap_state = {
 void term_cls_finished(tap_dance_state_t *state, void *user_data) {
     term_cls_tap_state.state = cur_dance(state);
     switch (term_cls_tap_state.state) {
-        case TD_SINGLE_TAP:  cls_term_macro();  break; // `exit`: close terminal emulator shell
         case TD_SINGLE_HOLD: exit_term_macro(); break; // `clear`: clear screen in terminal emulator
-        case TD_DOUBLE_SINGLE_TAP: cls_term_macro(); cls_term_macro(); break;
+        case TD_DOUBLE_SINGLE_TAP: cls_term_macro();
+        case TD_SINGLE_TAP:        cls_term_macro();  break; // `exit`: close terminal emulator shell
         default: break;
     }
 }
@@ -100,10 +123,10 @@ static td_tap_t term_sigint_tap_state = {
 void term_sigint_finished(tap_dance_state_t *state, void *user_data) {
     term_sigint_tap_state.state = cur_dance(state);
     switch (term_sigint_tap_state.state) {
-        case TD_SINGLE_TAP:  register_code16(C(KC_C)); break; // LCTL+c: SIGINT (stop process gracefully)
         case TD_DOUBLE_TAP:  fg_term_macro();          break; // `fg`: resume background process
         case TD_SINGLE_HOLD: register_code16(C(KC_Z)); break; // LCTL+z: SIGTSTP (suspend/pause process, put in background)
-        case TD_DOUBLE_SINGLE_TAP: tap_code16(C(KC_C)); register_code16(C(KC_C)); break;
+        case TD_DOUBLE_SINGLE_TAP: tap_code16(C(KC_C));
+        case TD_SINGLE_TAP:        register_and_update(C(KC_C)); break; // LCTL+c: SIGINT (stop process gracefully)
         default: break;
     }
 }
@@ -135,7 +158,7 @@ void term_pipe_finished(tap_dance_state_t *state, void *user_data) {
     switch (term_pipe_tap_state.state) {
         case TD_SINGLE_TAP:  register_code16(KC_PIPE); break; // `|`
         case TD_SINGLE_HOLD: pipe_term_macro();        break; // ` | `
-        case TD_DOUBLE_SINGLE_TAP: tap_code16(KC_PIPE); register_code16(KC_PIPE); break;
+        case TD_DOUBLE_SINGLE_TAP: tap_code16(KC_PIPE); register_and_update(KC_PIPE); break;
         default: break;
     }
 }
@@ -164,9 +187,9 @@ static td_tap_t term_cd_tap_state = {
 void term_cd_finished(tap_dance_state_t *state, void *user_data) {
     term_cd_tap_state.state = cur_dance(state);
     switch (term_cd_tap_state.state) {
-        case TD_SINGLE_TAP:  cd_macro(COM_CD_NONE, false);  break; // `cd `
         case TD_SINGLE_HOLD: cd_macro(COM_CD_PARENT, true); break; // `cd ..`
-        case TD_DOUBLE_SINGLE_TAP: cd_macro(COM_CD_NONE, false); cd_macro(COM_CD_NONE, false); break;
+        case TD_DOUBLE_SINGLE_TAP: cd_macro(COM_CD_NONE, false);
+        case TD_SINGLE_TAP:        cd_macro(COM_CD_NONE, false);  break; // `cd `
         default: break;
     }
 }

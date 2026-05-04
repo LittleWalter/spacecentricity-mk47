@@ -7,18 +7,34 @@
     "",
     "",
     "",
-    "",
-    "",
-    "",
     {
       "c": "#cccccc",
       "a": 4,
       "fa": [
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    "if\nelif\nelse if\nelse",
+    {
+      "fa": [
         4,
-        0,
-        0,
+        2,
+        2,
         4
       ]
+    },
+    "for\n\n\nwhile",
+    {
+      "c": "#b2beb5",
+      "a": 7
+    },
+    "",
+    {
+      "c": "#cccccc",
+      "a": 4
     },
     "null\n\n\nnil",
     "&&\n\n\n||",
@@ -144,26 +160,21 @@
     },
     "break\n\n\ncontinue",
     "switch\n\n\ncase",
+    "camel\n\n\nPascal",
     {
       "fa": [
         2,
-        2,
-        2,
-        2
+        0,
+        0,
+        1
       ]
     },
-    "if\nelif\nelse if\nelse",
+    "snake_\n\n\nSCREAM_",
     {
+      "a": 7,
       "fa": [
-        4,
-        2,
-        2,
         4
       ]
-    },
-    "for\n\n\nwhile",
-    {
-      "a": 7
     },
     "` : ? `",
     {

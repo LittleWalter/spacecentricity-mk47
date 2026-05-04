@@ -139,6 +139,7 @@ Multi‑letter mnemonics are used when a single letter is already taken or when 
 | `★★d`            | Death/Dead/Dying       | 💀 Skull                           | Symbol              |
 | `★★da`           | Date                   | 📅 Calendar                        | Object / Time       |
 | `★★de`           | Devil                  | 😈 Smiling Face with Horns         | Emotion             |
+| `★★di`           | Die/Dice               | 🎲 Game Die (Randomization)        | Object              |
 | `★★dl`           | Drool                  | 🤤 Drooling Face                   | Emotion             |
 | `★★dr`           | Drink                  | 🥤 Cup with Straw                  | Food                |
 | `★★dt`           | Desktop                | 🖥️ Desktop Computer                | Object / Tech       |
@@ -196,6 +197,7 @@ Multi‑letter mnemonics are used when a single letter is already taken or when 
 | `★★o`            | Oh no!                 | 😮 Surprised Face with Open Mouth  | Emotion             |
 | `★★ok`           | OK                     | 👌 OK Hand Sign                    | Gesture             |
 | `★★p`            | Poop                   | 💩 Pile of Poo                     | Fun / Meme          |
+| `★★pc`           | Paperclip              | 📎 Paperclip (Attachment Symbol)   | Object / Tech       |
 | `★★ph`           | Phone                  | 📞 Phone Receiver                  | Object              |
 | `★★pk`           | Package                | 📦 Package/Box                     | Object              |
 | `★★pl`           | Pleading               | 🥺 Pleading                        | Emotion             |
@@ -225,10 +227,10 @@ Multi‑letter mnemonics are used when a single letter is already taken or when 
 | `★★st`           | Star                   | ⭐️ Star                            | Symbol              |
 | `★★su`           | Sunny                  | ☀️ Sun                             | Nature              |
 | `★★t` or `★★tu`  | Thumbs Up              | 👍 Thumbs Up                       | Gesture             |
-| `★★tt` or `★★td` | Thumbs Down            | 👎 Thumbs Down                     | Gesture             |
 | `★★ta`           | Taco                   | 🌮 Taco                            | Food                |
 | `★★te`           | Temperature            | 🌡️ Thermometer                     | Nature / Object     |
 | `★★tr`           | Train                  | 🚆 Train                           | Travel              |
+| `★★tt` or `★★td` | Thumbs Down            | 👎 Thumbs Down                     | Gesture             |
 | `★★u`            | Upside-Down            | 🙃 Upside-Down Face                | Emotion             |
 | `★★v`            | Victory/Peace Fingers  | ✌️ Peace Hand Sign                 | Gesture             |
 | `★★vo`           | Vomiting               | 🤮 Vomiting Face                   | Emotion             |
@@ -273,32 +275,43 @@ Symbol sequences are prefixed with `␣` (space).
 | `★␣↵`            | Enter                   | `↵` Enter                          | Control / Whitespace                  |
 | `★␣↵↵`           | Return                  | `⏎` Carriage Return                | Control / Whitespace                  |
 | `★␣ap`           | Approximate             | `≈` Approximation                  | Mathematics                           |
+| `★␣b`            | Bullet                  | `•` Bullet Symbol                  | Punctuation / Typography              |
+| `★␣c`            | Cent                    | `¢` Cent                           | Currency                              |
 | `★␣cd`           | Centered Dot            | `·` Centered Dot                   | Punctuation / Typography              |
 | `★␣cr`           | Copyright               | `©` Copyright                      | Legal / Symbols                       |
 | `★␣d`            | Down                    | `↓` Down Arrow                     | Direction / Navigation                |
 | `★␣dd`           | Down Double             | `⇓` Down Double Arrow              | Direction / Navigation                |
 | `★␣de`           | Degree                  | `°` Degree                         | Mathematics                           |
 | `★␣di`           | Divide                  | `÷` Division                       | Mathematics                           |
+| `★␣do`           | Dong                    | `₫` Vietnamese Dong                | Currency                              |
 | `★␣el`           | Ellipsis                | `…` Ellipsis                       | Punctuation / Typography              |
 | `★␣em`           | Em Dash                 | `—` Em Dash                        | Punctuation / Typography              |
 | `★␣en`           | En Dash                 | `–` En Dash                        | Punctuation / Typography              |
+| `★␣eu`           | Euro                    | `€` Euro                           | Currency                              |
 | `★␣ge`           | Greater (Than or) Equal | `≥` Greater Than or Equal          | Mathematics                           |
 | `★␣i`            | Infinity                | `∞` Infinity                       | Mathematics                           |
 | `★␣l`            | Left                    | `←` Left Arrow                     | Direction / Navigation                |
 | `★␣ld`           | Left Double             | `⇐` Left Double Arrow              | Direction / Navigation                |
 | `★␣le`           | Less (Than or) Equal    | `≤` Less Than or Equal             | Mathematics                           |
+| `★␣li`           | Lira                    | `₺` Turkish Lira                   | Currency                              |
 | `★␣mu`           | Multiply                | `×` Multiplication                 | Mathematics                           |
 | `★␣ne`           | Not Equal               | `≠` Inequality                     | Mathematics                           |
 | `★␣pa`           | Paragraph               | `¶` Pilcrow                        | Typography                            |
+| `★␣pe`           | Peso                    | `₱` Philippine Peso                | Currency                              |
+| `★␣po`           | Pound                   | `£` British Pound Sterling         | Currency                              |
 | `★␣r`            | Right                   | `→` Right Arrow                    | Direction / Navigation                |
 | `★␣rd`           | Right Double            | `⇒` Right Double Arrow             | Direction / Navigation                |
 | `★␣re`           | Registered              | `®` Registered                     | Legal / Symbols                       |
+| `★␣rp`           | Rupee                   | `₹` Indian Rupee                   | Currency                              |
+| `★␣ru`           | Ruble                   | `₽` Russian Ruble                  | Currency                              |
 | `★␣se`           | Section                 | `§` Section Sign/Silcrow           | Typography                            |
 | `★␣st`           | Star                    | `★` Star                           | Miscellaneous Symbols                 |
 | `★␣tm`           | Trademark               | `™` Trademark                      | Legal / Symbols                       |
 | `★␣u`            | Up                      | `↑` Up Arrow                       | Direction / Navigation                |
 | `★␣ud`           | Up Double               | `⇑` Up Double Arrow                | Direction / Navigation                |
 | `★␣ve`           | Vertical Ellipsis       | `⋮` Vertical Ellipsis              | Punctuation / Typography              |
+| `★␣w`            | Won                     | `₩` Korean Won                     | Currency                              |
+| `★␣y`            | Yen/Yuan                | `¥` Japanese Yen/Chinese Yuan      | Currency                              |
 
 ### RGB Sequences
 

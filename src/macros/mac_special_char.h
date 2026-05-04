@@ -24,9 +24,15 @@ typedef enum {
     CHAR_COMB_MACRON,        // Combining macron symbol (◌̄) — Requires "ABC Extended" macOS setting
     // Currency
     CHAR_CENT,               // Cent symbol (¢)
-    CHAR_EURO,               // Euro pound symbol (€)
-    CHAR_POUND,              // British pound symbol (£)
-    CHAR_YEN,                // Yen/yuan symbol (¥)
+    CHAR_DONG,               // Vietnamese Dong (₫)
+    CHAR_EURO,               // Euro symbol (€)
+    CHAR_LIRA,               // Turkish Lira (₺)
+    CHAR_PESO,               // Philippine Peso (₱)
+    CHAR_POUND,              // British Pound Sterling symbol (£)
+    CHAR_RUBLE,              // Russian Ruble (₽)
+    CHAR_RUPEE,              // Indian Rupee (₹)
+    CHAR_WON,                // Korean Won (₩)
+    CHAR_YEN,                // Japanees Yen/Chinese Yuan symbol (¥)
     // Dashes & math
     CHAR_DEGREE,             // Degree symbol (°)
     CHAR_EN_DASH,            // En dash (–) a.k.a. range dash
@@ -78,7 +84,7 @@ typedef enum {
     CHAR_DELETE,             // Delete (⌦)
     CHAR_ESCAPE,             // Escape (⎋)
     // Misc
-    CHAR_STAR,               // Star ()
+    CHAR_STAR,               // Star (★)
 
     // Emojis
     CHAR_EMOJI_AIRPLANE,
@@ -125,6 +131,7 @@ typedef enum {
     CHAR_EMOJI_FIRE,
     CHAR_EMOJI_FLOPPY_DISK,
     CHAR_EMOJI_FRUSTRATED,
+    CHAR_EMOJI_GAME_DIE,
     CHAR_EMOJI_GESTURING_NO,
     CHAR_EMOJI_GIFT,
     CHAR_EMOJI_GRIMACE,
@@ -166,6 +173,7 @@ typedef enum {
     CHAR_EMOJI_NEUTRAL,
     CHAR_EMOJI_OK,
     CHAR_EMOJI_PACKAGE,
+    CHAR_EMOJI_PAPERCLIP,
     CHAR_EMOJI_PARTY_FACE,
     CHAR_EMOJI_PARTY_POPPER,
     CHAR_EMOJI_PEACE,

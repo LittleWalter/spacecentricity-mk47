@@ -25,6 +25,7 @@ Each layer includes its own RGB matrix pattern, making it easy to see which laye
   - [Apple macOS](#apple-macos)
   - [Mouse](#mouse)
   - [Doom Classic](#doom-classic)
+- [Temporary Lexical Modes](#temporary-lexical-modes)
 - [Using This Keymap with QMK](#using-this-keymap-with-qmk)
   - [Helper Scripts (Optional)](#-helper-scripts-optional)
 - [Layout Stability](#-layout-stability)
@@ -91,7 +92,15 @@ The top-right corner key is a semantic `Backspace`, available on multiple layers
 |--------|----------|-------|
 | Tap | Delete previous character | Sends `Backspace` |
 | Tap-and-Hold | Delete to beginning of line | Implemented as `LSFT‑LCTL‑Left` → `Backspace` |
-| Hold | Delete previous word |  macOS: `LALT-Backspace`; Linux/Windows: `LCTL-Backspace` |
+| Hold | Delete previous word |  macOS: `LALT-Backspace`; Linux/Microsoft Windows: `LCTL-Backspace` |
+
+#### `Esc` Key
+
+| Action | Behavior | Notes |
+|--------|----------|-------|
+| Tap | `Esc` ||
+| Tap-and-Hold | Close Active Window | macOS: `CMD‑W`; Linux/Microsoft Windows: `Alt-F4` |
+| Hold | Momentary Layer **macOS** | Activates [**macOS** layer](#apple-macos) while held; returns to **Base** on release |
 
 #### Access to Mouse & Function Keys
 
@@ -132,15 +141,18 @@ Tap the **HELD** key when this layer is **locked** to return to **Base**.
 
 #### Caps Key
 
-The Caps key provides two related text‑entry modes, each with its own visual indicator on the **Base** layer:
+The Caps key provides three related text-entry modes, each with its own visual indicator on the **Base** layer:
 
 | Action | Behavior | Base RGB | Notes |
 |--------|----------|----------|-------|
-| Tap | Activates `Caps Word` | 🟡 Golden yellow while active | Automatically deactivates after 5 seconds of idle time |
-| Hold | Toggle `Caps Lock` | 🔴 Blinks red while active | Must be manually turned off |
+| Tap | Activates `Caps Word` | 🟡 Golden yellow | Auto‑disables after 5 seconds of inactivity |
+| Double Tap | Toggle `SCREAMING_SNAKE_CASE` | 🟢 Neon mint | Auto‑disables after 5 seconds of inactivity |
+| Hold | Toggle `Caps Lock` | 🔴 Blinking red | Must be manually turned off |
 
 > [!TIP]
 > `Caps Word` temporarily capitalizes letters as you type and automatically turns itself off at the end of the word, making it ideal for acronyms, identifiers, and short uppercase sequences without toggling `Caps Lock`. See the [QMK documentation](https://docs.qmk.fm/features/caps_word) for more information.
+>
+> `SCREAMING_SNAKE_CASE` behaves similarly to `Caps Word`, but transforms the spacebar into `_` and is intended for constant identifiers commonly used in C‑style languages and shells.
 
 #### `Del` Key
 
@@ -323,9 +335,11 @@ Window‑resize commands omit the `Esc` prefix to preserve compatibility with `<
 
 ![Programming: Left-Hand Side](assets/11_PROG_L.png)
 
-Paired characters (quotes, brackets, braces) automatically place the cursor inside. This is the primary purpose of the layer, since these keys sit directly under the home row. However, many editors and IDEs already provide similar behavior, so this layer is optional.
+Paired characters (quotes, brackets, braces) automatically place the cursor inside. This is the primary purpose of the layer, since these keys sit directly under the home row. Many editors and IDEs already provide similar behavior, so this layer is optional.
 
-C-style programming keywords and operators are included for completeness, and many n‑grams insert with smart spacing before and/or after to match typical coding style and reduce keystrokes.
+C‑style programming keywords and operators are included for completeness. Many n‑grams insert with smart spacing before and/or after to match typical coding style and reduce keystrokes.
+
+The `camelCase` / `PascalCase` and `snake_case` / `SCREAMING_SNAKE_CASE` keys toggle temporary [case modes](#custom-case-modes).
 
 ### Terminal
 
@@ -379,6 +393,40 @@ This layer is typically accessed with a _left‑palm tap_ on **Base**, using a t
 ![Doom Classic layer](assets/01_DOOM.png)
 
 An optional compact gaming layer modeled after vanilla _Doom_ (1993), built around a tight movement cluster, dedicated strafing keys, and thumb‑based actions for firing, opening doors, and running. Quick weapon switching is handled through the **Upper** layer, and the layout also works as a simple arrows‑plus‑mouse‑keys mode using traditional T‑shaped clusters for general navigation.
+
+## Temporary Lexical Modes
+
+This keymap supports several lightweight, real‑time text‑transformation modes that modify characters as you type. These modes are designed for programming, documentation, and command‑line workflows, and all of them automatically disable after a short period of inactivity.
+
+### Built‑in QMK Mode
+
+| Mode | Description | Typical Use |
+| --- | --- | --- |
+| **Caps Word** | Temporarily capitalizes letters and ends automatically at word boundaries | Acronyms, identifiers, short uppercase sequences |
+
+For more information, refer to the [QMK documentation](https://docs.qmk.fm/features/caps_word).
+
+### Custom Case Modes
+
+| Mode | Description | Typical Use |
+| --- | --- | --- |
+| **camelCase** | Swallows separators and capitalizes the next letter | JavaScript, Go, JSON keys |
+| **PascalCase** | Like camelCase, but capitalizes the first letter | Type names, classes |
+| **snake_case** | Converts separators into `_` | Python, Rust, C identifiers |
+| **SCREAMING_SNAKE_CASE** | Uppercase snake_case with `_` separators | Constants, shell environment variables |
+| **kebab-case** | Converts separators into `-` | Filenames, URLs, CLI flags |
+| **dot.case** | Converts separators into `.` | Namespaces, config keys, long filenames |
+| **path/to/case** | Converts separators into `/` | File paths, import statements |
+| **PUNC mode** | Capitalizes the next character after punctuation | Sentence starts, documentation |
+
+These case modes are:
+
+* Temporary
+  * Disables after a preset idle timeout (5 seconds)
+  * End automatically when pressing `Enter`, `Super`/`CMD`, etc.
+* Deterministic (no buffering or rewriting)
+* Separator‑aware (dash, dot, hyphen, slash, underscore)
+* Compatible with tap‑dance, mod‑tap, and macros
 
 ## Using This Keymap with QMK
 

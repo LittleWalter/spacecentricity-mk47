@@ -1,7 +1,9 @@
 #include "custom_keys.h"
 #include "keymap.h"
-#include "src/features/rgb.h"
+#include "src/features/case_mode.h"
 #include "src/features/leader.h"
+#include "src/features/rgb.h"
+#include "src/features/utils.h"
 #include "src/features/tapping_term.h"
 #include "src/macros/mac_programming.h"
 #include "src/macros/mac_special_char.h"
@@ -26,22 +28,13 @@ static void leader_track(const uint16_t keycode) {
 }
 #endif
 
-// Semantic punctuation: auto-cap next alpha
-static void auto_cap_next_char(void) {
-    if (auto_cap_next) {
-        add_oneshot_mods(MOD_LSFT);
-        auto_cap_next = false;
-    }
-}
-
 // ─────────────────────────────────────────────────────────────
 // Custom Keycodes
 // ─────────────────────────────────────────────────────────────
-
 // Intercepts custom keycodes and runs their associated macros and miscellenous
 // non-macros. This function handles all higher‑level behaviors that aren't
-// simple keypresses, including programming bigrams (e.g., ", ", "; ", ": ",
-// ". "), Vim navigation motions (gj/gk, buffer and tab movement, window
+// simple keypresses, including programming n-grams (e.g., " += ", " == ",
+// " := ", "++"), Vim navigation motions (gj/gk, buffer and tab movement, window
 // resizing), viewport controls, and buffer‑level commands (write, quit,
 // substitute). Returning false prevents QMK from sending the underlying
 // keycode so the macro can fully replace it.
@@ -50,12 +43,12 @@ static void auto_cap_next_char(void) {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     static uint16_t mouse_key_timer; // Tracking key hold time, SEE:MOUSE_FN branch
 
-    // Keystroke preprocessing
+    // Keycode preprocessing
     if (record->event.pressed) {
 #ifdef LEADER_ENABLE
         leader_track(keycode);
 #endif
-        auto_cap_next_char();
+        case_mode_alpha_transform();
     }
 
     switch (keycode) {
@@ -181,11 +174,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
         case APP: // Trigger App Switching key when held
-            if (record->event.pressed) {
-                app_switch(true);
-            } else {
-                app_switch(false);
-            }
+            case_mode_off();
+            record->event.pressed ? app_switch(true) : app_switch(false);
             return false;
 
         // ─────────────────────────────────────────────────────────────
@@ -207,15 +197,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
         case TG_OS: // Operating system toggle: macOS, Linux, Windows
             if (record->event.pressed) {
+                case_mode_off();
                 toggle_os();
             }
             return false;
-        case TG_LEADER: // Toggle Leader Keys on/off
+        case TG_LEAD: // Toggle Leader Keys on/off
 #ifdef LEADER_ENABLE
             if (record->event.pressed) {
+                case_mode_off();
                 toggle_leader();
             }
 #endif
+            return false;
+        case TG_PATH_CASE:
+            if (record->event.pressed) {
+                path_case_toggle();
+            }
             return false;
 
 #ifdef RGB_MATRIX_ENABLE
@@ -236,6 +233,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             rgb_preview.timer = timer_read();
             break;
 #endif
+        // ─────────────────────────────────────────────────────────────
+        // Other keycodes
+        // ─────────────────────────────────────────────────────────────
+        default:
+            // TODO: Maybe make SLSH_HYPR a tap-dance key
+            if (keycode <= BASIC_KEYCODES || keycode == SLSH_HYPR) {
+                case_mode_update(keycode);
+            }
+            break;
     }
     return true;
 }
@@ -247,25 +253,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // App shortcut: select all; defaults to CMD+A for macOS, otherwise
 // uses LCTL+A for Microsoft Windows and Linux
 void select_all(void) {
-    tap_code16(current_os == OS_MACOS ? LGUI(KC_A) : C(KC_A));
+    tap_and_update(current_os == OS_MACOS ? LGUI(KC_A) : C(KC_A));
 }
 
 // App shortcut: copy selected; defaults to CMD+C for macOS, otherwise
 // uses LCTL+C for Microsoft Windows and Linux
 void copy(void) {
-    tap_code16(current_os == OS_MACOS ? LGUI(KC_C) : C(KC_C));
+    tap_and_update(current_os == OS_MACOS ? LGUI(KC_C) : C(KC_C));
 }
 
 // App shortcut: cut selected; defaults to CMD+X for macOS, otherwise
 // uses LCTL+X for Microsoft Windows and Linux
 void cut(void) {
-    tap_code16(current_os == OS_MACOS ? LGUI(KC_X) : C(KC_X));
+    tap_and_update(current_os == OS_MACOS ? LGUI(KC_X) : C(KC_X));
 }
 
 // App shortcut: paste from clipboard; defaults to CMD+V for macOS, otherwise
 // uses LCTL+V for Microsoft Windows and Linux
 void paste(void) {
-    tap_code16(current_os == OS_MACOS ? LGUI(KC_V) : C(KC_V));
+    tap_and_update(current_os == OS_MACOS ? LGUI(KC_V) : C(KC_V));
 }
 
 // Operating system shortcut: change to left virtual desktop/workspace; defaults
@@ -273,9 +279,9 @@ void paste(void) {
 // environments w/e to Gnome, or WIN+LCTL+LEFT for Microsoft Windows.
 void vdt_left(void) {
     switch (current_os) {
-        case OS_MACOS: tap_code16(C(KC_LEFT));       break; // macOS:   LCTL+LEFT
-        case OS_LINUX: tap_code16(C(A(KC_LEFT)));    break; // Linux:   LCTL+ALT+LEFT
-        case OS_WIN:   tap_code16(LGUI(C(KC_LEFT))); break; // Windows: WIN+LCTL+LEFT
+        case OS_MACOS: tap_and_update(C(KC_LEFT));       break; // macOS:   LCTL+LEFT
+        case OS_LINUX: tap_and_update(C(A(KC_LEFT)));    break; // Linux:   LCTL+ALT+LEFT
+        case OS_WIN:   tap_and_update(LGUI(C(KC_LEFT))); break; // Windows: WIN+LCTL+LEFT
         default: break;
     }
 }
@@ -285,9 +291,9 @@ void vdt_left(void) {
 // environments w/e to Gnome, or WIN+LCTL+RIGHT for Microsoft Windows.
 void vdt_right(void) {
     switch (current_os) {
-        case OS_MACOS: tap_code16(C(KC_RGHT));       break; // macOS:   LCTL+RIGHT
-        case OS_LINUX: tap_code16(C(A(KC_RGHT)));    break; // Linux:   LCTL+ALT+RIGHT
-        case OS_WIN:   tap_code16(LGUI(C(KC_RGHT))); break; // Windows: WIN+LCTL+RIGHT
+        case OS_MACOS: tap_and_update(C(KC_RGHT));       break; // macOS:   LCTL+RIGHT
+        case OS_LINUX: tap_and_update(C(A(KC_RGHT)));    break; // Linux:   LCTL+ALT+RIGHT
+        case OS_WIN:   tap_and_update(LGUI(C(KC_RGHT))); break; // Windows: WIN+LCTL+RIGHT
         default: break;
     }
 }
@@ -295,19 +301,19 @@ void vdt_right(void) {
 // Browser shortcut: zoom in; defaults to CMD+SFT+= for macOS, otherwise
 // uses LCTL+SFT+= for Microsoft Windows and Linux
 void zoom_in(void) {
-    tap_code16(current_os == OS_MACOS ? LGUI(S(KC_EQL)) : C(S(KC_EQL)));
+    tap_and_update(current_os == OS_MACOS ? LGUI(S(KC_EQL)) : C(S(KC_EQL)));
 }
 
 // Browser shortcut: zoom out; defaults to CMD+- for macOS, otherwise
 // uses LCTL+- for Microsoft Windows and Linux
 void zoom_out(void) {
-    tap_code16(current_os == OS_MACOS ? LGUI(KC_MINS) : C(KC_MINS));
+    tap_and_update(current_os == OS_MACOS ? LGUI(KC_MINS) : C(KC_MINS));
 }
 
 // Browser shortcut: zoom reset (100%); defaults to CMD+0 for macOS, otherwise
 // uses LCTL+0 for Microsoft Windows and Linux
 void zoom_reset(void) {
-    tap_code16(current_os == OS_MACOS ? LGUI(KC_0) : C(KC_0));
+    tap_and_update(current_os == OS_MACOS ? LGUI(KC_0) : C(KC_0));
 }
 
 // Triggers operating system application switcher key: CMD for macOS or ALT for Linux and Windows.

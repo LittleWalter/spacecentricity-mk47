@@ -59,3 +59,9 @@ void prog_null_reset(tap_dance_state_t *state, void *user_data);
 void md_link_finished(tap_dance_state_t *state, void *user_data);
 void md_link_reset(tap_dance_state_t *state, void *user_data);
 
+// TD_CAMEL
+void camel_finished(tap_dance_state_t *state, void *user_data);
+void camel_reset(tap_dance_state_t *state, void *user_data);
+// TD_SNAKE
+void snake_finished(tap_dance_state_t *state, void *user_data);
+void snake_reset(tap_dance_state_t *state, void *user_data);

@@ -3,8 +3,8 @@
 
 // Caps Word behavior callback. Keys that should NOT deactivate Caps Word
 // (digits, Backspace, Delete, arrows, underscore, hyphen) must be listed here.
-// NOTE: Tap-dance keys must be included explicitly since they bypass normal keycodes;
-// refer to the constants defined in keymap.h.
+// IMPORTANT: Tap-dance keys must be included explicitly since they bypass normal
+// keycodes; refer to the constants defined in keymap.h.
 bool caps_word_press_user(uint16_t keycode) {
     switch (keycode) {
         // Keycodes that continue Caps Word, with shift applied.
@@ -16,6 +16,16 @@ bool caps_word_press_user(uint16_t keycode) {
 
         // Keycodes that continue Caps Word, without shifting.
         case KC_1 ... KC_0: // Skip numbers
+        case T0:
+        case T1:
+        case T2:
+        case T3:
+        case T4:
+        case T5:
+        case T6:
+        case T7:
+        case T8:
+        case T9:
         case KC_MINS:       // `-`
         case MINS:          // Tap dance key on _ARR_L/_ARR_R
         case KC_UNDS:       // `_`

@@ -1,12 +1,14 @@
 #include "tap_dance_actions.h"
 #include "td_chars.h"
+#include "td_control.h"
+#include "td_digits.h"
 #include "td_macos.h"
 #include "td_media.h"
-#include "td_misc.h"
 #include "td_numpad.h"
 #include "td_programming.h"
 #include "td_terminal.h"
 #include "td_vim.h"
+#include "src/features/case_mode.h"
 
 // ─────────────────────────────────────────────────────────────
 //  Tap Dance Registry
@@ -16,14 +18,15 @@ tap_dance_action_t tap_dance_actions[TD_COUNT] = {
     // ─────────────────────────────────────────────────────────────
     // Character Tap Dances
     // ─────────────────────────────────────────────────────────────
+    // Thumb Tap Dance Keys
+    [TD_U]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL, u_finished,     u_reset),
+    [TD_C]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL, c_finished,     c_reset),
+
     [TD_ASTR]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, astr_finished,  astr_reset),
     [TD_AT]    = ACTION_TAP_DANCE_FN_ADVANCED(NULL, at_finished,    at_reset),
-    [TD_BSPC]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, bspc_finished,  bspc_reset),
-    [TD_C]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL, c_finished,     c_reset),
     [TD_CARET] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, caret_finished, caret_reset),
     [TD_CIRC]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, circ_finished,  circ_reset),
     [TD_COMM]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, comm_finished,  comm_reset),
-    [TD_DEL]   = ACTION_TAP_DANCE_FN_ADVANCED(NULL, del_finished,   del_reset),
     [TD_DLR]   = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dlr_finished,   dlr_reset),
     [TD_DOT]   = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dot_finished,   dot_reset),
     [TD_DQUO]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dquo_finished,  dquo_reset),
@@ -34,10 +37,20 @@ tap_dance_action_t tap_dance_actions[TD_COUNT] = {
     [TD_PUNC]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, punc_finished,  punc_reset),
     [TD_QUES]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, ques_finished,  ques_reset),
     [TD_QUOT]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, quot_finished,  quot_reset),
+    [TD_SCLN]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, scln_finished,  scln_reset),
     [TD_SPC]   = ACTION_TAP_DANCE_FN_ADVANCED(NULL, spc_finished,   spc_reset),
-    [TD_TAB]   = ACTION_TAP_DANCE_FN_ADVANCED(NULL, tab_finished,   tab_reset),
-    [TD_U]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL, u_finished,     u_reset),
+    // Cursor-Centered Quote Function Definitions
+    [TD_SMART_QUOTES] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, smart_quotes_finished, smart_quotes_reset),
+    [TD_ANGLE_QUOTES] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, angle_quotes_finished, angle_quotes_reset),
+    // Paired Symbol Function Definitions
+    [TD_LPRN] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, lprn_finished, lprn_reset),
+    [TD_RPRN] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, rprn_finished, rprn_reset),
+    [TD_LBRC] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, lbrc_finished, lbrc_reset),
+    [TD_RBRC] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, rbrc_finished, rbrc_reset),
 
+    // ─────────────────────────────────────────────────────────────
+    // Number Key Function Key Definitions
+    // ─────────────────────────────────────────────────────────────
     [TD_0]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL, zero_finished,  zero_reset),
     [TD_1]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL, one_finished,   one_reset),
     [TD_2]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL, two_finished,   two_reset),
@@ -49,25 +62,6 @@ tap_dance_action_t tap_dance_actions[TD_COUNT] = {
     [TD_8]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL, eight_finished, eight_reset),
     [TD_9]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL, nine_finished,  nine_reset),
 
-    [TD_CAPS]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, caps_finished, caps_reset),
-
-    [TD_LPRN] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, lprn_finished, lprn_reset),
-    [TD_RPRN] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, rprn_finished, rprn_reset),
-    [TD_LBRC] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, lbrc_finished, lbrc_reset),
-    [TD_RBRC] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, rbrc_finished, rbrc_reset),
-    // Navigational Tap Dances
-    [TD_HOME] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, home_finished, home_reset),
-    [TD_PGDN] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, pgdn_finished, pgdn_reset),
-    [TD_PGUP] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, pgup_finished, pgup_reset),
-    [TD_END]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, end_finished,  end_reset),
-
-    // ─────────────────────────────────────────────────────────────
-    // Media Tap Dances
-    // ─────────────────────────────────────────────────────────────
-    [TD_MUTE] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, mute_finished, mute_reset),
-    [TD_VOLD] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, vold_finished, vold_reset),
-    [TD_VOLU] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, volu_finished, volu_reset),
-
     // ─────────────────────────────────────────────────────────────
     // Numpad Tap Dances
     // ─────────────────────────────────────────────────────────────
@@ -77,6 +71,31 @@ tap_dance_action_t tap_dance_actions[TD_COUNT] = {
     [TD_NUMPAD_4] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, numpad_4_finished, numpad_4_reset),
     [TD_NUMPAD_5] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, numpad_5_finished, numpad_5_reset),
     [TD_NUMPAD_6] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, numpad_6_finished, numpad_6_reset),
+
+    // ─────────────────────────────────────────────────────────────
+    // Control/Action/State Tap Dances
+    // ─────────────────────────────────────────────────────────────
+    //[TD_ESC]          = ACTION_TAP_DANCE_FN_ADVANCED(NULL, esc_finished, esc_reset),
+    [TD_BSPC]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, bspc_finished,  bspc_reset),
+    [TD_CAPS]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, caps_finished,  caps_reset),
+    [TD_DEL]   = ACTION_TAP_DANCE_FN_ADVANCED(NULL, del_finished,   del_reset),
+    [TD_ENT]   = ACTION_TAP_DANCE_FN_ADVANCED(NULL, enter_finished, enter_reset),
+    [TD_ESC]   = ACTION_TAP_DANCE_FN_ADVANCED(NULL, esc_finished,   esc_reset),
+    [TD_TAB]   = ACTION_TAP_DANCE_FN_ADVANCED(NULL, tab_finished,   tab_reset),
+    // App Shortcut Tap Dances
+    [TD_UNDO]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, undo_finished,  undo_reset),
+    // Navigational Tap Dances
+    [TD_HOME]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, home_finished,  home_reset),
+    [TD_PGDN]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, pgdn_finished,  pgdn_reset),
+    [TD_PGUP]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, pgup_finished,  pgup_reset),
+    [TD_END]   = ACTION_TAP_DANCE_FN_ADVANCED(NULL, end_finished,   end_reset),
+
+    // ─────────────────────────────────────────────────────────────
+    // Media Tap Dances
+    // ─────────────────────────────────────────────────────────────
+    [TD_MUTE] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, mute_finished, mute_reset),
+    [TD_VOLD] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, vold_finished, vold_reset),
+    [TD_VOLU] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, volu_finished, volu_reset),
 
     // ─────────────────────────────────────────────────────────────
     // Vim Tap Dances
@@ -126,6 +145,9 @@ tap_dance_action_t tap_dance_actions[TD_COUNT] = {
 
     [TD_MD_LINK]    = ACTION_TAP_DANCE_FN_ADVANCED(NULL, md_link_finished, md_link_reset),
 
+    [TD_CAMEL]      = ACTION_TAP_DANCE_FN_ADVANCED(NULL, camel_finished, camel_reset),
+    [TD_SNAKE]      = ACTION_TAP_DANCE_FN_ADVANCED(NULL, snake_finished, snake_reset),
+
     // ─────────────────────────────────────────────────────────────
     // Terminal Command Tap Dances
     // ─────────────────────────────────────────────────────────────
@@ -146,13 +168,6 @@ tap_dance_action_t tap_dance_actions[TD_COUNT] = {
     [TD_FS_MACOS]       = ACTION_TAP_DANCE_FN_ADVANCED(NULL, fs_macos_finished,       fs_macos_reset),
     [TD_SCRNSHOT_MACOS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, scrnshot_macos_finished, scrnshot_macos_reset),
     [TD_DEL_MACOS]      = ACTION_TAP_DANCE_FN_ADVANCED(NULL, del_macos_finished,      del_macos_reset),
-
-    // ─────────────────────────────────────────────────────────────
-    // Miscellaneous Tap Dances
-    // ─────────────────────────────────────────────────────────────
-    [TD_UNDO]         = ACTION_TAP_DANCE_FN_ADVANCED(NULL, undo_finished, undo_reset),
-    [TD_SMART_QUOTES] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, smart_quotes_finished, smart_quotes_reset),
-    [TD_ANGLE_QUOTES] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, angle_quotes_finished, angle_quotes_reset)
 };
 
 /* Return an integer that corresponds to what kind of tap dance should be executed.
@@ -204,4 +219,20 @@ td_state_t cur_dance(tap_dance_state_t *state) {
         if (state->interrupted || !state->pressed) return TD_TRIPLE_TAP;
         else return TD_TRIPLE_HOLD;
     } else return TD_UNKNOWN;
+}
+
+// ─────────────────────────────────────────────────────────────
+// Tap Dance Helpers
+// ─────────────────────────────────────────────────────────────
+
+// Registers a given keycode and checks active case mode for valid chars.
+void register_and_update(const uint16_t keycode) {
+    register_code16(keycode);
+    case_mode_update(keycode);
+}
+
+// Taps a given keycode and checks active case mode for valid chars.
+void tap_and_update(const uint16_t keycode) {
+    tap_code16(keycode);
+    case_mode_update(keycode);
 }

@@ -2,6 +2,8 @@
 
 #include QMK_KEYBOARD_H
 
+#define BASIC_KEYCODES 0xFF
+
 // ─────────────────────────────────────────────────────────────
 // Operating System State
 // ─────────────────────────────────────────────────────────────
@@ -67,8 +69,9 @@ enum custom_keycodes {
     TG_MOUSE,             // Toggle Mouse/previous layer
     MOUSE_FN,             // Mouse layer on tap, Function keys layer on hold
     TG_OS,                // Toggles current operating system mode
-    TG_LEADER,            // Toggles Leader Keys on/off
+    TG_LEAD,              // Toggles Leader Keys on/off
     APP,                  // Application switching key on hold; CMD or ALT
+    TG_PATH_CASE,         // Turn on path/mode/to/something casing
 };
 
 // Intercepts custom keycodes and runs their associated macros and miscellenous

@@ -16,7 +16,12 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case N_PROG_L:
             // Ring fingers move more slowly than index and middle
             return TAPPING_TERM + HOME_ROW_RING_DELAY;
-        case C_UPPER: // Increase responsiveness of right-hand thumb on _BASE
+        case DOT:
+        case SCLN:
+            // Increase responsiveness of top-row mod-hold keys
+            return TAPPING_TERM - MOD_REDUCE;
+        case C_UPPER:
+            // Increase responsiveness of right-hand thumb on _BASE
             return TAPPING_TERM - BASE_RIGHT_THUMB_TAP_TERM_REDUCE;
     }
     return TAPPING_TERM;

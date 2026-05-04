@@ -34,8 +34,14 @@ static const special_char_entry_t special_chars[] = {
 
     // Currency
     { CHAR_CENT,               "¢",  A(KC_4),       NULL, false },
+    { CHAR_DONG,               "₫",  0,             "U+20AB", true }, // Vietnamese Dong
     { CHAR_EURO,               "€",  A(S(KC_2)),    NULL, false },
+    { CHAR_LIRA,               "₺",  0,             "U+20BA", true }, // Turkish Lira
+    { CHAR_PESO,               "₱",  0,             "U+20B1", true }, // Philippine Peso
     { CHAR_POUND,              "£",  A(KC_3),       NULL, false },
+    { CHAR_RUBLE,              "₽",  0,             "U+20BD", true }, // Russian Ruble
+    { CHAR_RUPEE,              "₹",  0,             "U+20B9", true }, // Indian Rupee
+    { CHAR_WON,                "₩",  0,             "U+20A9", true }, // Korean Won
     { CHAR_YEN,                "¥",  A(KC_Y),       NULL, false },
 
     // Dashes & math
@@ -151,6 +157,7 @@ static const special_char_entry_t special_chars[] = {
     { CHAR_EMOJI_FIRE,                 "🔥", 0, "U+1F525", true },
     { CHAR_EMOJI_FLOPPY_DISK,          "💾", 0, "U+1F4BE", true },
     { CHAR_EMOJI_FRUSTRATED,           "😤", 0, "U+1F624", true },
+    { CHAR_EMOJI_GAME_DIE,             "🎲", 0, "U+1F3B2", true },
     { CHAR_EMOJI_GESTURING_NO,         "🙅", 0, "U+1F645", true },
     { CHAR_EMOJI_GIFT,                 "🎁", 0, "U+1F381", true },
     { CHAR_EMOJI_GRIMACE,              "😬", 0, "U+1F62C", true },
@@ -192,6 +199,7 @@ static const special_char_entry_t special_chars[] = {
     { CHAR_EMOJI_NEUTRAL,              "😐", 0, "U+1F610", true },
     { CHAR_EMOJI_OK,                   "👌", 0, "U+1F44C", true },
     { CHAR_EMOJI_PACKAGE,              "📦", 0, "U+1F4E6", true },
+    { CHAR_EMOJI_PAPERCLIP,            "📎", 0, "U+1F4CE", true },
     { CHAR_EMOJI_PARTY_FACE,           "🥳", 0, "U+1F973", true },
     { CHAR_EMOJI_PARTY_POPPER,         "🎉", 0, "U+1F389", true },
     { CHAR_EMOJI_PEACE,                "✌️", 0, "peace hand sign", true },

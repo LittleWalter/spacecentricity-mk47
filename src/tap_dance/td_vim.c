@@ -1,5 +1,6 @@
 #include "td_vim.h"
 #include "tap_dance_actions.h"
+#include "src/features/case_mode.h"
 #include "src/macros/mac_vim.h"
 
 // ─────────────────────────────────────────────────────────────
@@ -20,9 +21,6 @@ static td_tap_t b_tap_state = {
 void b_finished(tap_dance_state_t *state, void *user_data) {
     b_tap_state.state = cur_dance(state);
     switch (b_tap_state.state) {
-        case TD_SINGLE_TAP: // `B` (move 1 WORD back)
-            register_code16(S(KC_B));
-            break;
         case TD_DOUBLE_TAP: // `gE` (move 1 WORD back, end)
             vim_move_macro(NAV_PREV_END);
             break;
@@ -32,7 +30,10 @@ void b_finished(tap_dance_state_t *state, void *user_data) {
         case TD_DOUBLE_HOLD: // `Esc`+`g,` (jump to previous edit)
             vim_change_list_macro(NAV_PREV);
             break;
-        case TD_DOUBLE_SINGLE_TAP: tap_code16(S(KC_B)); register_code16(S(KC_B)); break;
+        case TD_TRIPLE_TAP:        tap_code16(S(KC_B));          // fallthru
+        case TD_DOUBLE_SINGLE_TAP: tap_code16(S(KC_B));          // fallthru
+        case TD_SINGLE_TAP:        register_and_update(S(KC_B)); // `B` (move 1 WORD back)
+            break;
         default: break;
     }
 }
@@ -40,9 +41,10 @@ void b_finished(tap_dance_state_t *state, void *user_data) {
 // Release any keys pressed by TD_B and reset the state
 void b_reset(tap_dance_state_t *state, void *user_data) {
     switch (b_tap_state.state) {
-        case TD_SINGLE_TAP:  unregister_code16(S(KC_B)); break;
         case TD_SINGLE_HOLD: unregister_code16(C(KC_O)); break;
-        case TD_DOUBLE_SINGLE_TAP: unregister_code16(S(KC_B)); break;
+        case TD_TRIPLE_TAP:
+        case TD_DOUBLE_SINGLE_TAP:
+        case TD_SINGLE_TAP:  unregister_code16(S(KC_B)); break;
         default: break;
     }
     b_tap_state.state = TD_NONE;
@@ -120,11 +122,12 @@ static td_tap_t w_tap_state = {
 void w_finished(tap_dance_state_t *state, void *user_data) {
     w_tap_state.state = cur_dance(state);
     switch (w_tap_state.state) {
-        case TD_SINGLE_TAP:  register_code16(S(KC_W)); break; // `W` (move 1 column right)
-        case TD_DOUBLE_TAP:  register_code16(S(KC_E)); break; // `E` (move 1 WORD right, end)
-        case TD_SINGLE_HOLD: register_code16(C(KC_I)); break; // Jump list next
+        case TD_DOUBLE_TAP:  register_and_update(S(KC_E));   break; // `E` (move 1 WORD right, end)
+        case TD_SINGLE_HOLD: register_and_update(C(KC_I));   break; // Jump list next
         case TD_DOUBLE_HOLD: vim_change_list_macro(NAV_NEXT); break; // `Esc`+`g;`
-        case TD_DOUBLE_SINGLE_TAP: tap_code16(S(KC_W)); register_code16(S(KC_W)); break;
+        case TD_TRIPLE_TAP:        tap_code16(S(KC_W));                  // fallthru
+        case TD_DOUBLE_SINGLE_TAP: tap_code16(S(KC_W));                  // fallthru
+        case TD_SINGLE_TAP:        register_and_update(S(KC_W)); break; // `W` (move 1 column right)
         default: break;
     }
 }
@@ -132,10 +135,11 @@ void w_finished(tap_dance_state_t *state, void *user_data) {
 // Release any keys pressed by TD_W and reset the state
 void w_reset(tap_dance_state_t *state, void *user_data) {
     switch (w_tap_state.state) {
-        case TD_SINGLE_TAP:  unregister_code16(S(KC_W)); break;
         case TD_DOUBLE_TAP:  unregister_code16(S(KC_E)); break;
         case TD_SINGLE_HOLD: unregister_code16(C(KC_I)); break;
-        case TD_DOUBLE_SINGLE_TAP: unregister_code16(S(KC_W)); break;
+        case TD_TRIPLE_TAP:
+        case TD_DOUBLE_SINGLE_TAP:
+        case TD_SINGLE_TAP:  unregister_code16(S(KC_W)); break;
         default: break;
     }
     w_tap_state.state = TD_NONE;
@@ -155,13 +159,12 @@ static td_tap_t half_pgdn_tap_state = {
 void half_pgdn_finished(tap_dance_state_t *state, void *user_data) {
     half_pgdn_tap_state.state = cur_dance(state);
     switch (half_pgdn_tap_state.state) {
-        case TD_SINGLE_TAP: // `LCTL+d` (Jump down 1/2 page)
-            register_code16(C(KC_D));
-            break;
         case TD_SINGLE_HOLD: // Jump to bottom of buffer
             vim_move_macro(NAV_BOT);
             break;
-        case TD_DOUBLE_SINGLE_TAP: tap_code16(C(KC_D)); register_code16(C(KC_D)); break;
+        case TD_TRIPLE_TAP:        tap_code16(C(KC_D));                 // fallthru
+        case TD_DOUBLE_SINGLE_TAP: tap_code16(C(KC_D));                 // fallthru
+        case TD_SINGLE_TAP:        register_and_update(C(KC_D)); break; // `LCTL+d` (Jump down 1/2 page)
         default: break;
     }
 }
@@ -169,6 +172,8 @@ void half_pgdn_finished(tap_dance_state_t *state, void *user_data) {
 // Release any keys pressed by TD_HALF_PGDN and reset the state
 void half_pgdn_reset(tap_dance_state_t *state, void *user_data) {
     switch (half_pgdn_tap_state.state) {
+        case TD_TRIPLE_TAP:
+        case TD_DOUBLE_SINGLE_TAP:
         case TD_SINGLE_TAP: unregister_code16(C(KC_D)); break;
         default: break;
     }
@@ -189,13 +194,12 @@ static td_tap_t half_pgup_tap_state = {
 void half_pgup_finished(tap_dance_state_t *state, void *user_data) {
     half_pgup_tap_state.state = cur_dance(state);
     switch (half_pgup_tap_state.state) {
-        case TD_SINGLE_TAP: // `LCTL+u` (Jump up 1/2 page)
-            register_code16(C(KC_U));
-            break;
         case TD_SINGLE_HOLD: // Jump list previous
             vim_move_macro(NAV_TOP);
             break;
-        case TD_DOUBLE_SINGLE_TAP: tap_code16(C(KC_U)); register_code16(C(KC_U)); break;
+        case TD_TRIPLE_TAP:        tap_code16(C(KC_U));                 // fallthru
+        case TD_DOUBLE_SINGLE_TAP: tap_code16(C(KC_U));                 // fallthru
+        case TD_SINGLE_TAP:        register_and_update(C(KC_U)); break; // `LCTL+u` (Jump up 1/2 page)
         default: break;
     }
 }
@@ -203,6 +207,8 @@ void half_pgup_finished(tap_dance_state_t *state, void *user_data) {
 // Release any keys pressed by TD_HALF_PGUP and reset the state
 void half_pgup_reset(tap_dance_state_t *state, void *user_data) {
     switch (half_pgup_tap_state.state) {
+        case TD_TRIPLE_TAP:
+        case TD_DOUBLE_SINGLE_TAP:
         case TD_SINGLE_TAP: unregister_code16(C(KC_U)); break;
         default: break;
     }
@@ -223,14 +229,12 @@ static td_tap_t high_tap_state = {
 void high_finished(tap_dance_state_t *state, void *user_data) {
     high_tap_state.state = cur_dance(state);
     switch (high_tap_state.state) {
-        case TD_SINGLE_TAP: // `Esc`+`zt` (adjust viewport to top of curr line)
-            vim_viewport_alignment_macro(NAV_TOP);
-            break;
         case TD_SINGLE_HOLD: // `H` (cursor to top of viewport)
-            register_code16(S(KC_H));
+            register_and_update(S(KC_H));
             break;
-        case TD_DOUBLE_SINGLE_TAP:
-            vim_viewport_alignment_macro(NAV_TOP);
+        case TD_TRIPLE_TAP:        vim_viewport_alignment_macro(NAV_TOP); // fallthru
+        case TD_DOUBLE_SINGLE_TAP: vim_viewport_alignment_macro(NAV_TOP); // fallthru
+        case TD_SINGLE_TAP: // `Esc`+`zt` (adjust viewport to top of curr line)
             vim_viewport_alignment_macro(NAV_TOP);
             break;
         default: break;
@@ -260,14 +264,12 @@ static td_tap_t mid_tap_state = {
 void mid_finished(tap_dance_state_t *state, void *user_data) {
     mid_tap_state.state = cur_dance(state);
     switch (mid_tap_state.state) {
-        case TD_SINGLE_TAP: // `Esc`+`zz` (adjust viewport to middle of curr line)
-            vim_viewport_alignment_macro(NAV_MID);
-            break;
         case TD_SINGLE_HOLD: // `M` (cursor to middle of viewport)
-            register_code16(S(KC_M));
+            register_and_update(S(KC_M));
             break;
-        case TD_DOUBLE_SINGLE_TAP:
-            vim_viewport_alignment_macro(NAV_MID);
+        case TD_TRIPLE_TAP:        vim_viewport_alignment_macro(NAV_MID); // fallthru
+        case TD_DOUBLE_SINGLE_TAP: vim_viewport_alignment_macro(NAV_MID); // fallthru
+        case TD_SINGLE_TAP: // `Esc`+`zz` (adjust viewport to middle of curr line)
             vim_viewport_alignment_macro(NAV_MID);
             break;
         default: break;
@@ -297,14 +299,12 @@ static td_tap_t low_tap_state = {
 void low_finished(tap_dance_state_t *state, void *user_data) {
     low_tap_state.state = cur_dance(state);
     switch (low_tap_state.state) {
-        case TD_SINGLE_TAP: // `Esc`+`zb` (adjust viewport to bottom of curr line)
-            vim_viewport_alignment_macro(NAV_BOT);
-            break;
         case TD_SINGLE_HOLD: // `L` (cursor to bottom of viewport)
-            register_code16(S(KC_L));
+            register_and_update(S(KC_L));
             break;
-        case TD_DOUBLE_SINGLE_TAP:
-            vim_viewport_alignment_macro(NAV_BOT);
+        case TD_TRIPLE_TAP:        vim_viewport_alignment_macro(NAV_BOT); // fallthru
+        case TD_DOUBLE_SINGLE_TAP: vim_viewport_alignment_macro(NAV_BOT); // fallthru
+        case TD_SINGLE_TAP: // `Esc`+`zb` (adjust viewport to bottom of curr line)
             vim_viewport_alignment_macro(NAV_BOT);
             break;
         default: break;
@@ -334,14 +334,12 @@ static td_tap_t sub_tap_state = {
 void sub_finished(tap_dance_state_t *state, void *user_data) {
     sub_tap_state.state = cur_dance(state);
     switch (sub_tap_state.state) {
-        case TD_SINGLE_TAP: // `Esc`+`:%s///g` (substitute in current buffer)
-            vim_commandline_macro(VC_SUB_GLOBAL);
-            break;
         case TD_SINGLE_HOLD: // `Esc`+`:bufdo %s///g | update` (substitute in all open buffers)
             vim_commandline_macro(VC_SUB_BUF_GLOBAL);
             break;
-        case TD_DOUBLE_SINGLE_TAP:
-            vim_commandline_macro(VC_SUB_GLOBAL);
+        case TD_TRIPLE_TAP:        vim_commandline_macro(VC_SUB_GLOBAL); // fallthru
+        case TD_DOUBLE_SINGLE_TAP: vim_commandline_macro(VC_SUB_GLOBAL); // fallthru
+        case TD_SINGLE_TAP: // `Esc`+`:%s///g` (substitute in current buffer)
             vim_commandline_macro(VC_SUB_GLOBAL);
             break;
         default: break;
@@ -367,14 +365,12 @@ static td_tap_t vim_del_tap_state = {
 void vim_del_finished(tap_dance_state_t *state, void *user_data) {
     vim_del_tap_state.state = cur_dance(state);
     switch (vim_del_tap_state.state) {
-        case TD_SINGLE_TAP:  vim_delete_macro(DEL_PREV_WORD);     break; // `db` delete previous word
         case TD_DOUBLE_TAP:  vim_delete_macro(DEL_PREV_BIG_WORD); break; // `dB` delete previous WORD
         case TD_DOUBLE_HOLD: vim_delete_macro(DEL_BOL);           break; // `d^` delete BOL
         case TD_SINGLE_HOLD: vim_delete_macro(DEL_EOL);           break; // `d$` delete EOL
-        case TD_DOUBLE_SINGLE_TAP:
-            vim_delete_macro(DEL_PREV_WORD);
-            vim_delete_macro(DEL_PREV_WORD);
-            break;
+        case TD_TRIPLE_TAP:        vim_delete_macro(DEL_PREV_WORD);            // fallthru
+        case TD_DOUBLE_SINGLE_TAP: vim_delete_macro(DEL_PREV_WORD);            // fallthru
+        case TD_SINGLE_TAP:        vim_delete_macro(DEL_PREV_WORD);     break; // `db` delete previous word
         default: break;
     }
 }
@@ -398,13 +394,11 @@ static td_tap_t fold_tap_state = {
 void fold_finished(tap_dance_state_t *state, void *user_data) {
     fold_tap_state.state = cur_dance(state);
     switch (fold_tap_state.state) {
-        case TD_SINGLE_TAP:  vim_fold_macro(FOLD_TOGGLE);    break; // `za` toggle fold under cursor
         case TD_DOUBLE_HOLD: vim_fold_macro(FOLD_CLOSE_ALL); break; // `zM` close all folds in buffer
         case TD_SINGLE_HOLD: vim_fold_macro(FOLD_OPEN_ALL);  break; // `zR` open all folds in buffer
-        case TD_DOUBLE_SINGLE_TAP:
-            vim_fold_macro(FOLD_TOGGLE);
-            vim_fold_macro(FOLD_TOGGLE);
-            break;
+        case TD_TRIPLE_TAP:        vim_fold_macro(FOLD_TOGGLE);           // fallthru
+        case TD_DOUBLE_SINGLE_TAP: vim_fold_macro(FOLD_TOGGLE);           // fallthru
+        case TD_SINGLE_TAP:        vim_fold_macro(FOLD_TOGGLE);    break; // `za` toggle fold under cursor
         default: break;
     }
 }
@@ -428,14 +422,12 @@ static td_tap_t write_tap_state = {
 void write_finished(tap_dance_state_t *state, void *user_data) {
     write_tap_state.state = cur_dance(state);
     switch (write_tap_state.state) {
-        case TD_SINGLE_TAP: // `Esc`+`:w`+Ent (save current buffer)
-            vim_commandline_macro(VC_WRITE);
-            break;
         case TD_SINGLE_HOLD: // `Esc`+`:wa` (save all buffers)
             vim_commandline_macro(VC_WRITE_ALL);
             break;
-        case TD_DOUBLE_SINGLE_TAP:
-            vim_commandline_macro(VC_WRITE);
+        case TD_TRIPLE_TAP:        vim_commandline_macro(VC_WRITE); // fallthru
+        case TD_DOUBLE_SINGLE_TAP: vim_commandline_macro(VC_WRITE); // fallthru
+        case TD_SINGLE_TAP: // `Esc`+`:w`+Ent (save current buffer)
             vim_commandline_macro(VC_WRITE);
             break;
         default: break;
@@ -461,14 +453,12 @@ static td_tap_t quit_tap_state = {
 void quit_finished(tap_dance_state_t *state, void *user_data) {
     quit_tap_state.state = cur_dance(state);
     switch (quit_tap_state.state) {
-        case TD_SINGLE_TAP: // `Esc`+`:qa`+Ent (safely quit Vim)
-            vim_commandline_macro(VC_QUIT_ALL);
-            break;
         case TD_SINGLE_HOLD: // `Esc`+`:qa!` (Quit Vim w/o saving)
             vim_commandline_macro(VC_QUIT_ALL_FORCE);
             break;
-        case TD_DOUBLE_SINGLE_TAP:
-            vim_commandline_macro(VC_QUIT_ALL);
+        case TD_TRIPLE_TAP:        vim_commandline_macro(VC_QUIT_ALL); // fallthru
+        case TD_DOUBLE_SINGLE_TAP: vim_commandline_macro(VC_QUIT_ALL); // fallthru
+        case TD_SINGLE_TAP: // `Esc`+`:qa`+Ent (safely quit Vim)
             vim_commandline_macro(VC_QUIT_ALL);
             break;
         default: break;
@@ -494,9 +484,6 @@ static td_tap_t winl_tap_state = {
 void winl_finished(tap_dance_state_t *state, void *user_data) {
     winl_tap_state.state = cur_dance(state);
     switch (winl_tap_state.state) {
-        case TD_SINGLE_TAP: // `Esc`+`LCTL+w`+`h` (Go to left win split)
-            vim_window_macro(NAV_LEFT);
-            break;
         case TD_DOUBLE_TAP: // `LCTL+w`+`<` (Decrease win split width)
             vim_window_size_macro(SZ_WIDTH_DEC);
             break;
@@ -506,8 +493,9 @@ void winl_finished(tap_dance_state_t *state, void *user_data) {
         case TD_DOUBLE_HOLD: // `Esc`+`:tabfirst`+`Ent` (Go to first tab)
             vim_tab_nav_macro(NAV_FIRST);
             break;
-        case TD_DOUBLE_SINGLE_TAP:
-            vim_window_macro(NAV_LEFT);
+        case TD_TRIPLE_TAP:        vim_window_macro(NAV_LEFT); // fallthru
+        case TD_DOUBLE_SINGLE_TAP: vim_window_macro(NAV_LEFT); // fallthru
+        case TD_SINGLE_TAP: // `Esc`+`LCTL+w`+`h` (Go to left win split)
             vim_window_macro(NAV_LEFT);
             break;
         default: break;
@@ -533,9 +521,6 @@ static td_tap_t wind_tap_state = {
 void wind_finished(tap_dance_state_t *state, void *user_data) {
     wind_tap_state.state = cur_dance(state);
     switch (wind_tap_state.state) {
-        case TD_SINGLE_TAP: // `Esc`+`LCTL+w`+`j` (Go to win split below)
-            vim_window_macro(NAV_DOWN);
-            break;
         case TD_DOUBLE_TAP: // `LCTL+w`+`-` (Decrease win split height)
             vim_window_size_macro(SZ_HEIGHT_DEC);
             break;
@@ -545,8 +530,9 @@ void wind_finished(tap_dance_state_t *state, void *user_data) {
         case TD_DOUBLE_HOLD: // `Esc`+`gT` (Go to previous tab)
             vim_tab_nav_macro(NAV_PREV);
             break;
-        case TD_DOUBLE_SINGLE_TAP:
-            vim_window_macro(NAV_DOWN);
+        case TD_TRIPLE_TAP:        vim_window_macro(NAV_DOWN); // fallthru
+        case TD_DOUBLE_SINGLE_TAP: vim_window_macro(NAV_DOWN); // fallthru
+        case TD_SINGLE_TAP: // `Esc`+`LCTL+w`+`j` (Go to win split below)
             vim_window_macro(NAV_DOWN);
             break;
         default: break;
@@ -572,9 +558,6 @@ static td_tap_t winu_tap_state = {
 void winu_finished(tap_dance_state_t *state, void *user_data) {
     winu_tap_state.state = cur_dance(state);
     switch (winu_tap_state.state) {
-        case TD_SINGLE_TAP: // `Esc`+`LCTL+w`+`k` (Go to win split above)
-            vim_window_macro(NAV_UP);
-            break;
         case TD_DOUBLE_TAP: // `LCTL+w`+`+` (Increase win split height)
             vim_window_size_macro(SZ_HEIGHT_INC);
             break;
@@ -584,8 +567,9 @@ void winu_finished(tap_dance_state_t *state, void *user_data) {
         case TD_DOUBLE_HOLD: // `Esc`+`gt` (Go to next tab)
             vim_tab_nav_macro(NAV_NEXT);
             break;
-        case TD_DOUBLE_SINGLE_TAP:
-            vim_window_macro(NAV_UP);
+        case TD_TRIPLE_TAP:        vim_window_macro(NAV_UP); // fallthru
+        case TD_DOUBLE_SINGLE_TAP: vim_window_macro(NAV_UP); // fallthru
+        case TD_SINGLE_TAP: // `Esc`+`LCTL+w`+`k` (Go to win split above)
             vim_window_macro(NAV_UP);
             break;
         default: break;
@@ -611,9 +595,6 @@ static td_tap_t winr_tap_state = {
 void winr_finished(tap_dance_state_t *state, void *user_data) {
     winr_tap_state.state = cur_dance(state);
     switch (winr_tap_state.state) {
-        case TD_SINGLE_TAP: // `Esc`+`LCTL+w`+`l` (Go to right win split)
-            vim_window_macro(NAV_RIGHT);
-            break;
         case TD_DOUBLE_TAP: // `LCTL+w`+`>` (Increase win split width)
             vim_window_size_macro(SZ_WIDTH_INC);
             break;
@@ -623,8 +604,9 @@ void winr_finished(tap_dance_state_t *state, void *user_data) {
         case TD_DOUBLE_HOLD: // `Esc`+`:tablast`+`Ent` (Go to next tab)
             vim_tab_nav_macro(NAV_LAST);
             break;
-        case TD_DOUBLE_SINGLE_TAP:
-            vim_window_macro(NAV_RIGHT);
+        case TD_TRIPLE_TAP:        vim_window_macro(NAV_RIGHT); // fallthru
+        case TD_DOUBLE_SINGLE_TAP: vim_window_macro(NAV_RIGHT); // fallthru
+        case TD_SINGLE_TAP: // `Esc`+`LCTL+w`+`l` (Go to right win split)
             vim_window_macro(NAV_RIGHT);
             break;
         default: break;

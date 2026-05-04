@@ -41,8 +41,24 @@
       "a": 7
     },
     "",
-    "",
-    "",
+    {
+      "c": "#cccccc",
+      "a": 4
+    },
+    "for\n\n\nwhile",
+    {
+      "fa": [
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    "if\nelif\nelse if\nelse",
+    {
+      "c": "#b2beb5",
+      "a": 7
+    },
     "",
     "",
     ""
@@ -50,7 +66,10 @@
   [
     "",
     {
-      "c": "#cccccc"
+      "c": "#cccccc",
+      "fa": [
+        4
+      ]
     },
     "return",
     {
@@ -58,7 +77,7 @@
       "f": 6,
       "fa": [
         4,
-        4,
+        0,
         4,
         4
       ]
@@ -128,22 +147,22 @@
     {
       "a": 4,
       "fa": [
-        4,
+        2,
         0,
         0,
-        4
+        1
       ]
     },
-    "for\n\n\nwhile",
+    "snake_\n\n\nSCREAM_",
     {
       "fa": [
         2,
-        2,
-        2,
+        0,
+        0,
         2
       ]
     },
-    "if\nelif\nelse if\nelse",
+    "camel\n\n\nPascal",
     "switch\n\n\ncase",
     "break\n\n\ncontinue",
     {
@@ -168,8 +187,8 @@
       "a": 4,
       "fa": [
         7,
-        2,
-        2,
+        0,
+        0,
         7
       ]
     },

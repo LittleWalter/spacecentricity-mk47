@@ -1,12 +1,10 @@
 #include "mac_programming.h"
 #include "macros.h"
+#include "src/features/case_mode.h"
 
 // ──────────────────────────────
 // Prose & Programming N-Grams
 // ──────────────────────────────
-
-// Auto-capitalization flag for next character
-bool auto_cap_next = false;
 
 // Punctuation-comma bigrams
 void punc_space_macro(const uint16_t punc_keycode) {
@@ -17,7 +15,7 @@ void punc_space_macro(const uint16_t punc_keycode) {
         case KC_DOT:  // `. `
         case KC_EXLM: // `! `
         case KC_QUES: // `? `
-            auto_cap_next = true;
+            auto_cap_next_char_only();
         case KC_COLN: // `: `
         case KC_COMM: // `, `
         case KC_SCLN: // `; `

@@ -3,6 +3,7 @@
 #ifdef LEADER_ENABLE
 
 #include "leader.h"
+#include "utils.h"
 #include "src/core/keymap.h"
 #include "src/macros/mac_special_char.h"
 #include "src/macros/mac_surround.h"
@@ -70,6 +71,7 @@ static const sequence_entry_t emoji_table[] = {
     { {KC_D, 0},        1, CHAR_EMOJI_SKULL },
     { {KC_D, KC_A},     2, CHAR_EMOJI_CALENDAR },
     { {KC_D, KC_E},     2, CHAR_EMOJI_DEVIL },
+    { {KC_D, KC_I},     2, CHAR_EMOJI_GAME_DIE },
     { {KC_D, KC_L},     2, CHAR_EMOJI_DROOL },
     { {KC_D, KC_R},     2, CHAR_EMOJI_CUP_WITH_STRAW },
     { {KC_D, KC_T},     2, CHAR_EMOJI_DESKTOP_COMPUTER },
@@ -127,6 +129,7 @@ static const sequence_entry_t emoji_table[] = {
     { {KC_O, 0},        1, CHAR_EMOJI_SURPRISED },
     { {KC_O, KC_K},     2, CHAR_EMOJI_OK },
     { {KC_P, 0},        1, CHAR_EMOJI_POOP },
+    { {KC_P, KC_C},     2, CHAR_EMOJI_PAPERCLIP },
     { {KC_P, KC_H},     2, CHAR_EMOJI_PHONE },
     { {KC_P, KC_K},     2, CHAR_EMOJI_PACKAGE },
     { {KC_P, KC_L},     2, CHAR_EMOJI_PLEAD },
@@ -186,32 +189,43 @@ static const sequence_entry_t emoji_table[] = {
 static const sequence_entry_t symbol_table[] = {
     // Sequence        Length  Annotation
     { {KC_A,    KC_P},      2, CHAR_APPROX },
+    { {KC_B,    0},         1, CHAR_BULLET },
+    { {KC_C,    0},         1, CHAR_CENT },
     { {KC_C,    KC_D},      2, CHAR_CENTER_DOT },
     { {KC_C,    KC_R},      2, CHAR_COPYRIGHT },
     { {KC_D,    0},         1, CHAR_ARROW_DOWN },
     { {KC_D,    KC_D},      2, CHAR_DOUBLE_ARROW_DOWN },
     { {KC_D,    KC_E},      2, CHAR_DEGREE },
     { {KC_D,    KC_I},      2, CHAR_DIVIDE },
+    { {KC_D,    KC_O},      2, CHAR_DONG },
     { {KC_E,    KC_L},      2, CHAR_ELLIPSIS },
     { {KC_E,    KC_M},      2, CHAR_EM_DASH },
     { {KC_E,    KC_N},      2, CHAR_EN_DASH },
+    { {KC_E,    KC_U},      2, CHAR_EURO },
     { {KC_G,    KC_E},      2, CHAR_GTE },
     { {KC_I,    0},         1, CHAR_INFINITY },
     { {KC_L,    0},         1, CHAR_ARROW_LEFT },
     { {KC_L,    KC_D},      2, CHAR_DOUBLE_ARROW_LEFT },
     { {KC_L,    KC_E},      2, CHAR_LTE },
+    { {KC_L,    KC_I},      2, CHAR_LIRA },
     { {KC_M,    KC_U},      2, CHAR_MULTIPLY },
     { {KC_N,    KC_E},      2, CHAR_NEQ },
     { {KC_P,    KC_A},      2, CHAR_PARAGRAPH },
+    { {KC_P,    KC_E},      2, CHAR_PESO },
+    { {KC_P,    KC_O},      2, CHAR_POUND },
     { {KC_R,    0},         1, CHAR_ARROW_RIGHT },
     { {KC_R,    KC_D},      2, CHAR_DOUBLE_ARROW_RIGHT },
     { {KC_R,    KC_E},      2, CHAR_REGISTERED },
+    { {KC_R,    KC_P},      2, CHAR_RUPEE },
+    { {KC_R,    KC_U},      2, CHAR_RUBLE },
     { {KC_S,    KC_E},      2, CHAR_SECTION },
     { {KC_S,    KC_T},      2, CHAR_STAR },
     { {KC_T,    KC_M},      2, CHAR_TRADEMARK },
     { {KC_U,    0},         1, CHAR_ARROW_UP },
     { {KC_U,    KC_D},      2, CHAR_DOUBLE_ARROW_UP },
     { {KC_V,    KC_E},      2, CHAR_VERT_ELLIPSIS },
+    { {KC_W,    0},         1, CHAR_WON },
+    { {KC_Y,    0},         1, CHAR_YEN },
     { {KC_ENT,  0},         1, CHAR_ENTER },
     { {KC_ENT,  KC_ENT},    2, CHAR_CARRIAGE_RETURN },
     { {KC_ESC,  0},         1, CHAR_ESCAPE },
@@ -284,20 +298,23 @@ static leader_entry_t leader_favorites[LEADER_FAVORITES_SIZE] = {
 // Execute a stored leader sequence action.
 // The correct macro is chosen based on the entry's category.
 static void run_leader_entry(const leader_entry_t entry) {
-    switch (entry.leader) {
-        case LEAD_SYMBOL:
-        case LEAD_EMOJI:
-            special_char_macro(entry.name);
-            break;
-        case LEAD_DEV_NOTE:
-            notes_macro(entry.name);
-            break;
-        case LEAD_SURROUND:
-            surround_macro(entry.name);
-            break;
-        case LEAD_NONE: // Invalid history
-            break;
-        default: break;
+    // Do not run Leader history on temporary text-entry modes
+    if (!is_transient_lexical_mode_on()) {
+        switch (entry.leader) {
+            case LEAD_SYMBOL:
+            case LEAD_EMOJI:
+                special_char_macro(entry.name);
+                break;
+            case LEAD_DEV_NOTE:
+                notes_macro(entry.name);
+                break;
+            case LEAD_SURROUND:
+                surround_macro(entry.name);
+                break;
+            case LEAD_NONE: // invalid history
+                break;
+            default: break;
+        }
     }
 }
 
@@ -325,7 +342,7 @@ void toggle_leader_replay(void) {
 
 // Switch between History and Favorites replay (only when replay is active).
 void toggle_leader_replay_favorites(void) {
-    if (leader_state.replay_mode != LEADER_REPLAY_OFF) {
+    if (leader_state.replay_mode != LEADER_REPLAY_OFF && !is_transient_lexical_mode_on()) {
         leader_state.replay_mode =
             (leader_state.replay_mode == LEADER_REPLAY_HISTORY) ? LEADER_REPLAY_FAVORITES
                                                                 : LEADER_REPLAY_HISTORY;
@@ -585,7 +602,7 @@ static void restart_leader_state(void) {
 
 // Resets Leader sequence flash state and switches to temporary Leader layer.
 void leader_start_user(void) {
-    if (leader_state.enabled) {
+    if (leader_state.enabled && !is_transient_lexical_mode_on()) {
         restart_leader_state();
 
         // To avoid issues with tap-dance and mod-tap keys, go to dedicated alpha layer
@@ -614,7 +631,7 @@ void leader_start_user(void) {
  * - Exits the temporary Leader layer used during sequence entry.
  */
 void leader_end_user(void) {
-    if (!leader_state.enabled) return;
+    if (!leader_state.enabled || is_transient_lexical_mode_on()) return;
 
     if (!surround_sequences()
         && !annotation_sequences()

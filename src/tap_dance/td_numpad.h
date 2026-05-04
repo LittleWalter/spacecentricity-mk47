@@ -1,3 +1,22 @@
+/*
+ * td_numpad.h — Tap Dance declarations for numpad digit and shifted-letter entry.
+ *
+ * This module implements tap-dance behaviors for numpad keys (1–6), allowing
+ * each key to produce both its numeric keypad value and a corresponding
+ * shifted alphabetic character. The design provides fast access to numbers
+ * while enabling convenient entry of capital letters without using Shift.
+ *
+ * Behavior pattern for each numpad tap dance:
+ *   - Single tap:       Send KC_KP_n (numpad digit)
+ *   - Single hold:      Send Shifted letter (A–F)
+ *   - Double tap:       Repeat the numpad digit (tap + register)
+ *   - Double single tap: Same as double tap (repeat digit)
+ *
+ * This module centralizes all numpad-related tap-dance logic so that numeric
+ * and shifted-letter behaviors remain consistent, predictable, and easy to
+ * maintain across the keymap.
+ */
+
 #pragma once
 
 #include QMK_KEYBOARD_H

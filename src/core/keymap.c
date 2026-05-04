@@ -1,6 +1,7 @@
 #include QMK_KEYBOARD_H
 #include "keymap.h"
 #include "custom_keys.h"
+#include "src/features/case_mode.h"
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -15,13 +16,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │MOUSE  FN│🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │ u  LOWER│   ␣       ↵   ⌘   │ c  UPPER│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
- * LOWER, UPPER: Tap+Hold to lock layer
+
  */
 [_BASE] = LAYOUT_planck_mit(
-    ASTR,     COMM,      SCLN_LSFT, DOT_LCTL, P_LALT,  KC_Y,      KC_F, G_RALT,  L_RCTL,  R_RSFT,   QUOT,   BSPC,
-    TAB,      KC_A,      O_PROG_R,  E_VIM_R,  I_ARR_R, ESC_MACOS, KC_D, H_ARR_L, T_VIM_L, N_PROG_L, KC_S,   KC_ENT,
-    OSM_SFT,  SLSH_HYPR, Q_MEH,     KC_J,     KC_K,    KC_X,      KC_B, M_TERM,  KC_W,    V_MEH,    Z_HYPR, DQUO,
-    MOUSE_FN, MUTE,      VOLD,      VOLU,     U_LOWER,       SPC,       C_UPPER, HOME,    PGDN,     PGUP,   END
+    ASTR,     COMM,      SCLN,      DOT,     P_LALT,  KC_Y, KC_F, G_RALT,  L_RCTL,  R_RSFT,   QUOT,   BSPC,
+    TAB,      KC_A,      O_PROG_R,  E_VIM_R, I_ARR_R, ESC,  KC_D, H_ARR_L, T_VIM_L, N_PROG_L, KC_S,   ENT,
+    OSM_SFT,  SLSH_HYPR, Q_MEH,     KC_J,    KC_K,    KC_X, KC_B, M_TERM,  KC_W,    V_MEH,    Z_HYPR, DQUO,
+    MOUSE_FN, MUTE,      VOLD,      VOLU,    U_LOWER,    SPC,     C_UPPER, HOME,    PGDN,     PGUP,   END
 ),
 
 /* Classic Doom Layer
@@ -38,7 +39,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #ifdef MOUSEKEY_ENABLE
 [_DOOM] = LAYOUT_planck_mit(
     KC_ESC, ____,        ____,    KC_UP,       ____,    ____,        ____, ____,       MS_UP,   ____,    ____,        BSPC,
-    TAB,    STRAFE_LEFT, KC_LEFT, KC_DOWN,     KC_RGHT, STRAFE_RGHT, ____, MS_LEFT,    MS_DOWN, MS_RGHT, STRAFE_RGHT, KC_ENT,
+    TAB,    STRAFE_LEFT, KC_LEFT, KC_DOWN,     KC_RGHT, STRAFE_RGHT, ____, MS_LEFT,    MS_DOWN, MS_RGHT, STRAFE_RGHT, ENT,
     ____,   ____,        ____,    STRAFE_DOWN, ____,    ____,        ____, MS_WHLR,    MS_WHLU, MS_WHLD, MS_WHLL,     ____,
     BASE,   MUTE,        VOLD,    VOLU,        MS_BTN1,     SPC_LSFT,      RCLK_UPPER, HOME,    PGDN,    PGUP,        END
 ),
@@ -46,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Numpad Layer: Hold Left Thumb Key
  * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
- * │   ESC   │ * % @ # │ 9  LSFT │ 8  LCTL │ 7  LALT │    .    │ ^   ¢ $ │ 7  RALT │ 8  RCTL │ 9  RSFT │ * % @ # │ ⌫  ⌫L ⌫w│
+ * │   ESC   │ * % @ # │ 9  LSFT │ 8  LCTL │ 7  LALT │ . … ⋮ • │ ^   ¢ $ │ 7  RALT │ 8  RCTL │ 9  RSFT │ * % @ # │ ⌫  ⌫L ⌫w│
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │  ⇥   ⇤  │    +    │    6  F │    5  E │    4  D │ ( [ < { │ ) ] > } │    4  D │    5  E │    6  F │    +    │    ↵    │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
@@ -57,10 +58,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Hold right thumb key (0), to momentarily activate _ADJ layer to get access to F1-F12 keys
  */
 [_LOWER] = LAYOUT_planck_mit(
-    KC_ESC,   ASTR,    KP9_LSFT, KP8_LCTL, KP7_LALT, KC_PDOT, CARET, KP7_RALT, KP8_RCTL, KP9_RSFT, ASTR,    BSPC,
-    TAB,      KC_PPLS, NP_6_F,   NP_5_E,   NP_4_D,   LPRN,    RPRN,  NP_4_D,   NP_5_E,   NP_6_F,   KC_PPLS, KC_ENT,
-    KC_PSLS,  KC_PMNS, NP_3_C,   NP_2_B,   NP_1_A,   COMM,    DLR,   NP_1_A,   NP_2_B,   NP_3_C,   KC_PMNS, KC_PSLS,
-    TG_MOUSE, MUTE,    VOLD,     VOLU,     BASE,          EQL,       ZERO_ADJ, HOME,     PGDN,     PGUP,    END
+    KC_ESC,   ASTR,    KP9_LSFT, KP8_LCTL, KP7_LALT, DOT,  CARET, KP7_RALT, KP8_RCTL, KP9_RSFT, ASTR,    BSPC,
+    TAB,      KC_PPLS, NP_6_F,   NP_5_E,   NP_4_D,   LPRN, RPRN,  NP_4_D,   NP_5_E,   NP_6_F,   KC_PPLS, ENT,
+    KC_PSLS,  KC_PMNS, NP_3_C,   NP_2_B,   NP_1_A,   COMM, DLR,   NP_1_A,   NP_2_B,   NP_3_C,   KC_PMNS, KC_PSLS,
+    TG_MOUSE, MUTE,    VOLD,     VOLU,     BASE,        EQL,      ZERO_ADJ, HOME,     PGDN,     PGUP,    END
 ),
 
 /* Primary Number Layer: Hold Right Thumb Key
@@ -77,8 +78,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ^   ¢ $ = ^ Jump to first char on current line in Vim (Tap), ¢ symbol for macOS (Tap+Hold), $ Jump to EOL in Vim
  */
 [_UPPER] = LAYOUT_planck_mit(
-    KC_GRV,   COMM,    KC_COLN, DOT,  TD9,     KC_AMPR, KC_PIPE, TD8,  PLUS, KC_HASH, CARET,   DEL,
-    KC_TILD,  TD7,     TD5,     TD1,  TD3,     LPRN,    RPRN,    TD2,  TD0,  TD4,     TD6,     KC_ENT,
+    KC_GRV,   COMM,    KC_COLN, DOT,  T9,      KC_AMPR, KC_PIPE, T8,   PLUS, KC_HASH, CARET,   DEL,
+    KC_TILD,  T7,      T5,      T1,   T3,      LPRN,    RPRN,    T2,   T0,   T4,      T6,      ENT,
     KC_PERC,  KC_BSLS, KC_UNDS, LBRC, CAPS,    DLR,     AT,      PUNC, RBRC, KC_MINS, KC_QUES, SMART_QUOTES,
     TG_MOUSE, MUTE,    VOLD,    VOLU, KC_BSPC,       EQL,        BASE, HOME, PGDN,    PGUP,    END
 ),
@@ -95,10 +96,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
  */
 [_ADJ] = LAYOUT_planck_mit(
-    QK_BOOT, ____, ____, ____,      ____, ____, ____, ____,    RM_PREV, RM_NEXT, ____,    KC_BRIU,
-    ____,    ____, ____, TG_LEADER, ____, ____, ____, RM_TOGG, RM_VALD, RM_VALU, ____,    KC_BRID,
-    ____,    ____, ____, ____,      ____, ____, ____, TG_OS,   RM_HUED, RM_HUEU, RM_SATD, RM_SATU,
-    DB_TOGG, ____, ____, ____,      ____,    ____,    ____,    RM_SPDD, RM_SPDU, ____,    ____
+    QK_BOOT, ____, ____, ____,    ____, ____, ____, ____,    RM_PREV, RM_NEXT, ____,    KC_BRIU,
+    ____,    ____, ____, TG_LEAD, ____, ____, ____, RM_TOGG, RM_VALD, RM_VALU, ____,    KC_BRID,
+    ____,    ____, ____, ____,    ____, ____, ____, TG_OS,   RM_HUED, RM_HUEU, RM_SATD, RM_SATU,
+    DB_TOGG, ____, ____, ____,    ____, ____,    ____,       RM_SPDD, RM_SPDU, ____,    ____
 ),
 
 /* Function Keys & Modifiers: Hold Bottom Left Key w/ Palm for 350 ms to Activate
@@ -202,21 +203,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Programming N-Grams (RHS): Hold Left Ring Finger on Home Row
  * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
- * │         │         │         │         │         │         │  null   │ &&   || │+= - / * │ =    := │         │ MD LINK │
+ * │         │         │         │ if else │for while│         │  null   │ &&   || │+= - / * │ =    := │         │ MD LINK │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │         │  WS {}  │<<HOLD>> │ ++   -- │ //      │         │truefalse│""←''←``←│()[]<>{}←│-> <-  =>│ return  │         │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │         │         │         │         │         │         │break con│ switch  │ if else │for while│ ` ? : ` │         │
+ * │         │         │         │         │         │         │break con│ switch  │camelCase│snake_cs │ ` ? : ` │         │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │         │         │         │         │         │  ==  !=   <=  >=  │  ⇥   ⇤  │         │         │         │         │
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
  * Double quotes tap dance: ``` on Tap+Hold
  */
 [_PROG_R] = LAYOUT_planck_mit(
-    ____, ____,    ____, ____, ____,    ____, NULL_KW,  AND,        CMPD,   ASSIGN, ____,      MD_LINK,
-    ____, VWS_CBR, ____, INC,  COMMENT, ____, TRUE_KW,  DBL_QUOTES, PARENS, ARROW,  RETURN_KW, ____,
-    ____, ____,    ____, ____, ____,    ____, BREAK_KW, SWITCH_KW,  IF_KW,  FOR_KW, TERN,      ____,
-    ____, ____,    ____, ____, ____,       PROG_EQL,    TAB,        ____,   ____,   ____,      ____
+    ____, ____,    ____, IF_KW, FOR_KW,  ____, NULL_KW,  AND,        CMPD,   ASSIGN, ____,      MD_LINK,
+    ____, VWS_CBR, ____, INC,   COMMENT, ____, TRUE_KW,  DBL_QUOTES, PARENS, ARROW,  RETURN_KW, ____,
+    ____, ____,    ____, ____,  ____,    ____, BREAK_KW, SWITCH_KW,  CAMEL,  SNAKE,  TERN,      ____,
+    ____, ____,    ____, ____,  ____,       PROG_EQL,    TAB,        ____,   ____,   ____,      ____
 ),
 
 /* Programming N-Grams (LHS): Hold Right Ring Finger on Home Row
@@ -227,7 +228,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │         │ ` ? : ` │for while│ if else │ switch  │break con│         │         │         │         │         │         │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │         │         │         │         │  ⇥   ⇤  │  ==  !=   <=  >=  │         │         │         │         │         │
+ * │         │         │camelCase│snake_cs │  ⇥   ⇤  │  ==  !=   <=  >=  │         │         │         │         │         │
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
  * Double quotes tap dance: ``` on Tap+Hold
  */
@@ -235,7 +236,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     MD_LINK, ____,      ASSIGN, CMPD,   AND,        NULL_KW,  ____, ____,    ____, ____, ____,    ____,
     ____,    RETURN_KW, ARROW,  PARENS, DBL_QUOTES, TRUE_KW,  ____, COMMENT, INC,  ____, VWS_CBR, ____,
     ____,    TERN,      FOR_KW, IF_KW,  SWITCH_KW,  BREAK_KW, ____, ____,    ____, ____, ____,    ____,
-    ____,    ____,      ____,   ____,   TAB,           PROG_EQL,    ____,    ____, ____, ____,    ____
+    ____,    ____,      CAMEL,  SNAKE,  TAB,           PROG_EQL,    ____,    ____, ____, ____,    ____
 ),
 
 /* Terminal Emulator: Hold Right Index Finger on Lower Row
@@ -244,17 +245,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │  touch  │ ⇱ ^ h ← │ ⇞ { k ↑ │ ⇟ } j ↓ │ ⇲ $ l → │cls  exit│         │         │         │         │         │         │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │         │         │         │./ ~/ ../│ ls -lah │         │         │ <<HOLD>>│ cd cd ..│   cd ~  │cd gitrt │         │
+ * │         │         │./ ~/ ../│path/case│ ls -lah │         │         │ <<HOLD>>│ cd cd ..│   cd ~  │cd gitrt │         │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │ | ` | ` │         │         │         │   cd -  │   btop top htop   │  SIGINT │         │         │         │         │
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
  * SIGINT: LCTL+c, stop process (Tap); `fg`, resume background process (2xTap); LCTL+z, suspend/pause process into background (Hold)
  */
 [_TERM] = LAYOUT_planck_mit(
-    SUDO,  ____, MKDIR, CAT,  PING,    ____, ____, ____,   ____, ____,    ____,       ____,
-    TOUCH, HOME, PGUP,  PGDN, END,     CLS,  ____, ____,   ____, ____,    ____,       ____,
-    ____,  ____, ____,  PATH, LS_TERM, ____, ____, ____,   CD,   CD_HOME, CD_GITROOT, ____,
-    PIPE,  ____, ____,  ____, CD_PREV,    BTOP,    SIGINT, ____, ____,    ____,       ____
+    SUDO,  ____, MKDIR, CAT,           PING,    ____, ____, ____,   ____, ____,    ____,       ____,
+    TOUCH, HOME, PGUP,  PGDN,          END,     CLS,  ____, ____,   ____, ____,    ____,       ____,
+    ____,  ____, PATH,  TG_PATH_CASE,  LS_TERM, ____, ____, ____,   CD,   CD_HOME, CD_GITROOT, ____,
+    PIPE,  ____, ____,  ____,          CD_PREV,    BTOP,    SIGINT, ____, ____,    ____,       ____
 ),
 
 /* Apple macOS Layer: Hold Inner Left Key on Home Row (ESC)
@@ -329,15 +330,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │    %    │    \    │    _    │    [    │CAPS LOCK│    $    │    @    │    ,    │    ]    │    -    │    ?    │         │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │         │🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │    ⌫    │         =         │         │    ⇱    │    ⇟    │    ⇞    │    ⇲    │
+ * │         │         │         │         │    ⌫    │         =         │         │    ⇱    │    ⇟    │    ⇞    │    ⇲    │
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
  */
 [_LEAD_DIGIT] = LAYOUT_planck_mit(
     KC_GRV,  KC_COMM, KC_COLN, KC_DOT,  KC_9,    KC_AMPR, KC_PIPE, KC_8,    KC_PLUS, KC_HASH, KC_CIRC, KC_DEL,
     KC_TILD, KC_7,    KC_5,    KC_1,    KC_3,    KC_LPRN, KC_RPRN, KC_2,    KC_0,    KC_4,    KC_6,    KC_ENT,
     KC_PERC, KC_BSLS, KC_UNDS, KC_LBRC, KC_CAPS, KC_DLR,  KC_AT,   KC_COMM, KC_RBRC, KC_MINS, KC_QUES, ____,
-    ____,    MUTE,    VOLD,    VOLU,    KC_BSPC,       EQL,        ____,    KC_HOME, KC_PGDN, KC_PGUP, KC_END
+    ____,    ____,    ____,    ____,    KC_BSPC,       EQL,        ____,    KC_HOME, KC_PGDN, KC_PGUP, KC_END
 ),
 #endif
+
 };
 // clang-format on
+
+// QMK hook: runs once every scan cycle (very frequently).
+//
+// NOTE: Keep this function lightweight. It executes in the main firmware loop and
+// is called thousands of times per second.
+void matrix_scan_user(void) {
+    // Maintain case mode timeout
+    case_mode_scan();
+}

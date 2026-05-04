@@ -7,27 +7,34 @@
 // ─────────────────────────────────────────────────────────────
 
 enum {                // │  Tap   │ 2xTap  │Tap+Hold│  Hold  │ Notes
-    TD_ASTR = 0,      // │   *    │   %    │   @    │   #    │ Fun corner key for Vim commands on Base layer
-    TD_AT,            // │   @    │        │        │ToggLEAD│ On hold: Toggle replay Leader History/Favorites
-    TD_BSPC,          // │  Bspc  │        │BspcLine│BspcWord│
+    TD_U = 0,         // │   u    │        │LOCK LOW│ MT(LOW)│ `u` on Tap; Lock Numpad layer on Tap+Hold; Momentary Numpad layer on Hold
     TD_C,             // │   c    │        │LOCK UPP│ MT(UPP)│ `c` on Tap; Lock Primary Number layer on Tap+Hold; Momentary Primary Number layer on Hold
+                      // │        │        │        │        │
+    TD_ASTR,          // │   *    │   %    │   @    │   #    │ Triple tap: × (multiplication symbol)
+    TD_AT,            // │   @    │        │        │ToggLEAD│ On hold: Toggle replay Leader History/Favorites
     TD_CARET,         // │   ^    │        │   ¢    │   $    │
     TD_CIRC,          // │   ◌̂    │   ◌̄    │   ◌̆    │   ◌̌    │ Combining circumflex on Tap; macron on 2xTap; breve on Tap+Hold; caron on Hold
     TD_COMM,          // │   ,    │   ;    │   |    │   &    │
-    TD_DEL,           // │  Del   │        │Del Line│Del Word│
     TD_DOT,           // │   .    │   …    │   ⋮    │   •    │ Triple tap: · (centered dot)
     TD_DLR,           // │   $    │   ¥    │   £    │   €    │
     TD_DQUO,          // │   "    │   ‘    │   <    │   >    │ Double quote on Tap; typographic opening smart single quote on 2xTap
     TD_EQL,           // │   =    │        │        │   ≠    │
     TD_EXLM,          // │   !    │   ¡    │   ◌̃    │   ◌̈    │
     TD_MINS,          // │   -    │        │   –    │   —    │ Hyphen/en dash/em dash
-    TD_PLUS,          // │   +    │   -    │   /    │   *    │
-    TD_PUNC,          // │  `, `  │   `! ` │  `? `  │   `. ` │ Punctuation + space bigrams; sentence-ending symbols auto capitalize the next char
+    TD_PLUS,          // │   +    │   -    │   /    │   *    │ Triple tap: × (multiplication symbol)
+    TD_PUNC,          // │   ,␣   │   !␣   │   ?␣   │   .␣   │ Punctuation + space bigrams; sentence-ending symbols auto capitalize the next char
     TD_QUES,          // │   ?    │   ¿    │   ◌̀    │   ◌́    │
     TD_QUOT,          // │   '    │   ’    │   ~    │   `    │ Single quote on Tap; typographic apostrophe/closing smart single quote on 2xTap
+    TD_SCLN,          // │   ;    │   ;␣   │   :␣   │  LSFT  │
     TD_SPC,           // │  Spc   │        │  Enter │  LGUI  │ LGUI = LCMD = Super (Linux) = Windows key
-    TD_TAB,           // │  Tab   │        │        │ Sft+Tab│ Sft+Tab = Reverse Tab
-    TD_U,             // │   u    │        │LOCK LOW│ MT(LOW)│ `u` on Tap; Lock Numpad layer on Tap+Hold; Momentary Numpad layer on Hold
+                      // │        │        │        │        │
+    TD_SMART_QUOTES,  // │   “|”  │        │        │  ‘|’   │ Smart double quotes w/ cursor inside on Tap; smart single quotes on Hold
+    TD_ANGLE_QUOTES,  // │   «|»  │        │        │  ‹|›   │ Angle double quotes w/ cursor inside on Tap; angle single quotes on Hold
+                      // │        │        │        │        │
+    TD_LPRN,          // │   (    │   [    │   <    │   {    │
+    TD_RPRN,          // │   )    │   ]    │   >    │   }    │
+    TD_LBRC,          // │   [    │   (    │   {    │   <    │ Triple tap: ≤
+    TD_RBRC,          // │   ]    │   )    │   }    │   >    │ Triple tap: ≥
                       // │        │        │        │        │
     TD_0,             // │   0    │        │        │LEADER 0│
     TD_1,             // │   1    │        │        │LEADER 1│
@@ -40,22 +47,6 @@ enum {                // │  Tap   │ 2xTap  │Tap+Hold│  Hold  │ Notes
     TD_8,             // │   8    │        │        │LEADER 8│
     TD_9,             // │   9    │        │        │LEADER 9│
                       // │        │        │        │        │
-    TD_CAPS,          // │CapsWord│        │        │CapsLock│
-                      // │        │        │        │        │
-    TD_LPRN,          // │   (    │   [    │   <    │   {    │
-    TD_RPRN,          // │   )    │   ]    │   >    │   }    │
-    TD_LBRC,          // │   [    │   (    │   {    │   <    │
-    TD_RBRC,          // │   ]    │   )    │   }    │   >    │
-                      // │        │        │        │        │
-    TD_MUTE,          // │  Mute  │Pl/Pause│  Stop  │ LCTL+M │ Media key; Browsers: Mute Tab on hold
-    TD_VOLD,          // │  Vol-  │  Prev  │  Bght- │  Vol-  │ Media key
-    TD_VOLU,          // │  Vol+  │  Next  │  Bght+ │  Vol+  │ Media key
-                      // │        │        │        │        │
-    TD_HOME,          // │  Home  │   ^    │   h    │   ←    │ Vim: ^ = jump to first curr line first char; h = move left 1 col
-    TD_PGDN,          // │  PgDn  │   }    │   j    │   ↓    │ Vim: } = jump down paragraph; j = move down 1 row
-    TD_PGUP,          // │  PgUp  │   {    │   k    │   ↑    │ Vim: { = jump up paragraph; k = move up 1 row
-    TD_END,           // │  End   │   $    │   l    │   →    │ Vim: $ = jump to EOL; l = move right 1 col
-                      // │        │        │        │        │
     TD_NUMPAD_1,      // │   1    │        │        │   A    │ Number pad 1 on Tap; Hex A on Hold
     TD_NUMPAD_2,      // │   2    │        │        │   B    │ Number pad 2 on Tap; Hex B on Hold
     TD_NUMPAD_3,      // │   3    │        │        │   C    │ Number pad 3 on Tap; Hex C on Hold
@@ -63,9 +54,23 @@ enum {                // │  Tap   │ 2xTap  │Tap+Hold│  Hold  │ Notes
     TD_NUMPAD_5,      // │   5    │        │        │   E    │ Number pad 5 on Tap; Hex E on Hold
     TD_NUMPAD_6,      // │   6    │        │        │   F    │ Number pad 6 on Tap; Hex F on Hold
                       // │        │        │        │        │
-    TD_ZIN,           // │CMD+S+= │        │        │ C+S+=  │ Browser Zoom Out
-    TD_ZOUT,          // │  CMD+- │        │        │ LCTL+- │ Browser Zoom In
-    TD_ZRS,           // │  CMD+0 │        │        │ LCTL+0 │ Browser Zoom Reset
+    TD_BSPC,          // │  Bspc  │        │BspcLine│BspcWord│
+    TD_CAPS,          // │CapsWord│        │        │CapsLock│
+    TD_DEL,           // │  Del   │        │Del Line│Del Word│
+    TD_ENT,           // │   ↵    │        │        │ SFT+Ent│
+    TD_ESC,           // │  Esc   │        │CloseWin│  Esc   │ Close Window: CMD+w (macOS), Alt+F4 (Linux/Microsoft Windows)
+    TD_TAB,           // │  Tab   │        │        │ SFT+Tab│ SFT+Tab = Reverse Tab
+                      // │        │        │        │        │
+    TD_UNDO,          // │  CMD+Z │        │CMD+S+Z │  CMD+Z │ Defaults to macOS shortcuts, toggle OS for Linux/Windows on _FN layer
+                      // │        │        │        │        │
+    TD_HOME,          // │  Home  │   ^    │   h    │   ←    │ Vim: ^ = jump to first curr line first char; h = move left 1 col
+    TD_PGDN,          // │  PgDn  │   }    │   j    │   ↓    │ Vim: } = jump down paragraph; j = move down 1 row
+    TD_PGUP,          // │  PgUp  │   {    │   k    │   ↑    │ Vim: { = jump up paragraph; k = move up 1 row
+    TD_END,           // │  End   │   $    │   l    │   →    │ Vim: $ = jump to EOL; l = move right 1 col
+                      // │        │        │        │        │
+    TD_MUTE,          // │  Mute  │Pl/Pause│  Stop  │ LCTL+M │ Media key; Browsers: Mute Tab on hold
+    TD_VOLD,          // │  Vol-  │  Prev  │  Bght- │  Vol-  │ Media key
+    TD_VOLU,          // │  Vol+  │  Next  │  Bght+ │  Vol+  │ Media key
                       // │        │        │        │        │
     TD_B,             // │   B    │   gE   │PrevEdit│ LCTL+O │ Vim: Jump 1 WORD back on Tap; jump to end of 1 WORD back on 2xTap; jump list backward on Hold
     TD_GJ,            // │   gj   │        │   <<   │        │ Vim: Directly move down 1 row on long line on Tap; left indent on Tap+Hold
@@ -84,10 +89,10 @@ enum {                // │  Tap   │ 2xTap  │Tap+Hold│  Hold  │ Notes
     TD_WINU,          // │GotoWinU│Height+ │Tab Next│Buf Next│ Vim: Go to window above below on Tap; increase height on 2xTap
     TD_WINR,          // │GotoWinR│ Width+ │Last Tab│Last Buf│ Vim: Go to right window split on Tap; increase width on 2xTap
                       // │        │        │        │        │
-    TD_WRITE,         // │   :w   │        │        │  :wa   │ Vim: Write/save current buffer on Tap; write/save all open buffers on Hold
     TD_SUB,           // │ :%s///g│        │        │:bufdo..│ Vim: substitute all in current buffer on Tap; substitute in all buffers on Hold
     TD_VIM_DEL,       // │   db   │   dB   │   d^   │   d$   │ Vim: delete word/WORD/BOL/EOL
     TD_FOLD,          // │   za   │        │   zM   │   zR   │ Vim: toggle fold under cursor under Tap; close all folds on Tap+Hold; open all folds on Hold
+    TD_WRITE,         // │   :w   │        │        │  :wa   │ Vim: Write/save current buffer on Tap; write/save all open buffers on Hold
     TD_QUIT,          // │  :qa   │        │        │  :qa!  │ Vim: Safely quit all on Tap; Quit all w/o saving buffers on Hold
                       // │        │        │        │        │
     TD_PROG_EQL,      // │   ==   │   !=   │   <=   │   >=   │ Logical comparison operators
@@ -109,6 +114,9 @@ enum {                // │  Tap   │ 2xTap  │Tap+Hold│  Hold  │ Notes
                       // │        │        │        │        │
     TD_MD_LINK,       // │  []()  │        │        │  ![]() │
                       // │        │        │        │        │
+    TD_CAMEL,         // │        │        │        │        │
+    TD_SNAKE,         // │        │        │        │        │
+                      // │        │        │        │        │
     TD_BTOP,          // │  btop  │  top   │        │  htop  │ Terminal-based system monitoring tools
     TD_CLS,           // │ clear  │        │        │  exit  │ Clear screen on Tap; exit shell
     TD_CAT,           // │  cat   │  less  │        │  bat   │ File-viewing terminal commands
@@ -122,10 +130,6 @@ enum {                // │  Tap   │ 2xTap  │Tap+Hold│  Hold  │ Notes
     TD_FS_MACOS,      // │FullScrn│        │        │Lock Mac│
     TD_SCRNSHOT_MACOS,// │   ▣    │        │Options │   ⛶    │ Partial screenshot on Tap; Screenshot Toolbar, all options on Tap+Hold; Full screenshot on Hold
     TD_DEL_MACOS,     // │Del File│  🗑️ 📂 │        │Empty 🗑️│ Delete file on Tap; Open trash folder in Finder on Tap+Hold, Empty trash can on Hold
-                      // │        │        │        │        │
-    TD_UNDO,          // │  CMD+Z │        │CMD+S+Z │  CMD+Z │ Defaults to macOS shortcuts, toggle OS for Linux/Windows on _FN layer
-    TD_SMART_QUOTES,  // │   “|”  │        │        │  ‘|’   │ Smart double quotes w/ cursor inside on Tap; smart single quotes on Hold
-    TD_ANGLE_QUOTES,  // │   «|»  │        │        │  ‹|›   │ Angle double quotes w/ cursor inside on Tap; angle single quotes on Hold
 
     TD_COUNT // Sentinel value for tap_dance_actions array
 };
@@ -148,9 +152,48 @@ typedef enum {
 
 typedef struct {
     bool is_press_action;
+    uint8_t layer_origin;
     td_state_t state;
 } td_tap_t;
 
 extern tap_dance_action_t tap_dance_actions[TD_COUNT];
 
+/* Return an integer that corresponds to what kind of tap dance should be executed.
+ *
+ * How to figure out tap dance state: interrupted and pressed.
+ *
+ * Interrupted: If the state of a dance is "interrupted", that means that another key has been hit
+ *  under the tapping term. This is typically indicative that you are trying to "tap" the key.
+ *
+ * Pressed: Whether or not the key is still being pressed. If this value is true, that means the tapping term
+ *  has ended, but the key is still being pressed down. This generally means the key is being "held".
+ *
+ * One thing that is currently not possible with qmk software in regards to tap dance is to mimic the "permissive hold"
+ *  feature. In general, advanced tap dances do not work well if they are used with commonly typed letters.
+ *  For example "A". Tap dances are best used on non-letter keys that are not hit while typing letters.
+ *
+ * Good places to put an advanced tap dance:
+ *  z,q,x,j,k,v,b, any function key, home/end, comma, semi-colon
+ *
+ * Criteria for "good placement" of a tap dance key:
+ *  Not a key that is hit frequently in a sentence
+ *  Not a key that is used frequently to double tap, for example 'tab' is often double tapped in a terminal, or
+ *    in a web form. So 'tab' would be a poor choice for a tap dance.
+ *  Letters used in common words as a double. For example 'p' in 'pepper'. If a tap dance function existed on the
+ *    letter 'p', the word 'pepper' would be quite frustrating to type.
+ *
+ * For the third point, there does exist the 'TD_DOUBLE_SINGLE_TAP', however this is not fully tested
+ *
+ * REF: Sample code taken from https://docs.qmk.fm/features/tap_dance#examples
+ */
 td_state_t cur_dance(tap_dance_state_t *state);
+
+// ─────────────────────────────────────────────────────────────
+// Tap Dance Helpers
+// ─────────────────────────────────────────────────────────────
+
+// Registers a given keycode and checks active case mode for valid chars.
+void register_and_update(const uint16_t keycode);
+
+// Taps a given keycode and checks active case mode for valid chars.
+void tap_and_update(const uint16_t keycode);

@@ -38,6 +38,7 @@ extern rgb_preview_t rgb_preview;
 // ─────────────────────────────────────────────────────────────
 
 #define AMBER         255, 180, 0
+#define APPLE_GREEN   80, 255, 120
 #define BLUE          0, 0, 255
 #define CRIMSON       220, 20, 60
 #define CYAN          0, 255, 255
@@ -47,6 +48,7 @@ extern rgb_preview_t rgb_preview;
 #define FOREST_GREEN  34, 139, 34
 #define GOLD          255, 215, 0
 #define GREEN         0, 255, 0
+#define LIME_GREEN    0, 255, 80
 #define MAGENTA       255, 0, 255
 #define NAVY          0, 0, 128
 #define NEON_MINT     80, 255, 230
@@ -56,6 +58,7 @@ extern rgb_preview_t rgb_preview;
 #define PURPLE        128, 0, 255
 #define RED           255, 0, 0
 #define SPRING_GREEN  0, 255, 154
+#define TEAL_GREEN    0, 200, 180
 #define YELLOW        255, 255, 0
 
 // ─────────────────────────────────────────────────────────────

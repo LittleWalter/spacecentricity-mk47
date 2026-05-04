@@ -3,6 +3,8 @@
 #include "rgb.h"
 #include "leader.h"
 #include "src/core/custom_keys.h"
+#include "src/features/case_mode.h"
+#include "src/features/utils.h"
 
 // Caps Lock blink state w/ timer
 static caps_lock_t caps_lock = { false, 0 };
@@ -45,7 +47,7 @@ static bool set_on_osm_shift_or_caps_word_active(void) {
 // Sets RGB matrix to blink RED if Caps Lock is active and return true; otherwise, do nothing and
 // return false.
 static bool set_on_caps_lock_active(void) {
-    if (host_keyboard_led_state().caps_lock) {
+    if (is_caps_lock_on()) {
         if (timer_elapsed(caps_lock.timer) > RGB_CAPS_LOCK_BLINK_RATE) {
             caps_lock.blink_state = !caps_lock.blink_state;
             caps_lock.timer = timer_read();
@@ -55,6 +57,24 @@ static bool set_on_caps_lock_active(void) {
         return true;
     }
     return false;
+}
+
+// Set CAPS mode key color depending on available states.
+static void set_caps_key(const uint8_t key_index) {
+    if (key_index <= LED_CORNER_BOTTOM_RIGHT) {
+        if (is_case_mode_on()) {
+            rgb_matrix_set_color(key_index, NEON_MINT); // SCREAMING_SNAKE_CASE
+        } else if (is_caps_lock_on()) {
+            rgb_matrix_set_color(key_index, RED);       // Caps Lock active
+#ifdef CAPS_WORD_ENABLE
+        } else if (is_caps_word_on()) {
+            rgb_matrix_set_color(key_index, GOLD);      // Caps Word active
+#endif
+        } else { // Ensure that Caps Lock blind timer starts at 0
+            caps_lock.timer = 0;
+            caps_lock.blink_state = false;
+        }
+    }
 }
 
 // Applies the leader pass/fail flash effect. When a leader sequence completes, leader_state.done
@@ -117,6 +137,12 @@ bool rgb_matrix_indicators_user(void) {
     switch (layer) {
         // Change Base layer only if OSM Shift or Caps Lock is currently active
         case _BASE:
+            // Case Mode
+            if (is_case_mode_on()) {
+                rgb_matrix_set_color_all(NEON_MINT);
+                return false;
+            }
+
             // OSM Shift
             if (set_on_osm_shift_or_caps_word_active()) {
                 return false;
@@ -208,17 +234,7 @@ bool rgb_matrix_indicators_user(void) {
                 rgb_matrix_set_color(LED_ROW2_RIGHT_CENTER, RED);   // Replay Leader off
             }
 #endif
-
-            if (host_keyboard_led_state().caps_lock) {
-                rgb_matrix_set_color(LED_ROW2_LEFT_INDEX, RED);  // Caps Lock active
-#ifdef CAPS_WORD_ENABLE
-            } else if (is_caps_word_on()) {
-                rgb_matrix_set_color(LED_ROW2_LEFT_INDEX, GOLD); // Caps Word active
-#endif
-            } else {
-                caps_lock.timer = 0;
-                caps_lock.blink_state = false;
-            }
+            set_caps_key(LED_ROW2_LEFT_INDEX); // Caps mode key
             break;
 
         /* Keyboard Settings & Adjustments: Hold Left Thumb Key, Then Right Thumb Key

@@ -1,6 +1,7 @@
 #pragma once
 
 #include QMK_KEYBOARD_H
+#include "src/features/case_mode.h"
 
 // ─────────────────────────────────────────────────────────────
 // Modifier State
@@ -12,8 +13,11 @@ typedef struct {
     uint8_t oneshot_mods;
 } mod_state_t;
 
+
 // Save the currently active modifiers including oneshots and weak modifers, then clear them out
 static inline mod_state_t mod_state_save_and_clear(void) {
+    case_mode_off(); // Turn off case mode if active; all macros are invalid
+
     mod_state_t state = {
         .mods = get_mods(),
         .weak_mods = get_weak_mods(),
