@@ -2,13 +2,18 @@
 #include "case_mode.h"
 #include "src/core/keymap.h"
 
+// Returns true if Caps Lock is active.
+bool is_caps_lock_on(void) {
+    return host_keyboard_led_state().caps_lock;
+}
+
 // Ensure Caps Lock is ON.
 //
 // QMK does not provide direct caps_lock_on/off helpers, so we check the
 // host LED state and send a Caps Lock keypress only if needed. This keeps
 // firmware and OS state perfectly in sync.
 void caps_lock_on(void) {
-    if (!host_keyboard_led_state().caps_lock) {
+    if (!is_caps_lock_on()) {
         tap_code(KC_CAPS);
     }
 }
@@ -18,19 +23,15 @@ void caps_lock_on(void) {
 // Same logic as caps_lock_on(): only send KC_CAPS if the OS currently
 // reports Caps Lock as active. Prevents double‑toggling or desync.
 void caps_lock_off(void) {
-    if (host_keyboard_led_state().caps_lock) {
+    if (is_caps_lock_on()) {
         tap_code(KC_CAPS);
     }
 }
 
-// Toggle Caps Lock. This simply sends a Caps Lock keypress. The OS handles the state change.
+// Toggle Caps Lock. Turns off case mode, if active.
 void caps_lock_toggle(void) {
-    tap_code(KC_CAPS);
-}
-
-// Returns true if Caps Lock is active.
-bool is_caps_lock_on(void) {
-    return host_keyboard_led_state().caps_lock;
+    case_mode_off();
+    is_caps_lock_on() ? caps_lock_off() : caps_lock_on();
 }
 
 // Returns true if any transient lexical mode (Caps Word, Numeric Expression, etc.) is active.

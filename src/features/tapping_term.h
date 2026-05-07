@@ -11,8 +11,8 @@
 #define HOME_ROW_RING_DELAY 40   // ms added to reduce delay for slower ring finger movement
 #define MOUSE_FN_DELAY 200       // ms to reduce palm triggering function keys layer
 
-#define BASE_RIGHT_THUMB_TAP_TERM_REDUCE 20 // ms to make right thumb feel more responsive
-#define MOD_REDUCE                       20 // ms to make top-row mods feel more responsive
+#define BASE_RIGHT_THUMB_TAP_TERM_REDUCE 25 // ms to make right thumb feel more responsive
+#define MOD_OR_LAYER_REDUCE              30 // ms to make top-row mods and home-row layers feel more responsive
 
 // ─────────────────────────────────────────────────────────────
 // Function Definitions

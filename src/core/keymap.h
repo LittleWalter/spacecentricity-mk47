@@ -189,10 +189,10 @@
 #define SUDO    TD(TD_SUDO)
 
 // Apple macOS
-#define SPOTLGHT_MACOS TD(TD_SPOTLGHT_MACOS)
-#define FS_MACOS       TD(TD_FS_MACOS)
-#define SCRNSHOT_MACOS TD(TD_SCRNSHOT_MACOS)
-#define DEL_MACOS      TD(TD_DEL_MACOS)
+#define SPOTLIGHT_MACOS TD(TD_SPOTLIGHT_MACOS)
+#define FS_MACOS        TD(TD_FS_MACOS)
+#define SCRNSHOT_MACOS  TD(TD_SCRNSHOT_MACOS)
+#define DEL_MACOS       TD(TD_DEL_MACOS)
 
 /*** Other Keycodes *******************************************/
 

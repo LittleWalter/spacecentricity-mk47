@@ -7,8 +7,8 @@
 // ──────────────────────────────
 
 // TD_SPOTLGHT_MACOS
-void spotlght_macos_finished(tap_dance_state_t *state, void *user_data);
-void spotlght_macos_reset(tap_dance_state_t *state, void *user_data);
+void spotlight_macos_finished(tap_dance_state_t *state, void *user_data);
+void spotlight_macos_reset(tap_dance_state_t *state, void *user_data);
 // TD_FS_MACOS
 void fs_macos_finished(tap_dance_state_t *state, void *user_data);
 void fs_macos_reset(tap_dance_state_t *state, void *user_data);

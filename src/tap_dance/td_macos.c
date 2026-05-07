@@ -1,4 +1,5 @@
 #include "td_macos.h"
+#include "src/core/custom_keys.h"
 #include "src/core/keymap.h"
 #include "src/macros/mac_macos.h"
 #include "tap_dance_actions.h"
@@ -8,84 +9,92 @@
 // ─────────────────────────────────────────────────────────────
 
 // ──────────────────────────────
-// TD_SPOTLGHT_MACOS   🔍 😀   📁
+// TD_SPOTLIGHT_MACOS  🔍 😀   📁
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_SPOTLGHT_MACOS tap and hold dance.
-static td_tap_t spotlght_macos_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `spotlight_macos_tap_dance` for TD_SPOTLIGHT_MACOS
+TD_DEF(spotlight_macos);
 
 // Send the appropriate Apple macOS command for TD_SPOTLGHT_MACOS
-void spotlght_macos_finished(tap_dance_state_t *state, void *user_data) {
-    spotlght_macos_tap_state.state = cur_dance(state);
-    switch (spotlght_macos_tap_state.state) {
-        case TD_DOUBLE_TAP:  register_and_update(MACOS_EMOJI_MENU);   break; // Open Emoji Menu
-        case TD_SINGLE_HOLD: open_finder_macos();                      break; // Open Finder
-        case TD_DOUBLE_SINGLE_TAP: tap_and_update(LGUI(C(KC_F)));            // fallthru
-        case TD_SINGLE_TAP:        register_and_update(LGUI(KC_SPC)); break; // Open Spotlight Search
+void spotlight_macos_finished(tap_dance_state_t *state, void *user_data) {
+    TD_STATE_SET(spotlight_macos);
+    uint16_t kc;
+    switch (TD_STATE(spotlight_macos)) {
+        case TD_SINGLE_TAP: // Launcher
+            kc = LGUI(KC_SPC); // macOS Spotlight Search
+            if (current_os == OS_WIN) {
+                kc = LGUI(KC_S); // Windows Search
+            } else if (current_os == OS_LINUX) {
+                kc = A(KC_SPC); // Albert launcher
+            }
+            tap_and_update(kc);
+            break;
+        case TD_DOUBLE_TAP: // Open Emoji Picker
+            kc = LGUI(C(KC_SPC)); // macOS Emoji & Symbols popup
+            if (current_os == OS_WIN) {
+                kc = LGUI(KC_DOT); // Windows Emoji Menu
+            } else if (current_os == OS_LINUX) {
+                kc = C(KC_DOT);
+            }
+            tap_and_update(kc);
+            break;
+        case TD_SINGLE_HOLD: // Open File Manager
+            current_os == OS_MACOS ? open_finder_macos()
+                                   : tap_and_update(LGUI(KC_E)); // Win+E: Windows Explorer
+            break;
         default: break;
     }
 }
 
 // Release any keys pressed by TD_SPOTLGHT_MACOS and reset the state
-void spotlght_macos_reset(tap_dance_state_t *state, void *user_data) {
-    switch (spotlght_macos_tap_state.state) {
-        case TD_DOUBLE_TAP: unregister_code16(LGUI(C(KC_SPC))); break;
-        case TD_DOUBLE_SINGLE_TAP:
-        case TD_SINGLE_TAP: unregister_code16(LGUI(KC_SPC));    break;
-        default: break;
-    }
-    spotlght_macos_tap_state.state = TD_NONE;
+void spotlight_macos_reset(tap_dance_state_t *state, void *user_data) {
+    TD_RESET(spotlight_macos);
 }
 
 // ──────────────────────────────
-// TD_FS_MACOS               FS 🔒
+// TD_FS_MACOS      Full Screen 🔒
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_FS_MACOS tap and hold dance.
-static td_tap_t fs_macos_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `fs_macos_tap_dance` for TD_FS_MACOS
+TD_DEF(fs_macos);
 
 // Send the appropriate Apple macOS command for TD_FS_MACOS
 void fs_macos_finished(tap_dance_state_t *state, void *user_data) {
-    fs_macos_tap_state.state = cur_dance(state);
-    switch (fs_macos_tap_state.state) {
-        case TD_SINGLE_HOLD: register_and_update(LGUI(C(KC_Q))); break; // Lock Mac/iDevice
-        case TD_DOUBLE_SINGLE_TAP: tap_code16(LGUI(C(KC_F)));                 // fallthru
-        case TD_SINGLE_TAP:        register_and_update(LGUI(C(KC_F))); break; // Full screen app toggle
+    TD_STATE_SET(fs_macos);
+    switch (TD_STATE(fs_macos)) {
+        case TD_SINGLE_HOLD: // Lock screen
+            uint16_t kc = LGUI(C(KC_Q)); // Lock Mac/iDevice
+            if (current_os == OS_WIN) {
+                kc = LGUI(KC_L);
+            } else if (current_os == OS_LINUX) {
+                kc = C(A(KC_L));
+            }
+            tap_and_update(kc);
+            break;
+        case TD_SINGLE_TAP: // Full screen toggle
+            current_os == OS_MACOS ? tap_and_update(LGUI(C(KC_F)))
+                                   : tap_and_update(KC_F11);
+            break;
         default: break;
     }
 }
 
 // Release any keys pressed by TD_FS_MACOS and reset the state
 void fs_macos_reset(tap_dance_state_t *state, void *user_data) {
-    switch (fs_macos_tap_state.state) {
-        case TD_SINGLE_TAP:  unregister_code16(LGUI(C(KC_F))); break;
-        case TD_DOUBLE_SINGLE_TAP:
-        case TD_SINGLE_HOLD: unregister_code16(LGUI(C(KC_Q))); break;
-        default: break;
-    }
-    fs_macos_tap_state.state = TD_NONE;
+    TD_RESET(fs_macos);
 }
 
 // ──────────────────────────────
 // TD_SCRNSHOT_MACOS     ▣ Opts ⛶
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_SCRNSHOT_MACOS tap, tap+hold, and hold dance.
-static td_tap_t scrnshot_macos_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `scrnshot_macos_tap_dance` for TD_SCRNSHOT_MACOS
+TD_DEF(scrnshot_macos);
 
 // Send the appropriate Apple macOS command for TD_SCRNSHOT_MACOS
 void scrnshot_macos_finished(tap_dance_state_t *state, void *user_data) {
-    scrnshot_macos_tap_state.state = cur_dance(state);
-    switch (scrnshot_macos_tap_state.state) {
+    TD_STATE_SET(scrnshot_macos);
+    switch (TD_STATE(scrnshot_macos)) {
         case TD_SINGLE_HOLD: register_and_update(LGUI(S(KC_3))); break; // Full Screenshot/All Screens
         case TD_DOUBLE_HOLD: register_and_update(LGUI(S(KC_5))); break; // Screenshot Toolbar, all options
         case TD_DOUBLE_SINGLE_TAP: tap_code16(LGUI(S(KC_4)));                 // fallthru
@@ -96,31 +105,28 @@ void scrnshot_macos_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_SCRNSHOT_MACOS and reset the state
 void scrnshot_macos_reset(tap_dance_state_t *state, void *user_data) {
-    switch (scrnshot_macos_tap_state.state) {
+    switch (TD_STATE(scrnshot_macos)) {
         case TD_SINGLE_HOLD: unregister_code16(LGUI(S(KC_3))); break;
         case TD_DOUBLE_HOLD: unregister_code16(LGUI(S(KC_5))); break;
         case TD_DOUBLE_SINGLE_TAP:
         case TD_SINGLE_TAP:  unregister_code16(LGUI(S(KC_4))); break;
         default: break;
     }
-    scrnshot_macos_tap_state.state = TD_NONE;
+    TD_RESET(scrnshot_macos);
 }
 
 // ──────────────────────────────
 // TD_DEL_MACOS          ␡ Empty🗑️
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_DEL_MACOS tap, tap+hold, and hold dance.
-static td_tap_t del_macos_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `del_macos_tap_dance` for TD_DEL_MACOS
+TD_DEF(del_macos);
 
 // Send the appropriate Apple macOS command for TD_DEL_MACOS
 void del_macos_finished(tap_dance_state_t *state, void *user_data) {
-    del_macos_tap_state.state = cur_dance(state);
-    switch (del_macos_tap_state.state) {
-        case TD_DOUBLE_TAP:  open_trash_macos_macro();               break; // Open Trash in macOS Finder
+    TD_STATE_SET(del_macos);
+    switch (TD_STATE(del_macos)) {
+        case TD_DOUBLE_TAP:  open_trash_macos_macro();              break; // Open Trash in macOS Finder
         case TD_SINGLE_HOLD: register_and_update(LGUI(S(KC_BSPC))); break; // Empty Trash Can
         case TD_DOUBLE_SINGLE_TAP: tap_code16(LGUI(KC_BSPC));                 // fallthru
         case TD_SINGLE_TAP:        register_and_update(LGUI(KC_BSPC)); break; // Delete File
@@ -130,11 +136,11 @@ void del_macos_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_DEL_MACOS and reset the state
 void del_macos_reset(tap_dance_state_t *state, void *user_data) {
-    switch (del_macos_tap_state.state) {
+    switch (TD_STATE(del_macos)) {
         case TD_SINGLE_HOLD: unregister_code16(LGUI(S(KC_BSPC))); break;
         case TD_DOUBLE_SINGLE_TAP:
         case TD_SINGLE_TAP:  unregister_code16(LGUI(KC_BSPC)); break;
         default: break;
     }
-    del_macos_tap_state.state = TD_NONE;
+    TD_RESET(del_macos);
 }

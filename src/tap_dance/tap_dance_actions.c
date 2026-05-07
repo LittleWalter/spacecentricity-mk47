@@ -164,10 +164,10 @@ tap_dance_action_t tap_dance_actions[TD_COUNT] = {
     // ─────────────────────────────────────────────────────────────
     // Apple macOS-Related Tap Dances
     // ─────────────────────────────────────────────────────────────
-    [TD_SPOTLGHT_MACOS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, spotlght_macos_finished, spotlght_macos_reset),
-    [TD_FS_MACOS]       = ACTION_TAP_DANCE_FN_ADVANCED(NULL, fs_macos_finished,       fs_macos_reset),
-    [TD_SCRNSHOT_MACOS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, scrnshot_macos_finished, scrnshot_macos_reset),
-    [TD_DEL_MACOS]      = ACTION_TAP_DANCE_FN_ADVANCED(NULL, del_macos_finished,      del_macos_reset),
+    [TD_SPOTLIGHT_MACOS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, spotlight_macos_finished, spotlight_macos_reset),
+    [TD_FS_MACOS]        = ACTION_TAP_DANCE_FN_ADVANCED(NULL, fs_macos_finished,        fs_macos_reset),
+    [TD_SCRNSHOT_MACOS]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, scrnshot_macos_finished,  scrnshot_macos_reset),
+    [TD_DEL_MACOS]       = ACTION_TAP_DANCE_FN_ADVANCED(NULL, del_macos_finished,       del_macos_reset),
 };
 
 /* Return an integer that corresponds to what kind of tap dance should be executed.

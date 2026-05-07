@@ -42,7 +42,7 @@
  *   • process_record_user():
  *         - Call case_mode_separator() before emitting separators
  *         - Call case_mode_alpha_transform() before emitting A–Z
- *         - Call case_mode_process() after emitting any “meaningful” key
+ *         - Call case_mode_update() after emitting any “meaningful” key
  *
  *   • matrix_scan_user():
  *         - Call case_mode_scan() to enforce idle timeout behavior
@@ -140,8 +140,8 @@ case_mode_t case_mode(void) {
 }
 
 /*
- * Intercepts separator keys (space, dash, underscore, slash) and returns
- * the transformed separator appropriate for the active case mode.
+ * Intercepts separator keys (dash, dot, underscore, slash) and
+ * returns the transformed separator appropriate for the active case mode.
  *
  * For camelCase and PascalCase:
  *   - The separator is swallowed (KC_NO)
@@ -258,6 +258,8 @@ void case_mode_on(case_mode_t mode) {
     // Enable Caps Lock only for SCREAMING_SNAKE_CASE
     if (mode == CASE_CONST) {
         caps_lock_on();
+    } else {
+        caps_lock_off(); // Turn Caps Lock off, if it has been previously enabled
     }
 }
 

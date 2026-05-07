@@ -32,9 +32,10 @@ Each layer includes its own RGB matrix pattern, making it easy to see which laye
 
 ## Keyboard
 
-The [Inland MK-47](https://www.microcenter.com/product/661264/inland-47-keys-hot-swappable-rgb-wired-mechanical-keyboard) is an affordable **47‑key ortholinear mechanical keyboard** sold by Micro Center. Despite its low price, it includes features normally found on enthusiast‑grade boards:
+The [Inland MK-47](https://www.microcenter.com/product/661264/inland-47-keys-hot-swappable-rgb-wired-mechanical-keyboard) is an affordable **47‑key ortholinear mechanical keyboard** sold by Micro Center. Despite its low price, it includes features usually found on enthusiast‑grade boards:
 
 * [QMK-compatible firmware](https://qmk.fm/) (fully programmable)
+* [VIA](https://www.caniusevia.com/) support for on‑the‑fly keymap editing
 * Per‑key RGB lighting
 * Hot‑swappable switch sockets
 * USB‑C wired connection
@@ -410,14 +411,16 @@ For more information, refer to the [QMK documentation](https://docs.qmk.fm/featu
 
 | Mode | Description | Typical Use |
 | --- | --- | --- |
-| **camelCase** | Swallows separators and capitalizes the next letter | JavaScript, Go, JSON keys |
-| **PascalCase** | Like camelCase, but capitalizes the first letter | Type names, classes |
-| **snake_case** | Converts separators into `_` | Python, Rust, C identifiers |
-| **SCREAMING_SNAKE_CASE** | Uppercase snake_case with `_` separators | Constants, shell environment variables |
-| **kebab-case** | Converts separators into `-` | Filenames, URLs, CLI flags |
-| **dot.case** | Converts separators into `.` | Namespaces, config keys, long filenames |
-| **path/to/case** | Converts separators into `/` | File paths, import statements |
-| **PUNC mode** | Capitalizes the next character after punctuation | Sentence starts, documentation |
+| `camelCase` | Swallows separators and capitalizes the next letter | Java, JavaScript, Go, JSON |
+| `PascalCase` | Like camelCase, but capitalizes the first letter | Type names, classes |
+| `snake_case` | Converts separators into `_` | Python, Rust, C identifiers |
+| `SCREAMING_SNAKE_CASE` | Uppercase snake_case with `_` separators | Constants, shell environment variables |
+| `kebab-case` | Converts separators into `-` | Filenames, URLs, CLI flags |
+| `dot.case` | Converts separators into `.` | Namespaces, config keys, long filenames |
+| `path/to/case` | Converts separators into `/` | File paths, import statements |
+| `PUNC` mode | Capitalizes the next character after punctuation | Sentence starts, documentation, prose |
+
+The spacebar applies the correct separator or capitalization for the mode.
 
 These case modes are:
 
@@ -425,7 +428,7 @@ These case modes are:
   * Disables after a preset idle timeout (5 seconds)
   * End automatically when pressing `Enter`, `Super`/`CMD`, etc.
 * Deterministic (no buffering or rewriting)
-* Separator‑aware (dash, dot, hyphen, slash, underscore)
+* Separator‑aware (dash, dot, slash, underscore)
 * Compatible with tap‑dance, mod‑tap, and macros
 
 ## Using This Keymap with QMK

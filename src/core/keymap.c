@@ -47,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Numpad Layer: Hold Left Thumb Key
  * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
- * │   ESC   │ * % @ # │ 9  LSFT │ 8  LCTL │ 7  LALT │ . … ⋮ • │ ^   ¢ $ │ 7  RALT │ 8  RCTL │ 9  RSFT │ * % @ # │ ⌫  ⌫L ⌫w│
+ * │   ESC   │ * % @ # │ 9  LSFT │ 8  LCTL │ 7  LALT │    .    │ ^   ¢ $ │ 7  RALT │ 8  RCTL │ 9  RSFT │ * % @ # │ ⌫  ⌫L ⌫w│
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │  ⇥   ⇤  │    +    │    6  F │    5  E │    4  D │ ( [ < { │ ) ] > } │    4  D │    5  E │    6  F │    +    │    ↵    │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
@@ -58,10 +58,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Hold right thumb key (0), to momentarily activate _ADJ layer to get access to F1-F12 keys
  */
 [_LOWER] = LAYOUT_planck_mit(
-    KC_ESC,   ASTR,    KP9_LSFT, KP8_LCTL, KP7_LALT, DOT,  CARET, KP7_RALT, KP8_RCTL, KP9_RSFT, ASTR,    BSPC,
-    TAB,      KC_PPLS, NP_6_F,   NP_5_E,   NP_4_D,   LPRN, RPRN,  NP_4_D,   NP_5_E,   NP_6_F,   KC_PPLS, ENT,
-    KC_PSLS,  KC_PMNS, NP_3_C,   NP_2_B,   NP_1_A,   COMM, DLR,   NP_1_A,   NP_2_B,   NP_3_C,   KC_PMNS, KC_PSLS,
-    TG_MOUSE, MUTE,    VOLD,     VOLU,     BASE,        EQL,      ZERO_ADJ, HOME,     PGDN,     PGUP,    END
+    KC_ESC,   ASTR,    KP9_LSFT, KP8_LCTL, KP7_LALT, KC_PDOT, CARET, KP7_RALT, KP8_RCTL, KP9_RSFT, ASTR,    BSPC,
+    TAB,      KC_PPLS, NP_6_F,   NP_5_E,   NP_4_D,   LPRN,    RPRN,  NP_4_D,   NP_5_E,   NP_6_F,   KC_PPLS, ENT,
+    KC_PSLS,  KC_PMNS, NP_3_C,   NP_2_B,   NP_1_A,   COMM,    DLR,   NP_1_A,   NP_2_B,   NP_3_C,   KC_PMNS, KC_PSLS,
+    TG_MOUSE, MUTE,    VOLD,     VOLU,     BASE,          EQL,       ZERO_ADJ, HOME,     PGDN,     PGUP,    END
 ),
 
 /* Primary Number Layer: Hold Right Thumb Key
@@ -139,7 +139,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     CUT,  UNDO,    PASTE, COPY,    ____, ____, ANGLE_QUOTES, ALL,      COPY,      PASTE,     UNDO,     CUT,
     DEG,  KC_BSLS, EXLM,  KC_UNDS, ____, APP,  QUES,         KC_LEFT,  KC_DOWN,   KC_UP,     KC_RGHT,  ZOOM_IN,
     ____, ____,    ____,  ____,    ____, ____, CIRC,         VDT_LEFT, VDT_RIGHT, TAB_LEFT,  TAB_RGHT, ZOOM_OUT,
-    ____, ____,    ____,  ____,    ____,     MINS,           COMM,     ____,      S(KC_TAB), KC_TAB,   ZOOM_RESET
+    ____, ____,    ____,  ____,    ____,         MINS,       COMM,     ____,      S(KC_TAB), KC_TAB,   ZOOM_RESET
 ),
 
 /* Home Row Arrows (LHS): Hold Right Index Finger on Home Row
@@ -160,7 +160,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     CUT,      UNDO,      PASTE,    COPY,     ALL,       ANGLE_QUOTES, ____, ____, COPY,    PASTE, UNDO,    CUT,
     ZOOM_IN,  KC_LEFT,   KC_UP,    KC_DOWN,  KC_RGHT,   QUES,         APP,  ____, KC_UNDS, EXLM,  KC_BSLS, DEG,
     ZOOM_OUT, TAB_LEFT,  TAB_RGHT, VDT_LEFT, VDT_RIGHT, CIRC,         ____, ____, ____,    ____,  ____,    ____,
-    QK_LEAD, S(KC_TAB), KC_TAB,   ____,     COMM,             MINS,        ____, ____,    ____,  ____,    ____
+    QK_LEAD,  S(KC_TAB), KC_TAB,   ____,     COMM,            MINS,         ____, ____,    ____,  ____,    ____
 ),
 
 /* (Neo)Vim (RHS): Hold Left Middle Finger on Home Row
@@ -278,7 +278,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ____, ____, ____, ____, ____,       ____, ____,            C(KC_LEFT),    C(KC_DOWN),    C(KC_UP),    C(KC_RGHT),    SCRNSHOT_MACOS,
     ____, ____, ____, ____, A(KC_BSPC), ____, FS_MACOS,        A(KC_LEFT)   , A(KC_DOWN),    A(KC_UP),    A(KC_RGHT),    ____,
     ____, ____, ____, ____, ____,       ____, LGUI(A(KC_ESC)), A(S(KC_LEFT)), A(S(KC_DOWN)), A(S(KC_UP)), A(S(KC_RGHT)), ____,
-    ____, ____, ____, ____, ____,          SPOTLGHT_MACOS,     DEL_MACOS,     ____,          ____,        ____,          ____
+    ____, ____, ____, ____, ____,          SPOTLIGHT_MACOS,    DEL_MACOS,     ____,          ____,        ____,          ____
 ),
 
 /* Mouse Layer: Tap Bottom Left Key w/ Palm to Activate/Exit

@@ -19,7 +19,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case DOT:
         case SCLN:
             // Increase responsiveness of top-row mod-hold keys
-            return TAPPING_TERM - MOD_REDUCE;
+            return TAPPING_TERM - MOD_OR_LAYER_REDUCE;
         case C_UPPER:
             // Increase responsiveness of right-hand thumb on _BASE
             return TAPPING_TERM - BASE_RIGHT_THUMB_TAP_TERM_REDUCE;

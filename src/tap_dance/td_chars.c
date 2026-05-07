@@ -30,16 +30,14 @@
 // TD_U                  u _LOWER
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_U tap, tap+hold, and hold dance
-static td_tap_t u_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `u_tap_dance` for TD_U
+TD_DEF(u);
 
 // Send the appropriate symbol or layer for TD_U
 void u_finished(tap_dance_state_t *state, void *user_data) {
-    u_tap_state.state = cur_dance(state);
-    switch (u_tap_state.state) {
+    //u_tap_dance.state = cur_dance(state);
+    TD_STATE_SET(u);
+    switch (TD_STATE(u)) {
         case TD_SINGLE_HOLD: layer_invert(_LOWER); break; // Momentary hold Numpad layer
         case TD_DOUBLE_HOLD: layer_on(_LOWER);     break; // "Lock" Numpad layer
         case TD_TRIPLE_TAP:        tap_code16(KC_U);      // fallthru
@@ -54,7 +52,7 @@ void u_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_U and reset the state
 void u_reset(tap_dance_state_t *state, void *user_data) {
-    switch (u_tap_state.state) {
+    switch (TD_STATE(u)) {
         case TD_SINGLE_HOLD: layer_off(_LOWER); break;
         case TD_SINGLE_TAP:
         case TD_DOUBLE_TAP:
@@ -62,23 +60,21 @@ void u_reset(tap_dance_state_t *state, void *user_data) {
         case TD_TRIPLE_TAP:  unregister_code16(KC_U); break;
         default: break;
     }
-    u_tap_state.state = TD_NONE;
+    TD_RESET(u);
 }
 
 // ──────────────────────────────
 // TD_C                  c _UPPER
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_C tap, tap+hold, and hold dance
-static td_tap_t c_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `c_tap_dance` for TD_C
+TD_DEF(c);
 
 // Send the appropriate symbol or layer for TD_C
 void c_finished(tap_dance_state_t *state, void *user_data) {
-    c_tap_state.state = cur_dance(state);
-    switch (c_tap_state.state) {
+    // c_tap_dance.state = cur_dance(state);
+    TD_STATE_SET(c);
+    switch (TD_STATE(c)) {
         case TD_SINGLE_HOLD: layer_invert(_UPPER); break; // Momentary hold Primary Number layer
         case TD_DOUBLE_HOLD: layer_on(_UPPER);     break; // "Lock" Primary Number layer
         case TD_TRIPLE_TAP:        tap_code16(KC_C);      // `ccc` fallthru
@@ -93,7 +89,7 @@ void c_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_C and reset the state
 void c_reset(tap_dance_state_t *state, void *user_data) {
-    switch (c_tap_state.state) {
+    switch (TD_STATE(c)) {
         case TD_SINGLE_HOLD: layer_off(_UPPER); break;
         case TD_SINGLE_TAP:
         case TD_DOUBLE_TAP:
@@ -101,7 +97,7 @@ void c_reset(tap_dance_state_t *state, void *user_data) {
         case TD_TRIPLE_TAP: unregister_code16(KC_C); break;
         default: break;
     }
-    c_tap_state.state = TD_NONE;
+    TD_RESET(c);
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -112,16 +108,13 @@ void c_reset(tap_dance_state_t *state, void *user_data) {
 // TD_ASTR              * % @ # ×
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_ASTR quad tap dance
-static td_tap_t astr_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `astr_tap_dance` for TD_ASTR
+TD_DEF(astr);
 
 // Send the appropriate symbol for TD_ASTR
 void astr_finished(tap_dance_state_t *state, void *user_data) {
-    astr_tap_state.state = cur_dance(state);
-    switch (astr_tap_state.state) {
+    TD_STATE_SET(astr);
+    switch (TD_STATE(astr)) {
         case TD_DOUBLE_TAP: // `%` Vim, normal mode: Jump to matching brace/bracket/etc.
             register_and_update(KC_PERC);
             break;
@@ -147,7 +140,7 @@ void astr_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_ASTR and reset the state
 void astr_reset(tap_dance_state_t *state, void *user_data) {
-    switch (astr_tap_state.state) {
+    switch (TD_STATE(astr)) {
         case TD_DOUBLE_TAP:  unregister_code16(KC_PERC); break;
         case TD_SINGLE_HOLD: unregister_code16(KC_HASH); break;
         case TD_DOUBLE_HOLD: unregister_code16(KC_AT);   break;
@@ -155,23 +148,20 @@ void astr_reset(tap_dance_state_t *state, void *user_data) {
         case TD_DOUBLE_SINGLE_TAP: unregister_code16(KC_PAST); break;
         default: break;
     }
-    astr_tap_state.state = TD_NONE;
+    TD_RESET(astr);
 }
 
 // ──────────────────────────────
 // TD_AT
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_AT quad tap dances
-static td_tap_t at_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `at_tap_dance` for TD_AT
+TD_DEF(at);
 
 // Send the appropriate symbol for TD_AT
 void at_finished(tap_dance_state_t *state, void *user_data) {
-    at_tap_state.state = cur_dance(state);
-    switch (at_tap_state.state) {
+    TD_STATE_SET(at);
+    switch (TD_STATE(at)) {
         case TD_SINGLE_TAP:
             register_and_update(KC_AT);
             break;
@@ -190,23 +180,20 @@ void at_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_AT and reset the state
 void at_reset(tap_dance_state_t *state, void *user_data) {
-    at_tap_state.state = TD_NONE;
+    TD_RESET(at);
 }
 
 // ──────────────────────────────
 // TD_CARET                ^  ¢ $
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_CARET tap dances
-static td_tap_t caret_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `caret_tap_dance` for TD_CARET
+TD_DEF(caret);
 
 // Send the appropriate symbol for TD_CARET
 void caret_finished(tap_dance_state_t *state, void *user_data) {
-    caret_tap_state.state = cur_dance(state);
-    switch (caret_tap_state.state) {
+    TD_STATE_SET(caret);
+    switch (TD_STATE(caret)) {
         case TD_SINGLE_HOLD: // `$`
             register_and_update(KC_DLR);
             break;
@@ -225,30 +212,27 @@ void caret_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_CARET and reset the state
 void caret_reset(tap_dance_state_t *state, void *user_data) {
-    switch (caret_tap_state.state) {
+    switch (TD_STATE(caret)) {
         case TD_SINGLE_HOLD: unregister_code16(KC_DLR); break;
         case TD_SINGLE_TAP:
         case TD_DOUBLE_SINGLE_TAP:
         case TD_TRIPLE_TAP: unregister_code16(KC_CIRC); break;
         default: break;
     }
-    caret_tap_state.state = TD_NONE;
+    TD_RESET(caret);
 }
 
 // ──────────────────────────────
 // TD_CIRC                ◌̂ ◌̄ ◌̆ ◌̌
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_CIRC quad tap dance
-static td_tap_t circ_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `circ_tap_dance` for TD_CIRC
+TD_DEF(circ);
 
 // Send the appropriate symbol or layer for TD_CIRC
 void circ_finished(tap_dance_state_t *state, void *user_data) {
-    circ_tap_state.state = cur_dance(state);
-    switch (circ_tap_state.state) {
+    TD_STATE_SET(circ);
+    switch (TD_STATE(circ)) {
         case TD_DOUBLE_TAP: // `◌̄` (combining macron)
             special_char_macro(CHAR_COMB_MACRON);
             break;
@@ -269,23 +253,20 @@ void circ_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_CIRC and reset the state
 void circ_reset(tap_dance_state_t *state, void *user_data) {
-    circ_tap_state.state = TD_NONE;
+    TD_RESET(circ);
 }
 
 // ──────────────────────────────
 // TD_COMM                , ; | &
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_COMM quad tap dance.
-static td_tap_t comm_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `comm_tap_dance` for TD_COMM
+TD_DEF(comm);
 
 // Send the appropriate symbol for TD_COMM
 void comm_finished(tap_dance_state_t *state, void *user_data) {
-    comm_tap_state.state = cur_dance(state);
-    switch (comm_tap_state.state) {
+    TD_STATE_SET(comm);
+    switch (TD_STATE(comm)) {
         case TD_DOUBLE_TAP: // `;`
             register_and_update(KC_SCLN);
             break;
@@ -306,7 +287,7 @@ void comm_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_COMM and reset the state
 void comm_reset(tap_dance_state_t *state, void *user_data) {
-    switch (comm_tap_state.state) {
+    switch (TD_STATE(comm)) {
         case TD_DOUBLE_TAP:  unregister_code16(KC_SCLN); break;
         case TD_SINGLE_HOLD: unregister_code16(KC_AMPR); break;
         case TD_DOUBLE_HOLD: unregister_code16(KC_PIPE); break;
@@ -315,23 +296,20 @@ void comm_reset(tap_dance_state_t *state, void *user_data) {
         case TD_SINGLE_TAP:  unregister_code16(KC_COMM); break;
         default: break;
     }
-    comm_tap_state.state = TD_NONE;
+    TD_RESET(comm);
 }
 
 // ──────────────────────────────
 // TD_DLR                 $ ¥ £ €
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_DLR quad tap dances
-static td_tap_t dlr_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `dlr_tap_dance` for TD_DLR
+TD_DEF(dlr);
 
 // Send the appropriate symbol for TD_DLR
 void dlr_finished(tap_dance_state_t *state, void *user_data) {
-    dlr_tap_state.state = cur_dance(state);
-    switch (dlr_tap_state.state) {
+    TD_STATE_SET(dlr);
+    switch (TD_STATE(dlr)) {
         case TD_DOUBLE_TAP: // `¥`
             special_char_macro(CHAR_YEN);
             break;
@@ -352,29 +330,30 @@ void dlr_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_DLR and reset the state
 void dlr_reset(tap_dance_state_t *state, void *user_data) {
-    switch (dlr_tap_state.state) {
+    switch (TD_STATE(dlr)) {
         case TD_SINGLE_TAP:
         case TD_DOUBLE_SINGLE_TAP: unregister_code16(KC_DLR); break;
         default: break;
     }
-    dlr_tap_state.state = TD_NONE;
+    TD_RESET(dlr);
 }
 
 // ──────────────────────────────
 // TD_DOT          . … ⋮ LCTL/• ·
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_DOT quad tap dances
-static td_tap_t dot_tap_state = {
+// Create static `dlr_tap_dance` for TD_DOT
+static td_tap_t dot_tap_dance = {
+    .layer_origin = _BASE,
     .is_press_action = true,
     .state = TD_NONE
 };
 
 // Send the appropriate symbol for TD_DOT
 void dot_finished(tap_dance_state_t *state, void *user_data) {
-    dot_tap_state.layer_origin = get_highest_layer(layer_state);
-    dot_tap_state.state = cur_dance(state);
-    switch (dot_tap_state.state) {
+    dot_tap_dance.layer_origin = get_highest_layer(layer_state);
+    dot_tap_dance.state = cur_dance(state);
+    switch (TD_STATE(dot)) {
         case TD_DOUBLE_TAP:  // `…` (horizontal ellipsis)
             special_char_macro(CHAR_ELLIPSIS);
             break;
@@ -382,7 +361,7 @@ void dot_finished(tap_dance_state_t *state, void *user_data) {
             special_char_macro(CHAR_CENTER_DOT);
             break;
         case TD_SINGLE_HOLD: // LCTL on _BASE or `•`
-            if (dot_tap_state.layer_origin == _BASE) {
+            if (dot_tap_dance.layer_origin == _BASE) {
                 register_and_update(KC_LCTL);
             } else {
                 special_char_macro(CHAR_BULLET);
@@ -400,9 +379,9 @@ void dot_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_DOT and reset the state
 void dot_reset(tap_dance_state_t *state, void *user_data) {
-    switch (dot_tap_state.state) {
+    switch (TD_STATE(dot)) {
         case TD_SINGLE_HOLD:
-            if (dot_tap_state.layer_origin == _BASE) {
+            if (dot_tap_dance.layer_origin == _BASE) {
                 unregister_code(KC_LCTL);
             }
             break;
@@ -410,23 +389,20 @@ void dot_reset(tap_dance_state_t *state, void *user_data) {
         case TD_DOUBLE_SINGLE_TAP: unregister_code16(KC_PDOT); break;
         default: break;
     }
-    dot_tap_state.state = TD_NONE;
+    TD_RESET(dot);
 }
 
 // ──────────────────────────────
 // TD_DQUO                " ‘ < >
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_DQUO quad tap dance
-static td_tap_t dquo_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `dquo_tap_dance` for TD_DQUO
+TD_DEF(dquo);
 
 // Send the appropriate symbol for TD_DQUO
 void dquo_finished(tap_dance_state_t *state, void *user_data) {
-    dquo_tap_state.state = cur_dance(state);
-    switch (dquo_tap_state.state) {
+    TD_STATE_SET(dquo);
+    switch (TD_STATE(dquo)) {
         case TD_DOUBLE_TAP: // `‘` typographic closing smart single quote
             special_char_macro(CHAR_SMART_QUOTE_LEFT);
             break;
@@ -447,30 +423,27 @@ void dquo_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_DQUO and reset the state
 void dquo_reset(tap_dance_state_t *state, void *user_data) {
-    switch (dquo_tap_state.state) {
+    switch (TD_STATE(dquo)) {
         case TD_SINGLE_HOLD: unregister_code16(KC_GT); break;
         case TD_DOUBLE_HOLD: unregister_code16(KC_LT); break;
         case TD_SINGLE_TAP:
         case TD_DOUBLE_SINGLE_TAP: unregister_code16(KC_DQUO); break;
         default: break;
     }
-    dquo_tap_state.state = TD_NONE;
+    TD_RESET(dquo);
 }
 
 // ──────────────────────────────
 // TD_EQL                 =   ≈ ≠
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_EQL quad tap dance
-static td_tap_t eql_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `eql_tap_dance` for TD_EQL
+TD_DEF(eql);
 
 // Send the appropriate symbol for TD_EQL
 void eql_finished(tap_dance_state_t *state, void *user_data) {
-    eql_tap_state.state = cur_dance(state);
-    switch (eql_tap_state.state) {
+    TD_STATE_SET(eql);
+    switch (TD_STATE(eql)) {
         case TD_SINGLE_HOLD: // `≠`
             special_char_macro(CHAR_NEQ);
             break;
@@ -488,29 +461,26 @@ void eql_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_EQL and reset the state
 void eql_reset(tap_dance_state_t *state, void *user_data) {
-    switch (eql_tap_state.state) {
+    switch (TD_STATE(eql)) {
         case TD_SINGLE_TAP:
         case TD_DOUBLE_SINGLE_TAP:
         case TD_TRIPLE_TAP: unregister_code16(KC_PEQL); break;
         default: break;
     }
-    eql_tap_state.state = TD_NONE;
+    TD_RESET(eql);
 }
 
 // ──────────────────────────────
 // TD_EXLM Cross Platform ! ¡ ◌̃ ◌̈
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_EXLM quad tap dance
-static td_tap_t exlm_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `exlm_tap_dance` for TD_EXLM
+TD_DEF(exlm);
 
 // Send the appropriate symbol for TD_EXLM
 void exlm_finished(tap_dance_state_t *state, void *user_data) {
-    exlm_tap_state.state = cur_dance(state);
-    switch (exlm_tap_state.state) {
+    TD_STATE_SET(exlm);
+    switch (TD_STATE(exlm)) {
         case TD_DOUBLE_TAP: // `¡` (Spanish inverted exclamation mark)
             special_char_macro(CHAR_INV_EXLM);
             break;
@@ -531,29 +501,26 @@ void exlm_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_EXLM and reset the state
 void exlm_reset(tap_dance_state_t *state, void *user_data) {
-    switch (exlm_tap_state.state) {
+    switch (TD_STATE(exlm)) {
         case TD_SINGLE_TAP:
         case TD_DOUBLE_SINGLE_TAP:
         case TD_TRIPLE_TAP: unregister_code16(KC_EXLM); break;
         default: break;
     }
-    exlm_tap_state.state = TD_NONE;
+    TD_RESET(exlm);
 }
 
 // ──────────────────────────────
 // TD_MINS                -   – —
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_MINS quad tap dance
-static td_tap_t mins_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `mins_tap_dance` for TD_MINS
+TD_DEF(mins);
 
 // Send the appropriate symbol for TD_MINS
 void mins_finished(tap_dance_state_t *state, void *user_data) {
-    mins_tap_state.state = cur_dance(state);
-    switch (mins_tap_state.state) {
+    TD_STATE_SET(mins);
+    switch (TD_STATE(mins)) {
         case TD_SINGLE_HOLD: // `—` (em dash)
             special_char_macro(CHAR_EM_DASH);
             break;
@@ -572,7 +539,7 @@ void mins_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_MINS and reset the state
 void mins_reset(tap_dance_state_t *state, void *user_data) {
-    switch (mins_tap_state.state) {
+    switch (TD_STATE(mins)) {
         case TD_SINGLE_TAP:
         case TD_DOUBLE_TAP:
         case TD_DOUBLE_SINGLE_TAP:
@@ -580,23 +547,20 @@ void mins_reset(tap_dance_state_t *state, void *user_data) {
             unregister_code16(KC_MINS); break;
         default: break;
     }
-    mins_tap_state.state = TD_NONE;
+    TD_RESET(mins);
 }
 
 // ──────────────────────────────
 // TD_PLUS              + - / * ×
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_PLUS quad tap dance.
-static td_tap_t plus_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `plus_tap_dance` for TD_PLUS
+TD_DEF(plus);
 
 // Send the appropriate symbol for TD_PLUS
 void plus_finished(tap_dance_state_t *state, void *user_data) {
-    plus_tap_state.state = cur_dance(state);
-    switch (plus_tap_state.state) {
+    TD_STATE_SET(plus);
+    switch (TD_STATE(plus)) {
         case TD_DOUBLE_TAP: // `-`
             register_and_update(KC_MINS);
             break;
@@ -619,7 +583,7 @@ void plus_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_PLUS and reset the state
 void plus_reset(tap_dance_state_t *state, void *user_data) {
-    switch (plus_tap_state.state) {
+    switch (TD_STATE(plus)) {
         case TD_DOUBLE_TAP:  unregister_code16(KC_MINS); break;
         case TD_SINGLE_HOLD: unregister_code16(KC_ASTR); break;
         case TD_DOUBLE_HOLD: unregister_code16(KC_SLSH); break;
@@ -627,23 +591,20 @@ void plus_reset(tap_dance_state_t *state, void *user_data) {
         case TD_DOUBLE_SINGLE_TAP: unregister_code16(KC_PLUS); break;
         default: break;
     }
-    plus_tap_state.state = TD_NONE;
+    TD_RESET(plus);
 }
 
 // ──────────────────────────────
 // TD_PUNC space appended , ! ? .
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_PUNC quad tap dance
-static td_tap_t punc_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `punc_tap_dance` for TD_PUNC
+TD_DEF(punc);
 
 // Send the appropriate symbol for TD_PUNC
 void punc_finished(tap_dance_state_t *state, void *user_data) {
-    punc_tap_state.state = cur_dance(state);
-    switch (punc_tap_state.state) {
+    TD_STATE_SET(punc);
+    switch (TD_STATE(punc)) {
         case TD_DOUBLE_TAP: // `! ` exclamation-space bigram w/ auto cap
             punc_space_macro(KC_EXLM);
             break;
@@ -663,23 +624,20 @@ void punc_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_PUNC and reset the state
 void punc_reset(tap_dance_state_t *state, void *user_data) {
-    punc_tap_state.state = TD_NONE;
+    TD_RESET(punc);
 }
 
 // ──────────────────────────────
 // TD_QUES Cross Platform ? ¿ ◌̀ ◌́
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_QUES quad tap dance
-static td_tap_t ques_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `ques_tap_dance` for TD_QUES
+TD_DEF(ques);
 
 // Send the appropriate symbol for TD_QUES
 void ques_finished(tap_dance_state_t *state, void *user_data) {
-    ques_tap_state.state = cur_dance(state);
-    switch (ques_tap_state.state) {
+    TD_STATE_SET(ques);
+    switch (TD_STATE(ques)) {
         case TD_DOUBLE_TAP: // `¿` (Spanish inverted question mark)
             special_char_macro(CHAR_INV_QUES);
             break;
@@ -700,29 +658,26 @@ void ques_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_QUES and reset the state
 void ques_reset(tap_dance_state_t *state, void *user_data) {
-    switch (ques_tap_state.state) {
+    switch (TD_STATE(ques)) {
         case TD_SINGLE_TAP:
         case TD_DOUBLE_SINGLE_TAP:
         case TD_TRIPLE_TAP: unregister_code16(KC_QUES); break;
         default: break;
     }
-    ques_tap_state.state = TD_NONE;
+    TD_RESET(ques);
 }
 
 // ──────────────────────────────
 // TD_QUOT                ' ’ ~ `
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_QUOT quad tap dance
-static td_tap_t quot_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `quot_tap_dance` for TD_QUOT
+TD_DEF(quot);
 
 // Send the appropriate symbol for TD_QUOT
 void quot_finished(tap_dance_state_t *state, void *user_data) {
-    quot_tap_state.state = cur_dance(state);
-    switch (quot_tap_state.state) {
+    TD_STATE_SET(quot);
+    switch (TD_STATE(quot)) {
         case TD_DOUBLE_TAP: // `’` typographic apostrophe a.k.a. closing smart single quote
             special_char_macro(CHAR_SMART_QUOTE_RIGHT);
             break;
@@ -743,7 +698,7 @@ void quot_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_QUOT and reset the state
 void quot_reset(tap_dance_state_t *state, void *user_data) {
-    switch (quot_tap_state.state) {
+    switch (TD_STATE(quot)) {
         case TD_SINGLE_HOLD: unregister_code16(KC_GRV);  break;
         case TD_DOUBLE_HOLD: unregister_code16(KC_TILD); break;
         case TD_SINGLE_TAP:
@@ -751,23 +706,20 @@ void quot_reset(tap_dance_state_t *state, void *user_data) {
         case TD_TRIPLE_TAP: unregister_code16(KC_QUOT); break;
         default: break;
     }
-    quot_tap_state.state = TD_NONE;
+    TD_RESET(quot);
 }
 
 // ──────────────────────────────
 // TD_SCLN           ; ;␣ :␣ LSFT
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_SLCN quad tap dance.
-static td_tap_t scln_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `scln_tap_dance` for TD_SCLN
+TD_DEF(scln);
 
 // Send the appropriate symbol for TD_SLCN
 void scln_finished(tap_dance_state_t *state, void *user_data) {
-    scln_tap_state.state = cur_dance(state);
-    switch (scln_tap_state.state) {
+    TD_STATE_SET(scln);
+    switch (TD_STATE(scln)) {
         case TD_SINGLE_HOLD: // `LSFT`
             register_and_update(KC_LSFT);
             break;
@@ -788,31 +740,30 @@ void scln_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_SLCN and reset the state
 void scln_reset(tap_dance_state_t *state, void *user_data) {
-    switch (scln_tap_state.state) {
+    switch (TD_STATE(scln)) {
         case TD_SINGLE_HOLD: unregister_code16(KC_LSFT); break;
         case TD_SINGLE_TAP:
         case TD_DOUBLE_SINGLE_TAP:
         case TD_TRIPLE_TAP:  unregister_code16(KC_SCLN); break;
         default: break;
     }
-    scln_tap_state.state = TD_NONE;
+    TD_RESET(scln);
 }
 
 // ──────────────────────────────
 // TD_SPC                 ␣   ↵ ⌘
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_SPC quad tap dance.
-static td_tap_t spc_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+TD_DEF(spc);
 
 // Send the appropriate symbol for TD_SPC
 void spc_finished(tap_dance_state_t *state, void *user_data) {
-    spc_tap_state.state = cur_dance(state);
+    TD_STATE_SET(spc);
     uint16_t spc_transformed = case_mode_separator(KC_SPC);
-    switch (spc_tap_state.state) {
+    switch (TD_STATE(spc)) {
+        case TD_DOUBLE_TAP:
+            auto_cap_next_char_only();
+            break;
         case TD_SINGLE_HOLD: // Left CMD/Super/Windows key
             register_and_update(KC_LGUI);
             break;
@@ -820,7 +771,6 @@ void spc_finished(tap_dance_state_t *state, void *user_data) {
             register_and_update(KC_ENT);
             break;
         case TD_TRIPLE_TAP:        tap_code16(spc_transformed); // fallthru
-        case TD_DOUBLE_TAP:                                     // fallthru
         case TD_DOUBLE_SINGLE_TAP: tap_code16(spc_transformed); // fallthru
         case TD_SINGLE_TAP: // `␣`
             register_and_update(spc_transformed);
@@ -832,16 +782,15 @@ void spc_finished(tap_dance_state_t *state, void *user_data) {
 // Release any keys pressed by TD_SPC and reset the state
 void spc_reset(tap_dance_state_t *state, void *user_data) {
     uint16_t spc_transformed = case_mode_separator(KC_SPC);
-    switch (spc_tap_state.state) {
+    switch (TD_STATE(spc)) {
         case TD_SINGLE_HOLD: unregister_code16(KC_LGUI); break;
         case TD_DOUBLE_HOLD: unregister_code16(KC_ENT);  break;
         case TD_SINGLE_TAP:
-        case TD_DOUBLE_TAP:
         case TD_DOUBLE_SINGLE_TAP:
         case TD_TRIPLE_TAP:  unregister_code16(spc_transformed); break;
         default: break;
     }
-    spc_tap_state.state = TD_NONE;
+    TD_RESET(spc);
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -852,16 +801,13 @@ void spc_reset(tap_dance_state_t *state, void *user_data) {
 // TD_SMART_QUOTES
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_SMART_QUOTES tap dances
-static td_tap_t smart_quotes_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `smart_quotes_tap_dance` for TD_SMART_QUOTES
+TD_DEF(smart_quotes);
 
 // Send the appropriate symbols for TD_SMART_QUOTES
 void smart_quotes_finished(tap_dance_state_t *state, void *user_data) {
-    smart_quotes_tap_state.state = cur_dance(state);
-    switch (smart_quotes_tap_state.state) {
+    TD_STATE_SET(smart_quotes);
+    switch (TD_STATE(smart_quotes)) {
         case TD_SINGLE_TAP: // “|”
             surround_macro(SUR_SMART_DQUO);
             break;
@@ -874,23 +820,20 @@ void smart_quotes_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_SMART_QUOTES and reset the state
 void smart_quotes_reset(tap_dance_state_t *state, void *user_data) {
-    smart_quotes_tap_state.state = TD_NONE;
+    TD_RESET(smart_quotes);
 }
 
 // ──────────────────────────────
 // TD_ANGLE_QUOTES
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_ANGLE_QUOTES tap dances
-static td_tap_t angle_quotes_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `angle_quotes_tap_dance` for TD_ANGLE_QUOTES
+TD_DEF(angle_quotes);
 
 // Send the appropriate symbols for TD_ANGLE_QUOTES
 void angle_quotes_finished(tap_dance_state_t *state, void *user_data) {
-    angle_quotes_tap_state.state = cur_dance(state);
-    switch (angle_quotes_tap_state.state) {
+    TD_STATE_SET(angle_quotes);
+    switch (TD_STATE(angle_quotes)) {
         case TD_SINGLE_TAP: // «|»
             surround_macro(SUR_ANGLE_DQUO);
             break;
@@ -903,7 +846,7 @@ void angle_quotes_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_ANGLE_QUOTES and reset the state
 void angle_quotes_reset(tap_dance_state_t *state, void *user_data) {
-    angle_quotes_tap_state.state = TD_NONE;
+    TD_RESET(angle_quotes);
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -914,16 +857,13 @@ void angle_quotes_reset(tap_dance_state_t *state, void *user_data) {
 // TD_LPRN                ( [ { <
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_LPRN (left paren) quad tap dance.
-static td_tap_t lprn_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `lprn_tap_dance` for TD_LPRN
+TD_DEF(lprn);
 
 // Send the appropriate symbol for TD_LPRN
 void lprn_finished(tap_dance_state_t *state, void *user_data) {
-    lprn_tap_state.state = cur_dance(state);
-    switch (lprn_tap_state.state) {
+    TD_STATE_SET(lprn);
+    switch (TD_STATE(lprn)) {
         case TD_DOUBLE_TAP: // `[`
             register_and_update(KC_LBRC);
             break;
@@ -943,7 +883,7 @@ void lprn_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_LPRN and reset the state
 void lprn_reset(tap_dance_state_t *state, void *user_data) {
-    switch (lprn_tap_state.state) {
+    switch (TD_STATE(lprn)) {
         case TD_DOUBLE_TAP:  unregister_code16(KC_LBRC); break;
         case TD_SINGLE_HOLD: unregister_code16(KC_LCBR); break;
         case TD_DOUBLE_HOLD: unregister_code16(KC_LT);   break;
@@ -952,22 +892,19 @@ void lprn_reset(tap_dance_state_t *state, void *user_data) {
         case TD_DOUBLE_SINGLE_TAP: unregister_code16(KC_LPRN); break;
         default: break;
     }
-    lprn_tap_state.state = TD_NONE;
+    TD_RESET(lprn);
 }
 // ──────────────────────────────
 // TD_RPRN                ) ] > }
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_RPRN (right paren) quad tap dance.
-static td_tap_t rprn_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `rprn_tap_dance` for TD_RPRN
+TD_DEF(rprn);
 
 // Send the appropriate symbol for TD_RBRC
 void rprn_finished(tap_dance_state_t *state, void *user_data) {
-    rprn_tap_state.state = cur_dance(state);
-    switch (rprn_tap_state.state) {
+    TD_STATE_SET(rprn);
+    switch (TD_STATE(rprn)) {
         case TD_DOUBLE_TAP: // `]`
             register_and_update(KC_RBRC);
             break;
@@ -988,7 +925,7 @@ void rprn_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_RPRN and reset the state
 void rprn_reset(tap_dance_state_t *state, void *user_data) {
-    switch (rprn_tap_state.state) {
+    switch (TD_STATE(rprn)) {
         case TD_DOUBLE_TAP:  unregister_code16(KC_RBRC); break;
         case TD_SINGLE_HOLD: unregister_code16(KC_RCBR); break;
         case TD_DOUBLE_HOLD: unregister_code16(KC_GT);   break;
@@ -996,23 +933,20 @@ void rprn_reset(tap_dance_state_t *state, void *user_data) {
         case TD_DOUBLE_SINGLE_TAP: unregister_code16(KC_RPRN); break;
         default: break;
     }
-    rprn_tap_state.state = TD_NONE;
+    TD_RESET(rprn);
 }
 
 // ──────────────────────────────
 // TD_LBRC              [ ( { < ≤
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_LBRC (left bracket) quad tap dance.
-static td_tap_t lbrc_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `lbrc_tap_dance` for TD_LBRC
+TD_DEF(lbrc);
 
 // Send the appropriate symbol for TD_LBRC
 void lbrc_finished(tap_dance_state_t *state, void *user_data) {
-    lbrc_tap_state.state = cur_dance(state);
-    switch (lbrc_tap_state.state) {
+    TD_STATE_SET(lbrc);
+    switch (TD_STATE(lbrc)) {
         case TD_DOUBLE_TAP: // `(`
             register_and_update(KC_LPRN);
             break;
@@ -1035,7 +969,7 @@ void lbrc_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_LBRC and reset the state
 void lbrc_reset(tap_dance_state_t *state, void *user_data) {
-    switch (lbrc_tap_state.state) {
+    switch (TD_STATE(lbrc)) {
         case TD_DOUBLE_TAP:  unregister_code16(KC_LPRN); break;
         case TD_SINGLE_HOLD: unregister_code16(KC_LT);   break;
         case TD_DOUBLE_HOLD: unregister_code16(KC_LCBR); break;
@@ -1043,23 +977,20 @@ void lbrc_reset(tap_dance_state_t *state, void *user_data) {
         case TD_DOUBLE_SINGLE_TAP: unregister_code16(KC_LBRC); break;
         default: break;
     }
-    lbrc_tap_state.state = TD_NONE;
+    TD_RESET(lbrc);
 }
 
 // ──────────────────────────────
 // TD_RBRC              ] ) } > ≥
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_RBRC (right bracket) quad tap dance.
-static td_tap_t rbrc_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `rbrc_tap_dance` for TD_RBRC
+TD_DEF(rbrc);
 
 // Send the appropriate symbol for TD_RBRC
 void rbrc_finished(tap_dance_state_t *state, void *user_data) {
-    rbrc_tap_state.state = cur_dance(state);
-    switch (rbrc_tap_state.state) {
+    TD_STATE_SET(rbrc);
+    switch (TD_STATE(rbrc)) {
         case TD_DOUBLE_TAP: // `)`
             register_and_update(KC_RPRN);
             break;
@@ -1082,7 +1013,7 @@ void rbrc_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_RBRC and reset the state
 void rbrc_reset(tap_dance_state_t *state, void *user_data) {
-    switch (rbrc_tap_state.state) {
+    switch (TD_STATE(rbrc)) {
         case TD_DOUBLE_TAP:  unregister_code16(KC_RPRN); break;
         case TD_SINGLE_HOLD: unregister_code16(KC_GT);   break;
         case TD_DOUBLE_HOLD: unregister_code16(KC_RCBR); break;
@@ -1090,5 +1021,5 @@ void rbrc_reset(tap_dance_state_t *state, void *user_data) {
         case TD_DOUBLE_SINGLE_TAP: unregister_code16(KC_RBRC); break;
         default: break;
     }
-    rbrc_tap_state.state = TD_NONE;
+    TD_RESET(rbrc);
 }

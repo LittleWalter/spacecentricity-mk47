@@ -30,16 +30,13 @@
 // TD_0       0  Leader History 0
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_0 tap dances
-static td_tap_t zero_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `zero_tap_dance` for TD_0
+TD_DEF(zero);
 
 // Send the appropriate symbol for TD_0
 void zero_finished(tap_dance_state_t *state, void *user_data) {
-    zero_tap_state.state = cur_dance(state);
-    switch (zero_tap_state.state) {
+    TD_STATE_SET(zero);
+    switch (TD_STATE(zero)) {
 #ifdef LEADER_ENABLE
         case TD_SINGLE_HOLD: replay_leader(0);         break;
         case TD_DOUBLE_HOLD: save_leader_favorites(0); break;
@@ -56,30 +53,27 @@ void zero_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_0 and reset the state
 void zero_reset(tap_dance_state_t *state, void *user_data) {
-    switch (zero_tap_state.state) {
+    switch (TD_STATE(zero)) {
         case TD_SINGLE_TAP:
         case TD_DOUBLE_TAP:
         case TD_DOUBLE_SINGLE_TAP:
         case TD_TRIPLE_TAP: unregister_code(KC_0);
         default: break;
     }
-    zero_tap_state.state = TD_NONE;
+    TD_RESET(zero);
 }
 
 // ──────────────────────────────
 // TD_1       1  Leader History 1
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_1 tap dances
-static td_tap_t one_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `one_tap_dance` for TD_1
+TD_DEF(one);
 
 // Send the appropriate symbol for TD_1
 void one_finished(tap_dance_state_t *state, void *user_data) {
-    one_tap_state.state = cur_dance(state);
-    switch (one_tap_state.state) {
+    TD_STATE_SET(one);
+    switch (TD_STATE(one)) {
 #ifdef LEADER_ENABLE
         case TD_SINGLE_HOLD: replay_leader(1);         break;
         case TD_DOUBLE_HOLD: save_leader_favorites(1); break;
@@ -96,30 +90,27 @@ void one_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_1 and reset the state
 void one_reset(tap_dance_state_t *state, void *user_data) {
-    switch (one_tap_state.state) {
+    switch (TD_STATE(one)) {
         case TD_SINGLE_TAP:
         case TD_DOUBLE_TAP:
         case TD_DOUBLE_SINGLE_TAP:
         case TD_TRIPLE_TAP: unregister_code(KC_1);
         default: break;
     }
-    one_tap_state.state = TD_NONE;
+    TD_RESET(one);
 }
 
 // ──────────────────────────────
 // TD_2       2  Leader History 2
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_2 tap dances
-static td_tap_t two_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `two_tap_dance` for TD_2
+TD_DEF(two);
 
 // Send the appropriate symbol for TD_2
 void two_finished(tap_dance_state_t *state, void *user_data) {
-    two_tap_state.state = cur_dance(state);
-    switch (two_tap_state.state) {
+    TD_STATE_SET(two);
+    switch (TD_STATE(two)) {
 #ifdef LEADER_ENABLE
         case TD_SINGLE_HOLD: replay_leader(2);         break;
         case TD_DOUBLE_HOLD: save_leader_favorites(2); break;
@@ -136,30 +127,27 @@ void two_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_2 and reset the state
 void two_reset(tap_dance_state_t *state, void *user_data) {
-    switch (two_tap_state.state) {
+    switch (TD_STATE(two)) {
         case TD_SINGLE_TAP:
         case TD_DOUBLE_TAP:
         case TD_DOUBLE_SINGLE_TAP:
         case TD_TRIPLE_TAP: unregister_code(KC_2);
         default: break;
     }
-    two_tap_state.state = TD_NONE;
+    TD_RESET(two);
 }
 
 // ──────────────────────────────
 // TD_3       3  Leader History 3
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_3 tap dances
-static td_tap_t three_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `three_tap_dance` for TD_3
+TD_DEF(three);
 
 // Send the appropriate symbol for TD_3
 void three_finished(tap_dance_state_t *state, void *user_data) {
-    three_tap_state.state = cur_dance(state);
-    switch (three_tap_state.state) {
+    TD_STATE_SET(three);
+    switch (TD_STATE(three)) {
 #ifdef LEADER_ENABLE
         case TD_SINGLE_HOLD: replay_leader(3);         break;
         case TD_DOUBLE_HOLD: save_leader_favorites(3); break;
@@ -176,30 +164,27 @@ void three_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_3 and reset the state
 void three_reset(tap_dance_state_t *state, void *user_data) {
-    switch (three_tap_state.state) {
+    switch (TD_STATE(three)) {
         case TD_SINGLE_TAP:
         case TD_DOUBLE_TAP:
         case TD_DOUBLE_SINGLE_TAP:
         case TD_TRIPLE_TAP: unregister_code(KC_3);
         default: break;
     }
-    three_tap_state.state = TD_NONE;
+    TD_RESET(three);
 }
 
 // ──────────────────────────────
 // TD_4       4  Leader History 4
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_4 tap dances
-static td_tap_t four_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `four_tap_dance` for TD_4
+TD_DEF(four);
 
 // Send the appropriate symbol for TD_4
 void four_finished(tap_dance_state_t *state, void *user_data) {
-    four_tap_state.state = cur_dance(state);
-    switch (four_tap_state.state) {
+    TD_STATE_SET(four);
+    switch (TD_STATE(four)) {
 #ifdef LEADER_ENABLE
         case TD_SINGLE_HOLD: replay_leader(4);         break;
         case TD_DOUBLE_HOLD: save_leader_favorites(4); break;
@@ -216,30 +201,27 @@ void four_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_4 and reset the state
 void four_reset(tap_dance_state_t *state, void *user_data) {
-    switch (four_tap_state.state) {
+    switch (TD_STATE(four)) {
         case TD_SINGLE_TAP:
         case TD_DOUBLE_TAP:
         case TD_DOUBLE_SINGLE_TAP:
         case TD_TRIPLE_TAP: unregister_code(KC_4);
         default: break;
     }
-    four_tap_state.state = TD_NONE;
+    TD_RESET(four);
 }
 
 // ──────────────────────────────
 // TD_5       5  Leader History 5
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_5 tap dances
-static td_tap_t five_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `five_tap_dance` for TD_5
+TD_DEF(five);
 
 // Send the appropriate symbol for TD_5
 void five_finished(tap_dance_state_t *state, void *user_data) {
-    five_tap_state.state = cur_dance(state);
-    switch (five_tap_state.state) {
+    TD_STATE_SET(five);
+    switch (TD_STATE(five)) {
 #ifdef LEADER_ENABLE
         case TD_SINGLE_HOLD: replay_leader(5);         break;
         case TD_DOUBLE_HOLD: save_leader_favorites(5); break;
@@ -256,30 +238,27 @@ void five_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_5 and reset the state
 void five_reset(tap_dance_state_t *state, void *user_data) {
-    switch (five_tap_state.state) {
+    switch (TD_STATE(five)) {
         case TD_SINGLE_TAP:
         case TD_DOUBLE_TAP:
         case TD_DOUBLE_SINGLE_TAP:
         case TD_TRIPLE_TAP: unregister_code(KC_5);
         default: break;
     }
-    five_tap_state.state = TD_NONE;
+    TD_RESET(five);
 }
 
 // ──────────────────────────────
 // TD_6       6  Leader History 6
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_6 tap dances
-static td_tap_t six_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `six_tap_dance` for TD_6
+TD_DEF(six);
 
 // Send the appropriate symbol for TD_6
 void six_finished(tap_dance_state_t *state, void *user_data) {
-    six_tap_state.state = cur_dance(state);
-    switch (six_tap_state.state) {
+    TD_STATE_SET(six);
+    switch (TD_STATE(six)) {
 #ifdef LEADER_ENABLE
         case TD_SINGLE_HOLD: replay_leader(6);         break;
         case TD_DOUBLE_HOLD: save_leader_favorites(6); break;
@@ -296,30 +275,27 @@ void six_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_6 and reset the state
 void six_reset(tap_dance_state_t *state, void *user_data) {
-    switch (six_tap_state.state) {
+    switch (TD_STATE(six)) {
         case TD_SINGLE_TAP:
         case TD_DOUBLE_TAP:
         case TD_DOUBLE_SINGLE_TAP:
         case TD_TRIPLE_TAP: unregister_code(KC_6);
         default: break;
     }
-    six_tap_state.state = TD_NONE;
+    TD_RESET(six);
 }
 
 // ──────────────────────────────
 // TD_7       7  Leader History 7
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_7 tap dances
-static td_tap_t seven_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `six_tap_dance` for TD_7
+TD_DEF(seven);
 
 // Send the appropriate symbol for TD_7
 void seven_finished(tap_dance_state_t *state, void *user_data) {
-    seven_tap_state.state = cur_dance(state);
-    switch (seven_tap_state.state) {
+    TD_STATE_SET(seven);
+    switch (TD_STATE(seven)) {
 #ifdef LEADER_ENABLE
         case TD_SINGLE_HOLD: replay_leader(7);         break;
         case TD_DOUBLE_HOLD: save_leader_favorites(7); break;
@@ -336,30 +312,27 @@ void seven_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_7 and reset the state
 void seven_reset(tap_dance_state_t *state, void *user_data) {
-    switch (seven_tap_state.state) {
+    switch (TD_STATE(seven)) {
         case TD_SINGLE_TAP:
         case TD_DOUBLE_TAP:
         case TD_DOUBLE_SINGLE_TAP:
         case TD_TRIPLE_TAP: unregister_code(KC_7);
         default: break;
     }
-    seven_tap_state.state = TD_NONE;
+    TD_RESET(seven);
 }
 
 // ──────────────────────────────
 // TD_8       8  Leader History 8
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_8 tap dances
-static td_tap_t eight_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `eight_tap_dance` for TD_8
+TD_DEF(eight);
 
 // Send the appropriate symbol for TD_8
 void eight_finished(tap_dance_state_t *state, void *user_data) {
-    eight_tap_state.state = cur_dance(state);
-    switch (eight_tap_state.state) {
+    TD_STATE_SET(eight);
+    switch (TD_STATE(eight)) {
 #ifdef LEADER_ENABLE
         case TD_SINGLE_HOLD: replay_leader(8);         break;
         case TD_DOUBLE_HOLD: save_leader_favorites(8); break;
@@ -376,30 +349,27 @@ void eight_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_8 and reset the state
 void eight_reset(tap_dance_state_t *state, void *user_data) {
-    switch (eight_tap_state.state) {
+    switch (TD_STATE(eight)) {
         case TD_SINGLE_TAP:
         case TD_DOUBLE_TAP:
         case TD_DOUBLE_SINGLE_TAP:
         case TD_TRIPLE_TAP: unregister_code(KC_8);
         default: break;
     }
-    eight_tap_state.state = TD_NONE;
+    TD_RESET(eight);
 }
 
 // ──────────────────────────────
 // TD_9       9  Leader History 9
 // ──────────────────────────────
 
-// Instance of 'td_tap_t' for the TD_9 tap dances
-static td_tap_t nine_tap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
+// Create static `nine_tap_dance` for TD_9
+TD_DEF(nine);
 
 // Send the appropriate symbol for TD_9
 void nine_finished(tap_dance_state_t *state, void *user_data) {
-    nine_tap_state.state = cur_dance(state);
-    switch (nine_tap_state.state) {
+    TD_STATE_SET(nine);
+    switch (TD_STATE(nine)) {
 #ifdef LEADER_ENABLE
         case TD_SINGLE_HOLD: replay_leader(9);         break;
         case TD_DOUBLE_HOLD: save_leader_favorites(9); break;
@@ -416,12 +386,12 @@ void nine_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_9 and reset the state
 void nine_reset(tap_dance_state_t *state, void *user_data) {
-    switch (nine_tap_state.state) {
+    switch (TD_STATE(nine)) {
         case TD_SINGLE_TAP:
         case TD_DOUBLE_TAP:
         case TD_DOUBLE_SINGLE_TAP:
         case TD_TRIPLE_TAP: unregister_code(KC_9);
         default: break;
     }
-    nine_tap_state.state = TD_NONE;
+    TD_RESET(nine);
 }
