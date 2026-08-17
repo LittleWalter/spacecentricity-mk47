@@ -2,10 +2,10 @@
 #include "td_chars.h"
 #include "td_control.h"
 #include "td_digits.h"
-#include "td_macos.h"
 #include "td_media.h"
 #include "td_numpad.h"
 #include "td_programming.h"
+#include "td_system.h"
 #include "td_terminal.h"
 #include "td_vim.h"
 #include "src/features/case_mode.h"
@@ -81,6 +81,7 @@ tap_dance_action_t tap_dance_actions[TD_COUNT] = {
     [TD_DEL]   = ACTION_TAP_DANCE_FN_ADVANCED(NULL, del_finished,   del_reset),
     [TD_ENT]   = ACTION_TAP_DANCE_FN_ADVANCED(NULL, enter_finished, enter_reset),
     [TD_ESC]   = ACTION_TAP_DANCE_FN_ADVANCED(NULL, esc_finished,   esc_reset),
+    [TD_REP]   = ACTION_TAP_DANCE_FN_ADVANCED(NULL, rep_finished,   rep_reset),
     [TD_TAB]   = ACTION_TAP_DANCE_FN_ADVANCED(NULL, tab_finished,   tab_reset),
     // App Shortcut Tap Dances
     [TD_UNDO]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, undo_finished,  undo_reset),
@@ -162,12 +163,12 @@ tap_dance_action_t tap_dance_actions[TD_COUNT] = {
     [TD_SUDO]    = ACTION_TAP_DANCE_FN_ADVANCED(NULL, term_sudo_finished,    term_sudo_reset),
 
     // ─────────────────────────────────────────────────────────────
-    // Apple macOS-Related Tap Dances
+    // OS-Related Tap Dances
     // ─────────────────────────────────────────────────────────────
-    [TD_SPOTLIGHT_MACOS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, spotlight_macos_finished, spotlight_macos_reset),
-    [TD_FS_MACOS]        = ACTION_TAP_DANCE_FN_ADVANCED(NULL, fs_macos_finished,        fs_macos_reset),
-    [TD_SCRNSHOT_MACOS]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, scrnshot_macos_finished,  scrnshot_macos_reset),
-    [TD_DEL_MACOS]       = ACTION_TAP_DANCE_FN_ADVANCED(NULL, del_macos_finished,       del_macos_reset),
+    [TD_LAUNCHER_OS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, launcher_os_finished, launcher_os_reset),
+    [TD_FS_OS]       = ACTION_TAP_DANCE_FN_ADVANCED(NULL, fs_os_finished,       fs_os_reset),
+    [TD_SCRNSHOT_OS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, scrnshot_os_finished, scrnshot_os_reset),
+    [TD_DEL_OS]      = ACTION_TAP_DANCE_FN_ADVANCED(NULL, del_os_finished,      del_os_reset),
 };
 
 /* Return an integer that corresponds to what kind of tap dance should be executed.

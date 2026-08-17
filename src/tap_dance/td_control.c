@@ -1,13 +1,13 @@
 /*
  * td_control.c — Tap Dance definitions for control, action, and navigation keys.
  *
- * This file implements all tap‑dance behaviors related to:
+ * This file implements all tap-dance behaviors related to:
  *   - Editing keys: Backspace, Delete, Enter, Tab
  *   - State keys: Caps Lock / Caps Word
  *   - App shortcuts: Undo / Redo
  *   - Navigation keys: Home, End, Page Up, Page Down
  *
- * The goal of this module is to centralize all non‑character tap‑dance
+ * The goal of this module is to centralize all non-character tap-dance
  * behaviors so they remain consistent and easy to maintain.
  */
 
@@ -15,7 +15,6 @@
 #include "tap_dance_actions.h"
 #include "src/core/keymap.h"
 #include "src/core/custom_keys.h"
-#include "src/features/caps_word.h"
 #include "src/features/case_mode.h"
 #include "src/features/utils.h"
 #include "src/macros/mac_special_char.h"
@@ -38,9 +37,9 @@ void bspc_finished(tap_dance_state_t *state, void *user_data) {
             tap_code16(C(S(KC_LEFT)));
             tap_and_update(KC_BSPC);
             break;
-        case TD_TRIPLE_TAP:        tap_code16(KC_BSPC);             // fallthru
-        case TD_DOUBLE_TAP:                                         // fallthru
-        case TD_DOUBLE_SINGLE_TAP: tap_code16(KC_BSPC);             // fallthru
+        case TD_TRIPLE_TAP:        tap_code16(KC_BSPC); // fallthru
+        case TD_DOUBLE_TAP:                             // fallthru
+        case TD_DOUBLE_SINGLE_TAP: tap_code16(KC_BSPC); // fallthru
         case TD_SINGLE_TAP: // ⌫ Backspace
             register_and_update(KC_BSPC);
             break;
@@ -74,13 +73,9 @@ TD_DEF(caps);
 void caps_finished(tap_dance_state_t *state, void *user_data) {
     TD_STATE_SET(caps);
     switch (TD_STATE(caps)) {
-#ifdef CAPS_WORD_ENABLE
         case TD_SINGLE_TAP:
-            case_mode_off();
-            caps_lock_off();
-            caps_word_toggle();
+            caps_word_toggle();  // Non-QMK Caps Word
             break;
-#endif
         case TD_DOUBLE_TAP:
             const_case_toggle(); // SCREAMING_SNAKE_CASE
             break;
@@ -190,7 +185,7 @@ TD_DEF(esc);
 void esc_finished(tap_dance_state_t *state, void *user_data) {
     TD_STATE_SET(esc);
     switch (TD_STATE(esc)) {
-        case TD_SINGLE_HOLD: layer_on(_MACOS); break;
+        case TD_SINGLE_HOLD: layer_on(_OS); break;
         case TD_DOUBLE_HOLD: // Close window
             tap_and_update(current_os == OS_MACOS ? LGUI(KC_W) : A(KC_F4));
             break;
@@ -207,7 +202,7 @@ void esc_finished(tap_dance_state_t *state, void *user_data) {
 // Release any keys pressed by TD_ESC and reset the state
 void esc_reset(tap_dance_state_t *state, void *user_data) {
     switch (TD_STATE(esc)) {
-        case TD_SINGLE_HOLD: layer_off(_MACOS); break;
+        case TD_SINGLE_HOLD: layer_off(_OS); break;
         case TD_SINGLE_TAP:
         case TD_DOUBLE_TAP:
         case TD_DOUBLE_SINGLE_TAP:
@@ -215,6 +210,43 @@ void esc_reset(tap_dance_state_t *state, void *user_data) {
         default: break;
     }
     TD_RESET(esc);
+}
+
+// ──────────────────────────────
+// TD_REP                ↺  ALT ↺
+// ──────────────────────────────
+
+// Create static `rep_tap_dance` for TD_REP
+TD_DEF(rep);
+
+// Send the appropriate key for TD_REP
+void rep_finished(tap_dance_state_t *state, void *user_data) {
+    TD_STATE_SET(rep);
+    switch (TD_STATE(rep)) {
+        case TD_SINGLE_HOLD: // Alternate repeat key
+            register_and_update(QK_REP);
+            break;
+        case TD_TRIPLE_TAP:        tap_code16(QK_AREP); // fallthru
+        case TD_DOUBLE_TAP:                             // fallthru
+        case TD_DOUBLE_SINGLE_TAP: tap_code16(QK_AREP); // fallthru
+        case TD_SINGLE_TAP: // Repeat previous key
+            register_and_update(QK_AREP);
+            break;
+        default: break;
+    }
+}
+
+// Release any keys pressed by TD_REP and reset the state
+void rep_reset(tap_dance_state_t *state, void *user_data) {
+    switch (TD_STATE(rep)) {
+        case TD_SINGLE_HOLD: unregister_code16(QK_AREP); break;
+        case TD_SINGLE_TAP:
+        case TD_DOUBLE_TAP:
+        case TD_DOUBLE_SINGLE_TAP:
+        case TD_TRIPLE_TAP:  unregister_code16(QK_REP); break;
+        default: break;
+    }
+    TD_RESET(rep);
 }
 
 // ──────────────────────────────
@@ -309,12 +341,12 @@ TD_DEF(home);
 void home_finished(tap_dance_state_t *state, void *user_data) {
     TD_STATE_SET(home);
     switch (TD_STATE(home)) {
-        case TD_DOUBLE_TAP:  register_and_update(KC_CIRC);       break; // `^` (Caret)
+        case TD_DOUBLE_TAP:  register_and_update(KC_CIRC);        break; // `^` (Caret)
         case TD_TRIPLE_TAP:  special_char_macro(CHAR_ARROW_LEFT); break; // `→` (symbol)
-        case TD_SINGLE_HOLD: register_and_update(KC_LEFT);       break; // Left Arrow
-        case TD_DOUBLE_HOLD: register_and_update(KC_H);          break; // `h` (Vim left motion)
+        case TD_SINGLE_HOLD: register_and_update(KC_LEFT);        break; // Left Arrow
+        case TD_DOUBLE_HOLD: register_and_update(KC_H);           break; // `h` (Vim left motion)
         case TD_DOUBLE_SINGLE_TAP: tap_code16(KC_HOME);                  // fallthru
-        case TD_SINGLE_TAP:  register_and_update(KC_HOME);       break; // Home
+        case TD_SINGLE_TAP:  register_and_update(KC_HOME);        break; // Home
         default: break;
     }
 }
@@ -343,12 +375,12 @@ TD_DEF(pgdn);
 void pgdn_finished(tap_dance_state_t *state, void *user_data) {
     TD_STATE_SET(pgdn);
     switch (TD_STATE(pgdn)) {
-        case TD_DOUBLE_TAP:  register_and_update(KC_RCBR);       break; // `}`
+        case TD_DOUBLE_TAP:  register_and_update(KC_RCBR);        break; // `}`
         case TD_TRIPLE_TAP:  special_char_macro(CHAR_ARROW_DOWN); break; // `↓` (symbol)
-        case TD_SINGLE_HOLD: register_and_update(KC_DOWN);       break; // Down Arrow
-        case TD_DOUBLE_HOLD: register_and_update(KC_J);          break; // `j` (Vim left motion)
+        case TD_SINGLE_HOLD: register_and_update(KC_DOWN);        break; // Down Arrow
+        case TD_DOUBLE_HOLD: register_and_update(KC_J);           break; // `j` (Vim left motion)
         case TD_DOUBLE_SINGLE_TAP: tap_code16(KC_PGDN);                  // fallthru
-        case TD_SINGLE_TAP:  register_and_update(KC_PGDN);       break; // Page Down
+        case TD_SINGLE_TAP:  register_and_update(KC_PGDN);        break; // Page Down
         default: break;
     }
 }
@@ -377,12 +409,12 @@ TD_DEF(pgup);
 void pgup_finished(tap_dance_state_t *state, void *user_data) {
     TD_STATE_SET(pgup);
     switch (TD_STATE(pgup)) {
-        case TD_DOUBLE_TAP:  register_and_update(KC_LCBR);     break; // `{`
+        case TD_DOUBLE_TAP:  register_and_update(KC_LCBR);      break; // `{`
         case TD_TRIPLE_TAP:  special_char_macro(CHAR_ARROW_UP); break; // `↑` (symbol)
-        case TD_SINGLE_HOLD: register_and_update(KC_UP);       break; // Up Arrow
-        case TD_DOUBLE_HOLD: register_and_update(KC_K);        break; // `k` (Vim up motion)
+        case TD_SINGLE_HOLD: register_and_update(KC_UP);        break; // Up Arrow
+        case TD_DOUBLE_HOLD: register_and_update(KC_K);         break; // `k` (Vim up motion)
         case TD_DOUBLE_SINGLE_TAP: tap_code16(KC_PGUP);                // fallthru
-        case TD_SINGLE_TAP:  register_and_update(KC_PGUP);     break; // Page Up
+        case TD_SINGLE_TAP:  register_and_update(KC_PGUP);      break; // Page Up
         default: break;
     }
 }
@@ -411,12 +443,12 @@ TD_DEF(end);
 void end_finished(tap_dance_state_t *state, void *user_data) {
     TD_STATE_SET(end);
     switch (TD_STATE(end)) {
-        case TD_DOUBLE_TAP:  register_and_update(KC_DLR);         break; // `$`
+        case TD_DOUBLE_TAP:  register_and_update(KC_DLR);          break; // `$`
         case TD_TRIPLE_TAP:  special_char_macro(CHAR_ARROW_RIGHT); break; // `→` (symbol)
-        case TD_SINGLE_HOLD: register_and_update(KC_RGHT);        break; // Right Arrow
-        case TD_DOUBLE_HOLD: register_and_update(KC_L);           break; // `l` (Vim right motion)
+        case TD_SINGLE_HOLD: register_and_update(KC_RGHT);         break; // Right Arrow
+        case TD_DOUBLE_HOLD: register_and_update(KC_L);            break; // `l` (Vim right motion)
         case TD_DOUBLE_SINGLE_TAP: tap_code16(KC_END);                    // fallthru
-        case TD_SINGLE_TAP:  register_and_update(KC_END);         break; // End
+        case TD_SINGLE_TAP:  register_and_update(KC_END);          break; // End
         default: break;
     }
 }

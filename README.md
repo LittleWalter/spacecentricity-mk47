@@ -1,8 +1,10 @@
 # 🌌 Spacecentricity — A Planck MIT Keymap for the Inland MK-47
 
-Spacecentricity is a maximalist modal keymap built around a modified Dvorak base, heavy thumb usage, and mirrored layers for navigation, Vim‑style editing, and programming. It emphasizes home‑position access to high‑frequency characters and movement keys — arrows, numbers, symbols, and common programming n‑grams — through macros and tap dances. Key redundancy provides alternative ways to perform the same actions, helping reduce strain and fatigue.
+Spacecentricity is a maximalist modal keymap built around a modified Dvorak base, heavy thumb usage, and mirrored layers for navigation, Vim‑style editing, and programming. It emphasizes home-position access to high-frequency characters, movement keys, numbers, symbols, and common programming n-grams through macros and tap dances. Key redundancy provides alternative ways to perform the same actions, helping reduce strain and fatigue.
 
-Each layer includes its own RGB matrix pattern, making it easy to see which layer is active at a glance.
+Because this keymap treats keyboard firmware like a [finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine), each layer includes its own RGB matrix pattern, making it easy to see which layer is active at a glance. The RGB matrix also indicates active modes such as Caps Lock (blinking red), One-Shot Shift (gold), [case modes](#temporary-lexical-modes-case-modes) (neon mint), and [leader mode](/LEADER.md) (navy blue).
+
+This keymap has an estimated user count of one.
 
 > [!NOTE]
 > See [design notes](DESIGN.md) for deeper explanations of key placement and layer philosophy.
@@ -25,7 +27,7 @@ Each layer includes its own RGB matrix pattern, making it easy to see which laye
   - [Apple macOS](#apple-macos)
   - [Mouse](#mouse)
   - [Doom Classic](#doom-classic)
-- [Temporary Lexical Modes](#temporary-lexical-modes)
+- [Temporary Lexical Modes (Case Modes)](#temporary-lexical-modes-case-modes)
 - [Using This Keymap with QMK](#using-this-keymap-with-qmk)
   - [Helper Scripts (Optional)](#-helper-scripts-optional)
 - [Layout Stability](#-layout-stability)
@@ -151,7 +153,7 @@ The Caps key provides three related text-entry modes, each with its own visual i
 | Hold | Toggle `Caps Lock` | 🔴 Blinking red | Must be manually turned off |
 
 > [!TIP]
-> `Caps Word` temporarily capitalizes letters as you type and automatically turns itself off at the end of the word, making it ideal for acronyms, identifiers, and short uppercase sequences without toggling `Caps Lock`. See the [QMK documentation](https://docs.qmk.fm/features/caps_word) for more information.
+> `Caps Word` temporarily capitalizes letters as you type and automatically turns itself off at the end of the word, making it ideal for acronyms, identifiers, and short uppercase sequences without toggling `Caps Lock`.
 >
 > `SCREAMING_SNAKE_CASE` behaves similarly to `Caps Word`, but transforms the spacebar into `_` and is intended for constant identifiers commonly used in C‑style languages and shells.
 
@@ -395,41 +397,25 @@ This layer is typically accessed with a _left‑palm tap_ on **Base**, using a t
 
 An optional compact gaming layer modeled after vanilla _Doom_ (1993), built around a tight movement cluster, dedicated strafing keys, and thumb‑based actions for firing, opening doors, and running. Quick weapon switching is handled through the **Upper** layer, and the layout also works as a simple arrows‑plus‑mouse‑keys mode using traditional T‑shaped clusters for general navigation.
 
-## Temporary Lexical Modes
+## Temporary Lexical Modes (Case Modes)
 
-This keymap supports several lightweight, real‑time text‑transformation modes that modify characters as you type. These modes are designed for programming, documentation, and command‑line workflows, and all of them automatically disable after a short period of inactivity.
+Often referred to as “case modes,” these lightweight, real‑time text‑transformation modes modify characters _as you type_, without rewriting existing text or relying on editor plugins. They’re designed for programming, documentation/prose, and command‑line workflows, and each mode automatically disables after a short period of inactivity (5 seconds).
 
-### Built‑in QMK Mode
-
-| Mode | Description | Typical Use |
-| --- | --- | --- |
-| **Caps Word** | Temporarily capitalizes letters and ends automatically at word boundaries | Acronyms, identifiers, short uppercase sequences |
-
-For more information, refer to the [QMK documentation](https://docs.qmk.fm/features/caps_word).
-
-### Custom Case Modes
+The spacebar applies the correct separator or capitalization for the mode, and it automatically exits Caps Word and One-Shot Shift.
 
 | Mode | Description | Typical Use |
 | --- | --- | --- |
-| `camelCase` | Swallows separators and capitalizes the next letter | Java, JavaScript, Go, JSON |
-| `PascalCase` | Like camelCase, but capitalizes the first letter | Type names, classes |
-| `snake_case` | Converts separators into `_` | Python, Rust, C identifiers |
-| `SCREAMING_SNAKE_CASE` | Uppercase snake_case with `_` separators | Constants, shell environment variables |
-| `kebab-case` | Converts separators into `-` | Filenames, URLs, CLI flags |
-| `dot.case` | Converts separators into `.` | Namespaces, config keys, long filenames |
-| `path/to/case` | Converts separators into `/` | File paths, import statements |
-| `PUNC` mode | Capitalizes the next character after punctuation | Sentence starts, documentation, prose |
+| Caps Word | Capitalizes a single word; mirrors [QMK’s built‑in behavior](https://docs.qmk.fm/features/caps_word) | Acronyms, constants |
+| One‑Shot Shift | Capitalizes or shifts the next character; mirrors [QMK’s built-in behavior](https://docs.qmk.fm/one_shot_keys) | Prose, documentation |
+| `camelCase` | Ignores separators and capitalizes the next letter | Java, JavaScript, Go, JSON |
+| `PascalCase` | Like camelCase, but capitalizes the first letter | Types, classes |
+| `snake_case` | Converts separators into ``_`` | Python, Rust, C identifiers |
+| `SCREAMING_SNAKE_CASE` | Uppercase `snake_case` | Constants, env vars |
+| `kebab-case` | Converts separators into ``-`` | Filenames, URLs, CLI flags |
+| `dot.case` | Converts separators into ``.`` | Namespaces, config keys |
+| `path/to/case` | Converts separators into ``/`` | File paths, imports |
 
-The spacebar applies the correct separator or capitalization for the mode.
-
-These case modes are:
-
-* Temporary
-  * Disables after a preset idle timeout (5 seconds)
-  * End automatically when pressing `Enter`, `Super`/`CMD`, etc.
-* Deterministic (no buffering or rewriting)
-* Separator‑aware (dash, dot, slash, underscore)
-* Compatible with tap‑dance, mod‑tap, and macros
+These temporary modes automatically deactivate after 5 seconds of inactivity, or when a control or modifier key (e.g., `Enter`, `Super`/`CMD`) is pressed.
 
 ## Using This Keymap with QMK
 
@@ -491,6 +477,6 @@ These scripts are entirely optional — the build script simply wraps QMK’s CL
 
 This keymap is actively maintained and may evolve over time as layouts, layers, and features are refined, added, or removed.
 
-Most layers are fairly stable at this point, but some of the more specialized/optional ones (such as **Terminal** and **Programming**) may be reworked, consolidated, or removed as the design continues to mature.
+Most layers are fairly stable at this point, but some of the more specialized/optional ones (such as [Adjust](#adjustment-keyboard-settings), [Terminal](#terminal), and [Programming](#programming)) may be reworked, consolidated, or removed as the design continues to mature.
 
 This keymap has not been tested on Linux or Microsoft Windows operating systems.

@@ -8,6 +8,7 @@
 #include "src/macros/mac_programming.h"
 #include "src/macros/mac_special_char.h"
 #include "src/macros/mac_surround.h"
+#include "src/macros/mac_system.h"
 #include "src/macros/mac_terminal.h"
 #include "src/macros/mac_vim.h"
 
@@ -128,54 +129,54 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         // ─────────────────────────────────────────────────────────────
         case ALL: // Select All
             if (record->event.pressed) {
-                select_all();
+                select_all_macro();
             }
             return false;
         case COPY: // Copy Selected
             if (record->event.pressed) {
-                copy();
+                copy_macro();
             }
             return false;
         case PASTE: // Paste from clipboard
             if (record->event.pressed) {
-                paste();
+                paste_macro();
             }
             return false;
         case CUT: // Cut Selected
             if (record->event.pressed) {
-                cut();
+                cut_macro();
             }
             return false;
 
         case VDT_LEFT: // Change to left virtual desktop/workspace
             if (record->event.pressed) {
-                vdt_left();
+                vdt_left_macro();
             }
             return false;
         case VDT_RIGHT:
             if (record->event.pressed) { // Change to right virtual desktop/workspace
-                vdt_right();
+                vdt_right_macro();
             }
             return false;
 
         case ZOOM_IN: // Browser Zoom In
             if (record->event.pressed) {
-                zoom_in();
+                zoom_in_macro();
             }
             return false;
         case ZOOM_OUT: // Browser Zoom Out
             if (record->event.pressed) {
-                zoom_out();
+                zoom_out_macro();
             }
             return false;
         case ZOOM_RESET: // Broswer Zoom Reset (100%)
             if (record->event.pressed) {
-                zoom_reset();
+                zoom_reset_macro();
             }
             return false;
         case APP: // Trigger App Switching key when held
             case_mode_off();
-            record->event.pressed ? app_switch(true) : app_switch(false);
+            record->event.pressed ? app_switch_macro(true) : app_switch_macro(false);
             return false;
 
         // ─────────────────────────────────────────────────────────────
@@ -244,87 +245,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
     }
     return true;
-}
-
-// ─────────────────────────────────────────────────────────────
-// App Shortcuts
-// ─────────────────────────────────────────────────────────────
-
-// App shortcut: select all; defaults to CMD+A for macOS, otherwise
-// uses LCTL+A for Microsoft Windows and Linux
-void select_all(void) {
-    tap_and_update(current_os == OS_MACOS ? LGUI(KC_A) : C(KC_A));
-}
-
-// App shortcut: copy selected; defaults to CMD+C for macOS, otherwise
-// uses LCTL+C for Microsoft Windows and Linux
-void copy(void) {
-    tap_and_update(current_os == OS_MACOS ? LGUI(KC_C) : C(KC_C));
-}
-
-// App shortcut: cut selected; defaults to CMD+X for macOS, otherwise
-// uses LCTL+X for Microsoft Windows and Linux
-void cut(void) {
-    tap_and_update(current_os == OS_MACOS ? LGUI(KC_X) : C(KC_X));
-}
-
-// App shortcut: paste from clipboard; defaults to CMD+V for macOS, otherwise
-// uses LCTL+V for Microsoft Windows and Linux
-void paste(void) {
-    tap_and_update(current_os == OS_MACOS ? LGUI(KC_V) : C(KC_V));
-}
-
-// Operating system shortcut: change to left virtual desktop/workspace; defaults
-// to LCTL+LEFT for macOS, otherwise uses LCTL+ALT+LEFT for most Linux desktop
-// environments w/e to Gnome, or WIN+LCTL+LEFT for Microsoft Windows.
-void vdt_left(void) {
-    switch (current_os) {
-        case OS_MACOS: tap_and_update(C(KC_LEFT));       break; // macOS:   LCTL+LEFT
-        case OS_LINUX: tap_and_update(C(A(KC_LEFT)));    break; // Linux:   LCTL+ALT+LEFT
-        case OS_WIN:   tap_and_update(LGUI(C(KC_LEFT))); break; // Windows: WIN+LCTL+LEFT
-        default: break;
-    }
-}
-
-// Operating system shortcut: change to left virtual desktop/workspace; defaults
-// to LCTL+RIGHT for macOS, otherwise uses LCTL+ALT+RIGHT for most Linux desktop
-// environments w/e to Gnome, or WIN+LCTL+RIGHT for Microsoft Windows.
-void vdt_right(void) {
-    switch (current_os) {
-        case OS_MACOS: tap_and_update(C(KC_RGHT));       break; // macOS:   LCTL+RIGHT
-        case OS_LINUX: tap_and_update(C(A(KC_RGHT)));    break; // Linux:   LCTL+ALT+RIGHT
-        case OS_WIN:   tap_and_update(LGUI(C(KC_RGHT))); break; // Windows: WIN+LCTL+RIGHT
-        default: break;
-    }
-}
-
-// Browser shortcut: zoom in; defaults to CMD+SFT+= for macOS, otherwise
-// uses LCTL+SFT+= for Microsoft Windows and Linux
-void zoom_in(void) {
-    tap_and_update(current_os == OS_MACOS ? LGUI(S(KC_EQL)) : C(S(KC_EQL)));
-}
-
-// Browser shortcut: zoom out; defaults to CMD+- for macOS, otherwise
-// uses LCTL+- for Microsoft Windows and Linux
-void zoom_out(void) {
-    tap_and_update(current_os == OS_MACOS ? LGUI(KC_MINS) : C(KC_MINS));
-}
-
-// Browser shortcut: zoom reset (100%); defaults to CMD+0 for macOS, otherwise
-// uses LCTL+0 for Microsoft Windows and Linux
-void zoom_reset(void) {
-    tap_and_update(current_os == OS_MACOS ? LGUI(KC_0) : C(KC_0));
-}
-
-// Triggers operating system application switcher key: CMD for macOS or ALT for Linux and Windows.
-// The passed Boolean means that the modifier key is currently held by the user.
-void app_switch(const bool is_active) {
-    const uint8_t modifier = MOD_BIT(current_os == OS_MACOS ? KC_LGUI : KC_LALT);
-    if (is_active) {
-        register_mods(modifier); // Hold the modifer down to activate app switcher
-    } else {
-        unregister_mods(modifier); // Release when done
-    }
 }
 
 // ─────────────────────────────────────────────────────────────

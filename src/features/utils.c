@@ -20,7 +20,7 @@ void caps_lock_on(void) {
 
 // Ensure Caps Lock is OFF.
 //
-// Same logic as caps_lock_on(): only send KC_CAPS if the OS currently
+// Same logic as caps_lock_on(): only send KC_CAPS if the LED state currently
 // reports Caps Lock as active. Prevents double‑toggling or desync.
 void caps_lock_off(void) {
     if (is_caps_lock_on()) {

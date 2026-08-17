@@ -31,13 +31,7 @@ static bool set_on_osm_shift_or_caps_word_active(void) {
     const bool osm_shift = (get_oneshot_mods() & MOD_MASK_SHIFT) ||
                            (get_oneshot_locked_mods() & MOD_MASK_SHIFT);
 
-#if defined(CAPS_WORD_ENABLE)
-    const bool caps_word = is_caps_word_on();
-#else
-    const bool caps_word = false;
-#endif
-
-    if (osm_shift || caps_word) {
+    if (osm_shift || is_caps_word_on() || case_mode() == CASE_OSM_LSFT) {
         rgb_matrix_set_color_all(GOLD);
         return true;
     }
@@ -62,14 +56,12 @@ static bool set_on_caps_lock_active(void) {
 // Set CAPS mode key color depending on available states.
 static void set_caps_key(const uint8_t key_index) {
     if (key_index <= LED_CORNER_BOTTOM_RIGHT) {
-        if (is_case_mode_on()) {
+        if (is_caps_word_on()) {
+            rgb_matrix_set_color(key_index, GOLD);      // Caps Word active
+        } else if (is_case_mode_on()) {
             rgb_matrix_set_color(key_index, NEON_MINT); // SCREAMING_SNAKE_CASE
         } else if (is_caps_lock_on()) {
             rgb_matrix_set_color(key_index, RED);       // Caps Lock active
-#ifdef CAPS_WORD_ENABLE
-        } else if (is_caps_word_on()) {
-            rgb_matrix_set_color(key_index, GOLD);      // Caps Word active
-#endif
         } else { // Ensure that Caps Lock blind timer starts at 0
             caps_lock.timer = 0;
             caps_lock.blink_state = false;
@@ -137,14 +129,13 @@ bool rgb_matrix_indicators_user(void) {
     switch (layer) {
         // Change Base layer only if OSM Shift or Caps Lock is currently active
         case _BASE:
+            // OSM Shift
+            if (set_on_osm_shift_or_caps_word_active()) {
+                return false;
+            }
             // Case Mode
             if (is_case_mode_on()) {
                 rgb_matrix_set_color_all(NEON_MINT);
-                return false;
-            }
-
-            // OSM Shift
-            if (set_on_osm_shift_or_caps_word_active()) {
                 return false;
             }
             // Caps Lock
@@ -410,23 +401,24 @@ bool rgb_matrix_indicators_user(void) {
 
         /* Programming N-Grams (RHS): Hold Left Ring Finger on Home Row
          * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
-         * │         │         │         │         │         │         │  null   │ &&   || │+= - / * │ =    := │         │ MD LINK │
+         * │         │         │         │ if else │for while│         │  null   │ &&   || │+= - / * │ =    := │         │ MD LINK │
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
          * │         │  WS {}  │<<HOLD>> │ ++   -- │ //      │         │truefalse│""←''←``←│()[]<>{}←│-> <-  =>│ return  │         │
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-         * │         │         │         │         │         │         │break con│ switch  │ if else │for while│ ` ? : ` │         │
+         * │         │         │         │         │         │         │break con│ switch  │camelCase│snake_cs │ ` ? : ` │         │
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
          * │         │         │         │         │         │  ==  !=   <=  >=  │  ⇥   ⇤  │         │         │         │         │
          * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
+         * Double quotes tap dance: ``` on Tap+Hold
          */
         case _PROG_R:
             rgb_off();
             // Held Key: Left Ring Finger
             set_layer_key_color(LED_ROW1_LEFT_RING);
             // Coding Keys
-            rgb_matrix_set_color(LED_ROW1_LEFT_MIDDLE, ELECTRIC_BLUE); // `++` `--`
-            rgb_matrix_set_color(LED_ROW1_LEFT_INDEX,  ELECTRIC_BLUE); // `// ` `<!--  -->` `/*  */`
-            rgb_matrix_set_color(LED_ROW1_LEFT_PINKY,  ELECTRIC_BLUE); // ` {}`with vertical whitespace
+            rgb_matrix_set_color(LED_ROW1_LEFT_MIDDLE,  ELECTRIC_BLUE); // `++` `--`
+            rgb_matrix_set_color(LED_ROW1_LEFT_INDEX,   ELECTRIC_BLUE); // `// ` `<!--  -->` `/*  */`
+            rgb_matrix_set_color(LED_ROW1_LEFT_PINKY,   ELECTRIC_BLUE); // ` {}`with vertical whitespace
 
             rgb_matrix_set_color(LED_ROW0_RIGHT_CENTER, ELECTRIC_BLUE); // `null`, `NULL`, `nil` keywords
             rgb_matrix_set_color(LED_ROW0_RIGHT_INDEX,  ELECTRIC_BLUE); // Logical And/Or
@@ -444,7 +436,7 @@ bool rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color(LED_ROW2_RIGHT_PINKY,  ELECTRIC_BLUE); // ` ? : ` terniary operator
             rgb_matrix_set_color(LED_THUMB_CENTER,      ELECTRIC_BLUE); // Equality logical operators
 
-            rgb_matrix_set_color(LED_CORNER_TOP_RIGHT, ELECTRIC_BLUE); // Markdown link and image symbols
+            rgb_matrix_set_color(LED_CORNER_TOP_RIGHT,  ELECTRIC_BLUE); // Markdown link and image symbols
             break;
 
         /* Programming N-Grams (LHS): Hold Right Ring Finger on Home Row
@@ -455,10 +447,11 @@ bool rgb_matrix_indicators_user(void) {
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
          * │         │ ` ? : ` │for while│ if else │ switch  │break con│         │         │         │         │         │         │
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-         * │         │         │         │         │  ⇥   ⇤  │  ==  !=   <=  >=  │         │         │         │         │         │
+         * │         │         │camelCase│snake_cs │  ⇥   ⇤  │  ==  !=   <=  >=  │         │         │         │         │         │
          * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
+         * Double quotes tap dance: ``` on Tap+Hold
          */
-        case _PROG_L:
+       case _PROG_L:
             rgb_off();
             // Held Key: Right Ring Finger
             set_layer_key_color(LED_ROW1_RIGHT_RING);
@@ -467,23 +460,23 @@ bool rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color(LED_ROW1_RIGHT_INDEX,  ELECTRIC_BLUE); // `// ` `<!--  -->` `/*  */`
             rgb_matrix_set_color(LED_ROW1_RIGHT_PINKY,  ELECTRIC_BLUE); // ` {}`with vertical whitespace
 
-            rgb_matrix_set_color(LED_ROW0_LEFT_CENTER, ELECTRIC_BLUE); // `null`, `NULL`, `nil` keywords
-            rgb_matrix_set_color(LED_ROW0_LEFT_INDEX,  ELECTRIC_BLUE); // Logical And/Or
-            rgb_matrix_set_color(LED_ROW0_LEFT_MIDDLE, ELECTRIC_BLUE); // Compound assigment operator bigrams
-            rgb_matrix_set_color(LED_ROW0_LEFT_RING,   ELECTRIC_BLUE); // Assignment operators
-            rgb_matrix_set_color(LED_ROW1_LEFT_INDEX,  ELECTRIC_BLUE); // Quote symbol bigrams
-            rgb_matrix_set_color(LED_ROW1_LEFT_MIDDLE, ELECTRIC_BLUE); // Paren, bracket, braces bigrams
-            rgb_matrix_set_color(LED_ROW1_LEFT_RING,   ELECTRIC_BLUE); // Arrow bigrams
-            rgb_matrix_set_color(LED_ROW1_LEFT_PINKY,  ELECTRIC_BLUE); // `return` keywords
-            rgb_matrix_set_color(LED_ROW1_LEFT_CENTER, ELECTRIC_BLUE); // `true` & `false` keywords
-            rgb_matrix_set_color(LED_ROW2_LEFT_CENTER, ELECTRIC_BLUE); // `break` & `continue` keywords
-            rgb_matrix_set_color(LED_ROW2_LEFT_INDEX,  ELECTRIC_BLUE); // `switch`, `default`, `case` keywords
-            rgb_matrix_set_color(LED_ROW2_LEFT_MIDDLE, ELECTRIC_BLUE); // `if`, `else if`, `elif`, `else` keywords
-            rgb_matrix_set_color(LED_ROW2_LEFT_RING,   ELECTRIC_BLUE); // `for`, `while` keywords
-            rgb_matrix_set_color(LED_ROW2_LEFT_PINKY,  ELECTRIC_BLUE); // ` ? : ` terniary operator
-            rgb_matrix_set_color(LED_THUMB_CENTER,     ELECTRIC_BLUE); // Equality logical operators
+            rgb_matrix_set_color(LED_ROW0_LEFT_CENTER,  ELECTRIC_BLUE); // `null`, `NULL`, `nil` keywords
+            rgb_matrix_set_color(LED_ROW0_LEFT_INDEX,   ELECTRIC_BLUE); // Logical And/Or
+            rgb_matrix_set_color(LED_ROW0_LEFT_MIDDLE,  ELECTRIC_BLUE); // Compound assigment operator bigrams
+            rgb_matrix_set_color(LED_ROW0_LEFT_RING,    ELECTRIC_BLUE); // Assignment operators
+            rgb_matrix_set_color(LED_ROW1_LEFT_INDEX,   ELECTRIC_BLUE); // Quote symbol bigrams
+            rgb_matrix_set_color(LED_ROW1_LEFT_MIDDLE,  ELECTRIC_BLUE); // Paren, bracket, braces bigrams
+            rgb_matrix_set_color(LED_ROW1_LEFT_RING,    ELECTRIC_BLUE); // Arrow bigrams
+            rgb_matrix_set_color(LED_ROW1_LEFT_PINKY,   ELECTRIC_BLUE); // `return` keywords
+            rgb_matrix_set_color(LED_ROW1_LEFT_CENTER,  ELECTRIC_BLUE); // `true` & `false` keywords
+            rgb_matrix_set_color(LED_ROW2_LEFT_CENTER,  ELECTRIC_BLUE); // `break` & `continue` keywords
+            rgb_matrix_set_color(LED_ROW2_LEFT_INDEX,   ELECTRIC_BLUE); // `switch`, `default`, `case` keywords
+            rgb_matrix_set_color(LED_ROW2_LEFT_MIDDLE,  ELECTRIC_BLUE); // `if`, `else if`, `elif`, `else` keywords
+            rgb_matrix_set_color(LED_ROW2_LEFT_RING,    ELECTRIC_BLUE); // `for`, `while` keywords
+            rgb_matrix_set_color(LED_ROW2_LEFT_PINKY,   ELECTRIC_BLUE); // ` ? : ` terniary operator
+            rgb_matrix_set_color(LED_THUMB_CENTER,      ELECTRIC_BLUE); // Equality logical operators
 
-            rgb_matrix_set_color(LED_CORNER_TOP_LEFT, ELECTRIC_BLUE); // Markdown link and image symbols
+            rgb_matrix_set_color(LED_CORNER_TOP_LEFT,   ELECTRIC_BLUE); // Markdown link and image symbols
             break;
 
         /* Terminal Emulator: Hold Right Index Finger on Lower Row
@@ -526,7 +519,7 @@ bool rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color(LED_THUMB_CENTER,       BLUE); // Tap->`btop` 2xTap->`top` Hold->`htop`
             break;
 
-        /* Apple macOS Layer: Hold Inner Left Key on Home Row (ESC)
+        /* Operating System Layer: Hold Inner Left Key on Home Row (ESC)
          * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
          * │         │         │         │         │         │         │         │DESKTOP ←│  APPS ↓ │MISSION ↑│DESKTOP →│▣ Opts ⛶ │
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
@@ -537,7 +530,7 @@ bool rgb_matrix_indicators_user(void) {
          * │         │         │         │         │         │  🔍  😀       📁  │␡ Empty🗑️│         │         │         │         │
          * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
          */
-        case _MACOS:
+        case _OS:
             rgb_off();
             // Held Key: Center Left (ESC)
             set_layer_key_color(LED_ROW1_LEFT_CENTER);

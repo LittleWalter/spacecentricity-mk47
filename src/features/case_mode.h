@@ -64,20 +64,21 @@
 
 typedef enum {
     CASE_OFF = 0,
-    CASE_CAMEL,   // camelCase
-    CASE_CONST,   // SCREAMING_SNAKE_CASE
-    CASE_DOT,     // dot.case
-    CASE_KEBAB,   // kebab-case
-    CASE_PASCAL,  // PascalCase
-    CASE_PATH,    // path/to/case/
-    CASE_PUNC,    // Prose: end of sentence auto capitalization
-    CASE_SNAKE,   // snake_case
+    CASE_CAMEL,     // camelCase
+    CASE_CAPS_WORD, // Capitalize one word
+    CASE_CONST,     // SCREAMING_SNAKE_CASE
+    CASE_DOT,       // dot.case
+    CASE_KEBAB,     // kebab-case
+    CASE_PASCAL,    // PascalCase
+    CASE_PATH,      // path/to/case
+    CASE_OSM_LSFT,  // One-shot left shift 
+    CASE_SNAKE,     // snake_case
 } case_mode_t;
 
 typedef struct {
-    bool active;          // Is case mode active?
+    bool active;          // Is case mode currently active?
     case_mode_t mode;     // The kind of case mode
-    uint16_t timer;       // How long has case mode been running?
+    uint16_t timer;       // How long has case mode been running for timeout?
     bool capitalize_next; // camelCase / PascalCase humps
     bool first_char;      // Is it on the first char?
 } case_state_t;
@@ -102,7 +103,7 @@ typedef struct {
  *   • If the key *is* valid, the idle timer is refreshed so that the mode
  *     remains active. This timer is used by case_mode_scan() to implement
  *     automatic timeout behavior.
- *
+*
  * This function should be called after emitting any “meaningful” key so
  * that case mode can react to punctuation, symbols, or other terminating
  * characters.
@@ -130,6 +131,9 @@ bool is_case_mode_on(void);
 
 // Returns the current case mode of the global state.
 case_mode_t case_mode(void);
+
+// Returns true if Caps Word is active.
+bool is_caps_word_on(void);
 
 /*
  * Intercepts separator keys (dash, dot, underscore, slash) and returns
@@ -192,3 +196,6 @@ void path_case_toggle(void);
 
 // Toggles kebab-case mode on/off.
 void kebab_toggle(void);
+
+// Toggles Caps Word mode on/off.
+void caps_word_toggle(void);

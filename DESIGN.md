@@ -41,11 +41,13 @@ Most people will likely be better served by something more minimal. For instance
 
 The Planck’s biggest strength is its size. A 40% unibody board is extremely portable, easy to pack, and requires only a single cable: no split halves, no extra connectors, no desk sprawl. That simplicity makes it ideal as a travel board or a compact daily driver. As a bonus, inexpensive Nintendo Switch cases or even some stethoscope cases will neatly fit the board, often with room for cables and other accessories.
 
-The ortholinear grid also encourages a stable, centered typing posture. Because the board is so small, your hands stay close together and your thumbs can reliably reach the large keys without shifting your wrist position. Some users report increased ulnar deviation on small unibody layouts, but this varies widely. I personally don’t experience wrist twisting on the Planck, and the compact footprint actually helps me maintain a neutral posture. Split keyboards are the ergonomic rage these days, and rightfully so. However, I don’t gain much from using a split keyboard, though in general I would still recommend one for most typists if they have the option.
+The ortholinear grid also encourages a stable, centered typing posture. Because the board is so small, your hands stay close together and your thumbs can reliably reach the large keys without shifting your wrist position. Some users report increased ulnar deviation on small unibody layouts, but this varies widely. I personally don’t experience wrist twisting on the Planck, and the compact footprint actually helps me maintain a neutral posture. Split keyboards are the ergonomic rage these days, and rightfully so. However, I don’t gain much from using a split keyboard, though in general I would still recommend one for most typists if they have the option.[^ergonomics-of-planck]
 
 There’s also a meaningful difference between the two common Planck variants. The 47‑key MIT layout uses a 2u spacebar, while the 48‑key Grid layout replaces it with two 1u keys. Some people prefer the Grid version because it offers more flexibility for thumb keys and layer access, while others like the MIT layout’s simplicity and larger spacebar. Spacecentricity is designed around the MIT variant, but the underlying ideas translate well to the 48‑key version.
 
-The biggest trade‑off is that the Planck demands heavy layer usage and rewards people who enjoy modal workflows. For users who prefer dedicated keys or who struggle with ortholinear spacing, the learning curve can feel steep. But for those who embrace layers, symmetry, and thumb‑centric design, the Planck offers a uniquely efficient and expressive platform—especially when paired with programmable firmware like QMK or [ZMK](https://zmk.dev/) for wireless support, which adds even more power (and another notch of complexity).
+The biggest trade‑off is that the Planck demands heavy layer usage and rewards people who enjoy modal workflows. For users who prefer dedicated keys or who struggle with ortholinear spacing, the learning curve can feel steep. But for those who embrace layers, symmetry, and thumb‑centric design, the Planck offers a uniquely efficient and expressive platform—especially when paired with programmable firmware like QMK or [ZMK](https://zmk.dev/) for wireless support, which adds even more power (and another notch of complexity — have “fun” debugging the logic of your keymap directly in the firmware, if that’s your thing).
+
+[^ergonomics-of-planck]: It’s probably worth mentioning that I don’t really consider the Planck form factor “ergonomic” in the same sense as keyboards that feature split layouts, columnar stagger, and/or concave keywells, though modern keycap profiles such as [KLP Lamé](https://github.com/braindefender/KLP-Lame-Keycaps/) can provide some of the benefits of the latter. The Planck is a semi-ergonomic layout by virtue of its small size, programmability, and ortholinear grid, and it may work particularly well for a niche subset of users that don’t mind unibody keyboards. For some, the Planck might make a great secondary, travel device that beats built-in laptop keyboards.
 
 ## Bias
 
@@ -114,6 +116,8 @@ Here’s how I rank the typing difficulty of each tap dance:
 | Double Tap | 3 |
 | Tap-and-Hold | 4 (hardest) |
 | Hold | 2 |
+| Triple Tap | 5 (occasionally assigned) |
+| Double-Tap-and-Hold | 6 (unused) |
 
 This ranking reflects how much precision and timing each action requires in real typing. Tap‑and‑hold is the most demanding because it relies on both timing and intent, while simple taps remain the most effortless. As a consequence, the most important or frequently used behavior is assigned to the tap, while the least critical or most consequential behavior is placed on tap‑and‑hold, since it has the lowest risk of accidental activation.
 

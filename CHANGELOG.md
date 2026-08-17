@@ -6,11 +6,21 @@
 - [ ] Design a **Linux** layer as an analog to the **macOS** layer
 - [ ] Consider adding `tmux` macros on **Terminal** layer
 - [ ] Consider adding the Apple `fn` key via [QMK patch](https://gist.github.com/fauxpark/010dcf5d6377c3a71ac98ce37414c6c4) for macOS mode
+- [ ] Complete Linux and Microsoft Windows compatiblity for OS layer
+  - [ ] Generalize the layer name from **macOS** to **OS** or **System**, etc.
+- [ ] Reimplement repeat key functionality to work with tap dance (refer to offical [repeat key API](https://docs.qmk.fm/features/repeat_key) to mimic behavior)
+  - [ ] Create a temporary mode for repeat and alternative key (timeout after 5 seconds?)
 
 ### DONE
 - [x] Make a fun vanilla **Doom** layer as an alternative to **Mouse** layer (2026-04/13-MO)
 
 ---
+
+## 2026-08/16-SU
+- Swapped one-shot shift on **BASE** for [QMK’s repeat key](https://docs.qmk.fm/features/repeat_key)
+  - *TODO*: Reimplement QMK’s functionality to be compatible with tap dance.
+- Moved one-shot shift to space key on double tap.
+- Added left strafe key to **DOOM** layer for right-hand use.
 
 ## 2026-05/03-SU
 - Added **Temporary Lexical Case Modes**, a text‑transformation system for programming, shell, and writing workflows.

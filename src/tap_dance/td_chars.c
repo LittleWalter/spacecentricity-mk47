@@ -180,6 +180,10 @@ void at_finished(tap_dance_state_t *state, void *user_data) {
 
 // Release any keys pressed by TD_AT and reset the state
 void at_reset(tap_dance_state_t *state, void *user_data) {
+    switch (TD_STATE(at)) {
+        case TD_SINGLE_TAP: unregister_code16(KC_AT); break;
+        default: break;
+    }
     TD_RESET(at);
 }
 
@@ -751,7 +755,7 @@ void scln_reset(tap_dance_state_t *state, void *user_data) {
 }
 
 // ──────────────────────────────
-// TD_SPC                 ␣   ↵ ⌘
+// TD_SPC           ␣ OSM SFT ↵ ⌘
 // ──────────────────────────────
 
 TD_DEF(spc);
@@ -761,7 +765,7 @@ void spc_finished(tap_dance_state_t *state, void *user_data) {
     TD_STATE_SET(spc);
     uint16_t spc_transformed = case_mode_separator(KC_SPC);
     switch (TD_STATE(spc)) {
-        case TD_DOUBLE_TAP:
+        case TD_DOUBLE_TAP: // One Shot LSFT
             auto_cap_next_char_only();
             break;
         case TD_SINGLE_HOLD: // Left CMD/Super/Windows key

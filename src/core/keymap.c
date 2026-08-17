@@ -12,24 +12,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │  ⇥   ⇤  │    a    │ o PROG_R│ e  VIM_R│ i  ARR_R│ESC MACOS│    d    │ h PROG_L│ t  VIM_L│ n PROG_L│    s    │    ↵    │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │ OSM SFT │ /  HYPR │ q   MEH │    j    │    k    │    x    │    b    │ m   TERM│    w    │ v   MEH │ z  HYPR │ " ‘ < > │
+ * │REP  AREP│ /  HYPR │ q   MEH │    j    │    k    │    x    │    b    │ m   TERM│    w    │ v   MEH │ z  HYPR │ " ‘ < > │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │MOUSE  FN│🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │ u  LOWER│   ␣       ↵   ⌘   │ c  UPPER│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
+ * │MOUSE  FN│🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │ u  LOWER│ ␣  OSM SFT  ↵   ⌘ │ c  UPPER│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
-
  */
 [_BASE] = LAYOUT_planck_mit(
-    ASTR,     COMM,      SCLN,      DOT,     P_LALT,  KC_Y, KC_F, G_RALT,  L_RCTL,  R_RSFT,   QUOT,   BSPC,
-    TAB,      KC_A,      O_PROG_R,  E_VIM_R, I_ARR_R, ESC,  KC_D, H_ARR_L, T_VIM_L, N_PROG_L, KC_S,   ENT,
-    OSM_SFT,  SLSH_HYPR, Q_MEH,     KC_J,    KC_K,    KC_X, KC_B, M_TERM,  KC_W,    V_MEH,    Z_HYPR, DQUO,
-    MOUSE_FN, MUTE,      VOLD,      VOLU,    U_LOWER,    SPC,     C_UPPER, HOME,    PGDN,     PGUP,   END
+    ASTR,     COMM,      SCLN,     DOT,     P_LALT,  KC_Y, KC_F, G_RALT,  L_RCTL,  R_RSFT,   QUOT,   BSPC,
+    TAB,      KC_A,      O_PROG_R, E_VIM_R, I_ARR_R, ESC,  KC_D, H_ARR_L, T_VIM_L, N_PROG_L, KC_S,   ENT,
+    QK_REP,   SLSH_HYPR, Q_MEH,    KC_J,    KC_K,    KC_X, KC_B, M_TERM,  KC_W,    V_MEH,    Z_HYPR, DQUO,
+    MOUSE_FN, MUTE,      VOLD,     VOLU,    U_LOWER,    SPC,     C_UPPER, HOME,    PGDN,     PGUP,   END
 ),
 
 /* Classic Doom Layer
  * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
  * │   ESC   │         │         │    ↑    │         │         │         │         │Pointer ↑│         │         │ ⌫  ⌫L ⌫w│
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │  ⇥   ⇤  │ Strife ←│    ←    │    ↓    │    →    │ Strife →│         │Pointer ←│Pointer ↓│Pointer →│ Strife →│    ↵    │
+ * │  ⇥   ⇤  │ Strife ←│    ←    │    ↓    │    →    │ Strife →│ Strife ←│Pointer ←│Pointer ↓│Pointer →│ Strife →│    ↵    │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │         │         │         │ Strife ↓│         │         │         │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │         │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
@@ -38,10 +37,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 #ifdef MOUSEKEY_ENABLE
 [_DOOM] = LAYOUT_planck_mit(
-    KC_ESC, ____,        ____,    KC_UP,       ____,    ____,        ____, ____,       MS_UP,   ____,    ____,        BSPC,
-    TAB,    STRAFE_LEFT, KC_LEFT, KC_DOWN,     KC_RGHT, STRAFE_RGHT, ____, MS_LEFT,    MS_DOWN, MS_RGHT, STRAFE_RGHT, ENT,
-    ____,   ____,        ____,    STRAFE_DOWN, ____,    ____,        ____, MS_WHLR,    MS_WHLU, MS_WHLD, MS_WHLL,     ____,
-    BASE,   MUTE,        VOLD,    VOLU,        MS_BTN1,     SPC_LSFT,      RCLK_UPPER, HOME,    PGDN,    PGUP,        END
+    KC_ESC, ____,        ____,    KC_UP,       ____,    ____,        ____,        ____,       MS_UP,   ____,    ____,        BSPC,
+    TAB,    STRAFE_LEFT, KC_LEFT, KC_DOWN,     KC_RGHT, STRAFE_RGHT, STRAFE_LEFT, MS_LEFT,    MS_DOWN, MS_RGHT, STRAFE_RGHT, ENT,
+    ____,   ____,        ____,    STRAFE_DOWN, ____,    ____,        ____,        MS_WHLR,    MS_WHLU, MS_WHLD, MS_WHLL,     ____,
+    BASE,   MUTE,        VOLD,    VOLU,        MS_BTN1,     SPC_LSFT,             RCLK_UPPER, HOME,    PGDN,    PGUP,        END
 ),
 #endif
 
@@ -274,11 +273,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ▣ Opts ⛶ = Partial Screenshot, Hit Space to Capture Window (Tap); Screenshot Toolbar, all options (Tap+Hold); Full Screenshot/All Screens (Hold)
  * ForceQuit= Opens Force Quit Menu
  */
-[_MACOS] = LAYOUT_planck_mit(
-    ____, ____, ____, ____, ____,       ____, ____,            C(KC_LEFT),    C(KC_DOWN),    C(KC_UP),    C(KC_RGHT),    SCRNSHOT_MACOS,
-    ____, ____, ____, ____, A(KC_BSPC), ____, FS_MACOS,        A(KC_LEFT)   , A(KC_DOWN),    A(KC_UP),    A(KC_RGHT),    ____,
+[_OS] = LAYOUT_planck_mit(
+    ____, ____, ____, ____, ____,       ____, ____,            VDT_LEFT,      C(KC_DOWN),    C(KC_UP),    VDT_RIGHT,     SCRNSHOT_OS,
+    ____, ____, ____, ____, A(KC_BSPC), ____, FS_OS,           A(KC_LEFT)   , A(KC_DOWN),    A(KC_UP),    A(KC_RGHT),    ____,
     ____, ____, ____, ____, ____,       ____, LGUI(A(KC_ESC)), A(S(KC_LEFT)), A(S(KC_DOWN)), A(S(KC_UP)), A(S(KC_RGHT)), ____,
-    ____, ____, ____, ____, ____,          SPOTLIGHT_MACOS,    DEL_MACOS,     ____,          ____,        ____,          ____
+    ____, ____, ____, ____, ____,          LAUNCHER_OS,        DEL_OS,        ____,          ____,        ____,          ____
 ),
 
 /* Mouse Layer: Tap Bottom Left Key w/ Palm to Activate/Exit
@@ -322,7 +321,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ____,    ____,    ____,    ____,   KC_U,    KC_SPC,    KC_C, KC_CIRC, KC_RCBR, KC_LCBR, KC_DLR
 ),
 
-/* Leader Layer for alpha chars
+/* Leader Layer for digit and symbol chars
  * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
  * │    `    │    ,    │    :    │    .    │    9    │    &    │    |    │    8    │    +    │    #    │    ^    │    ⌦    │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤

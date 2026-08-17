@@ -70,10 +70,12 @@ static bool is_valid_char(const uint16_t keycode) {
     switch (keycode) {
         // Standard and numpad separators
         case KC_UNDS:
-            return case_state.mode == CASE_SNAKE || case_state.mode == CASE_CONST ? true : false;
+            return case_state.mode == CASE_SNAKE ||
+                   case_state.mode == CASE_CONST ||
+                   case_state.mode == CASE_CAPS_WORD ? true : false;
         case KC_MINUS:
         case KC_KP_MINUS:
-            return case_state.mode == CASE_KEBAB ? true : false;
+            return case_state.mode == CASE_KEBAB || case_state.mode == CASE_CAPS_WORD ? true : false;
         case KC_SLSH:
         case KC_KP_SLASH:
         case SLSH_HYPR: // NOTE: Mod-tap key defined in keymap.h
@@ -137,6 +139,11 @@ bool is_case_mode_on(void) {
 // Returns the current case mode of the global state.
 case_mode_t case_mode(void) {
     return case_state.mode;
+}
+
+// Returns true if Caps Word is active.
+bool is_caps_word_on(void) {
+    return case_state.active && case_state.mode == CASE_CAPS_WORD;
 }
 
 /*
@@ -236,7 +243,7 @@ void case_mode_alpha_transform(void) {
         case_state.capitalize_next = false;
 
         // case_punc is alive for exactly one char
-        if (case_state.mode == CASE_PUNC) {
+        if (case_state.mode == CASE_OSM_LSFT) {
             case_mode_off();
         }
     }
@@ -253,10 +260,10 @@ void case_mode_on(case_mode_t mode) {
     case_state.mode = mode;
     case_state.timer = timer_read();
     case_state.capitalize_next =
-        mode == CASE_PASCAL || mode == CASE_PUNC ? true : false;
+        mode == CASE_PASCAL || mode == CASE_OSM_LSFT ? true : false;
     case_state.first_char = true;
     // Enable Caps Lock only for SCREAMING_SNAKE_CASE
-    if (mode == CASE_CONST) {
+    if (mode == CASE_CONST || mode == CASE_CAPS_WORD) {
         caps_lock_on();
     } else {
         caps_lock_off(); // Turn Caps Lock off, if it has been previously enabled
@@ -266,8 +273,8 @@ void case_mode_on(case_mode_t mode) {
 // Deactivates case mode and resets mode to CASE_OFF.
 void case_mode_off(void) {
     if (is_case_mode_on()) {
-        // Disable caps lock for screaming_snake_case
-        if (case_state.mode == CASE_CONST) {
+        // Disable caps lock for SCREAMING_SNAKE_CASE or Caps Word
+        if (case_state.mode == CASE_CONST  || case_state.mode == CASE_CAPS_WORD) {
             caps_lock_off();
         }
         case_state.active = false;
@@ -282,7 +289,7 @@ void auto_cap_next_char_only(void) {
     if (case_state.active) {
         case_mode_off();
     }
-    case_mode_on(CASE_PUNC);
+    case_mode_on(CASE_OSM_LSFT);
 }
 
 // Called by matrix_scan_user to enforce the Case Mode timeout.
@@ -333,4 +340,10 @@ void path_case_toggle(void) {
 void kebab_toggle(void) {
     case_state.active && case_state.mode == CASE_KEBAB ? case_mode_off()
                                                        : case_mode_on(CASE_KEBAB);
+}
+
+// Toggles Caps Word mode on/off.
+void caps_word_toggle(void) {
+    case_state.active && case_state.mode == CASE_CAPS_WORD ? case_mode_off()
+                                                           : case_mode_on(CASE_CAPS_WORD);
 }

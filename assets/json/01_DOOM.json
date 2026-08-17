@@ -108,14 +108,9 @@
       ]
     },
     "STRAFE\n\n\n\nALT\n\n→",
-    {
-      "c": "#b2beb5",
-      "a": 7
-    },
-    "",
+    "STRAFE\n\n\n\nALT\n\n←",
     {
       "c": "#A7C7E7",
-      "a": 5,
       "n": true
     },
     "POINTER\n\n\n\n\n\n←",

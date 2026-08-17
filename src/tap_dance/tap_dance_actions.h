@@ -79,6 +79,7 @@ enum {                 // │  Tap   │ 2xTap  │Tap+Hold│  Hold  │ Notes
     TD_DEL,            // │  Del   │        │
     TD_ENT,            // │   ↵    │        │        │ SFT+Ent│
     TD_ESC,            // │  Esc   │        │CloseWin│  Esc   │ Close Window: CMD+w (macOS), Alt+F4 (Linux/Microsoft Windows)
+    TD_REP,            // │ Rep Key│        │        │ Alt Rep│ Repeat previous key; repeat alternative previous key
     TD_TAB,            // │  Tab   │        │        │ SFT+Tab│ SFT+Tab = Reverse Tab
                        // │        │        │        │        │
     TD_UNDO,           // │  CMD+Z │        │CMD+S+Z │  CMD+Z │ Defaults to macOS shortcuts, toggle OS for Linux/Windows on _FN layer
@@ -146,10 +147,10 @@ enum {                 // │  Tap   │ 2xTap  │Tap+Hold│  Hold  │ Notes
     TD_CD,             // │ `cd `  │        │        │ `cd ..`│
     TD_SUDO,           // │  sudo  │        │        │ sudo !!│ `sudo !!` to repeat last command w/ admin privileges
                        // │        │        │        │        │
-    TD_SPOTLIGHT_MACOS,// │Spotlght│EmojiMnu│        │ Finder │ Open Spotlight Search on Tap; Open Emoji Menu on 2xTap; Open Finder on Hold
-    TD_FS_MACOS,       // │FullScrn│        │        │Lock Mac│
-    TD_SCRNSHOT_MACOS, // │   ▣    │        │Options │   ⛶    │ Partial screenshot on Tap; Screenshot Toolbar, all options on Tap+Hold; Full screenshot on Hold
-    TD_DEL_MACOS,      // │Del File│  🗑️ 📂 │        │Empty 🗑️│ Delete file on Tap; Open trash folder in Finder on Tap+Hold, Empty trash can on Hold
+    TD_LAUNCHER_OS,    // │Launcher│EmojiMnu│        │File Mgr│ Open Spotlight Search on Tap; Open Emoji Menu on 2xTap; Open Finder on Hold
+    TD_FS_OS,          // │FullScrn│WinScrnS│        │Lock Mac│
+    TD_SCRNSHOT_OS,    // │   ▣    │        │Options │   ⛶    │ Partial screenshot on Tap; Screenshot Toolbar, all options on Tap+Hold; Full screenshot on Hold
+    TD_DEL_OS,         // │Del File│  🗑️ 📂 │        │Empty 🗑️│ Delete file on Tap; Open trash folder in Finder on Tap+Hold, Empty trash can on Hold
 
     TD_COUNT // Sentinel value for tap_dance_actions array
 };

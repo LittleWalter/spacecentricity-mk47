@@ -84,52 +84,6 @@ enum custom_keycodes {
 bool process_record_user(uint16_t keycode, keyrecord_t *record);
 
 // ─────────────────────────────────────────────────────────────
-// App Shortcuts
-// ─────────────────────────────────────────────────────────────
-
-// App shortcut: select all; defaults to CMD+A for macOS, otherwise
-// uses LCTL+A for Microsoft Windows and Linux
-void select_all(void);
-
-// App shortcut: copy selected; defaults to CMD+C for macOS, otherwise
-// uses LCTL+C for Microsoft Windows and Linux
-void copy(void);
-
-// App shortcut: cut selected; defaults to CMD+X for macOS, otherwise
-// uses LCTL+X for Microsoft Windows and Linux
-void cut(void);
-
-// App shortcut: paste from clipboard; defaults to CMD+V for macOS, otherwise
-// uses LCTL+V for Microsoft Windows and Linux
-void paste(void);
-
-// Operating system shortcut: change to left virtual desktop/workspace; defaults
-// to LCTL+LEFT for macOS, otherwise uses LCTL+ALT+LEFT for most Linux desktop
-// environments w/e to Gnome, or WIN+LCTL+LEFT for Microsoft Windows.
-void vdt_left(void);
-
-// Operating system shortcut: change to left virtual desktop/workspace; defaults
-// to LCTL+RIGHT for macOS, otherwise uses LCTL+ALT+RIGHT for most Linux desktop
-// environments w/e to Gnome, or WIN+LCTL+RIGHT for Microsoft Windows.
-void vdt_right(void);
-
-// Browser shortcut: zoom in; defaults to CMD+SFT+= for macOS, otherwise
-// uses LCTL+SFT+= for Microsoft Windows and Linux
-void zoom_in(void);
-
-// Browser shortcut: zoom out; defaults to CMD+- for macOS, otherwise
-// uses LCTL+- for Microsoft Windows and Linux
-void zoom_out(void);
-
-// Browser shortcut: zoom reset (100%); defaults to CMD+0 for macOS, otherwise
-// uses LCTL+0 for Microsoft Windows and Linux
-void zoom_reset(void);
-
-// Triggers operating system application switcher key: CMD for macOS or ALT for Linux and Windows.
-// The passed Boolean means that the modifier key is currently held by the user.
-void app_switch(const bool is_active);
-
-// ─────────────────────────────────────────────────────────────
 // Miscellaneous
 // ─────────────────────────────────────────────────────────────
 

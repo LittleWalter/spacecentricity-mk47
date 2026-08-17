@@ -1,3 +1,16 @@
+/*
+ * td_control.h — Tap Dance declarations for control, action, and navigation keys.
+ *
+ * This file implements all tap-dance behaviors related to:
+ *   - Editing keys: Backspace, Delete, Enter, Tab
+ *   - State keys: Caps Lock / Caps Word
+ *   - App shortcuts: Undo / Redo
+ *   - Navigation keys: Home, End, Page Up, Page Down
+ *
+ * The goal of this module is to centralize all non-character tap-dance
+ * behaviors so they remain consistent and easy to maintain.
+ */
+
 #pragma once
 
 #include QMK_KEYBOARD_H
@@ -24,6 +37,9 @@ void esc_reset(tap_dance_state_t *state, void *user_data);
 // TD_TAB
 void tab_finished(tap_dance_state_t *state, void *user_data);
 void tab_reset(tap_dance_state_t *state, void *user_data);
+// TD_REP
+void rep_finished(tap_dance_state_t *state, void *user_data);
+void rep_reset(tap_dance_state_t *state, void *user_data);
 
 // ─────────────────────────────
 // App Shortcut Functions

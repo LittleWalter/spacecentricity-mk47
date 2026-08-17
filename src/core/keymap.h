@@ -21,6 +21,7 @@
 #define P_LALT    MT(MOD_LALT, KC_P)
 #define Q_MEH     MT(MOD_MEH,  KC_Q)
 #define R_RSFT    MT(MOD_RSFT, KC_R)
+// #define REP       MT(QK_REP,   QK_AREP)
 // #define SCLN_LSFT MT(MOD_LSFT, KC_SCLN)
 #define SLSH_HYPR MT(MOD_HYPR, KC_SLSH)
 #define SPC_LSFT  MT(MOD_LSFT, KC_SPC)
@@ -116,6 +117,7 @@
 #define DEL  TD(TD_DEL)
 #define ENT  TD(TD_ENT)
 #define ESC  TD(TD_ESC)
+#define REP  TD(TD_REP)
 #define TAB  TD(TD_TAB)
 
 #define UNDO TD(TD_UNDO)
@@ -188,11 +190,11 @@
 #define CD      TD(TD_CD)
 #define SUDO    TD(TD_SUDO)
 
-// Apple macOS
-#define SPOTLIGHT_MACOS TD(TD_SPOTLIGHT_MACOS)
-#define FS_MACOS        TD(TD_FS_MACOS)
-#define SCRNSHOT_MACOS  TD(TD_SCRNSHOT_MACOS)
-#define DEL_MACOS       TD(TD_DEL_MACOS)
+// Operating System
+#define LAUNCHER_OS TD(TD_LAUNCHER_OS)
+#define FS_OS       TD(TD_FS_OS)
+#define SCRNSHOT_OS TD(TD_SCRNSHOT_OS)
+#define DEL_OS      TD(TD_DEL_OS)
 
 /*** Other Keycodes *******************************************/
 
@@ -225,7 +227,7 @@ enum layers {
     _PROG_R,    // Programming-related bigrams (hold left ring finger on home row)
     _PROG_L,    // Programming-related bigrams (hold right ring finger on home row)
     _TERM,      // Terminal emulator macros (hold M key down, right index finger)
-    _MACOS,     // macOS shortcuts
+    _OS,        // Operating system shortcuts
     _MOUSE,     // Mouse layer (tap left corner key w/ palm)
     _LEAD_ALPHA,// Leader alpha layer
     _LEAD_DIGIT,// Leader number layer
