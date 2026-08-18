@@ -9,6 +9,10 @@ This keymap has an estimated user count of one.
 [![QMK](https://img.shields.io/badge/QMK-compatible-00A3E0?logo=qmk&logoColor=white)](https://qmk.fm/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Last Commit](https://img.shields.io/github/last-commit/LittleWalter/spacecentricity-mk47)](https://github.com/LittleWalter/spacecentricity-mk47/commits/main)
+[![Changelog](https://img.shields.io/badge/Changelog-View-blue)](CHANGELOG.md)
+[![OctoCounts](https://api.octocounts.com/badge/LittleWalter/spacecentricity-mk47/branch/main?lang=C)](https://octocounts.com/github/LittleWalter/spacecentricity-mk47/tree/main)
+[![OctoCounts](https://api.octocounts.com/badge/LittleWalter/spacecentricity-mk47/branch/main?lang=C+Header)](https://octocounts.com/github/LittleWalter/spacecentricity-mk47/tree/main)
+[![OctoCounts](https://api.octocounts.com/badge/LittleWalter/spacecentricity-mk47/branch/main?lang=Shell)](https://octocounts.com/github/LittleWalter/spacecentricity-mk47/tree/main)
 
 > [!NOTE]
 > See [design notes](DESIGN.md) for deeper explanations of key placement and layer philosophy.
@@ -38,7 +42,7 @@ This keymap has an estimated user count of one.
 
 ## Keyboard
 
-The [Inland MK-47](https://www.microcenter.com/product/661264/inland-47-keys-hot-swappable-rgb-wired-mechanical-keyboard) is an affordable **47‑key ortholinear mechanical keyboard** sold by Micro Center and a clone of the [olkb Planck](https://olkb.com/). Despite its low price, it includes features usually found on enthusiast‑grade boards:
+The [Inland MK-47](https://www.microcenter.com/product/661264/inland-47-keys-hot-swappable-rgb-wired-mechanical-keyboard) is an affordable **47‑key ortholinear mechanical keyboard** sold by Micro Center and a clone of the [olkb](https://olkb.com/) Planck. Despite its low price, it includes features usually found on enthusiast‑grade boards:
 
 * [QMK-compatible firmware](https://qmk.fm/) (fully programmable)
 * [VIA](https://www.caniusevia.com/) support for on‑the‑fly keymap editing
