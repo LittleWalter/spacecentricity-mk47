@@ -2,7 +2,7 @@
 
 Spacecentricity is a maximalist modal keymap built around a modified Dvorak base, heavy thumb usage, and mirrored layers for navigation, Vim‑style editing, and programming. It emphasizes home-position access to high-frequency characters, movement keys, numbers, symbols, and common programming n-grams through macros and tap dances. Key redundancy provides alternative ways to perform the same actions, helping reduce strain and fatigue.
 
-Because this keymap treats keyboard firmware like a [finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine), each layer includes its own RGB matrix pattern, making it easy to see which layer is active at a glance. The RGB matrix also indicates active modes such as Caps Lock (blinking red), One-Shot Shift (gold), [Case Modes](#temporary-lexical-modes-case-modes) (neon mint), and [Leader mode](/LEADER.md) (navy blue).
+Because this keymap treats keyboard firmware like a [finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine), each layer includes its own RGB matrix pattern, making it easy to see which layer is active at a glance. The RGB matrix also indicates active modes such as Caps Lock (blinking red), One-Shot Shift (gold), [Case Modes](#case-modes-temporary-lexical-modes) (neon mint), and [Leader mode](/LEADER.md) (navy blue).
 
 This keymap has an estimated user count of one.
 
@@ -27,14 +27,14 @@ This keymap has an estimated user count of one.
   - [Apple macOS](#apple-macos)
   - [Mouse](#mouse)
   - [Doom Classic](#doom-classic)
-- [Temporary Lexical Modes (Case Modes)](#temporary-lexical-modes-case-modes)
+- [Case Modes: Temporary Lexical Modes](#case-modes-temporary-lexical-modes)
 - [Using This Keymap with QMK](#using-this-keymap-with-qmk)
   - [Helper Scripts (Optional)](#-helper-scripts-optional)
 - [Layout Stability](#-layout-stability)
 
 ## Keyboard
 
-The [Inland MK-47](https://www.microcenter.com/product/661264/inland-47-keys-hot-swappable-rgb-wired-mechanical-keyboard) is an affordable **47‑key ortholinear mechanical keyboard** sold by Micro Center and a clone of the [olkb Planck](https://olkb.com/). Despite its low price, it includes features usually found on enthusiast‑grade boards:
+The [Inland MK-47](https://www.microcenter.com/product/661264/inland-47-keys-hot-swappable-rgb-wired-mechanical-keyboard) is an affordable **47‑key ortholinear mechanical keyboard** sold by Micro Center and a clone of the [olkb](https://olkb.com/) Planck. Despite its low price, it includes features usually found on enthusiast‑grade boards:
 
 * [QMK-compatible firmware](https://qmk.fm/) (fully programmable)
 * [VIA](https://www.caniusevia.com/) support for on‑the‑fly keymap editing
@@ -342,7 +342,7 @@ Paired characters (quotes, brackets, braces) automatically place the cursor insi
 
 C‑style programming keywords and operators are included for completeness. Many n‑grams insert with smart spacing before and/or after to match typical coding style and reduce keystrokes.
 
-The `camelCase` / `PascalCase` and `snake_case` / `SCREAMING_SNAKE_CASE` keys toggle temporary [case modes](#temporary-lexical-modes-case-modes).
+The `camelCase` / `PascalCase` and `snake_case` / `SCREAMING_SNAKE_CASE` keys toggle temporary [case modes](#case-modes-temporary-lexical-modes).
 
 ### Terminal
 
@@ -406,7 +406,7 @@ An optional compact gaming layer modeled after vanilla _Doom_ (1993), built arou
 >
 > Goto: `Configure Keyboard` → `More Controls`
 
-## Temporary Lexical Modes (Case Modes)
+## Case Modes: Temporary Lexical Modes
 
 Often referred to as “case modes,” these lightweight, real‑time text‑transformation modes modify characters _as you type_, without rewriting existing text or relying on editor plugins. They’re designed for programming, documentation/prose, and command‑line workflows, and each mode automatically disables after a short period of inactivity (5 seconds).
 
