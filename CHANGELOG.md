@@ -1,6 +1,10 @@
 # CHANGELOG
 
-## TODOs
+[![OctoCounts](https://api.octocounts.com/badge/LittleWalter/spacecentricity-mk47/branch/main)](https://octocounts.com/github/LittleWalter/spacecentricity-mk47/tree/main)
+
+[![Last Commit](https://img.shields.io/github/last-commit/LittleWalter/spacecentricity-mk47)](https://github.com/LittleWalter/spacecentricity-mk47/commits/main)
+
+## `TODO:`
 
 - [ ] Test on Linux and Microsoft Windows
 - [ ] Design a **Linux** layer as an analog to the **macOS** layer
@@ -11,14 +15,18 @@
 - [ ] Reimplement repeat key functionality to work with tap dance (refer to offical [repeat key API](https://docs.qmk.fm/features/repeat_key) to mimic behavior)
   - [ ] Create a temporary mode for repeat and alternative key (timeout after 5 seconds?)
 
-### DONE
+### `DONE:`
 - [x] Make a fun vanilla **Doom** layer as an alternative to **Mouse** layer (2026-04/13-MO)
 
 ---
 
+## 2026-08/17-MO
+- Cleaned up documentation.
+- Fixed **DOOM** layer bug w/r/t **UPPER** layer.
+
 ## 2026-08/16-SU
 - Swapped one-shot shift on **BASE** for [QMK’s repeat key](https://docs.qmk.fm/features/repeat_key)
-  - *TODO*: Reimplement QMK’s functionality to be compatible with tap dance.
+  - `TODO:` Reimplement QMK’s functionality to be compatible with tap dance.
 - Moved one-shot shift to space key on double tap.
 - Added left strafe key to **DOOM** layer for right-hand use.
 

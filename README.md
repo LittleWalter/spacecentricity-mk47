@@ -6,6 +6,10 @@ Because this keymap treats keyboard firmware like a [finite-state machine](https
 
 This keymap has an estimated user count of one.
 
+[![QMK](https://img.shields.io/badge/QMK-compatible-00A3E0?logo=qmk&logoColor=white)](https://qmk.fm/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Last Commit](https://img.shields.io/github/last-commit/LittleWalter/spacecentricity-mk47)](https://github.com/LittleWalter/spacecentricity-mk47/commits/main)
+
 > [!NOTE]
 > See [design notes](DESIGN.md) for deeper explanations of key placement and layer philosophy.
 
@@ -34,7 +38,7 @@ This keymap has an estimated user count of one.
 
 ## Keyboard
 
-The [Inland MK-47](https://www.microcenter.com/product/661264/inland-47-keys-hot-swappable-rgb-wired-mechanical-keyboard) is an affordable **47‑key ortholinear mechanical keyboard** sold by Micro Center and a clone of the [olkb](https://olkb.com/) Planck. Despite its low price, it includes features usually found on enthusiast‑grade boards:
+The [Inland MK-47](https://www.microcenter.com/product/661264/inland-47-keys-hot-swappable-rgb-wired-mechanical-keyboard) is an affordable **47‑key ortholinear mechanical keyboard** sold by Micro Center and a clone of the [olkb Planck](https://olkb.com/). Despite its low price, it includes features usually found on enthusiast‑grade boards:
 
 * [QMK-compatible firmware](https://qmk.fm/) (fully programmable)
 * [VIA](https://www.caniusevia.com/) support for on‑the‑fly keymap editing
@@ -402,9 +406,9 @@ An optional compact gaming layer modeled after vanilla _Doom_ (1993), built arou
 > [!IMPORTANT]
 > Tested w/ [Chocolate Doom](https://www.chocolate-doom.org/wiki/index.php/Chocolate_Doom) v3.1.1 but keyboard settings modified for `previous weapon` and `next weapon` using `0` and `1`, respectively.
 >
-> Run: `chocolate-doom-setup`
+> `RUN:` `chocolate-doom-setup`
 >
-> Goto: `Configure Keyboard` → `More Controls`
+> `GOTO:` `Configure Keyboard` → `More Controls`
 
 ## Case Modes: Temporary Lexical Modes
 
@@ -472,7 +476,7 @@ qmk flash -kb inland/mk47 -km spacecentricity
 
 ### 🔧 Helper Scripts (Optional)
 
-This repo includes small POSIX‑compliant scripts in [`scripts/`](./scripts) that automate common tasks, including:
+This repo includes small [POSIX](https://en.wikipedia.org/wiki/POSIX)‑compliant scripts in [`scripts/`](./scripts) that automate common tasks, including:
 
 * Creating and removing the symlink in your QMK checkout
 * Building and flashing the keymap
