@@ -2,7 +2,7 @@
 
 Spacecentricity is a maximalist modal keymap built around a modified Dvorak base, heavy thumb usage, and mirrored layers for navigation, Vim‑style editing, and programming. It emphasizes home-position access to high-frequency characters, movement keys, numbers, symbols, and common programming n-grams through macros and tap dances. Key redundancy provides alternative ways to perform the same actions, helping reduce strain and fatigue.
 
-Because this keymap treats keyboard firmware like a [finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine), each layer includes its own RGB matrix pattern, making it easy to see which layer is active at a glance. The RGB matrix also indicates active modes such as Caps Lock (blinking red), One-Shot Shift (gold), [case modes](#temporary-lexical-modes-case-modes) (neon mint), and [leader mode](/LEADER.md) (navy blue).
+Because this keymap treats keyboard firmware like a [finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine), each layer includes its own RGB matrix pattern, making it easy to see which layer is active at a glance. The RGB matrix also indicates active modes such as Caps Lock (blinking red), One-Shot Shift (gold), [Case Modes](#temporary-lexical-modes-case-modes) (neon mint), and [Leader mode](/LEADER.md) (navy blue).
 
 This keymap has an estimated user count of one.
 
@@ -34,13 +34,13 @@ This keymap has an estimated user count of one.
 
 ## Keyboard
 
-The [Inland MK-47](https://www.microcenter.com/product/661264/inland-47-keys-hot-swappable-rgb-wired-mechanical-keyboard) is an affordable **47‑key ortholinear mechanical keyboard** sold by Micro Center. Despite its low price, it includes features usually found on enthusiast‑grade boards:
+The [Inland MK-47](https://www.microcenter.com/product/661264/inland-47-keys-hot-swappable-rgb-wired-mechanical-keyboard) is an affordable **47‑key ortholinear mechanical keyboard** sold by Micro Center and a clone of the [olkb Planck](https://olkb.com/). Despite its low price, it includes features usually found on enthusiast‑grade boards:
 
 * [QMK-compatible firmware](https://qmk.fm/) (fully programmable)
 * [VIA](https://www.caniusevia.com/) support for on‑the‑fly keymap editing
 * Per‑key RGB lighting
-* Hot‑swappable switch sockets
-* USB‑C wired connection
+* Hot‑swappable MX switch sockets (3/5-pin)
+* USB‑C wired connection (remember when keyboards typically had fixed cords?)
 
 The MK‑47 has become a popular entry‑level option for people interested in experimenting with custom firmware, unusual layouts, or switch testing without spending much. Its compact footprint also makes it a convenient one‑piece travel or backup board — it even fits neatly inside a Nintendo Switch carrying case, which makes it easy to throw in a bag. Some users also repurpose the Planck form factor as a macropad.
 
@@ -85,7 +85,7 @@ This keymap uses QMK’s [quad‑tap dance pattern](https://docs.qmk.fm/features
 
 Most layer keys are momentary holds.
 
-The **Lower** and **Upper** keys behave the same, but you can **lock** them with tap‑and‑hold and **unlock** with a tap back to **Base**.
+The [**Lower**](#lower-numpad) and [**Upper**](#upper-primary-number-layer) keys behave the same, but you can **lock** them with tap‑and‑hold and **unlock** with a tap back to **Base**.
 
 #### `Backspace` Key
 
@@ -103,7 +103,7 @@ The top-right corner key is a semantic `Backspace`, available on multiple layers
 |--------|----------|-------|
 | Tap | `Esc` ||
 | Tap-and-Hold | Close Active Window | macOS: `CMD‑W`; Linux/Microsoft Windows: `Alt-F4` |
-| Hold | Momentary Layer **macOS** | Activates [**macOS** layer](#apple-macos) while held; returns to **Base** on release |
+| Hold | Momentary Layer **macOS** | Activates [**macOS**](#apple-macos) layer while held; returns to **Base** on release |
 
 #### Access to Mouse & Function Keys
 
@@ -130,7 +130,7 @@ The navigation cluster emits the arrow symbols on triple tap: `←`, `↓`, `↑
 
 ![Lower: Numpad with hexadecimal](assets/02_LOWER.png)
 
-Tap the **HELD** key when this layer is **locked** to return to **Base**.
+Tap the **HELD** key when this layer is **locked** to return to [**Base**](#base-modified-dvorak).
 
 Hold `1`–`6` for hexadecimal `A`–`F`.
 
@@ -140,11 +140,11 @@ Momentary hold `0` to access **Adjustment** layer to change keyboard settings.
 
 ![Upper: Primary Numpad Layer](assets/03_UPPER.png)
 
-Tap the **HELD** key when this layer is **locked** to return to **Base**.
+Tap the **HELD** key when this layer is **locked** to return to [**Base**](#base-modified-dvorak).
 
 #### Caps Key
 
-The Caps key provides three related text-entry modes, each with its own visual indicator on the **Base** layer:
+The Caps key provides three related text-entry modes, each with its own visual indicator on the [**Base**](#base-modified-dvorak) layer:
 
 | Action | Behavior | Base RGB | Notes |
 |--------|----------|----------|-------|
@@ -155,11 +155,11 @@ The Caps key provides three related text-entry modes, each with its own visual i
 > [!TIP]
 > `Caps Word` temporarily capitalizes letters as you type and automatically turns itself off at the end of the word, making it ideal for acronyms, identifiers, and short uppercase sequences without toggling `Caps Lock`.
 >
-> `SCREAMING_SNAKE_CASE` behaves similarly to `Caps Word`, but transforms the spacebar into `_` and is intended for constant identifiers commonly used in C‑style languages and shells.
+> `SCREAMING_SNAKE_CASE` behaves similarly to `Caps Word`, but transforms the spacebar into `_` and is intended for constant identifiers commonly used in C‑style languages and shell environments.
 
 #### `Del` Key
 
-The top-right corner key provides a forward delete, analogous to the **Base** layer’s semantic `Backspace`:
+The top-right corner key provides a forward delete, analogous to the [**Base**](#base-modified-dvorak) layer’s semantic `Backspace`:
 
 | Action | Behavior | Notes |
 |--------|----------|-------|
@@ -228,7 +228,7 @@ The backlight color indicates which OS is currently active:
 
 ![Function: F1–F12](assets/05_FN.png)
 
-Provides `F1`–`F12` and modifier combinations for shortcut execution. The home and top rows mirror the **Upper** layer’s number layout, and the lower row includes a redundant, standard linear layout for familiarity and ease of use.
+Provides `F1`–`F12` and modifier combinations for shortcut execution. The home and top rows mirror the [**Upper**](#upper-primary-number-layer) layer’s number layout, and the lower row includes a redundant, standard linear layout for familiarity and ease of use.
 
 ### Arrows
 
@@ -342,7 +342,7 @@ Paired characters (quotes, brackets, braces) automatically place the cursor insi
 
 C‑style programming keywords and operators are included for completeness. Many n‑grams insert with smart spacing before and/or after to match typical coding style and reduce keystrokes.
 
-The `camelCase` / `PascalCase` and `snake_case` / `SCREAMING_SNAKE_CASE` keys toggle temporary [case modes](#custom-case-modes).
+The `camelCase` / `PascalCase` and `snake_case` / `SCREAMING_SNAKE_CASE` keys toggle temporary [case modes](#temporary-lexical-modes-case-modes).
 
 ### Terminal
 
@@ -389,13 +389,22 @@ The **center key** provides window and device controls:
 
 ![Mouse Keys Layer](assets/14_MOUSE.png)
 
-This layer is typically accessed with a _left‑palm tap_ on **Base**, using a taller keycap (flat SA Row 3) for easier targeting while keeping the hands in home position for quick entry and exit.
+This mouse layer is typically accessed with a _left-palm tap_ from [**Base**](#base-modified-dvorak). A taller keycap (flat SA Row 3) makes the key easier to target while keeping the hands in home position for quick entry and exit.
+
+This layer is intended as a secondary fallback mouse input when other pointing devices are unavailable.
 
 ### Doom Classic
 
 ![Doom Classic layer](assets/01_DOOM.png)
 
-An optional compact gaming layer modeled after vanilla _Doom_ (1993), built around a tight movement cluster, dedicated strafing keys, and thumb‑based actions for firing, opening doors, and running. Quick weapon switching is handled through the **Upper** layer, and the layout also works as a simple arrows‑plus‑mouse‑keys mode using traditional T‑shaped clusters for general navigation.
+An optional compact gaming layer modeled after vanilla _Doom_ (1993), built around a tight movement cluster, dedicated strafing keys, and thumb‑based actions for firing, opening doors, and running. Quick weapon switching is handled through the [**Upper**](#upper-primary-number-layer) layer, and the layout also works as a simple arrows‑plus‑mouse‑keys mode using traditional T‑shaped clusters for general navigation.
+
+> [!IMPORTANT]
+> Tested w/ [Chocolate Doom](https://www.chocolate-doom.org/wiki/index.php/Chocolate_Doom) v3.1.1 but keyboard settings modified for `previous weapon` and `next weapon` using `0` and `1`, respectively.
+>
+> Run: `chocolate-doom-setup`
+>
+> Goto: `Configure Keyboard` → `More Controls`
 
 ## Temporary Lexical Modes (Case Modes)
 
@@ -415,7 +424,10 @@ The spacebar applies the correct separator or capitalization for the mode, and i
 | `dot.case` | Converts separators into ``.`` | Namespaces, config keys |
 | `path/to/case` | Converts separators into ``/`` | File paths, imports |
 
-These temporary modes automatically deactivate after 5 seconds of inactivity, or when a control or modifier key (e.g., `Enter`, `Super`/`CMD`) is pressed.
+Exit these temporary modes earlier with a control or modifier key.
+
+> [!TIP]
+> Hold the `Space` key on [**Base**](#base-modified-dvorak) to turn off case modes.
 
 ## Using This Keymap with QMK
 
@@ -460,7 +472,7 @@ qmk flash -kb inland/mk47 -km spacecentricity
 
 ### 🔧 Helper Scripts (Optional)
 
-This repo includes small POSIX‑compliant scripts in `scripts/` that automate common tasks, including:
+This repo includes small POSIX‑compliant scripts in [`scripts/`](./scripts) that automate common tasks, including:
 
 * Creating and removing the symlink in your QMK checkout
 * Building and flashing the keymap
@@ -470,13 +482,12 @@ This repo includes small POSIX‑compliant scripts in `scripts/` that automate c
 These scripts are entirely optional — the build script simply wraps QMK’s CLI — but they streamline common workflows if you prefer a single‑command interface and want to reduce repetitive steps and cognitive overhead.
 
 > [!NOTE]
-> For details on available scripts and how to use them, see the
-[README](scripts/README.md) in `scripts/`.
+> For details on available scripts and how to use them, see the [README](./scripts/README.md) in [`scripts/`](./scripts) or run the available scripts w/ the `-h`/`--help` flags.
 
 ## ⚠️ Layout Stability
 
 This keymap is actively maintained and may evolve over time as layouts, layers, and features are refined, added, or removed.
 
-Most layers are fairly stable at this point, but some of the more specialized/optional ones (such as [Adjust](#adjustment-keyboard-settings), [Terminal](#terminal), and [Programming](#programming)) may be reworked, consolidated, or removed as the design continues to mature.
+Most layers are fairly stable at this point, but some of the more specialized/optional ones (such as [**Adjustment**](#adjustment-keyboard-settings), [**Terminal**](#terminal), and [**Programming**](#programming)) may be reworked, consolidated, or removed as the design continues to mature.
 
 This keymap has not been tested on Linux or Microsoft Windows operating systems.

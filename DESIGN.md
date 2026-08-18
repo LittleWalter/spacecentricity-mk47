@@ -47,7 +47,7 @@ There’s also a meaningful difference between the two common Planck variants. T
 
 The biggest trade‑off is that the Planck demands heavy layer usage and rewards people who enjoy modal workflows. For users who prefer dedicated keys or who struggle with ortholinear spacing, the learning curve can feel steep. But for those who embrace layers, symmetry, and thumb‑centric design, the Planck offers a uniquely efficient and expressive platform—especially when paired with programmable firmware like QMK or [ZMK](https://zmk.dev/) for wireless support, which adds even more power (and another notch of complexity — have “fun” debugging the logic of your keymap directly in the firmware, if that’s your thing).
 
-[^ergonomics-of-planck]: It’s probably worth mentioning that I don’t really consider the Planck form factor “ergonomic” in the same sense as keyboards that feature split layouts, columnar stagger, and/or concave keywells, though modern keycap profiles such as [KLP Lamé](https://github.com/braindefender/KLP-Lame-Keycaps/) can provide some of the benefits of the latter. The Planck is a semi-ergonomic layout by virtue of its small size, programmability, and ortholinear grid, and it may work particularly well for a niche subset of users that don’t mind unibody keyboards. For some, the Planck might make a great secondary, travel device that beats built-in laptop keyboards.
+[^ergonomics-of-planck]: It’s probably worth mentioning that I don’t really consider the Planck form factor “ergonomic” in the same sense as keyboards that feature split layouts, flexible tenting angles, columnar stagger, and/or concave keywells, though modern sculpted keycap profiles such as [KLP Lamé](https://github.com/braindefender/KLP-Lame-Keycaps/) can provide some of the benefits of the latter. The Planck is a semi-ergonomic layout by virtue of its small size, programmability, and ortholinear grid, and it may work particularly well for a niche subset of users that don’t mind unibody keyboards. For some, the Planck might make a great secondary travel device that beats built-in laptop keyboards.
 
 ## Bias
 
@@ -73,11 +73,11 @@ Most custom keymaps use only a few layers, often three or four, to keep the lear
 
 If a key or action ends up unused, misfired, or mistyped too often, I’ll eventually replace it with something more useful or disable it with a `KC_NO` “no operation” signal. Layers should earn their keep; anything that adds friction without providing meaningful value gets refined or removed.
 
-### Right-Hand Oriented
+### Right-Hand Oriented But Double Fisted
 
-Dvorak is naturally right‑hand dominant, and this layout leans into that by placing several high‑frequency actions and modal layers on the right side. At the same time, many modal layers — arrows, Vim, and programming n‑grams — are mirrored on the home row, allowing either hand to access the same functionality with a momentary hold. This keeps the layout more balanced in practice, reduces travel, and avoids over‑reliance on a single hand.
+Dvorak is naturally right‑hand dominant, and this layout leans into that by placing several high‑frequency actions and modal layers on the right side. At the same time, many modal layers — arrows, Vim, and programming n‑grams — are mirrored on the home row, allowing either hand to access the same functionality with a momentary hold. This keeps the layout more ambidextrous/balanced in practice, reduces travel, and avoids over‑reliance on a single hand. Since Dvorak is a two-handed layout, might as well make the overall design the same.
 
-Any layers that aren’t already mirrored can be reoriented for left‑handed users.
+Any layers that aren’t already mirrored can be reoriented for left-handed users.
 
 ### Thumb-Centric
 
@@ -119,7 +119,7 @@ Here’s how I rank the typing difficulty of each tap dance:
 | Triple Tap | 5 (occasionally assigned) |
 | Double-Tap-and-Hold | 6 (unused) |
 
-This ranking reflects how much precision and timing each action requires in real typing. Tap‑and‑hold is the most demanding because it relies on both timing and intent, while simple taps remain the most effortless. As a consequence, the most important or frequently used behavior is assigned to the tap, while the least critical or most consequential behavior is placed on tap‑and‑hold, since it has the lowest risk of accidental activation.
+This ranking reflects how much precision and timing each action requires in real typing. Tap‑and‑hold is the most demanding of the “quad tap dances” because it relies on both timing and intent, while simple taps remain the most effortless. As a consequence, the most important or frequently used behavior is assigned to the tap, while the least critical or most consequential behavior is placed on tap‑and‑hold, since it has the lowest risk of accidental activation.
 
 Note that the source code has support for triple tap and double-tap-and-hold dances that aren’t marked in the diagrams.
 
@@ -150,7 +150,7 @@ Apple macOS is the primary target platform for this layout, even though Linux an
 
 With an **OS Mode** key, you can select your current operating system to get the appropriate keyboard shortcuts for copy/paste, window management, and virtual desktop/workspace commands. Special characters are also output correctly depending on the selected OS.
 
-Additional Linux support is planned for the future.
+Additional Linux support is planned for the future. I don’t use Windows much these days, so related functionality might not function as fully expected.
 
 > [!WARNING]
 > Linux and Microsoft Windows support is currently untested.
@@ -274,6 +274,9 @@ These keys follow the traditional Planck‑style thumb layers for numbers and sy
 |------------|----------------------------------------|--------|
 | `u` | **Lower** (numpad) | Left Thumb |
 | `c` | **Upper** (home-row numbers) | Right Thumb |
+
+> [!NOTE]
+> QMK’s [Tri Layers](https://docs.qmk.fm/features/tri_layer) feature is not used to preserve key sequences of `Left Thumb → Right Thumb` (momentarily hold **Adjustment** layer) and `Right Thumb → Left Thumb` (jam the `Backspace` key).
 
 ##### Bottom-Left Corner Key
 

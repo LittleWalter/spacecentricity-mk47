@@ -24,26 +24,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     MOUSE_FN, MUTE,      VOLD,     VOLU,    U_LOWER,    SPC,     C_UPPER, HOME,    PGDN,     PGUP,   END
 ),
 
-/* Classic Doom Layer
- * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
- * │   ESC   │         │         │    ↑    │         │         │         │         │Pointer ↑│         │         │ ⌫  ⌫L ⌫w│
- * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │  ⇥   ⇤  │ Strife ←│    ←    │    ↓    │    →    │ Strife →│ Strife ←│Pointer ←│Pointer ↓│Pointer →│ Strife →│    ↵    │
- * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │         │         │         │ Strife ↓│         │         │         │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │         │
- * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │  BASE   │🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │Lft Click│   ␣           LSFT│Rgt Click│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
- * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
- */
-#ifdef MOUSEKEY_ENABLE
-[_DOOM] = LAYOUT_planck_mit(
-    KC_ESC, ____,        ____,    KC_UP,       ____,    ____,        ____,        ____,       MS_UP,   ____,    ____,        BSPC,
-    TAB,    STRAFE_LEFT, KC_LEFT, KC_DOWN,     KC_RGHT, STRAFE_RGHT, STRAFE_LEFT, MS_LEFT,    MS_DOWN, MS_RGHT, STRAFE_RGHT, ENT,
-    ____,   ____,        ____,    STRAFE_DOWN, ____,    ____,        ____,        MS_WHLR,    MS_WHLU, MS_WHLD, MS_WHLL,     ____,
-    BASE,   MUTE,        VOLD,    VOLU,        MS_BTN1,     SPC_LSFT,             RCLK_UPPER, HOME,    PGDN,    PGUP,        END
-),
-#endif
-
 /* Numpad Layer: Hold Left Thumb Key
  * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
  * │   ESC   │ * % @ # │ 9  LSFT │ 8  LCTL │ 7  LALT │    .    │ ^   ¢ $ │ 7  RALT │ 8  RCTL │ 9  RSFT │ * % @ # │ ⌫  ⌫L ⌫w│
@@ -82,6 +62,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_PERC,  KC_BSLS, KC_UNDS, LBRC, CAPS,    DLR,     AT,      PUNC, RBRC, KC_MINS, KC_QUES, SMART_QUOTES,
     TG_MOUSE, MUTE,    VOLD,    VOLU, KC_BSPC,       EQL,        BASE, HOME, PGDN,    PGUP,    END
 ),
+
+/* Classic Doom Layer
+ * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
+ * │   ESC   │         │         │    ↑    │         │         │         │         │Pointer ↑│         │         │ ⌫  ⌫L ⌫w│
+ * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+ * │  ⇥   ⇤  │ Strife ←│    ←    │    ↓    │    →    │ Strife →│ Strife ←│Pointer ←│Pointer ↓│Pointer →│ Strife →│    ↵    │
+ * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+ * │         │         │         │ Strife ↓│         │         │         │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │         │
+ * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+ * │  BASE   │🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │Lft Click│   ␣           LSFT│Rgt Click│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
+ * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
+ */
+#ifdef MOUSEKEY_ENABLE
+[_DOOM] = LAYOUT_planck_mit(
+    KC_ESC, ____,        ____,    KC_UP,       ____,    ____,        ____,        ____,       MS_UP,   ____,    ____,        BSPC,
+    TAB,    STRAFE_LEFT, KC_LEFT, KC_DOWN,     KC_RGHT, STRAFE_RGHT, STRAFE_LEFT, MS_LEFT,    MS_DOWN, MS_RGHT, STRAFE_RGHT, ENT,
+    ____,   ____,        ____,    STRAFE_DOWN, ____,    ____,        ____,        MS_WHLR,    MS_WHLU, MS_WHLD, MS_WHLL,     ____,
+    BASE,   MUTE,        VOLD,    VOLU,        MS_BTN1,     SPC_LSFT,             RCLK_UPPER, HOME,    PGDN,    PGUP,        END
+),
+#endif
+
 
 /* Keyboard Settings & Adjustments: Hold Left Thumb Key, Then Right Thumb Key
  * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐

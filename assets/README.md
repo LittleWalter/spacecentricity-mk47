@@ -31,7 +31,7 @@ These colors are used consistently across all diagrams to visually group related
 | Mouse Wheel | Pastel Purple | `#D7B8F3` |
 
 > [!NOTE]
-> When colors conflict, the layer color take precedence in diagrams, followed by the modifier color.
+> When color selection conflicts, the layer color take precedence in diagrams, followed by the modifier color.
 
 ## JSON Diagram Data
 
