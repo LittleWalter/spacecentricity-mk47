@@ -47,8 +47,8 @@ The [Inland MK-47](https://www.microcenter.com/product/661264/inland-47-keys-hot
 * [QMK-compatible firmware](https://qmk.fm/) (fully programmable)
 * [VIA](https://www.caniusevia.com/) support for on‑the‑fly keymap editing
 * Per‑key RGB lighting
-* Hot‑swappable MX switch sockets (3/5-pin)
-* USB‑C wired connection (remember when keyboards typically had fixed cords?)
+* Hot‑swappable MX switch sockets (📌 3/5-pin)
+* USB‑C wired connection (💭 Remember when keyboards typically had fixed cords?)
 
 The MK‑47 has become a popular entry‑level option for people interested in experimenting with custom firmware, unusual layouts, or switch testing without spending much. Its compact footprint also makes it a convenient one‑piece travel or backup board — it even fits neatly inside a Nintendo Switch carrying case, which makes it easy to throw in a bag. Some users also repurpose the Planck form factor as a macropad.
 

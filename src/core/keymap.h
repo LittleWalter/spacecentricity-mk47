@@ -1,7 +1,7 @@
 #pragma once
 
 #include QMK_KEYBOARD_H
-#include "src/tap_dance/tap_dance_actions.h"
+#include "src/tap_dances/tap_dance_actions.h"
 #include "src/macros/macros.h"
 
 // ─────────────────────────────────────────────────────────────

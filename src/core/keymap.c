@@ -287,17 +287,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │  ⇥   ⇤  │AppSwitch│Mid Click│Lft Click│Rgt Click│   ESC   │  DOOM   │Pointer ←│Pointer ↓│Pointer ↑│Pointer →│    ↵    │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │DESKTOP ←│         │         │  Back   │ Forward │  TAB ←  │  TAB →  │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │DESKTOP →│
+ * │DESKTOP ←│  TAB ←  │  TAB →  │  Back   │ Forward │  TAB ←  │  TAB →  │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │DESKTOP →│
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │  BACK   │🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │ Wheel ↑ │      Wheel ↓      │ Wheel ↑ │ SEL ALL │  COPY   │  PASTE  │UNDO REDO│
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
  */
 #ifdef MOUSEKEY_ENABLE
 [_MOUSE] = LAYOUT_planck_mit(
-    CUT,      UNDO, PASTE,   COPY,    ALL,     VDT_LEFT, VDT_RIGHT, HOME,    PGDN,    PGUP,    END,     BSPC,
-    TAB,      APP,  MS_BTN3, MS_BTN1, MS_BTN2, KC_ESC,   DOOM,      MS_LEFT, MS_DOWN, MS_UP,   MS_RGHT, KC_ENT,
-    VDT_LEFT, ____, ____,    MS_BTN4, MS_BTN5, TAB_LEFT, TAB_RGHT,  MS_WHLR, MS_WHLU, MS_WHLD, MS_WHLL, VDT_RIGHT,
-    TG_MOUSE, MUTE, VOLD,    VOLU,    MS_WHLU,        MS_WHLD,      MS_WHLU, ALL,     COPY,    PASTE,   UNDO
+    CUT,      UNDO,     PASTE,    COPY,    ALL,     VDT_LEFT, VDT_RIGHT, HOME,    PGDN,    PGUP,    END,     BSPC,
+    TAB,      APP,      MS_BTN3,  MS_BTN1, MS_BTN2, KC_ESC,   DOOM,      MS_LEFT, MS_DOWN, MS_UP,   MS_RGHT, KC_ENT,
+    VDT_LEFT, TAB_LEFT, TAB_RGHT, MS_BTN4, MS_BTN5, TAB_LEFT, TAB_RGHT,  MS_WHLR, MS_WHLU, MS_WHLD, MS_WHLL, VDT_RIGHT,
+    TG_MOUSE, MUTE,     VOLD,     VOLU,    MS_WHLU,        MS_WHLD,      MS_WHLU, ALL,     COPY,    PASTE,   UNDO
 ),
 #endif
 

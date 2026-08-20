@@ -4,21 +4,23 @@
 # - LEADER_ENABLE: leader.c and leader-dependent code are wrapped in rgb.c, custom_keys.c
 # - MOUSEKEY_ENABLE: mouse layer + behavior wrapped; related keycodes unguarded
 #
-# TAP_DANCE_ENABLE is required for this keymap and not wrapped.
+# TAP_DANCE_ENABLE is required for this keymap as it is not wrapped; you cannot toggle this feature.
 
-# Non-default QMK features
-CONSOLE_ENABLE = no
-DEBUG_ENABLE = no
+# Non-default QMK features: toggle `no` to disable…
 LEADER_ENABLE = yes
 MOUSEKEY_ENABLE = yes
 REPEAT_KEY_ENABLE = yes
 RGB_MATRIX_ENABLE = yes
 TAP_DANCE_ENABLE = yes
 
-# Wildcard-based SRC approach does not seem to work here, so we manually add each new .c file,
-# excluding src/core/keymap.c. QMK's Python precompilation validator needs exactly 1 file named
-# keymap.c in the project root; in this project, it's a simple stub to wrangle all source files
-# into src/.
+# Debugging QMK features: toggle `yes` to enable…
+CONSOLE_ENABLE = no
+DEBUG_ENABLE = no
+
+# WARNING: Wildcard-based SRC approach does not seem to work here, so we manually add each new .c
+# file, excluding src/core/keymap.c. QMK's Python precompilation validator needs exactly 1 file
+# named keymap.c in the project root; in this project, it's a simple stub to wrangle all source
+# files into src/.
 SRC += src/core/custom_keys.c
 SRC += src/features/case_mode.c
 SRC += src/features/leader.c
@@ -32,13 +34,13 @@ SRC += src/macros/mac_system.c
 SRC += src/macros/mac_terminal.c
 SRC += src/macros/mac_vim.c
 SRC += src/macros/macros.c
-SRC += src/tap_dance/tap_dance_actions.c
-SRC += src/tap_dance/td_chars.c
-SRC += src/tap_dance/td_control.c
-SRC += src/tap_dance/td_digits.c
-SRC += src/tap_dance/td_media.c
-SRC += src/tap_dance/td_numpad.c
-SRC += src/tap_dance/td_programming.c
-SRC += src/tap_dance/td_system.c
-SRC += src/tap_dance/td_terminal.c
-SRC += src/tap_dance/td_vim.c
+SRC += src/tap_dances/tap_dance_actions.c
+SRC += src/tap_dances/td_chars.c
+SRC += src/tap_dances/td_control.c
+SRC += src/tap_dances/td_digits.c
+SRC += src/tap_dances/td_media.c
+SRC += src/tap_dances/td_numpad.c
+SRC += src/tap_dances/td_programming.c
+SRC += src/tap_dances/td_system.c
+SRC += src/tap_dances/td_terminal.c
+SRC += src/tap_dances/td_vim.c

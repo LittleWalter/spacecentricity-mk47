@@ -1,7 +1,5 @@
 # CHANGELOG
 
-[![OctoCounts](https://api.octocounts.com/badge/LittleWalter/spacecentricity-mk47/branch/main)](https://octocounts.com/github/LittleWalter/spacecentricity-mk47/tree/main)
-
 [![Last Commit](https://img.shields.io/github/last-commit/LittleWalter/spacecentricity-mk47)](https://github.com/LittleWalter/spacecentricity-mk47/commits/main)
 [![OctoCounts](https://api.octocounts.com/badge/LittleWalter/spacecentricity-mk47/branch/main?lang=C)](https://octocounts.com/github/LittleWalter/spacecentricity-mk47/tree/main)
 [![OctoCounts](https://api.octocounts.com/badge/LittleWalter/spacecentricity-mk47/branch/main?lang=C+Header)](https://octocounts.com/github/LittleWalter/spacecentricity-mk47/tree/main)

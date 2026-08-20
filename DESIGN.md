@@ -79,7 +79,7 @@ Dvorak is naturally right‑hand dominant, and this layout leans into that by pl
 
 Any layers that aren’t already mirrored can be reoriented for left-handed users.
 
-### Thumb-Centric
+### Thumbcentricity
 
 The thumbs do a disproportionate amount of work in this layout, as is typical of many Planck keymaps. On a small ortholinear board, they are the only digits capable of pressing keys without destabilizing hand position, so Spacecentricity assigns them high‑value roles: layer access, modifiers, and frequently used symbols. This reduces lateral finger travel and keeps the alphas anchored under the home row.
 
