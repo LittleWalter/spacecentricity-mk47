@@ -18,10 +18,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
  */
 [_BASE] = LAYOUT_planck_mit(
-    ASTR,     COMM,      SCLN,     DOT,     P_LALT,  KC_Y, KC_F, G_RALT,  L_RCTL,  R_RSFT,   QUOT,   BSPC,
-    TAB,      KC_A,      O_PROG_R, E_VIM_R, I_ARR_R, ESC,  KC_D, H_ARR_L, T_VIM_L, N_PROG_L, KC_S,   ENT,
-    QK_REP,   SLSH_HYPR, Q_MEH,    KC_J,    KC_K,    KC_X, KC_B, M_TERM,  KC_W,    V_MEH,    Z_HYPR, DQUO,
-    MOUSE_FN, MUTE,      VOLD,     VOLU,    U_LOWER,    SPC,     C_UPPER, HOME,    PGDN,     PGUP,   END
+    ASTR,     COMM,      SCLN,     DOT_LCTL, P_LALT,  KC_Y, KC_F, G_RALT,  L_RCTL,  R_RSFT,   QUOT,   BSPC,
+    TAB,      KC_A,      O_PROG_R, E_VIM_R,  I_ARR_R, ESC,  KC_D, H_ARR_L, T_VIM_L, N_PROG_L, KC_S,   ENT,
+    QK_REP,   SLSH_HYPR, Q_MEH,    KC_J,     KC_K,    KC_X, KC_B, M_TERM,  KC_W,    V_MEH,    Z_HYPR, DQUO,
+    MOUSE_FN, MUTE,      VOLD,     VOLU,     U_LOWER,    SPC,     C_UPPER, HOME,    PGDN,     PGUP,   END
 ),
 
 /* Numpad Layer: Hold Left Thumb Key
@@ -99,7 +99,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     QK_BOOT, ____, ____, ____,    ____, ____, ____, ____,    RM_PREV, RM_NEXT, ____,    KC_BRIU,
     ____,    ____, ____, TG_LEAD, ____, ____, ____, RM_TOGG, RM_VALD, RM_VALU, ____,    KC_BRID,
     ____,    ____, ____, ____,    ____, ____, ____, TG_OS,   RM_HUED, RM_HUEU, RM_SATD, RM_SATU,
+#ifdef DEBUG_ENABLE
     DB_TOGG, ____, ____, ____,    ____, ____,    ____,       RM_SPDD, RM_SPDU, ____,    ____
+#else
+    ____,    ____, ____, ____,    ____, ____,    ____,       RM_SPDD, RM_SPDU, ____,    ____
+#endif
 ),
 
 /* Function Keys & Modifiers: Hold Bottom Left Key w/ Palm for 350 ms to Activate

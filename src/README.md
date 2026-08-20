@@ -13,7 +13,7 @@
 │   ├── core/         → Fundamental keymap definitions
 │   ├── features/     → Reusable behaviors & features
 │   ├── macros/       → Higher-level macros & system integrations
-│   └── tap_dance/    → Semantic groups of tap-dance actions
+│   └── tap_dances/   → Semantic groups of tap-dance actions
 │
 ├── build/            → Generated build artifacts
 │

@@ -24,6 +24,7 @@
 ## 2026-08/20-TH
 - Added more Markdown files for `src` project path and subdirectories.
 - **Mouse**: Filled in _ROW1_ blanks w/ tab previous/next.
+- **Base**: Removed tap dance for `.` key; it is only mod-tap for `LCTL`.
 
 ## 2026-08/17-MO
 - Cleaned up documentation.
