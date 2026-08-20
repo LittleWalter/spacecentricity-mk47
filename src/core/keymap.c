@@ -18,10 +18,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
  */
 [_BASE] = LAYOUT_planck_mit(
-    ASTR,     COMM,      SCLN,     DOT_LCTL, P_LALT,  KC_Y, KC_F, G_RALT,  L_RCTL,  R_RSFT,   QUOT,   BSPC,
-    TAB,      KC_A,      O_PROG_R, E_VIM_R,  I_ARR_R, ESC,  KC_D, H_ARR_L, T_VIM_L, N_PROG_L, KC_S,   ENT,
-    QK_REP,   SLSH_HYPR, Q_MEH,    KC_J,     KC_K,    KC_X, KC_B, M_TERM,  KC_W,    V_MEH,    Z_HYPR, DQUO,
-    MOUSE_FN, MUTE,      VOLD,     VOLU,     U_LOWER,    SPC,     C_UPPER, HOME,    PGDN,     PGUP,   END
+    ASTR,     COMM,      SCLN_LSFT, DOT_LCTL, P_LALT,  KC_Y, KC_F, G_RALT,  L_RCTL,  R_RSFT,   QUOT,   BSPC,
+    TAB,      KC_A,      O_PROG_R,  E_VIM_R,  I_ARR_R, ESC,  KC_D, H_ARR_L, T_VIM_L, N_PROG_L, KC_S,   ENT,
+    QK_REP,   SLSH_HYPR, Q_MEH,     KC_J,     KC_K,    KC_X, KC_B, M_TERM,  KC_W,    V_MEH,    Z_HYPR, DQUO,
+    MOUSE_FN, MUTE,      VOLD,      VOLU,     U_LOWER,    SPC,     C_UPPER, HOME,    PGDN,     PGUP,   END
 ),
 
 /* Numpad Layer: Hold Left Thumb Key

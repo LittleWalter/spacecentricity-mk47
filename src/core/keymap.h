@@ -22,7 +22,7 @@
 #define Q_MEH     MT(MOD_MEH,  KC_Q)
 #define R_RSFT    MT(MOD_RSFT, KC_R)
 // #define REP       MT(QK_REP,   QK_AREP)
-// #define SCLN_LSFT MT(MOD_LSFT, KC_SCLN)
+#define SCLN_LSFT MT(MOD_LSFT, KC_SCLN)
 #define SLSH_HYPR MT(MOD_HYPR, KC_SLSH)
 #define SPC_LSFT  MT(MOD_LSFT, KC_SPC)
 #define V_MEH     MT(MOD_MEH,  KC_V)
