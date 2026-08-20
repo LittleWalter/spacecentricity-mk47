@@ -220,14 +220,20 @@
     },
     "VIRTUAL\n←\n\n\n\n\nDESKTOP",
     {
-      "c": "#b2beb5",
-      "a": 7
+      "fa": [
+        1,
+        6,
+        0,
+        0,
+        0,
+        0,
+        4
+      ]
     },
-    "",
-    "",
+    "WEB\n←\n\n\n\n\nTAB",
+    "WEB\n→\n\n\n\n\nTAB",
     {
       "c": "#F7C59F",
-      "a": 5,
       "fa": [
         1,
         6,

@@ -21,6 +21,10 @@
 
 ---
 
+## 2026-08/20-TH
+- Added more Markdown files for `src` project path and subdirectories.
+- **Mouse**: Filled in _ROW1_ blanks w/ tab previous/next.
+
 ## 2026-08/17-MO
 - Cleaned up documentation.
 - Fixed **DOOM** layer bug w/r/t **UPPER** layer.
