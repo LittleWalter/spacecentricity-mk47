@@ -51,7 +51,7 @@ The [Inland MK-47](https://www.microcenter.com/product/661264/inland-47-keys-hot
   * Usable out of the box: preinstalled with linear switches and ABS-like keycaps
     * 47× Huano Red linear switches
     * 47× shine-through white keycaps (plus a black 2u "spacebar"), probably ABS plastic
-    * Packed with a funky black corded 90° USB-C to USB-A cable and a keycap puller
+    * Funky black braided 90° USB-C-to-USB-A cable and a keycap puller included
 * USB-C wired connection (💭 remember when keyboards typically had fixed cords?)
 
 The MK-47 has become a popular entry point for anyone experimenting with custom firmware, unusual layouts, or switch testing without spending much. Its compact footprint also makes it a convenient one-piece travel or backup board — it even fits neatly inside a Nintendo Switch carrying case, so it's easy to throw in a bag. Some people also repurpose the Planck form factor as a macropad.
