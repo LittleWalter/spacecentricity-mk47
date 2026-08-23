@@ -196,6 +196,9 @@
 #define SCRNSHOT_OS TD(TD_SCRNSHOT_OS)
 #define DEL_OS      TD(TD_DEL_OS)
 
+// Doom Classic Keys
+#define DOOM_ESC TD(TD_DOOM_ESC)
+
 /*** Other Keycodes *******************************************/
 
 #define MACOS_EMOJI_MENU LGUI(C(KC_SPC))

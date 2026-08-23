@@ -2,7 +2,7 @@
 
 Spacecentricity is a maximalist modal keymap built around a modified Dvorak base, heavy thumb usage, and mirrored layers for navigation, Vim‑style editing, and programming. It emphasizes home-position access to high-frequency characters, movement keys, numbers, symbols, and common programming n-grams through macros and tap dances. Key redundancy provides alternative ways to perform the same actions, helping reduce strain and fatigue.
 
-Because this keymap treats keyboard firmware like a [finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine), each layer includes its own RGB matrix pattern, making it easy to see which layer is active at a glance. The RGB matrix also indicates active modes such as Caps Lock (blinking red), One-Shot Shift (gold), [Case Modes](#case-modes-temporary-lexical-modes) (neon mint), and [Leader mode](/LEADER.md) (navy blue).
+Because this keymap treats keyboard firmware like a [finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine), each layer includes its own RGB matrix pattern, making it easy to see which layer or state is active at a glance. The RGB matrix also indicates active modes such as Caps Lock (blinking red), One-Shot Shift (gold), [Case Modes](#case-modes-temporary-lexical-modes) (neon mint), and [Leader](/LEADER.md) sequences (navy blue).
 
 This keymap has an estimated user count of one.
 
@@ -42,19 +42,23 @@ This keymap has an estimated user count of one.
 
 ## Keyboard
 
-The [Inland MK-47](https://www.microcenter.com/product/661264/inland-47-keys-hot-swappable-rgb-wired-mechanical-keyboard) is an affordable **47‑key ortholinear mechanical keyboard** sold by Micro Center and a clone of the [olkb](https://olkb.com/) Planck. Despite its low price, it includes features usually found on enthusiast‑grade boards:
+The [Inland MK-47](https://www.microcenter.com/product/661264/inland-47-keys-hot-swappable-rgb-wired-mechanical-keyboard) is an affordable **47-key ortholinear mechanical keyboard** sold by Micro Center and a clone of the [OLKB](https://olkb.com/) Planck. Despite its low price, it includes features usually reserved for enthusiast-grade boards:
 
 * [QMK-compatible firmware](https://qmk.fm/) (fully programmable)
-* [VIA](https://www.caniusevia.com/) support for on‑the‑fly keymap editing
-* Per‑key RGB lighting
-* Hot‑swappable MX switch sockets (📌 3/5-pin)
-* USB‑C wired connection (💭 Remember when keyboards typically had fixed cords?)
+* [VIA](https://www.caniusevia.com/) support for on-the-fly keymap editing
+* Per-key RGB lighting
+* Hot-swappable MX switch sockets (📌 3/5-pin)
+  * Usable out of the box: preinstalled with linear switches and ABS-like keycaps
+    * 47× Huano Red linear switches
+    * 47× shine-through white keycaps (plus a black 2u "spacebar"), probably ABS plastic
+    * Packed with a funky black corded 90° USB-C to USB-A cable and a keycap puller
+* USB-C wired connection (💭 remember when keyboards typically had fixed cords?)
 
-The MK‑47 has become a popular entry‑level option for people interested in experimenting with custom firmware, unusual layouts, or switch testing without spending much. Its compact footprint also makes it a convenient one‑piece travel or backup board — it even fits neatly inside a Nintendo Switch carrying case, which makes it easy to throw in a bag. Some users also repurpose the Planck form factor as a macropad.
+The MK-47 has become a popular entry point for anyone experimenting with custom firmware, unusual layouts, or switch testing without spending much. Its compact footprint also makes it a convenient one-piece travel or backup board — it even fits neatly inside a Nintendo Switch carrying case, so it's easy to throw in a bag. Some people also repurpose the Planck form factor as a macropad.
 
 ### Availability
 
-The MK‑47 is typically an in‑store Micro Center exclusive, but it’s occasionally available for shipping within the U.S. depending on stock. If you don’t live near a Micro Center, checking eBay and similar marketplaces is often worthwhile, as units show up there fairly regularly.
+The MK‑47 is typically an in‑store Micro Center exclusive, but it’s occasionally available for shipping within the U.S. depending on stock. If you don’t live near a Micro Center, checking eBay and similar marketplaces is often worthwhile, as units show up fairly regularly.
 
 > [!TIP]
 > Not familiar with Planck keyboards? See this brief [video by Jack Humbert](https://www.youtube.com/watch?v=bEPg8kk84gw) introducing the Planck.
@@ -119,8 +123,8 @@ The **bottom‑left corner key** toggles special modes:
 
 | Action | Behavior |
 |--------|----------|
-| Tap | **Mouse** Layer |
-| Hold (≈350 ms or longer) | **Function** layer (`F1`–`F12`) |
+| Tap | Activates [**Mouse**](#mouse) layer |
+| Hold (≈350 ms or longer) | Activates [**Function**](#function-f1f12) layer (`F1`–`F12`) |
 
 This key is not momentary — it switches layers rather than holding them.
 
@@ -375,8 +379,8 @@ The **right‑thumb key** provides quick file‑deletion actions:
 | Action | Behavior |
 |--------|----------|
 | Tap | Delete selected item(s) |
-| Double Tap | Open the Trash folder in Finder |
-| Hold | Empty the Trash (Finder); open clear browser data menu (Firefox, Chromium) |
+| Tap-and-Hold | Empty the Trash (Finder); open clear browser data menu (Firefox, Chromium) |
+| Hold | Open the Trash folder in Finder |
 
 The **top‑right corner key** handles screen-capture shortcuts:
 
@@ -408,11 +412,13 @@ This layer is intended as a secondary fallback mouse input when other pointing d
 An optional compact gaming layer modeled after vanilla _Doom_ (1993), built around a tight movement cluster, dedicated strafing keys, and thumb‑based actions for firing, opening doors, and running. Quick weapon switching is handled through the [**Upper**](#upper-primary-number-layer) layer, and the layout also works as a simple arrows‑plus‑mouse‑keys mode using traditional T‑shaped clusters for general navigation.
 
 > [!IMPORTANT]
-> Tested w/ [Chocolate Doom](https://www.chocolate-doom.org/wiki/index.php/Chocolate_Doom) v3.1.1 but keyboard settings modified for `previous weapon` and `next weapon` using `0` and `1`, respectively.
+> Tested w/ [Chocolate Doom](https://www.chocolate-doom.org/wiki/index.php/Chocolate_Doom) v3.1.1 but keyboard settings modified for `previous weapon` and `next weapon` using `0` and `1`, respectively. It’s also a good idea to enable “Always run” to eliminate the need to continuously hold `Shift`.
 >
 > `RUN:` `chocolate-doom-setup`
 >
-> `GOTO:` `Configure Keyboard` → `More Controls`
+> `GOTO:` `Configure Keyboard` → `Action` → `More Controls`
+>
+> `GOTO:` `Configure Keyboard` → `Misc.` → `Always run`
 
 ## Case Modes: Temporary Lexical Modes
 

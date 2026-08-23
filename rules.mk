@@ -2,13 +2,13 @@
 # - RGB_MATRIX_ENABLE: entire rgb.c is wrapped
 # - CAPS_WORD_ENABLE: only caps-word-specific calls are wrapped in rgb.c and td_chars.c
 # - LEADER_ENABLE: leader.c and leader-dependent code are wrapped in rgb.c, custom_keys.c
-# - MOUSEKEY_ENABLE: mouse layer + behavior wrapped; related keycodes unguarded
+# - MOUSEKEY_ENABLE: mouse layer + behavior wrapped; related keycodes unguarded; enable/disable DOOM layer
 #
 # TAP_DANCE_ENABLE is required for this keymap as it is not wrapped; you cannot toggle this feature.
 
 # Non-default QMK features: toggle `no` to disable…
 LEADER_ENABLE = yes
-MOUSEKEY_ENABLE = yes
+MOUSEKEY_ENABLE = yes # WARNING: Disables DOOM layer when MOUSEKEY_ENABLE is set to `no`
 REPEAT_KEY_ENABLE = yes
 RGB_MATRIX_ENABLE = yes
 TAP_DANCE_ENABLE = yes
@@ -38,6 +38,7 @@ SRC += src/tap_dances/tap_dance_actions.c
 SRC += src/tap_dances/td_chars.c
 SRC += src/tap_dances/td_control.c
 SRC += src/tap_dances/td_digits.c
+SRC += src/tap_dances/td_doom.c
 SRC += src/tap_dances/td_media.c
 SRC += src/tap_dances/td_numpad.c
 SRC += src/tap_dances/td_programming.c

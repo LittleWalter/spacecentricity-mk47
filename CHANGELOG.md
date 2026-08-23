@@ -15,11 +15,17 @@
   - [ ] Generalize the layer name from **macOS** to **OS** or **System**, etc.
 - [ ] Reimplement repeat key functionality to work with tap dance (refer to offical [repeat key API](https://docs.qmk.fm/features/repeat_key) to mimic behavior)
   - [ ] Create a temporary mode for repeat and alternative key (timeout after 5 seconds?)
+- [ ] Port this keymap to the [ZSA Voyager](https://www.zsa.io/voyager)
+- [ ] Design two layers, left and right sides, to use 2× Inland MK-47 keyboards as an affordable pseudo split
 
 ### `DONE:`
 - [x] Make a fun vanilla **Doom** layer as an alternative to **Mouse** layer (2026-04/13-MO)
 
 ---
+
+## 2026-08/23-SU
+- **DOOM** → `BUGFIX:` Removed mod-tap `LSFT` for `SPC` key. Fixed responsiveness of door-opening actions possibly regarding MT key issues.
+- **macOS** → Swapped tap dances around on the delete key (right thumb); `Tap+Hold` → Open Trash folder in Finder, `Hold` → Empty Trash.
 
 ## 2026-08/20-TH
 - Added more Markdown files for `src` project path and subdirectories.

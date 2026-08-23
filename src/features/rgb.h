@@ -33,6 +33,8 @@ typedef struct {
 
 extern rgb_preview_t rgb_preview;
 
+extern bool rgb_eeprom_state;
+
 // ─────────────────────────────────────────────────────────────
 // Colors
 // ─────────────────────────────────────────────────────────────

@@ -151,6 +151,8 @@ enum {                 // │  Tap   │ 2xTap  │Tap+Hold│  Hold  │ Notes
     TD_FS_OS,          // │FullScrn│WinScrnS│        │Lock Mac│
     TD_SCRNSHOT_OS,    // │   ▣    │        │Options │   ⛶    │ Partial screenshot on Tap; Screenshot Toolbar, all options on Tap+Hold; Full screenshot on Hold
     TD_DEL_OS,         // │Del File│  🗑️ 📂 │        │Empty 🗑️│ Delete file on Tap; Open trash folder in Finder on Tap+Hold, Empty trash can on Hold
+                       // │        │        │        │        │
+    TD_DOOM_ESC,       // │  Esc   │        │   y    │   n    │ DOOM: `Esc` on tap, `n` on Hold, `y` on Tap+Hold
 
     TD_COUNT // Sentinel value for tap_dance_actions array
 };

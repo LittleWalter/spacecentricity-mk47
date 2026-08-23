@@ -87,7 +87,7 @@ void scrnshot_os_reset(tap_dance_state_t *state, void *user_data) {
 }
 
 // ──────────────────────────────
-// TD_DEL_OS             ␡ Empty🗑️
+// TD_DEL_OS       ␡ Empty🗑️ Open🗑️
 // ──────────────────────────────
 
 // Create static `del_os_tap_dance` for TD_DEL_OS
@@ -99,12 +99,12 @@ void del_os_finished(tap_dance_state_t *state, void *user_data) {
     TD_STATE_SET(del_os);
     switch (TD_STATE(del_os)) {
         case TD_SINGLE_TAP: delete_files_macro(); break;
-        case TD_DOUBLE_TAP:
+        case TD_SINGLE_HOLD:
             if (current_os == OS_MACOS) {
                 open_trash_macos_macro();
             }
             break;
-        case TD_SINGLE_HOLD: // Empty Trash
+        case TD_DOUBLE_HOLD: // Empty Trash
             if (current_os == OS_MACOS) {
                 tap_and_update(LGUI(S(KC_BSPC)));
             }

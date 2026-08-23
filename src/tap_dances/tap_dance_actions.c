@@ -2,6 +2,7 @@
 #include "td_chars.h"
 #include "td_control.h"
 #include "td_digits.h"
+#include "td_doom.h"
 #include "td_media.h"
 #include "td_numpad.h"
 #include "td_programming.h"
@@ -169,6 +170,11 @@ tap_dance_action_t tap_dance_actions[TD_COUNT] = {
     [TD_FS_OS]       = ACTION_TAP_DANCE_FN_ADVANCED(NULL, fs_os_finished,       fs_os_reset),
     [TD_SCRNSHOT_OS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, scrnshot_os_finished, scrnshot_os_reset),
     [TD_DEL_OS]      = ACTION_TAP_DANCE_FN_ADVANCED(NULL, del_os_finished,      del_os_reset),
+
+    // ─────────────────────────────────────────────────────────────
+    // DOOM
+    // ─────────────────────────────────────────────────────────────
+    [TD_DOOM_ESC] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, doom_esc_finished, doom_esc_reset),
 };
 
 /* Return an integer that corresponds to what kind of tap dance should be executed.

@@ -65,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Classic Doom Layer
  * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
- * │   ESC   │         │         │    ↑    │         │         │         │         │Pointer ↑│         │         │ ⌫  ⌫L ⌫w│
+ * │ESC n y n│         │         │    ↑    │         │         │         │         │Pointer ↑│         │         │ ⌫  ⌫L ⌫w│
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │  ⇥   ⇤  │ Strife ←│    ←    │    ↓    │    →    │ Strife →│ Strife ←│Pointer ←│Pointer ↓│Pointer →│ Strife →│    ↵    │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
@@ -76,13 +76,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 #ifdef MOUSEKEY_ENABLE
 [_DOOM] = LAYOUT_planck_mit(
-    KC_ESC, ____,        ____,    KC_UP,       ____,    ____,        ____,        ____,       MS_UP,   ____,    ____,        BSPC,
-    TAB,    STRAFE_LEFT, KC_LEFT, KC_DOWN,     KC_RGHT, STRAFE_RGHT, STRAFE_LEFT, MS_LEFT,    MS_DOWN, MS_RGHT, STRAFE_RGHT, ENT,
-    ____,   ____,        ____,    STRAFE_DOWN, ____,    ____,        ____,        MS_WHLR,    MS_WHLU, MS_WHLD, MS_WHLL,     ____,
-    BASE,   MUTE,        VOLD,    VOLU,        MS_BTN1,     SPC_LSFT,             RCLK_UPPER, HOME,    PGDN,    PGUP,        END
+    DOOM_ESC, ____,        ____,    KC_UP,       ____,    ____,        ____,        ____,       MS_UP,   ____,    ____,        BSPC,
+    TAB,      STRAFE_LEFT, KC_LEFT, KC_DOWN,     KC_RGHT, STRAFE_RGHT, STRAFE_LEFT, MS_LEFT,    MS_DOWN, MS_RGHT, STRAFE_RGHT, ENT,
+    ____,     ____,        ____,    STRAFE_DOWN, ____,    ____,        ____,        MS_WHLR,    MS_WHLU, MS_WHLD, MS_WHLL,     ____,
+    BASE,     MUTE,        VOLD,    VOLU,        MS_BTN1,      KC_SPC,              RCLK_UPPER, HOME,    PGDN,    PGUP,        END
 ),
 #endif
-
 
 /* Keyboard Settings & Adjustments: Hold Left Thumb Key, Then Right Thumb Key
  * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐

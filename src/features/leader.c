@@ -5,6 +5,7 @@
 #include "leader.h"
 #include "utils.h"
 #include "src/core/keymap.h"
+#include "src/features/rgb.h"
 #include "src/macros/mac_special_char.h"
 #include "src/macros/mac_surround.h"
 #include "src/macros/mac_programming.h"
@@ -535,6 +536,9 @@ static bool rgb_sequences(void) {
         rgb_matrix_mode_noeeprom(RGB_MATRIX_DIGITAL_RAIN);
     } else if (leader_sequence_two_keys(RGB_LEADER, KC_T)) { // mnemonic: RGB Toggle on/off
         rgb_matrix_toggle_noeeprom();
+    } else if (leader_sequence_two_keys(RGB_LEADER, KC_E)) { // mnemonic: Toggle saving RGB settings to EEPROM
+        rgb_eeprom_state = !rgb_eeprom_state;
+        //rgb_matrix_toggle_noeeprom();
     } else {
         return false;
     }
