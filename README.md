@@ -65,6 +65,7 @@ The [Inland MK-47](https://www.microcenter.com/product/661264/inland-47-keys-hot
   * 1× paper manual that tries to trick you into using the preinstalled keymap
 * Black plastic case w/ **width × depth:** 235 × 83 mm (9.25 × 3.27 in)
 * **Stock weight:** 345 g (≈0.76 lb)
+* **Retail price:** $39.99 USD (2026)
 
 The MK-47 has become a popular entry point for anyone experimenting with custom firmware, unusual layouts, or switch testing without spending much. Its compact footprint also makes it a convenient one-piece travel or backup board — it even fits neatly inside a Nintendo Switch carrying case, so it's easy to throw in a bag. Some people also repurpose the Planck form factor as a macropad.
 

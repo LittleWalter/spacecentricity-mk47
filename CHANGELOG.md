@@ -23,6 +23,9 @@
 
 ---
 
+## 2026-08/25-TU
+- **Adjustment**: Added RGB (navy) to the Print **Leader** Favorites & History
+
 ## 2026-08/24-MO
 - **Leader**: fixed state output-related bugs.
   - `BUGFIX:` Displaying `Leader off` message twice on `★as` to print “all saved” in Favorites and History.

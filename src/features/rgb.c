@@ -272,9 +272,12 @@ bool rgb_matrix_indicators_user(void) {
                 default: break;
             }
 #ifdef LEADER_ENABLE
-            // Leader Key Toggle
-            leader_state.enabled ? rgb_matrix_set_color(LED_ROW1_LEFT_MIDDLE, NAVY)
-                                 : rgb_matrix_set_color(LED_ROW1_LEFT_MIDDLE, RED);
+            if (leader_state.enabled) {
+                rgb_matrix_set_color(LED_ROW1_LEFT_MIDDLE, NAVY); // Leader sequences on
+                rgb_matrix_set_color(LED_ROW0_LEFT_MIDDLE, NAVY); // Print Leader Favorites & History on
+            } else {
+                rgb_matrix_set_color(LED_ROW1_LEFT_MIDDLE, RED); // Leader sequences off
+            }
 #endif
             break;
 

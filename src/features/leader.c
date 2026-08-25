@@ -488,7 +488,7 @@ static void leader_type_advance_entry(const leader_entry_t entry) {
     }
 
     if (current_os == OS_MACOS) {
-       const uint16_t delay_ms = (entry.leader == LEAD_EMOJI)
+       const uint16_t delay_ms = (entry.leader == LEAD_EMOJI || entry.leader == LEAD_SYMBOL)
                                ? LEADER_TYPE_EMOJI_DELAY_MS
                                : LEADER_TYPE_ENTRY_DELAY_MS;
        wait_ms(delay_ms);
@@ -537,7 +537,7 @@ void leader_type_favorites(void) {
     }
     if (is_transient_lexical_mode_on()) return;
 
-    leader_type_entries("Favorites", leader_favorites, LEADER_FAVORITES_SIZE);
+    leader_type_entries("Leader Favorites", leader_favorites, LEADER_FAVORITES_SIZE);
 }
 
 // Types Leader history, newest first, to the keyboard.
