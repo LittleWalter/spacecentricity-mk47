@@ -478,6 +478,15 @@ static uint8_t leader_entries_used(const leader_entry_t *entries, uint8_t max) {
 static void leader_type_advance_entry(const leader_entry_t entry) {
     run_leader_entry(entry);
 
+    // surround_macro() re-centers the cursor between the open/close symbols
+    // (e.g. typing "<>" then tapping left) for live editing. In a flat text
+    // dump there's nothing meaningful to center on, and that leftover left
+    // tap eats into the next characters we type. A single right tap here
+    // un-does that one-position offset without touching mac_surround.c.
+    if (entry.leader == LEAD_SURROUND) {
+        tap_code(KC_RGHT);
+    }
+
     if (current_os == OS_MACOS) {
        const uint16_t delay_ms = (entry.leader == LEAD_EMOJI)
                                ? LEADER_TYPE_EMOJI_DELAY_MS
@@ -521,7 +530,6 @@ static void leader_type_disabled_notice(void) {
 }
 
 // Types Leader favorites (in slot order) to the keyboard.
-// Types Leader favorites (in slot order) to the keyboard.
 void leader_type_favorites(void) {
     if (!leader_state.enabled) {
         leader_type_disabled_notice();
@@ -563,6 +571,11 @@ void leader_type_history(void) {
 
 // Types Favorites then History, separated by a blank line.
 void leader_type_all(void) {
+    if (!leader_state.enabled) {
+        leader_type_disabled_notice();
+        return;
+    }
+
     leader_type_favorites();
     tap_code(KC_ENT);
     leader_type_history();

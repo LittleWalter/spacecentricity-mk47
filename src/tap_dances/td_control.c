@@ -79,6 +79,9 @@ void caps_finished(tap_dance_state_t *state, void *user_data) {
         case TD_DOUBLE_TAP:
             const_case_toggle(); // SCREAMING_SNAKE_CASE
             break;
+        case TD_DOUBLE_HOLD:
+            dot_case_toggle(); // dot.case 
+            break;
         case TD_SINGLE_HOLD:
             case_mode_off();
             caps_lock_toggle();

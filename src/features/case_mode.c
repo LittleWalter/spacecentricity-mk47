@@ -342,6 +342,12 @@ void kebab_toggle(void) {
                                                        : case_mode_on(CASE_KEBAB);
 }
 
+// Toggles dot.case mode on/off.
+void dot_case_toggle(void) {
+    case_state.active && case_state.mode == CASE_DOT ? case_mode_off()
+                                                       : case_mode_on(CASE_DOT);
+}
+
 // Toggles Caps Word mode on/off.
 void caps_word_toggle(void) {
     case_state.active && case_state.mode == CASE_CAPS_WORD ? case_mode_off()

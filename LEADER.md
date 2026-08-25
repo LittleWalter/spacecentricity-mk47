@@ -18,7 +18,7 @@ Leader sequences may contain up to three keys, not counting the Leader key itsel
   - [Leader Favorites](#leader-favorites)
 - [Supported Leader Sequences](#supported-leader-sequences)
   - [Emoji Sequences](#emoji-sequences)
-  - [Symbol Sequences](#symbol-sequences)
+  - [Unicode Symbol Sequences](#symbol-sequences)
   - [Surrounding Sequences](#surrounding-sequences)
   - [Code Annotation Sequences](#code-annotation-sequences)
 
@@ -262,11 +262,11 @@ Multi‑letter mnemonics are used when a single letter is already taken or when 
 >
 > **Linux & Microsoft Windows:** Emoji are inserted as direct Unicode characters, so behavior is consistent and does not depend on an OS emoji picker.
 
-### Symbol Sequences
+### Unicode Symbol Sequences
 
-Symbol sequences provide quick access to a curated set of Unicode symbols.
+A curated set of Unicode symbol sequences for quick access.
 
-This system offers a consistent, memorable way to insert symbols—some of which are also available elsewhere in the keymap, but are included here for completeness and ease of discovery. The symbol set will continue to grow and refine over time.
+This system offers a consistent, memorable way to insert symbols—some of which are also available elsewhere in the keymap, but included here for completeness and ease of discovery. This Unicode symbol set will continue to grow and refine over time.
 
 Symbol sequences are prefixed with `␣` (space).
 

@@ -194,6 +194,9 @@ void const_case_toggle(void);
 // Toggles path/to/case mode on/off.
 void path_case_toggle(void);
 
+// Toggles dot.case mode on/off.
+void dot_case_toggle(void);
+
 // Toggles kebab-case mode on/off.
 void kebab_toggle(void);
 

@@ -74,7 +74,7 @@ Each layer is presented as a rendered diagram generated with [keyboard-layout-ed
 > Because Linux and Microsoft Windows accept Unicode directly from [HID](https://en.wikipedia.org/wiki/Human_interface_device), the standard US layout works correctly when the keyboard is used in those modes.
 
 > [!TIP]
-> [**Base**](#base-modified-dvorak), [**Upper**](#upper-primary-number-layer), and [**Arrows**](#arrows) are the most frequently used layers. Most of the remaining layers and state mechanics exist to assist workflow rather than get in the way — the [**Mouse**](#mouse) layer, for example, comes in handy when the battery dies on a wireless pointing device.
+> [**Base**](#base-modified-dvorak), [**Upper**](#upper-primary-number-layer), and [**Arrows**](#arrows) are the most frequently used layers. Most of the remaining layers and state mechanics exist to assist workflow rather than get in the way — the [**Mouse**](#mouse) layer, for example, comes in handy when the battery dies on a wireless pointing device. [Leader](/LEADER.md) sequences can be toggled on/off via the [Adjustment](#adjustment-keyboard-settings) layer.
 
 ### Legend
 
@@ -166,6 +166,7 @@ The Caps key provides three related text-entry modes, each with its own visual i
 |--------|----------|----------|-------|
 | Tap | Activates `Caps Word` | 🟡 Golden yellow | Auto‑disables after 5 seconds of inactivity |
 | Double Tap | Toggle `SCREAMING_SNAKE_CASE` | 🟢 Neon mint | Auto‑disables after 5 seconds of inactivity |
+| Tap-and-Hold | Toggle `dot.case` | 🟢 Neon mint | Auto‑disables after 5 seconds of inactivity |
 | Hold | Toggle `Caps Lock` | 🔴 Blinking red | Must be manually turned off |
 
 > [!TIP]
@@ -326,7 +327,7 @@ Window‑resize commands omit the `Esc` prefix to preserve compatibility with `<
 
 **Center Navigation Cluster**
 
-| Actions | Behavior |
+| Action | Behavior |
 |---------|----------|
 | Tap | `zt`, `zz`, `zb` (scroll viewport to top / center / bottom) |
 | Hold | `H`, `M`, `L` (move cursor to top / middle / bottom of screen) |
@@ -342,7 +343,7 @@ Window‑resize commands omit the `Esc` prefix to preserve compatibility with `<
 
 **Folds**
 
-| Actions | Behavior |
+| Action | Behavior |
 |---------|----------|
 | Tap | `za` (toggle fold under cursor)
 | Tap-and-Hold | `zM` (close all folds in buffer) |
