@@ -63,29 +63,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TG_MOUSE, MUTE,    VOLD,    VOLU, KC_BSPC,       EQL,        BASE, HOME, PGDN,    PGUP,    END
 ),
 
-/* Classic Doom Layer
- * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
- * │ESC n y n│         │         │    ↑    │         │         │         │         │Pointer ↑│         │         │ ⌫  ⌫L ⌫w│
- * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │  ⇥   ⇤  │ Strife ←│    ←    │    ↓    │    →    │ Strife →│ Strife ←│Pointer ←│Pointer ↓│Pointer →│ Strife →│    ↵    │
- * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │         │         │         │ Strife ↓│         │         │         │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │         │
- * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │  BASE   │🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │Lft Click│   ␣           LSFT│Rgt Click│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
- * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
- */
-#ifdef MOUSEKEY_ENABLE
-[_DOOM] = LAYOUT_planck_mit(
-    DOOM_ESC, ____,        ____,    KC_UP,       ____,    ____,        ____,        ____,       MS_UP,   ____,    ____,        BSPC,
-    TAB,      STRAFE_LEFT, KC_LEFT, KC_DOWN,     KC_RGHT, STRAFE_RGHT, STRAFE_LEFT, MS_LEFT,    MS_DOWN, MS_RGHT, STRAFE_RGHT, ENT,
-    ____,     ____,        ____,    STRAFE_DOWN, ____,    ____,        ____,        MS_WHLR,    MS_WHLU, MS_WHLD, MS_WHLL,     ____,
-    BASE,     MUTE,        VOLD,    VOLU,        MS_BTN1,      KC_SPC,              RCLK_UPPER, HOME,    PGDN,    PGUP,        END
-),
-#endif
-
 /* Keyboard Settings & Adjustments: Hold Left Thumb Key, Then Right Thumb Key
  * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
- * │ BOOTLDR │         │         │         │         │         │         │         │RGB MODE-│RGB MODE+│         │    🔆   │
+ * │ BOOTLDR │         │         │Hist Fav │         │         │         │         │RGB MODE-│RGB MODE+│         │    🔆   │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │         │         │         │  ⭑  ⏻   │         │         │         │RGB TOGL │   RGB-  │   RGB+  │         │    🔅   │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
@@ -95,13 +75,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
  */
 [_ADJ] = LAYOUT_planck_mit(
-    QK_BOOT, ____, ____, ____,    ____, ____, ____, ____,    RM_PREV, RM_NEXT, ____,    KC_BRIU,
-    ____,    ____, ____, TG_LEAD, ____, ____, ____, RM_TOGG, RM_VALD, RM_VALU, ____,    KC_BRID,
-    ____,    ____, ____, ____,    ____, ____, ____, TG_OS,   RM_HUED, RM_HUEU, RM_SATD, RM_SATU,
+    QK_BOOT, ____, ____, LIST_LEADER_ALL_SAVED, ____, ____, ____, ____,    RM_PREV, RM_NEXT, ____,    KC_BRIU,
+    ____,    ____, ____, TG_LEAD,               ____, ____, ____, RM_TOGG, RM_VALD, RM_VALU, ____,    KC_BRID,
+    ____,    ____, ____, ____,                  ____, ____, ____, TG_OS,   RM_HUED, RM_HUEU, RM_SATD, RM_SATU,
 #ifdef DEBUG_ENABLE
-    DB_TOGG, ____, ____, ____,    ____, ____,    ____,       RM_SPDD, RM_SPDU, ____,    ____
+    DB_TOGG, ____, ____, ____,                  ____, ____,    ____,       RM_SPDD, RM_SPDU, ____,    ____
 #else
-    ____,    ____, ____, ____,    ____, ____,    ____,       RM_SPDD, RM_SPDU, ____,    ____
+    ____,    ____, ____, ____,                  ____, ____,    ____,       RM_SPDD, RM_SPDU, ____,    ____
 #endif
 ),
 
@@ -269,7 +249,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │         │         │         │         │         │         │ForceQuit│Sel Word←│Sel Line↓│Sel Line↑│Sel Word→│         │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │         │         │         │         │         │  🔍  😀       📁  │␡ Empty🗑️│         │         │         │         │
+ * │         │         │         │         │         │  🔍  😀       📁  │␡    🫗 🗑️│         │         │         │         │
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
  * FS 🔒    = Full Screen App Toggle (Tap); Lock Mac/iDevice (Hold)
  * 🔍 😀 📁 = Spotlight (Tap); Open Emoji Menu (2xTap); Open Finder (Hold)
@@ -283,6 +263,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ____, ____, ____, ____, ____,       ____, LGUI(A(KC_ESC)), A(S(KC_LEFT)), A(S(KC_DOWN)), A(S(KC_UP)), A(S(KC_RGHT)), ____,
     ____, ____, ____, ____, ____,          LAUNCHER_OS,        DEL_OS,        ____,          ____,        ____,          ____
 ),
+
+/* Classic Doom Layer
+ * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
+ * │ESC n y n│         │         │    ↑    │         │         │         │         │Pointer ↑│         │         │ ⌫  ⌫L ⌫w│
+ * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+ * │  ⇥   ⇤  │ Strife ←│    ←    │    ↓    │    →    │ Strife →│ Strife ←│Pointer ←│Pointer ↓│Pointer →│ Strife →│    ↵    │
+ * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+ * │         │         │         │ Strife ↓│         │         │         │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │         │
+ * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+ * │  BASE   │🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │Lft Click│   ␣           LSFT│Rgt Click│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
+ * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
+ */
+#ifdef MOUSEKEY_ENABLE
+[_DOOM] = LAYOUT_planck_mit(
+    DOOM_ESC, ____,        ____,    KC_UP,       KC_F2,   ____,        ____,        KC_F3,      MS_UP,   ____,    ____,        BSPC,
+    TAB,      STRAFE_LEFT, KC_LEFT, KC_DOWN,     KC_RGHT, STRAFE_RGHT, STRAFE_LEFT, MS_LEFT,    MS_DOWN, MS_RGHT, STRAFE_RGHT, ENT,
+    ____,     ____,        ____,    STRAFE_DOWN, ____,    ____,        ____,        MS_WHLR,    MS_WHLU, MS_WHLD, MS_WHLL,     ____,
+    BASE,     MUTE,        VOLD,    VOLU,        MS_BTN1,      KC_SPC,              RCLK_UPPER, HOME,    PGDN,    PGUP,        END
+),
+#endif
 
 /* Mouse Layer: Tap Bottom Left Key w/ Palm to Activate/Exit
  * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐

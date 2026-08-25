@@ -1,6 +1,6 @@
 # 🌌 Spacecentricity — A Planck MIT Keymap for the Inland MK-47
 
-Spacecentricity is a maximalist modal keymap built around a modified Dvorak base, heavy thumb usage, and mirrored layers for navigation, Vim‑style editing, and programming. It emphasizes home-position access to high-frequency characters, movement keys, numbers, symbols, and common programming n-grams through macros and tap dances. Key redundancy provides alternative ways to perform the same actions, helping reduce strain and fatigue.
+Spacecentricity is a maximalist modal keymap built around a modified Dvorak base, mirrored layers for navigation, Vim‑style editing/programming, and common operating system actions. It emphasizes home-position access (with heavy thumb usage) to high-frequency characters, movement keys, numbers, symbols, and common programming n-grams through macros and tap dances. Key redundancy provides alternative ways to perform the same actions, helping reduce strain and fatigue.
 
 Because this keymap treats keyboard firmware like a [finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine), each layer includes its own RGB matrix pattern, making it easy to see which layer or state is active at a glance. The RGB matrix also indicates active modes such as Caps Lock (blinking red), One-Shot Shift (gold), [Case Modes](#case-modes-temporary-lexical-modes) (neon mint), and [Leader](/LEADER.md) sequences (navy blue).
 
@@ -21,7 +21,7 @@ This keymap has an estimated user count of one.
 
 - [Keyboard](#keyboard)
   - [Availability](#availability)
-- [Layout](#layout)
+- [Layout: Userland Layers](#layout-userland-layers)
   - [Legend](#legend)
   - [Base: Modified Dvorak](#base-modified-dvorak)
   - [Lower: Numpad](#lower-numpad)
@@ -47,12 +47,13 @@ The [Inland MK-47](https://www.microcenter.com/product/661264/inland-47-keys-hot
 * [QMK-compatible firmware](https://qmk.fm/) (fully programmable)
 * [VIA](https://www.caniusevia.com/) support for on-the-fly keymap editing
 * Per-key RGB lighting
+* USB-C wired connection (💭 remember when keyboards typically had fixed cords?)
 * Hot-swappable MX switch sockets (📌 3/5-pin)
   * Usable out of the box: preinstalled with linear switches and ABS-like keycaps
     * 47× Huano Red linear switches
     * 47× shine-through white keycaps (plus a black 2u "spacebar"), probably ABS plastic
     * Funky black braided 90° USB-C-to-USB-A cable and a keycap puller included
-* USB-C wired connection (💭 remember when keyboards typically had fixed cords?)
+* Stock weight of ___345 g___ → ___≈0.76 lb___
 
 The MK-47 has become a popular entry point for anyone experimenting with custom firmware, unusual layouts, or switch testing without spending much. Its compact footprint also makes it a convenient one-piece travel or backup board — it even fits neatly inside a Nintendo Switch carrying case, so it's easy to throw in a bag. Some people also repurpose the Planck form factor as a macropad.
 
@@ -63,7 +64,7 @@ The MK‑47 is typically an in‑store Micro Center exclusive, but it’s occasi
 > [!TIP]
 > Not familiar with Planck keyboards? See this brief [video by Jack Humbert](https://www.youtube.com/watch?v=bEPg8kk84gw) introducing the Planck.
 
-## Layout
+## Layout: Userland Layers
 
 Each layer is presented as a rendered diagram generated with [keyboard-layout-editor.com](https://keyboard-layout-editor.com) for quick visual reference.
 
@@ -71,6 +72,9 @@ Each layer is presented as a rendered diagram generated with [keyboard-layout-ed
 > On macOS, this keymap is designed to be used with the **ABC – Extended** input source. Other layouts may alter how Option‑based characters or dead‑key sequences behave, leading to inconsistent output. Apple provides this input source for English‑language users who need a more complete set of diacritical marks and international symbols without switching to a separate language layout. This input source does not interfere with standard system shortcuts.
 >
 > Because Linux and Microsoft Windows accept Unicode directly from [HID](https://en.wikipedia.org/wiki/Human_interface_device), the standard US layout works correctly when the keyboard is used in those modes.
+
+> [!TIP]
+> [**Base**](#base-modified-dvorak), [**Upper**](#upper-primary-number-layer), and [**Arrows**](#arrows) are the most frequently used layers. Most of the remaining layers and state mechanics exist to assist workflow rather than get in the way — the [**Mouse**](#mouse) layer, for example, comes in handy when the battery dies on a wireless pointing device.
 
 ### Legend
 

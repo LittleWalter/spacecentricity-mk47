@@ -215,6 +215,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 path_case_toggle();
             }
             return false;
+        case LIST_LEADER_ALL_SAVED:
+            if (record->event.pressed) {
+                leader_type_all();
+            }
+            return false;
 
 #ifdef RGB_MATRIX_ENABLE
         // ─────────────────────────────────────────────────────────────

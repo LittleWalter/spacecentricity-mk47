@@ -35,6 +35,8 @@
 #define ENABLE_RGB_MATRIX_RIVERFLOW              // flowing horizontal water‑like motion
 #define ENABLE_RGB_MATRIX_SPLASH                 // ripple effect radiating from keypresses
 #define ENABLE_RGB_MATRIX_JELLYBEAN_RAINDROPS    // colorful falling droplets across the board
+#define ENABLE_RGB_MATRIX_REACTIVE_SIMPLE        // flashes the pressed keys; handy for leader & tap dances
+#define ENABLE_RGB_MATRIX_TYPING_HEATMAP         // displays which keys/layers you actually type on
 
 // Crowd‑Pleaser Animations
 #define ENABLE_RGB_MATRIX_SOLID_REACTIVE_WIDE      // wide reactive ripple on keypress

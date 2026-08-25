@@ -4,6 +4,7 @@
 
 #include "leader.h"
 #include "utils.h"
+#include "src/core/custom_keys.h"
 #include "src/core/keymap.h"
 #include "src/features/rgb.h"
 #include "src/macros/mac_special_char.h"
@@ -436,6 +437,138 @@ void run_leader_favorites(const uint8_t index) {
 }
 
 // ─────────────────────────────────────────────────────────────
+// Leader History/Favorites Output (typed to keyboard)
+// ─────────────────────────────────────────────────────────────
+
+// Sends an unsigned 8-bit integer as decimal digits via the keyboard.
+static void leader_send_uint8(uint8_t value) {
+    char buf[4] = {0};
+    uint8_t i = 0;
+
+    if (value == 0) {
+        buf[i++] = '0';
+    } else {
+        char tmp[4];
+        uint8_t j = 0;
+        while (value > 0) {
+            tmp[j++] = '0' + (value % 10);
+            value /= 10;
+        }
+        while (j > 0) {
+            buf[i++] = tmp[--j];
+        }
+    }
+    buf[i] = '\0';
+    send_string(buf);
+}
+
+// Counts how many slots in a leader_entry_t array are populated (leader != LEAD_NONE).
+static uint8_t leader_entries_used(const leader_entry_t *entries, uint8_t max) {
+    uint8_t count = 0;
+    for (uint8_t i = 0; i < max; i++) {
+        if (entries[i].leader != LEAD_NONE) count++;
+    }
+    return count;
+}
+
+// Runs a single stored entry's macro, waits long enough for it to fully settle
+// (longer for emoji, since the macOS picker is slow), then advances to the
+// next line. Centralizing this avoids duplicating the delay logic between
+// the favorites and history output paths.
+static void leader_type_advance_entry(const leader_entry_t entry) {
+    run_leader_entry(entry);
+
+    if (current_os == OS_MACOS) {
+       const uint16_t delay_ms = (entry.leader == LEAD_EMOJI)
+                               ? LEADER_TYPE_EMOJI_DELAY_MS
+                               : LEADER_TYPE_ENTRY_DELAY_MS;
+       wait_ms(delay_ms);
+    }
+
+    tap_code(KC_ENT);
+}
+
+// Types "<Label>: X of Y" then a newline, followed by one numbered line per
+// populated slot, each running the entry's actual macro output (emoji, symbol,
+// surround, or annotation) inline.
+static void leader_type_entries(const char *label, const leader_entry_t *entries, uint8_t max) {
+    uint8_t used = leader_entries_used(entries, max);
+
+    send_string(label);
+    send_string(": ");
+    leader_send_uint8(used);
+    send_string(" of ");
+    leader_send_uint8(max);
+    tap_code(KC_ENT);
+
+    if (used == 0) return;
+
+    uint8_t line = 0;
+    for (uint8_t i = 0; i < max; i++) {
+        if (entries[i].leader == LEAD_NONE) continue;
+        send_string("  ");
+        leader_send_uint8(line++);
+        send_string(". ");
+        leader_type_advance_entry(entries[i]);
+    }
+}
+
+// Message shown when the user tries to view history/favorites while Leader
+// sequences are disabled entirely (see toggle_leader()).
+static void leader_type_disabled_notice(void) {
+    send_string("Leader sequences off, turn Leader on to display history/favorites...");
+    tap_code(KC_ENT);
+}
+
+// Types Leader favorites (in slot order) to the keyboard.
+// Types Leader favorites (in slot order) to the keyboard.
+void leader_type_favorites(void) {
+    if (!leader_state.enabled) {
+        leader_type_disabled_notice();
+        return;
+    }
+    if (is_transient_lexical_mode_on()) return;
+
+    leader_type_entries("Favorites", leader_favorites, LEADER_FAVORITES_SIZE);
+}
+
+// Types Leader history, newest first, to the keyboard.
+void leader_type_history(void) {
+    if (!leader_state.enabled) {
+        leader_type_disabled_notice();
+        return;
+    }
+    if (!leader_state.enabled || is_transient_lexical_mode_on()) return;
+    // Snapshot newest-first via leader_history_get() so ordering matches what
+    // run_leader_history()/replay would use, rather than raw ring-buffer order.
+    leader_entry_t ordered[LEADER_HISTORY_SIZE];
+    uint8_t count = 0;
+    for (uint8_t offset = 0; offset < LEADER_HISTORY_SIZE; offset++) {
+        leader_entry_t *e = leader_history_get(offset);
+        if (!e || e->leader == LEAD_NONE) break; // ring fills contiguously from offset 0
+        ordered[count++] = *e;
+    }
+    send_string("Leader History: ");
+    leader_send_uint8(count);
+    send_string(" of ");
+    leader_send_uint8(LEADER_HISTORY_SIZE);
+    tap_code(KC_ENT);
+    for (uint8_t i = 0; i < count; i++) {
+        send_string("  ");
+        leader_send_uint8(i);
+        send_string(". ");
+        leader_type_advance_entry(ordered[i]);
+    }
+}
+
+// Types Favorites then History, separated by a blank line.
+void leader_type_all(void) {
+    leader_type_favorites();
+    tap_code(KC_ENT);
+    leader_type_history();
+}
+
+// ─────────────────────────────────────────────────────────────
 // Leader Sequence Handler Function Definitions
 // ─────────────────────────────────────────────────────────────
 
@@ -539,6 +672,8 @@ static bool rgb_sequences(void) {
     } else if (leader_sequence_two_keys(RGB_LEADER, KC_E)) { // mnemonic: Toggle saving RGB settings to EEPROM
         rgb_eeprom_state = !rgb_eeprom_state;
         //rgb_matrix_toggle_noeeprom();
+    } else if (leader_sequence_two_keys(RGB_LEADER, KC_H)) { // mnemonic: RGB Heatmap
+        rgb_matrix_mode_noeeprom(RGB_MATRIX_TYPING_HEATMAP);
     } else {
         return false;
     }
@@ -586,6 +721,22 @@ static bool misc_sequences(void) {
         SEND_STRING(EMAIL_SECONDARY);
     } else if (leader_sequence_three_keys(KC_M, KC_M, KC_M)) {
         SEND_STRING(EMAIL_TERTIARY);
+    } else if (leader_sequence_two_keys(KC_A, KC_A)) {
+        SEND_STRING(ADDR_LINE1);
+    } else if (leader_sequence_three_keys(KC_A, KC_A, KC_A)) {
+        SEND_STRING(ADDR_LINE2);
+    } else if (leader_sequence_one_key(KC_Y)) {
+        SEND_STRING(ADDR_CITY);
+    } else if (leader_sequence_two_keys(KC_Y, KC_Y)) {
+        SEND_STRING(ADDR_STATE);
+    } else if (leader_sequence_one_key(KC_Z)) {
+        SEND_STRING(ADDR_POSTAL_CODE);
+    } else if (leader_sequence_two_keys(KC_A, KC_S)) { // mnemonic: “all saved” -> dump both Favorites & History
+        leader_type_all();
+    } else if (leader_sequence_one_key(KC_V)) { // mnemonic: SAvED (or FAvORITES)
+        leader_type_favorites();
+    } else if (leader_sequence_one_key(KC_L)) { // mnemonic: Log (history) or List history
+        leader_type_history();
     } else {
         return false;
     }

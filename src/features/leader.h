@@ -8,6 +8,14 @@
 #define LEADER_HISTORY_SIZE 10 // Any more that 8-12 seems excessive
 #define LEADER_FAVORITES_SIZE 10
 
+// macOS's Emoji & Symbols picker is noticeably slower to open/search/settle
+// than a straight Unicode-input sequence. Give emoji entries extra breathing
+// room before sending the next keystroke (e.g. the trailing Enter), or the
+// picker can still be transitioning when we advance — swallowing the newline
+// or, worse, taking unintended action inside the still-open picker.
+#define LEADER_TYPE_EMOJI_DELAY_MS 1000
+#define LEADER_TYPE_ENTRY_DELAY_MS 20
+
 // Leader prefixes for each command namespace
 #define EMOJI_LEADER   KC_NO    // Emoji sequences
 #define RGB_LEADER     KC_R     // RGB matrix controls
@@ -18,6 +26,18 @@
 #define EMAIL_PRIMARY   "mail@example.com"
 #define EMAIL_SECONDARY "another@example.com"
 #define EMAIL_TERTIARY  "third@example.com"
+
+// Username constants used by Leader sequences
+#define USERNAME_PRIMARY   "primary_username"
+#define USERNAME_SECONDARY "secondary_username"
+#define USERNAME_TERTIARY  "third_username"
+
+// Address constants used by Leader sequences
+#define ADDR_LINE1       "1234 Main Street"
+#define ADDR_LINE2       ""
+#define ADDR_CITY        "Los Angeles"
+#define ADDR_STATE       "California"
+#define ADDR_POSTAL_CODE "90012-3308" // Zip+4 format
 
 // ─────────────────────────────────────────────────────────────
 // Leader Data Types
@@ -139,5 +159,13 @@ void save_leader_favorites(const uint8_t index);
 
 // Executes a stored favorites entry.
 void run_leader_favorites(const uint8_t index);
+
+// ──────────────────────────────
+// Leader Output
+// ──────────────────────────────
+
+void leader_type_favorites(void);
+void leader_type_history(void);
+void leader_type_all(void);
 
 #endif

@@ -25,7 +25,14 @@
 
 ## 2026-08/23-SU
 - **DOOM** → `BUGFIX:` Removed mod-tap `LSFT` for `SPC` key. Fixed responsiveness of door-opening actions possibly regarding MT key issues.
+  - `NEW:` Added `F2` and `F3` to open the load and save menus, respectively. Top row, index fingers.
 - **macOS** → Swapped tap dances around on the delete key (right thumb); `Tap+Hold` → Open Trash folder in Finder, `Hold` → Empty Trash.
+- RGB: Added reactive typing heatmap animation.
+- **Leader**: Added print to editor to output the state of **Leader**
+  - Print History w/ `★l` for “lIST”.
+  - Print Favorites (`★v`) for “SAvED”.
+  - To print both use (`★as`) for “aLL sAVED”.
+  - [ ] Find and fix any remaining output bugs; update docs when mostly done.
 
 ## 2026-08/20-TH
 - Added more Markdown files for `src` project path and subdirectories.

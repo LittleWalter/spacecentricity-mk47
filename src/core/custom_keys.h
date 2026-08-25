@@ -72,6 +72,7 @@ enum custom_keycodes {
     TG_LEAD,              // Toggles Leader Keys on/off
     APP,                  // Application switching key on hold; CMD or ALT
     TG_PATH_CASE,         // Turn on path/mode/to/something casing
+    LIST_LEADER_ALL_SAVED,// List Leader Favorites and Leader History
 };
 
 // Intercepts custom keycodes and runs their associated macros and miscellenous

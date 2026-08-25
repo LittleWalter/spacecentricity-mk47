@@ -82,6 +82,9 @@ History is replayed not through Leader itself, but via **hold‑actions on the n
 
 This provides a fast way to repeat your most recent Leader macros without re‑entering their sequences.
 
+> [!TIP]
+> Use `★l` to type the last 10 Leader sequences played.
+
 ### Leader Favorites
 
 Favorites let you pin up to **ten** frequently used Leader actions for quick access.
@@ -95,6 +98,9 @@ To assign a Favorite:
 * Complete a Leader sequence.
 * **Tap‑and‑hold** a number key (`0`–`9`).
 * The most recent Leader action is saved into that Favorite slot.
+
+> [!TIP]
+> Use `★v` to type the current state of favorites, up to 10.
 
 ## Supported Leader Sequences
 
@@ -319,6 +325,7 @@ RGB Matrix effects are prefixed with `r`.
 
 | Sequence | Mnemonic | Behavior |
 |----------|----------|----------|
+| `★rh` | Heatmap | Set RGB Matrix to Typing Heatmap |
 | `★rj` | Jellybean | Set RGB Matrix to Jellybean Raindrops |
 | `★rm` | _The Matrix_ | Set RGB Matrix to Digital Rain |
 | `★rn` | RGB Next | Cycle to next RGB Matrix effect |
