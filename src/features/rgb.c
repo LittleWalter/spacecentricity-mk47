@@ -611,6 +611,12 @@ bool rgb_matrix_indicators_user(void) {
             rgb_off();
             // Exit Mouse Mode Layer: Tap Bottom Left Key
             set_layer_key_color(LED_CORNER_BOTTOM_LEFT);
+            // `Esc` in red
+            rgb_matrix_set_color(LED_CORNER_TOP_LEFT, RED);
+            // `Enter` in green
+            rgb_matrix_set_color(LED_ROW1_COL11, GREEN);
+            // `Tab` in yellow (open automap)
+            rgb_matrix_set_color(LED_ROW1_COL0, YELLOW);
             // Mouse Pointer Movement Keys (Move/Go)
             rgb_matrix_set_color(LED_ROW0_RIGHT_MIDDLE, SPRING_GREEN); // Move Up
             rgb_matrix_set_color(LED_ROW1_RIGHT_INDEX,  SPRING_GREEN); // Move Left

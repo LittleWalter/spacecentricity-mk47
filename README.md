@@ -2,7 +2,7 @@
 
 Spacecentricity is a maximalist modal keymap built around a modified Dvorak base, mirrored layers for navigation, Vim‑style editing/programming, and common operating system actions. It emphasizes home-position access (with heavy thumb usage) to high-frequency characters, movement keys, numbers, symbols, and common programming n-grams through macros and tap dances. Key redundancy provides alternative ways to perform the same actions, helping reduce strain and fatigue.
 
-Because this keymap treats keyboard firmware like a [finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine), each layer includes its own RGB matrix pattern, making it easy to see which layer or state is active at a glance. The RGB matrix also indicates active modes such as Caps Lock (blinking red), One-Shot Shift (gold), [Case Modes](#case-modes-temporary-lexical-modes) (neon mint), and [Leader](/LEADER.md) sequences (navy blue).
+Because this keymap treats keyboard firmware like a [finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine), each layer includes its own RGB matrix pattern, making it easy to see which layer or state is active at a glance. The RGB matrix indicates active modes such as Caps Lock (blinking red), One-Shot Shift (gold), [Case Modes](#case-modes-temporary-lexical-modes) (neon mint), and [Leader](/LEADER.md) sequences (navy blue).
 
 This keymap has an estimated user count of one.
 
@@ -50,10 +50,21 @@ The [Inland MK-47](https://www.microcenter.com/product/661264/inland-47-keys-hot
 * USB-C wired connection (💭 remember when keyboards typically had fixed cords?)
 * Hot-swappable MX switch sockets (📌 3/5-pin)
   * Usable out of the box: preinstalled with linear switches and ABS-like keycaps
-    * 47× Huano Red linear switches
-    * 47× shine-through white keycaps (plus a black 2u "spacebar"), probably ABS plastic
-    * Funky black braided 90° USB-C-to-USB-A cable and a keycap puller included
-* Stock weight of ___345 g___ → ___≈0.76 lb___
+  * 47× Huano Red Linear switches — 45g actuation (2mm pre-travel), 60g bottom-out, 4.0mm travel
+    * Surprisingly decent 🍒 clone
+  * 44× shine-through white keycaps
+    * Probably ABS plastic
+    * OEM-like profile
+    * QWERTY primary labels w/ smaller secondary labels
+  * 3× shine-through black keycaps
+    * Black 2u “spacebar” (`ROW3`/Bottom Row)
+    * Black 1u `Esc` (`ROW0`/Top Row)
+    * Black 1u `Enter` (`ROW1`/Home Row)
+  * 1× funky black braided 90° USB-C-to-USB-A cable
+  * 1× keycap puller included (w/o switch puller)
+  * 1× paper manual that tries to trick you into using the preinstalled keymap
+* Black plastic case w/ **width × depth:** 235 × 83 mm (9.25 × 3.27 in)
+* **Stock weight:** 345 g (≈0.76 lb)
 
 The MK-47 has become a popular entry point for anyone experimenting with custom firmware, unusual layouts, or switch testing without spending much. Its compact footprint also makes it a convenient one-piece travel or backup board — it even fits neatly inside a Nintendo Switch carrying case, so it's easy to throw in a bag. Some people also repurpose the Planck form factor as a macropad.
 
@@ -74,7 +85,7 @@ Each layer is presented as a rendered diagram generated with [keyboard-layout-ed
 > Because Linux and Microsoft Windows accept Unicode directly from [HID](https://en.wikipedia.org/wiki/Human_interface_device), the standard US layout works correctly when the keyboard is used in those modes.
 
 > [!TIP]
-> [**Base**](#base-modified-dvorak), [**Upper**](#upper-primary-number-layer), and [**Arrows**](#arrows) are the most frequently used layers. Most of the remaining layers and state mechanics exist to assist workflow rather than get in the way — the [**Mouse**](#mouse) layer, for example, comes in handy when the battery dies on a wireless pointing device. [Leader](/LEADER.md) sequences can be toggled on/off via the [Adjustment](#adjustment-keyboard-settings) layer.
+> [**Base**](#base-modified-dvorak), [**Upper**](#upper-primary-number-layer), and [**Arrows**](#arrows) are the most frequently used layers. Most of the remaining layers and state mechanics exist to assist workflow rather than get in the way — the [**Mouse**](#mouse) layer, for example, comes in handy when the battery dies on a wireless pointing device. [Leader](/LEADER.md) sequences can be toggled on/off via the [**Adjustment**](#adjustment-keyboard-settings) layer.
 
 ### Legend
 
@@ -150,7 +161,7 @@ Tap the **HELD** key when this layer is **locked** to return to [**Base**](#base
 
 Hold `1`–`6` for hexadecimal `A`–`F`.
 
-Momentary hold `0` to access **Adjustment** layer to change keyboard settings.
+Momentary hold `0` to access [**Adjustment**](#adjustment-keyboard-settings) layer to change keyboard settings.
 
 ### Upper: Primary Number Layer
 

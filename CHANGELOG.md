@@ -28,6 +28,9 @@
   - `BUGFIX:` Displaying `Leader off` message twice on `★as` to print “all saved” in Favorites and History.
   - `BUGFIX:` Displaying surround character **Leader** sequences improperly (now suppressingthe effects of an unintended left arrow), e.g., `<>`, `()`, etc.
 - **Upper**: Added `dot.case` mode toggling on `Tap+Hold` for `Caps Lock` key.
+- **Doom**
+  - Enabled color LEDS for `Tab` (`YELLOW`) and `Esc` (`RED`).
+  - Filled out `KC_NO` keys w/ `0`–`9` weapon changes and `-`/`+` to zoom screen out/in.
 
 ## 2026-08/23-SU
 - **DOOM** → `BUGFIX:` Removed mod-tap `LSFT` for `SPC` key. Fixed responsiveness of door-opening actions possibly regarding MT key issues.
@@ -35,9 +38,9 @@
 - **macOS** → Swapped tap dances around on the delete key (right thumb); `Tap+Hold` → Open Trash folder in Finder, `Hold` → Empty Trash.
 - RGB: Added reactive typing heatmap animation.
 - **Leader**: Added print to editor to output the state of **Leader**
-  - Print History w/ `★l` for “lIST”.
-  - Print Favorites (`★v`) for “SAvED”.
-  - To print both use (`★as`) for “aLL sAVED”.
+  - Print History w/ `★l` for “list”.
+  - Print Favorites w/ `★v` for “saved”.
+  - To print both use `★as` for “all saved”.
   - [x] Find and fix any remaining output bugs; update docs when mostly done.
 
 ## 2026-08/20-TH

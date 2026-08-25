@@ -11,13 +11,23 @@
     },
     "␛\ny\n\nn",
     {
-      "c": "#b2beb5",
-      "a": 7
+      "c": "#ddd3c0",
+      "a": 5,
+      "fa": [
+        1,
+        1,
+        0,
+        6,
+        0,
+        0,
+        6
+      ]
     },
-    "",
-    "",
+    "SWITCH\nplasma\n\n\n\n\n7",
+    "SWITCH\nrocket\n\n\n\n\n6",
     {
       "c": "#3DED97",
+      "a": 7,
       "fa": [
         9
       ]
@@ -38,14 +48,28 @@
     },
     "LOAD\nMENU\n\n\n\n\nF2",
     {
-      "c": "#b2beb5",
-      "a": 7
+      "fa": [
+        1,
+        2,
+        0,
+        0,
+        0,
+        0,
+        9
+      ]
     },
-    "",
-    "",
+    "SWITCH\nprev\n\n\n\n\n←",
+    "SWITCH\nnext\n\n\n\n\n→",
     {
-      "c": "#ddd3c0",
-      "a": 5
+      "fa": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        6
+      ]
     },
     "SAVE\nMENU\n\n\n\n\nF3",
     {
@@ -62,11 +86,19 @@
     },
     "POINTER\n\n\n\n\n\n↑",
     {
-      "c": "#b2beb5",
-      "a": 7
+      "c": "#cccccc",
+      "fa": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        6
+      ]
     },
-    "",
-    "",
+    "SCREEN\nSIZE\n\n\n\n\n-",
+    "SCREEN\nSIZE\n\n\n\n\n+",
     {
       "c": "#F8B8B5",
       "a": 4,
@@ -176,17 +208,28 @@
   ],
   [
     {
-      "c": "#b2beb5"
-    },
-    "",
-    "",
-    "",
-    {
-      "c": "#FFE082",
       "a": 5,
       "fa": [
         1,
+        1,
         0,
+        0,
+        0,
+        0,
+        6
+      ]
+    },
+    "SCREEN\nSIZE\n\n\n\n\n-",
+    {
+      "c": "#ddd3c0"
+    },
+    "SWITCH\nchaingun\n\n\n\n\n5",
+    "SWITCH\nshotgun\n\n\n\n\n4",
+    {
+      "c": "#FFE082",
+      "fa": [
+        1,
+        1,
         0,
         0,
         0,
@@ -196,21 +239,37 @@
     },
     "STRAFE\n\n\n\nALT\n\n↓",
     {
-      "c": "#b2beb5",
-      "a": 7
+      "c": "#ddd3c0",
+      "fa": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        6
+      ]
     },
-    "",
-    "",
-    "",
+    "SWITCH\npistol\n\n\n\n\n3",
+    "SWITCH\nknuckles\n\n\n\n\n2",
+    "SWITCH\nBFG\n\n\n\n\n9",
     {
       "c": "#D7B8F3",
-      "a": 5
+      "fa": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        9
+      ]
     },
     "WHEEL\n\n\n\n\n\n⇒",
     {
       "fa": [
         1,
-        0,
+        1,
         0,
         0,
         0,
@@ -223,7 +282,7 @@
     {
       "fa": [
         1,
-        0,
+        1,
         0,
         0,
         0,
@@ -233,14 +292,23 @@
     },
     "WHEEL\n\n\n\n\n\n⇐",
     {
-      "c": "#b2beb5",
-      "a": 7
+      "c": "#cccccc",
+      "fa": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        6
+      ]
     },
-    ""
+    "SCREEN\nSIZE\n\n\n\n\n+"
   ],
   [
     {
       "c": "#80CBC4",
+      "a": 7,
       "fa": [
         4
       ]
