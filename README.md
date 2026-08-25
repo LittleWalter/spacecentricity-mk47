@@ -432,7 +432,7 @@ An optional compact gaming layer modeled after vanilla _Doom_ (1993), built arou
 >
 > `RUN:` `chocolate-doom-setup`
 >
-> `GOTO:` `Configure Keyboard` → `Action` → `More Controls`
+> `GOTO:` `Configure Keyboard` → `Action` → `More Controls…` → Set `Previous weapon` to `1`, Set `Next weapon` to `0`, set `Weapon 1` to `Weapon 8` starting at `2`
 >
 > `GOTO:` `Configure Keyboard` → `Misc.` → `Always run`
 

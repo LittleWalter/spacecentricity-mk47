@@ -24,7 +24,7 @@
       ]
     },
     "SWITCH\nplasma\n\n\n\n\n7",
-    "SWITCH\nrocket\n\n\n\n\n6",
+    "SWITCH\nrockets\n\n\n\n\n6",
     {
       "c": "#3DED97",
       "a": 7,
@@ -252,7 +252,7 @@
     },
     "SWITCH\npistol\n\n\n\n\n3",
     "SWITCH\nknuckles\n\n\n\n\n2",
-    "SWITCH\nBFG\n\n\n\n\n9",
+    "SWITCH\nBFG\n\n\n\n\n8",
     {
       "c": "#D7B8F3",
       "fa": [
