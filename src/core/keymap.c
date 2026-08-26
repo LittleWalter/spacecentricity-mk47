@@ -270,16 +270,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │  ⇥   ⇤  │ Strife ←│    ←    │    ↓    │    →    │ Strife →│ Strife ←│Pointer ←│Pointer ↓│Pointer →│ Strife →│    ↵    │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │ScrnSize-│ Chaingun│ Shotgun │ Strife ↓│ Pistol  │ Knuckles│ BFG 9000│ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │ScrnSize+│
+ * │  Pause  │ Chaingun│ Shotgun │ Strife ↓│ Pistol  │ Knuckles│ BFG 9000│ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │  Pause  │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │  BASE   │🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │Lft Click│   ␣           LSFT│Rgt Click│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
+ * │  BASE   │🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │Lft Click│         ␣         │Rgt Click│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
  */
 #ifdef MOUSEKEY_ENABLE
 [_DOOM] = LAYOUT_planck_mit(
     DOOM_ESC, KC_7,        KC_6,    KC_UP,       KC_F2,   KC_1,        KC_0,        KC_F3,      MS_UP,   KC_MINS, KC_PLUS,     BSPC,
     TAB,      STRAFE_LEFT, KC_LEFT, KC_DOWN,     KC_RGHT, STRAFE_RGHT, STRAFE_LEFT, MS_LEFT,    MS_DOWN, MS_RGHT, STRAFE_RGHT, ENT,
-    KC_MINS,  KC_5,        KC_4,    STRAFE_DOWN, KC_3,    KC_2,        KC_8,        MS_WHLR,    MS_WHLU, MS_WHLD, MS_WHLL,     KC_PLUS,
+    KC_PAUS,  KC_5,        KC_4,    STRAFE_DOWN, KC_3,    KC_2,        KC_8,        MS_WHLR,    MS_WHLU, MS_WHLD, MS_WHLL,     KC_PAUS,
     BASE,     MUTE,        VOLD,    VOLU,        MS_BTN1,      KC_SPC,              RCLK_UPPER, HOME,    PGDN,    PGUP,        END
 ),
 #endif

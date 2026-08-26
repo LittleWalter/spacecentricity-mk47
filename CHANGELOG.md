@@ -25,6 +25,9 @@
 
 ## 2026-08/25-TU
 - **Adjustment**: Added RGB (navy) to the Print **Leader** Favorites & History
+- **DOOM**
+  - `BUGFIX:` Added guard to **DOOM** RGB layer definition to exclude when `MOUSE_ENABLE` is set to `no` for RGB Matrix state.
+  - `NEW:` Added 2× `Pause` keys to `ROW2` on left and right sides.
 
 ## 2026-08/24-MO
 - **Leader**: fixed state output-related bugs.

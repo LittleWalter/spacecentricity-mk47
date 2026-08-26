@@ -52,7 +52,7 @@ The [Inland MK-47](https://www.microcenter.com/product/661264/inland-47-keys-hot
 * Hot-swappable MX switch sockets (📌 3/5-pin)
 * Compact size, ideal for lap or tray table use
 
-The MK-47 has become a popular entry point for anyone experimenting with custom firmware, unusual layouts, or switch testing without spending much. Its compact footprint also makes it a convenient one-piece travel or backup board — it even fits neatly inside a Nintendo Switch carrying case, so it's easy to throw in a bag. Some people also repurpose the Planck form factor as a macropad.
+The MK-47 has become a popular entry point for anyone experimenting with custom firmware, unusual layouts, or switch testing without spending much. Its compact footprint makes it a convenient one-piece travel or backup board — it even fits neatly inside a Nintendo Switch carrying case, so it's easy to throw in a bag. Some people also repurpose the Planck form factor as a macropad.
 
 ### Inside the Box
 
@@ -431,7 +431,7 @@ The **center key** provides window and device controls:
 
 This mouse layer is typically accessed with a _left-palm tap_ from [**Base**](#base-modified-dvorak). A taller keycap (flat SA Row 3) makes the key easier to target while keeping the hands in home position for quick entry and exit.
 
-This layer is intended as a secondary fallback mouse input when other pointing devices are unavailable.
+This layer serves as a secondary/fallback mouse input, useful when other pointing devices are unavailable or for mouse-driven terminal emulator interaction.
 
 ### Doom Classic
 

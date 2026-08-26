@@ -3,13 +3,18 @@
     {
       "c": "#F8B8B5",
       "fa": [
-        6,
+        0,
         6,
         0,
-        6
+        6,
+        0,
+        0,
+        6,
+        0,
+        1
       ]
     },
-    "␛\ny\n\nn",
+    "\ny\n\nn\n\n\n␛\n\nMENU",
     {
       "c": "#ddd3c0",
       "a": 5,
@@ -103,25 +108,35 @@
       "c": "#F8B8B5",
       "a": 4,
       "fa": [
-        2,
+        1,
         2,
         0,
-        2
+        2,
+        0,
+        0,
+        2,
+        0,
+        1
       ]
     },
-    "⌫\n⌫L\n\n⌫w"
+    "\n⌫L\n\n⌫w\n\n\n⌫\n\nPREV"
   ],
   [
     {
       "c": "#cccccc",
       "fa": [
-        7,
+        1,
         2,
         0,
-        7
+        6,
+        0,
+        0,
+        6,
+        0,
+        1
       ]
     },
-    "⇥\n\n\n⇤\nMAP",
+    "\n\n\n⇤\n\n\n⇥\n\nMAP",
     {
       "c": "#FFE082",
       "a": 5,
@@ -129,7 +144,7 @@
         1,
         2,
         0,
-        7,
+        6,
         0,
         0,
         9
@@ -216,12 +231,21 @@
         0,
         0,
         0,
-        6
+        5
       ]
     },
-    "SCREEN\nSIZE\n\n\n\n\n-",
+    "PAUSE\nGAME\n\n\n\n\n⏸️",
     {
-      "c": "#ddd3c0"
+      "c": "#ddd3c0",
+      "fa": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        6
+      ]
     },
     "SWITCH\nchaingun\n\n\n\n\n5",
     "SWITCH\nshotgun\n\n\n\n\n4",
@@ -251,7 +275,7 @@
       ]
     },
     "SWITCH\npistol\n\n\n\n\n3",
-    "SWITCH\nknuckles\n\n\n\n\n2",
+    "SWITCH\nknuckles\n\n\nsaw\n\n2",
     "SWITCH\nBFG\n\n\n\n\n8",
     {
       "c": "#D7B8F3",
@@ -300,10 +324,10 @@
         0,
         0,
         0,
-        6
+        5
       ]
     },
-    "SCREEN\nSIZE\n\n\n\n\n+"
+    "PAUSE\nGAME\n\n\n\n\n⏸️"
   ],
   [
     {
@@ -341,24 +365,28 @@
         8
       ]
     },
-    "LEFT\n\n\n\n\n\n●",
+    "LEFT\n\n\n\nFIRE!\n\n●",
     {
       "c": "#cccccc",
-      "a": 7,
       "fa": [
+        1,
+        4,
+        4,
+        4,
+        0,
+        0,
         9
       ],
       "w": 2
     },
-    "␣",
+    "OPEN / CLOSE DOOR\n\n\n\nACTIVATE SWITCH\n\n␣",
     {
       "c": "#80CBC4",
-      "a": 5,
       "fa": [
         1,
-        0,
-        0,
-        0,
+        4,
+        4,
+        4,
         0,
         0,
         8

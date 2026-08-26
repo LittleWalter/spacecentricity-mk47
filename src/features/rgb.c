@@ -598,17 +598,18 @@ bool rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color(LED_ROW0_RIGHT_RING,   GREEN); // Page Up
             rgb_matrix_set_color(LED_ROW0_RIGHT_PINKY,  GREEN); // End
             break;
-#endif
+
         /* Classic Doom Layer
          * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
-         * │ESC n y n│         │         │    ↑    │         │         │         │         │Pointer ↑│         │         │ ⌫  ⌫L ⌫w│
+         * │ESC   y n│ Plasma  │ Rockets │    ↑    │Load Menu│ ← Prev  │ → Next  │Open Menu│Pointer ↑│ScrnSize-│ScrnSize+│ ⌫  ⌫L ⌫w│
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-         * │  ⇥   ⇤  │ Strife ←│    ←    │    ↓    │    →    │ Strife →│         │Pointer ←│Pointer ↓│Pointer →│ Strife →│    ↵    │
+         * │  ⇥   ⇤  │ Strife ←│    ←    │    ↓    │    →    │ Strife →│ Strife ←│Pointer ←│Pointer ↓│Pointer →│ Strife →│    ↵    │
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-         * │         │         │         │ Strife ↓│         │         │         │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │         │
+         * │  Pause  │ Chaingun│ Shotgun │ Strife ↓│ Pistol  │ Knuckles│ BFG 9000│ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │  Pause  │
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-         * │  BASE   │🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │Lft Click│   ␣           LSFT│Rgt Click│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
+         * │  BASE   │🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │Lft Click│         ␣         │Rgt Click│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
          * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
+         * NOTE: No need for RGB logic when the layer is inactive due to mouse keys
          */
        case _DOOM:
             rgb_off();
@@ -634,6 +635,7 @@ bool rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color(LED_ROW1_LEFT_MIDDLE, GREEN); // Down
             rgb_matrix_set_color(LED_ROW1_LEFT_INDEX,  GREEN); // Right
             break;
+#endif
 
 #ifdef LEADER_ENABLE
         case _LEAD_ALPHA:
