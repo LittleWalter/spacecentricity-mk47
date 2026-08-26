@@ -28,8 +28,8 @@
         6
       ]
     },
-    "SWITCH\nplasma\n\n\n\n\n7",
-    "SWITCH\nrockets\n\n\n\n\n6",
+    "SWITCH\nplasma\n\n\n\n\n6",
+    "SWITCH\nchaingun\n\n\n\n\n5",
     {
       "c": "#3DED97",
       "a": 7,
@@ -60,11 +60,22 @@
         0,
         0,
         0,
-        9
+        6
       ]
     },
-    "SWITCH\nprev\n\n\n\n\n←",
-    "SWITCH\nnext\n\n\n\n\n→",
+    "SWITCH\nBFG\n\n\n\n\n7",
+    {
+      "fa": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        4
+      ]
+    },
+    "QUIT\nGAME\n\n\nF10\n\n🅧",
     {
       "fa": [
         1,
@@ -247,8 +258,8 @@
         6
       ]
     },
-    "SWITCH\nchaingun\n\n\n\n\n5",
-    "SWITCH\nshotgun\n\n\n\n\n4",
+    "SWITCH\nshotgun\n\n\ndouble\n\n4",
+    "SWITCH\npistol\n\n\n\n\n3",
     {
       "c": "#FFE082",
       "fa": [
@@ -274,14 +285,11 @@
         6
       ]
     },
-    "SWITCH\npistol\n\n\n\n\n3",
     "SWITCH\nknuckles\n\n\nsaw\n\n2",
-    "SWITCH\nBFG\n\n\n\n\n8",
     {
-      "c": "#D7B8F3",
       "fa": [
         1,
-        1,
+        2,
         0,
         0,
         0,
@@ -289,11 +297,16 @@
         9
       ]
     },
+    "SWITCH\nprev\n\n\n1\n\n←",
+    "SWITCH\nnext\n\n\n0\n\n→",
+    {
+      "c": "#D7B8F3"
+    },
     "WHEEL\n\n\n\n\n\n⇒",
     {
       "fa": [
         1,
-        1,
+        2,
         0,
         0,
         0,
@@ -306,7 +319,7 @@
     {
       "fa": [
         1,
-        1,
+        2,
         0,
         0,
         0,

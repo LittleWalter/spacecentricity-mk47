@@ -561,9 +561,9 @@ bool rgb_matrix_indicators_user(void) {
          * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
          * │   CUT   │UNDO REDO│  PASTE  │  COPY   │ SEL ALL │DESKTOP ←│DESKTOP →│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │ ⌫  ⌫L ⌫w│
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-         * │         │         │Mid Click│Lft Click│Rgt Click│   ESC   │  DOOM   │Pointer ←│Pointer ↓│Pointer ↑│Pointer →│    ↵    │
+         * │  ⇥   ⇤  │AppSwitch│Mid Click│Lft Click│Rgt Click│   ESC   │  DOOM   │Pointer ←│Pointer ↓│Pointer ↑│Pointer →│    ↵    │
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-         * │DESKTOP ←│         │         │  Back   │ Forward │  TAB ←  │  TAB →  │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │DESKTOP →│
+         * │DESKTOP ←│  TAB ←  │  TAB →  │  Back   │ Forward │  TAB ←  │  TAB →  │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │DESKTOP →│
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
          * │  BACK   │🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │ Wheel ↑ │      Wheel ↓      │ Wheel ↑ │ SEL ALL │  COPY   │  PASTE  │UNDO REDO│
          * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
@@ -601,11 +601,11 @@ bool rgb_matrix_indicators_user(void) {
 
         /* Classic Doom Layer
          * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
-         * │ESC   y n│ Plasma  │ Rockets │    ↑    │Load Menu│ ← Prev  │ → Next  │Open Menu│Pointer ↑│ScrnSize-│ScrnSize+│ ⌫  ⌫L ⌫w│
+         * │ESC   y n│ Plasma  │ Rockets │    ↑    │Load Menu│ BFG 9000│    8    │Open Menu│Pointer ↑│ScrnSize-│ScrnSize+│ ⌫  ⌫L ⌫w│
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
          * │  ⇥   ⇤  │ Strife ←│    ←    │    ↓    │    →    │ Strife →│ Strife ←│Pointer ←│Pointer ↓│Pointer →│ Strife →│    ↵    │
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-         * │  Pause  │ Chaingun│ Shotgun │ Strife ↓│ Pistol  │ Knuckles│ BFG 9000│ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │  Pause  │
+         * │  Pause  │ Shotgun │  Pistol │ Strife ↓│ Knuckles│ ← Prev  │ → Next  │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │  Pause  │
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
          * │  BASE   │🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │Lft Click│         ␣         │Rgt Click│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
          * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
