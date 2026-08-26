@@ -450,6 +450,8 @@ An optional compact gaming layer modeled after vanilla _Doom_ (1993), built arou
 >
 > `GOTO:` `Configure Keyboard` → `Other keys…` → `- Shortcut keys -` → Set `Pause game` to `Delete` when using macOS
 
+> [!TIP]
+> Refer to the [manual image](assets/Classic_Doom_manual_screenshot-controls.jpg) for Classic Doom default controls. (Source: [gaming.stackexchange.com](https://gaming.stackexchange.com/questions/363261/what-are-the-original-controls-of-doom-1993))
 
 ## Case Modes: Temporary Lexical Modes
 
