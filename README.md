@@ -20,6 +20,7 @@ This keymap has an estimated user count of one.
 ## Table of Contents
 
 - [Keyboard](#keyboard)
+  - [Inside the Box](#inside-the-box)
   - [Availability](#availability)
 - [Layout: Userland Layers](#layout-userland-layers)
   - [Legend](#legend)
@@ -49,25 +50,30 @@ The [Inland MK-47](https://www.microcenter.com/product/661264/inland-47-keys-hot
 * Per-key RGB lighting
 * USB-C wired connection (💭 remember when keyboards typically had fixed cords?)
 * Hot-swappable MX switch sockets (📌 3/5-pin)
-  * Usable out of the box: preinstalled with linear switches and ABS-like keycaps
-  * 47× Huano Red Linear switches — 45g actuation (2mm pre-travel), 60g bottom-out, 4.0mm travel
-    * Surprisingly decent 🍒 clone
-  * 44× shine-through white keycaps
-    * Probably ABS plastic
-    * OEM-like profile
-    * QWERTY primary labels w/ smaller secondary labels
-  * 3× shine-through black keycaps
-    * Black 2u “spacebar” (`ROW3`/Bottom Row)
-    * Black 1u `Esc` (`ROW0`/Top Row)
-    * Black 1u `Enter` (`ROW1`/Home Row)
-  * 1× funky black braided 90° USB-C-to-USB-A cable
-  * 1× keycap puller included (w/o switch puller)
-  * 1× paper manual that tries to trick you into using the preinstalled keymap
-* Black plastic case w/ **width × depth:** 235 × 83 mm (9.25 × 3.27 in)
-* **Stock weight:** 345 g (≈0.76 lb)
-* **Retail price:** $39.99 USD (2026)
 
 The MK-47 has become a popular entry point for anyone experimenting with custom firmware, unusual layouts, or switch testing without spending much. Its compact footprint also makes it a convenient one-piece travel or backup board — it even fits neatly inside a Nintendo Switch carrying case, so it's easy to throw in a bag. Some people also repurpose the Planck form factor as a macropad.
+
+### Inside the Box
+
+* 47× Huano Red Linear switches — 45g actuation (2mm pre-travel), 60g bottom-out, 4.0mm travel
+  * Surprisingly decent 🍒 clones…
+* 44× shine-through white keycaps
+  * Probably ABS plastic
+  * OEM-like profile
+  * QWERTY primary labels w/ smaller secondary labels
+* 3× shine-through black keycaps
+  * Black 1u `Esc` (Top Row/`ROW0`)
+  * Black 1u `Enter` (Home Row/`ROW1`)
+  * Black 2u `Space` a.k.a. the “spacebar” (Bottom Row/`Row3`)
+* 1× black plastic case w/ **width × depth:** 235 × 83 mm (9.25 × 3.27 in)
+  * 3–5° positive tilt
+  * 6× small Philips screws securing the tray/top-mounted PCB, accessible after removing the keycaps
+  * Room inside for foam or other sound-dampening material
+* 1× funky black braided 90° USB-C-to-USB-A cable
+* 1× keycap puller included (w/o switch puller)
+* 1× paper manual that tries to trick you into using the preinstalled keymap
+* **Stock weight:** 345 g (≈0.76 lb)
+* **Retail price:** $39.99 USD (2026)
 
 ### Availability
 
