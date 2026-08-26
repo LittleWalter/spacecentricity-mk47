@@ -270,7 +270,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │  ⇥   ⇤  │ Strife ←│    ←    │    ↓    │    →    │ Strife →│ Strife ←│Pointer ←│Pointer ↓│Pointer →│ Strife →│    ↵    │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │  Pause  │ Shotgun │  Pistol │ Strife ↓│ Knuckles│ ← Prev  │ → Next  │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │  Pause  │
+ * │  Pause  │  Pistol │ Shotgun │ Strife ↓│ Knuckles│ ← Prev  │ → Next  │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │  Pause  │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │  BASE   │🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │Lft Click│         ␣         │Rgt Click│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
@@ -279,7 +279,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_DOOM] = LAYOUT_planck_mit(
     DOOM_ESC,   KC_6,        KC_5,    KC_UP,       KC_F2,   KC_7,        KC_F10,      KC_F3,      MS_UP,   KC_MINS, KC_PLUS,     BSPC,
     TAB,        STRAFE_LEFT, KC_LEFT, KC_DOWN,     KC_RGHT, STRAFE_RGHT, STRAFE_LEFT, MS_LEFT,    MS_DOWN, MS_RGHT, STRAFE_RGHT, ENT,
-    DOOM_PAUSE, KC_4,        KC_3,    STRAFE_DOWN, KC_2,    KC_1,        KC_0,        MS_WHLR,    MS_WHLU, MS_WHLD, MS_WHLL,     DOOM_PAUSE,
+    DOOM_PAUSE, KC_3,        KC_4,    STRAFE_DOWN, KC_2,    KC_1,        KC_0,        MS_WHLR,    MS_WHLU, MS_WHLD, MS_WHLL,     DOOM_PAUSE,
     BASE,       MUTE,        VOLD,    VOLU,        MS_BTN1,      KC_SPC,              RCLK_UPPER, HOME,    PGDN,    PGUP,        END
 ),
 #endif

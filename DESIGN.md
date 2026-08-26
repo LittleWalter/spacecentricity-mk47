@@ -47,6 +47,8 @@ There’s also a meaningful difference between the two common Planck variants. T
 
 The biggest trade‑off is that the Planck demands heavy layer usage and rewards people who enjoy modal workflows. For users who prefer dedicated keys or who struggle with ortholinear spacing, the learning curve can feel steep. But for those who embrace layers, symmetry, and thumb‑centric design, the Planck offers a uniquely efficient and expressive platform—especially when paired with programmable firmware like QMK or [ZMK](https://zmk.dev/) for wireless support, which adds even more power (and another notch of complexity — have “fun” debugging the logic of your keymap directly in the firmware, if that’s your thing).
 
+Getting into the nitty gritty of firmware like QMK or ZMK is the only true way to unlock what a custom keyboard is fully capable of — graphical tools like VIA inherently limit expressiveness in exchange for convenience.
+
 [^ergonomics-of-planck]: It’s probably worth mentioning that I don’t really consider the Planck form factor “ergonomic” in the same sense as keyboards that feature split layouts, flexible tenting angles, columnar stagger, and/or concave keywells, though modern sculpted keycap profiles such as [KLP Lamé](https://github.com/braindefender/KLP-Lame-Keycaps/) can provide some of the benefits of the latter. The Planck is a semi-ergonomic layout by virtue of its small size, programmability, and ortholinear grid, and it may work particularly well for a niche subset of users that don’t mind unibody keyboards. For some, the Planck might make a great secondary travel device that beats built-in laptop keyboards.
 
 ## Bias

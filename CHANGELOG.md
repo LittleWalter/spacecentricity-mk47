@@ -28,7 +28,8 @@
 - **DOOM**
   - `BUGFIX:` Added guard to **DOOM** RGB layer definition to exclude when `MOUSE_ENABLE` is set to `no` for RGB Matrix state.
   - `NEW:` Added 2× `Pause` keys to `ROW2` on left and right sides.
-  - `NEW:` Created macro that emits `Delete` when trying to pause doom, `Pause` emits for Linux and Windows.
+  - `NEW:` Created macro that emits `Delete` when trying to pause Doom, `Pause` emits for Linux and Windows.
+  - `NEW:` Added `F10` to the top row, removing the unassigned `8` key.
   - Tinkering w/ digit arrangement.
 
 ## 2026-08/24-MO

@@ -19,7 +19,7 @@ This keymap has an estimated user count of one.
 
 ## Table of Contents
 
-- [Keyboard](#keyboard)
+- [The Keyboard](#the-keyboard)
   - [Inside the Box](#inside-the-box)
   - [Availability](#availability)
 - [Layout: Userland Layers](#layout-userland-layers)
@@ -33,7 +33,8 @@ This keymap has an estimated user count of one.
   - [Vim](#vim)
   - [Programming](#programming)
   - [Terminal](#terminal)
-  - [Apple macOS](#apple-macos)
+  - [Operating System](#operating-system)
+    - [Apple macOS](#apple-macos)
   - [Mouse](#mouse)
   - [Doom Classic](#doom-classic)
 - [Case Modes: Temporary Lexical Modes](#case-modes-temporary-lexical-modes)
@@ -41,7 +42,7 @@ This keymap has an estimated user count of one.
   - [Helper Scripts (Optional)](#-helper-scripts-optional)
 - [Layout Stability](#-layout-stability)
 
-## Keyboard
+## The Keyboard
 
 The [Inland MK-47](https://www.microcenter.com/product/661264/inland-47-keys-hot-swappable-rgb-wired-mechanical-keyboard) is an affordable **47-key ortholinear mechanical keyboard** sold by Micro Center and a clone of the [OLKB](https://olkb.com/) Planck. Despite its low price, it includes features usually reserved for enthusiast-grade boards:
 
@@ -68,14 +69,15 @@ The MK-47 is usable out of the box — aside from its stock keymap.
   * Black 1u `Esc` (top row/`ROW0`)
   * Black 1u `Enter` (home row/`ROW1`)
   * Black 2u `Space` a.k.a. the “spacebar” (bottom row/`ROW3`)
-* 1× black plastic case w/ **width × depth:** 235 × 83 mm (9.25 × 3.27 in)
+* 1× black plastic case w/ **width×depth:** 235×83mm (9.25×3.27in)
   * 3–5° positive tilt
   * 6× small Philips screws securing the tray/top-mounted PCB, accessible after removing the keycaps
   * Room inside for foam or other sound-dampening material
 * 1× funky black braided 90° USB-C-to-USB-A cable
 * 1× keycap puller included (w/o switch puller)
 * 1× paper manual that tries to trick you into using the preinstalled keymap
-* **Stock weight:** 345 g (≈0.76 lb)
+* **Stock keyboard weight:** 345g (≈0.76 lb)
+* **Total weight (w/ case & accessories):** ≈567g (≈1.25 lb)
 * **Retail price:** $39.99 USD (2026)
 
 ### Availability
@@ -140,7 +142,7 @@ The top-right corner key is a semantic `Backspace`, available on multiple layers
 |--------|----------|-------|
 | Tap | `Esc` ||
 | Tap-and-Hold | Close Active Window | macOS: `CMD‑W`; Linux/Microsoft Windows: `Alt-F4` |
-| Hold | Momentary Layer **macOS** | Activates [**macOS**](#apple-macos) layer while held; returns to **Base** on release |
+| Hold | Momentary Layer [**Operating System**](#operating-system) | Activates to appropriate operating system layer while held; returns to **Base** on release |
 
 #### Access to Mouse & Function Keys
 
@@ -390,7 +392,9 @@ The `camelCase` / `PascalCase` and `snake_case` / `SCREAMING_SNAKE_CASE` keys to
 
 An optional convenience layer centered on left‑hand navigation (`Home`, `Page Up`, `Page Down`, `End` under the home row) and a handful of shell‑adjacent shortcuts. The “terminal keys” are intentionally lightweight — more for comfort and fun than necessity — since shell history, aliases, and muscle memory usually handle most workflows.
 
-### Apple macOS
+### Operating System
+
+#### Apple macOS
 
 ![Apple macOS Layer](assets/13_MACOS.png)
 
@@ -440,15 +444,15 @@ This layer serves as a secondary/fallback mouse input, useful when other pointin
 An optional compact gaming layer modeled after vanilla _Doom_ (1993), built around a tight movement cluster, dedicated strafing keys, and thumb‑based actions for firing, opening doors, and running. Quick weapon switching is handled through the [**Upper**](#upper-primary-number-layer) layer, and the layout also works as a simple arrows‑plus‑mouse‑keys mode using traditional T‑shaped clusters for general navigation.
 
 > [!IMPORTANT]
-> Tested w/ [Chocolate Doom](https://www.chocolate-doom.org/wiki/index.php/Chocolate_Doom) v3.1.1 but keyboard settings modified for `previous weapon` and `next weapon` using `0` and `1`, respectively. It’s also a good idea to enable “Always run” to eliminate the need to continuously hold `Shift`. Pause is assigned to screen brightness up on macOS, but is assigned to `Delete` on this firmware.
+> Tested w/ [Chocolate Doom](https://www.chocolate-doom.org/wiki/index.php/Chocolate_Doom) v3.1.1 but keyboard settings modified for `previous weapon` and `next weapon` using `0` and `1`, respectively. It’s also a good idea to enable “Always run” to eliminate the need to continuously hold `Shift`. `Pause` is assigned to screen brightness up on macOS, but this firmware uses `Delete`.
 >
 > `RUN:` `chocolate-doom-setup`
 >
 > `GOTO:` `Configure Keyboard` → `Action` → `More Controls…` → Set `Previous weapon` to `1`, Set `Next weapon` to `0`, set `Weapon 1` to `Weapon 8` starting at `2`
 >
-> `GOTO:` `Configure Keyboard` → `Misc.` → `Always run`
+> `GOTO:` `Configure Keyboard` → `Misc.` → Select `Always run`
 >
-> `GOTO:` `Configure Keyboard` → `Other keys…` → `- Shortcut keys -` → Set `Pause game` to `Delete` when using macOS
+> If using macOS `GOTO:` `Configure Keyboard` → `Other keys…` → `- Shortcut keys -` → Set `Pause game` to `Delete`
 
 > [!TIP]
 > Refer to the [manual image](assets/Classic_Doom_manual_screenshot-controls.jpg) for Classic Doom default controls. (Source: [gaming.stackexchange.com](https://gaming.stackexchange.com/questions/363261/what-are-the-original-controls-of-doom-1993))

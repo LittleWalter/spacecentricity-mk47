@@ -601,11 +601,11 @@ bool rgb_matrix_indicators_user(void) {
 
         /* Classic Doom Layer
          * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
-         * │ESC   y n│ Plasma  │ Rockets │    ↑    │Load Menu│ BFG 9000│    8    │Open Menu│Pointer ↑│ScrnSize-│ScrnSize+│ ⌫  ⌫L ⌫w│
+         * │ESC   y n│ Plasma  │ Rockets │    ↑    │Load Menu│ BFG 9000│Quit Game│Open Menu│Pointer ↑│ScrnSize-│ScrnSize+│ ⌫  ⌫L ⌫w│
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
          * │  ⇥   ⇤  │ Strife ←│    ←    │    ↓    │    →    │ Strife →│ Strife ←│Pointer ←│Pointer ↓│Pointer →│ Strife →│    ↵    │
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-         * │  Pause  │ Shotgun │  Pistol │ Strife ↓│ Knuckles│ ← Prev  │ → Next  │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │  Pause  │
+         * │  Pause  │  Pistol │ Shotgun │ Strife ↓│ Knuckles│ ← Prev  │ → Next  │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │  Pause  │
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
          * │  BASE   │🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │Lft Click│         ␣         │Rgt Click│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
          * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
