@@ -1,6 +1,6 @@
 # 🌌 Spacecentricity — A Planck MIT Keymap for the Inland MK-47
 
-Spacecentricity is a maximalist modal keymap built around a modified Dvorak base, mirrored layers for navigation, Vim‑style editing/programming, and common operating system actions. It emphasizes home-position access (with heavy thumb usage) to high-frequency characters, movement keys, numbers, symbols, and common programming n-grams through macros and tap dances. Key redundancy provides alternative ways to perform the same actions, helping reduce strain and fatigue.
+Spacecentricity is a maximalist modal keymap built around a modified Dvorak base, mirrored layers for navigation, Vim‑style editing/programming, and common operating system and application actions. It emphasizes home-position access (with heavy thumb usage) to high-frequency characters, movement keys, numbers, symbols, and common programming n-grams through macros and tap dances. Key redundancy provides alternative ways to perform the same actions, helping reduce strain and fatigue.
 
 Because this keymap treats keyboard firmware like a [finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine), each layer includes its own RGB matrix pattern, making it easy to see which layer or state is active at a glance. The RGB matrix indicates active modes such as Caps Lock (blinking red), One-Shot Shift (gold), [Case Modes](#case-modes-temporary-lexical-modes) (neon mint), and [Leader](/LEADER.md) sequences (navy blue).
 
@@ -195,7 +195,7 @@ The Caps key provides three related text-entry modes, each with its own visual i
 >
 > `SCREAMING_SNAKE_CASE` behaves similarly to `Caps Word`, but transforms the spacebar into `_` and is intended for constant identifiers commonly used in C‑style languages and shell environments.
 >
-> `dot.case` works similarly: it transforms the spacebar into `.` and primarily useful for naming long files.
+> `dot.case` works similarly: it transforms the spacebar into `.` and is primarily useful for naming long files.
 
 #### `Del` Key
 
@@ -440,13 +440,16 @@ This layer serves as a secondary/fallback mouse input, useful when other pointin
 An optional compact gaming layer modeled after vanilla _Doom_ (1993), built around a tight movement cluster, dedicated strafing keys, and thumb‑based actions for firing, opening doors, and running. Quick weapon switching is handled through the [**Upper**](#upper-primary-number-layer) layer, and the layout also works as a simple arrows‑plus‑mouse‑keys mode using traditional T‑shaped clusters for general navigation.
 
 > [!IMPORTANT]
-> Tested w/ [Chocolate Doom](https://www.chocolate-doom.org/wiki/index.php/Chocolate_Doom) v3.1.1 but keyboard settings modified for `previous weapon` and `next weapon` using `0` and `1`, respectively. It’s also a good idea to enable “Always run” to eliminate the need to continuously hold `Shift`.
+> Tested w/ [Chocolate Doom](https://www.chocolate-doom.org/wiki/index.php/Chocolate_Doom) v3.1.1 but keyboard settings modified for `previous weapon` and `next weapon` using `0` and `1`, respectively. It’s also a good idea to enable “Always run” to eliminate the need to continuously hold `Shift`. Pause is assigned to screen brightness up on macOS, but is assigned to `Delete` on this firmware.
 >
 > `RUN:` `chocolate-doom-setup`
 >
 > `GOTO:` `Configure Keyboard` → `Action` → `More Controls…` → Set `Previous weapon` to `1`, Set `Next weapon` to `0`, set `Weapon 1` to `Weapon 8` starting at `2`
 >
 > `GOTO:` `Configure Keyboard` → `Misc.` → `Always run`
+>
+> `GOTO:` `Configure Keyboard` → `Other keys…` → `- Shortcut keys -` → Set `Pause game` to `Delete` when using macOS
+
 
 ## Case Modes: Temporary Lexical Modes
 

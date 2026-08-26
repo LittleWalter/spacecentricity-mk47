@@ -44,5 +44,3 @@ void doom_esc_reset(tap_dance_state_t *state, void *user_data) {
     }
     TD_RESET(doom_esc);
 }
-
-

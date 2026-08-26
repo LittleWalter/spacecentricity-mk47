@@ -5,6 +5,7 @@
 #include "src/features/rgb.h"
 #include "src/features/utils.h"
 #include "src/features/tapping_term.h"
+#include "src/macros/mac_doom.h"
 #include "src/macros/mac_programming.h"
 #include "src/macros/mac_special_char.h"
 #include "src/macros/mac_surround.h"
@@ -177,6 +178,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case APP: // Trigger App Switching key when held
             case_mode_off();
             record->event.pressed ? app_switch_macro(true) : app_switch_macro(false);
+            return false;
+
+        // ─────────────────────────────────────────────────────────────
+        // DOOM Macros
+        // ─────────────────────────────────────────────────────────────
+        case DOOM_PAUSE: // Pause Game
+            if (record->event.pressed) {
+                toggle_doom_pause();
+            }
             return false;
 
         // ─────────────────────────────────────────────────────────────

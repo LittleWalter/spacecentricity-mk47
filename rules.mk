@@ -27,6 +27,7 @@ SRC += src/features/leader.c
 SRC += src/features/rgb.c
 SRC += src/features/tapping_term.c
 SRC += src/features/utils.c
+SRC += src/macros/mac_doom.c
 SRC += src/macros/mac_programming.c
 SRC += src/macros/mac_special_char.c
 SRC += src/macros/mac_surround.c
