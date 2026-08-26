@@ -142,7 +142,7 @@ The top-right corner key is a semantic `Backspace`, available on multiple layers
 |--------|----------|-------|
 | Tap | `Esc` ||
 | Tap-and-Hold | Close Active Window | macOS: `CMD‑W`; Linux/Microsoft Windows: `Alt-F4` |
-| Hold | Momentary Layer [**Operating System**](#operating-system) | Activates to appropriate operating system layer while held; returns to **Base** on release |
+| Hold | Momentary Layer [**Operating System**](#operating-system) | Activates to appropriate operating-system layer while held; returns to **Base** on release |
 
 #### Access to Mouse & Function Keys
 
@@ -444,7 +444,7 @@ This layer serves as a secondary/fallback mouse input, useful when other pointin
 An optional compact gaming layer modeled after vanilla _Doom_ (1993), built around a tight movement cluster, dedicated strafing keys, and thumb‑based actions for firing, opening doors, and running. Quick weapon switching is handled through the [**Upper**](#upper-primary-number-layer) layer, and the layout also works as a simple arrows‑plus‑mouse‑keys mode using traditional T‑shaped clusters for general navigation.
 
 > [!IMPORTANT]
-> Tested w/ [Chocolate Doom](https://www.chocolate-doom.org/wiki/index.php/Chocolate_Doom) v3.1.1 but keyboard settings modified for `previous weapon` and `next weapon` using `0` and `1`, respectively. It’s also a good idea to enable “Always run” to eliminate the need to continuously hold `Shift`. `Pause` is assigned to screen brightness up on macOS, but this firmware uses `Delete`.
+> Tested w/ [Chocolate Doom](https://www.chocolate-doom.org/wiki/index.php/Chocolate_Doom) v3.1.1 but keyboard settings modified for `previous weapon` and `next weapon` using `0` and `1`, respectively. It’s also a good idea to enable “Always run” to eliminate the need to continuously hold `Shift`. On macOS, `Pause` triggers screen-brightness-up instead, so this keymap binds the in-game Pause action to `Delete`.
 >
 > `RUN:` `chocolate-doom-setup`
 >
