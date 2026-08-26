@@ -50,21 +50,24 @@ The [Inland MK-47](https://www.microcenter.com/product/661264/inland-47-keys-hot
 * Per-key RGB lighting
 * USB-C wired connection (💭 remember when keyboards typically had fixed cords?)
 * Hot-swappable MX switch sockets (📌 3/5-pin)
+* Compact size, ideal for lap or tray table use
 
 The MK-47 has become a popular entry point for anyone experimenting with custom firmware, unusual layouts, or switch testing without spending much. Its compact footprint also makes it a convenient one-piece travel or backup board — it even fits neatly inside a Nintendo Switch carrying case, so it's easy to throw in a bag. Some people also repurpose the Planck form factor as a macropad.
 
 ### Inside the Box
 
+The MK-47 is usable out of the box — aside from its stock keymap.
+
 * 47× Huano Red Linear switches — 45g actuation (2mm pre-travel), 60g bottom-out, 4.0mm travel
-  * Surprisingly decent 🍒 clones…
+  * Surprisingly decent 🍒 clones
 * 44× shine-through white keycaps
   * Probably ABS plastic
   * OEM-like profile
   * QWERTY primary labels w/ smaller secondary labels
 * 3× shine-through black keycaps
-  * Black 1u `Esc` (Top Row/`ROW0`)
-  * Black 1u `Enter` (Home Row/`ROW1`)
-  * Black 2u `Space` a.k.a. the “spacebar” (Bottom Row/`Row3`)
+  * Black 1u `Esc` (top row/`ROW0`)
+  * Black 1u `Enter` (home row/`ROW1`)
+  * Black 2u `Space` a.k.a. the “spacebar” (bottom row/`ROW3`)
 * 1× black plastic case w/ **width × depth:** 235 × 83 mm (9.25 × 3.27 in)
   * 3–5° positive tilt
   * 6× small Philips screws securing the tray/top-mounted PCB, accessible after removing the keycaps
@@ -191,6 +194,8 @@ The Caps key provides three related text-entry modes, each with its own visual i
 > `Caps Word` temporarily capitalizes letters as you type and automatically turns itself off at the end of the word, making it ideal for acronyms, identifiers, and short uppercase sequences without toggling `Caps Lock`.
 >
 > `SCREAMING_SNAKE_CASE` behaves similarly to `Caps Word`, but transforms the spacebar into `_` and is intended for constant identifiers commonly used in C‑style languages and shell environments.
+>
+> `dot.case` works similarly: it transforms the spacebar into `.` and primarily useful for naming long files.
 
 #### `Del` Key
 
@@ -458,7 +463,7 @@ The spacebar applies the correct separator or capitalization for the mode, and i
 | `snake_case` | Converts separators into ``_`` | Python, Rust, C identifiers |
 | `SCREAMING_SNAKE_CASE` | Uppercase `snake_case` | Constants, env vars |
 | `kebab-case` | Converts separators into ``-`` | Filenames, URLs, CLI flags |
-| `dot.case` | Converts separators into ``.`` | Namespaces, config keys |
+| `dot.case` | Converts separators into ``.`` | Filenames, namespaces, config keys |
 | `path/to/case` | Converts separators into ``/`` | File paths, imports |
 
 Exit these temporary modes earlier with a control or modifier key.
