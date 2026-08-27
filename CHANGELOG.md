@@ -19,14 +19,19 @@
 - [ ] Design two layers, left and right sides, to use 2× Inland MK-47 keyboards as an affordable pseudo split
 
 ### `DONE:`
-- [x] Make a fun vanilla **Doom** layer as an alternative to **Mouse** layer (2026-04/13-MO)
+- [x] Make a fun vanilla ***Doom*** (1993) layer as an alternative to **Mouse** layer (2026-04/13-MO)
 
 ---
 
+## 2026-08/27-TH
+- ***Doom*** (1993)
+  - Tinkering w/ layout by adding more tap dances.
+  - [ ]`TODO:` Write the logic for “Run Toggle.” 2× keys are currently assigned to `KC_NO`.
+
 ## 2026-08/25-TU
 - **Adjustment**: Added RGB (navy) to the Print **Leader** Favorites & History
-- **DOOM**
-  - `BUGFIX:` Added guard to **DOOM** RGB layer definition to exclude when `MOUSE_ENABLE` is set to `no` for RGB Matrix state.
+- ***Doom*** (1993)
+  - `BUGFIX:` Added guard to ***Doom*** (1993) RGB layer definition to exclude when `MOUSE_ENABLE` is set to `no` for RGB Matrix state.
   - `NEW:` Added 2× `Pause` keys to `ROW2` on left and right sides.
   - `NEW:` Created macro that emits `Delete` when trying to pause Doom, `Pause` emits for Linux and Windows.
   - `NEW:` Added `F10` to the top row, removing the unassigned `8` key.
@@ -37,12 +42,12 @@
   - `BUGFIX:` Displaying `Leader off` message twice on `★as` to print “all saved” in Favorites and History.
   - `BUGFIX:` Displaying surround character **Leader** sequences improperly (now suppressingthe effects of an unintended left arrow), e.g., `<>`, `()`, etc.
 - **Upper**: Added `dot.case` mode toggling on `Tap+Hold` for `Caps Lock` key.
-- **Doom**
+- ***Doom*** (1993)
   - Enabled color LEDS for `Tab` (`YELLOW`) and `Esc` (`RED`).
   - Filled out `KC_NO` keys w/ `0`–`9` weapon changes and `-`/`+` to zoom screen out/in.
 
 ## 2026-08/23-SU
-- **DOOM** → `BUGFIX:` Removed mod-tap `LSFT` for `SPC` key. Fixed responsiveness of door-opening actions possibly regarding MT key issues.
+- ***Doom*** (1993) → `BUGFIX:` Removed mod-tap `LSFT` for `SPC` key. Fixed responsiveness of door-opening actions possibly regarding MT key issues.
   - `NEW:` Added `F2` and `F3` to open the load and save menus, respectively. Top row, index fingers.
 - **macOS** → Swapped tap dances around on the delete key (right thumb); `Tap+Hold` → Open Trash folder in Finder, `Hold` → Empty Trash.
 - RGB: Added reactive typing heatmap animation.
@@ -61,13 +66,13 @@
 
 ## 2026-08/17-MO
 - Cleaned up documentation.
-- Fixed **DOOM** layer bug w/r/t **UPPER** layer.
+- Fixed ***Doom*** (1993) layer bug w/r/t **UPPER** layer.
 
 ## 2026-08/16-SU
 - Swapped one-shot shift on **BASE** for [QMK’s repeat key](https://docs.qmk.fm/features/repeat_key)
   - `TODO:` Reimplement QMK’s functionality to be compatible with tap dance.
 - Moved one-shot shift to space key on double tap.
-- Added left strafe key to **DOOM** layer for right-hand use.
+- Added left strafe key to ***Doom*** (1993) layer for right-hand use.
 
 ## 2026-05/03-SU
 - Added **Temporary Lexical Case Modes**, a text‑transformation system for programming, shell, and writing workflows.
@@ -121,7 +126,7 @@
   - Tap: delete character (`Backspace`/`Del`)
   - Tap-and-Hold: delete to beginning/end of line
   - Hold: Delete previous/next word
-- Updated **Doom** layer:
+- Updated ***Doom*** (1993) layer:
   - Added mouse‑wheel keys on the right side of the lower row in a Vim‑style arrangement.
   - Added a `Backspace` tap‑dance key to the top‑right corner.
 
@@ -134,7 +139,7 @@
   - Removed `;␣` and `:␣` because they appear less frequently in prose; I noticed I didn’t really use these bigrams much.
 
 ## 2026-04/13-MO
-- Added the **Doom Classic** layer (first draft). The layer is accessible via a tap on the **Mouse** layer, a center key on home row.
+- Added the ***Doom*** (1993) layer (first draft). The layer is accessible via a tap on the **Mouse** layer, a center key on home row.
 - Updated arrow‑key layers and expanded multilingual support.
   - Added cursor‑centered angle quotation marks: `«|»` and `‹|›`.
   - Added tap dance key on lower row for combining circumflex (`ˆ`) on tap, macron (`¯`) on double tap, breve (`˘`) on tap-and-hold, and caron (`ˇ`) on hold. On macOS, these require **ABC Extended** keyboard input set in the OS.

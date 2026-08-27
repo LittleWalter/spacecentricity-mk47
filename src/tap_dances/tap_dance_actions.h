@@ -150,9 +150,13 @@ enum {                 // │  Tap   │ 2xTap  │Tap+Hold│  Hold  │ Notes
     TD_LAUNCHER_OS,    // │Launcher│EmojiMnu│        │File Mgr│ Open Spotlight Search on Tap; Open Emoji Menu on 2xTap; Open Finder on Hold
     TD_FS_OS,          // │FullScrn│WinScrnS│        │Lock Mac│
     TD_SCRNSHOT_OS,    // │   ▣    │        │Options │   ⛶    │ Partial screenshot on Tap; Screenshot Toolbar, all options on Tap+Hold; Full screenshot on Hold
-    TD_DEL_OS,         // │Del File│  🗑️ 📂 │        │Empty 🗑️│ Delete file on Tap; Open trash folder in Finder on Tap+Hold, Empty trash can on Hold
+    TD_DEL_OS,         // │Del File│  🗑️ 📂  │        │Empty  🗑️│ Delete file on Tap; Open trash folder in Finder on Tap+Hold, Empty trash can on Hold
                        // │        │        │        │        │
-    TD_DOOM_ESC,       // │  Esc   │        │   y    │   n    │ DOOM: `Esc` on tap, `n` on Hold, `y` on Tap+Hold
+    TD_DOOM_MENU,      // │  Esc   │        │   y    │   n    │ DOOM: `Esc` on tap, `n` on Hold, `y` on Tap+Hold
+    TD_DOOM_LOAD,      // │LoadMenu│        │SaveMenu│        │
+    TD_DOOM_MAP,       // │Open Map│        │ Clear  │Mark Map│ DOOM: Clear marks on Tap+Hold
+    TD_DOOM_MUTE,      // │  Mute  │Pl/Pause│  Stop  │Doom Snd│ DOOM: Open sound menu to control fx and music volume
+    TD_DOOM_PREV,      // │  Bspc  │        │QuitGame│        │ DOOM: F7 to quit current game
 
     TD_COUNT // Sentinel value for tap_dance_actions array
 };

@@ -1,6 +1,6 @@
 # 🌌 Spacecentricity — A Planck MIT Keymap for the Inland MK-47
 
-Spacecentricity is a maximalist modal keymap built around a modified Dvorak base, mirrored layers for navigation, Vim‑style editing/programming, and common operating system and application actions. It emphasizes home-position access (with heavy thumb usage) to high-frequency characters, movement keys, numbers, symbols, and common programming n-grams through macros and tap dances. Key redundancy provides alternative ways to perform the same actions, helping reduce strain and fatigue.
+Spacecentricity is a maximalist modal keymap built around a modified Dvorak base, mirrored layers for navigation, Vim‑style editing/programming, and common operating system and application actions. It emphasizes home-position access (with heavy thumb usage) to high-frequency characters, movement keys, numbers, symbols, and common [programming n-grams](#programming) through macros and [tap dances](https://docs.qmk.fm/features/tap_dance). Key redundancy provides alternative ways to perform the same actions, helping reduce strain and fatigue.
 
 Because this keymap treats keyboard firmware like a [finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine), each layer includes its own RGB matrix pattern, making it easy to see which layer or state is active at a glance. The RGB matrix indicates active modes such as Caps Lock (blinking red), One-Shot Shift (gold), [Case Modes](#case-modes-temporary-lexical-modes) (neon mint), and [Leader](/LEADER.md) sequences (navy blue).
 
@@ -33,10 +33,10 @@ This keymap has an estimated user count of one.
   - [Vim](#vim)
   - [Programming](#programming)
   - [Terminal](#terminal)
-  - [Operating System](#operating-system)
+  - [Operating System Modes](#operating-system-modes)
     - [Apple macOS](#apple-macos)
   - [Mouse](#mouse)
-  - [Doom Classic](#doom-classic)
+  - [_Doom_ (1993)](#doom-1993)
 - [Case Modes: Temporary Lexical Modes](#case-modes-temporary-lexical-modes)
 - [Using This Keymap with QMK](#using-this-keymap-with-qmk)
   - [Helper Scripts (Optional)](#-helper-scripts-optional)
@@ -49,36 +49,44 @@ The [Inland MK-47](https://www.microcenter.com/product/661264/inland-47-keys-hot
 * [QMK-compatible firmware](https://qmk.fm/) (fully programmable)
 * [VIA](https://www.caniusevia.com/) support for on-the-fly keymap editing
 * Per-key RGB lighting
-* USB-C wired connection (💭 remember when keyboards typically had fixed cords?)
+* USB-C wired connection (💭 Remember when keyboards typically had fixed cables?)
 * Hot-swappable MX switch sockets (📌 3/5-pin)
 * Compact size, ideal for lap or tray table use
+* Retail price of $39.99 USD (2026)
 
-The MK-47 has become a popular entry point for anyone experimenting with custom firmware, unusual layouts, or switch testing without spending much. Its compact footprint makes it a convenient one-piece travel or backup board — it even fits neatly inside a Nintendo Switch carrying case, so it's easy to throw in a bag. Some people also repurpose the Planck form factor as a macropad.
+The MK-47 has become a popular entry point for anyone experimenting with custom firmware, unusual layouts, or switch testing without spending much. Its compact footprint makes it a convenient one-piece travel or backup board — it even fits neatly inside a Nintendo Switch carrying case, so it's easy to throw in a bag.
+
+One thing that would make it even more travel-friendly: built-in Bluetooth and/or 2.4 GHz wireless support. That said, sticking to a single wired connection is simpler than wired split keyboards, which often require both a USB-C and a [TRRS](https://www.zsa.io/voyager/our-cables) ("tip-ring-ring-sleeve") cable — and it likely keeps the MK-47’s price down, too.
 
 ### Inside the Box
 
-The MK-47 is usable out of the box — aside from its stock keymap.
+The MK-47 is usable out of the box (aside from its stock keymap).
 
-* 47× Huano Red Linear switches — 45g actuation (2mm pre-travel), 60g bottom-out, 4.0mm travel
+* 47× Huano Red Linear MX-style switches — 3-pin, 45g actuation (2mm pre-travel), 60g bottom-out, 4.0mm travel
   * Surprisingly decent 🍒 clones
 * 44× shine-through white keycaps
-  * Probably ABS plastic
-  * OEM-like profile
-  * QWERTY primary labels w/ smaller secondary labels
+  * **Material:** probably ABS plastic
+  * **Shape:** OEM-like profile
+  * **Labels:** QWERTY primary labels w/ smaller secondary labels
 * 3× shine-through black keycaps
-  * Black 1u `Esc` (top row/`ROW0`)
-  * Black 1u `Enter` (home row/`ROW1`)
-  * Black 2u `Space` a.k.a. the “spacebar” (bottom row/`ROW3`)
+  * 1× black 1u `Esc` (top row/`ROW0`)
+  * 1× black 1u `Enter` (home row/`ROW1`)
+  * 1× black 2u `Space` a.k.a. the “spacebar” (bottom row/`ROW3`)
 * 1× black plastic case w/ **width×depth:** 235×83mm (9.25×3.27in)
-  * 3–5° positive tilt
-  * 6× small Philips screws securing the tray/top-mounted PCB, accessible after removing the keycaps
-  * Room inside for foam or other sound-dampening material
-* 1× funky black braided 90° USB-C-to-USB-A cable
+  * **Angle:** 3–5° positive tilt
+  * **Mount type:** tray/top-mounted PCB (6× small Philips screws, accessible after removing the keycaps)
+  * **No stock foam:** standoffs leave room inside for adding sound-dampening material
+* 1× Planck MIT-style PCB
+  * **Switch sockets:** MX hotswap (📌 3/5-pin compatible)
+  * **RGB LEDs:** North-facing
+  * **Chip ID:** `0x3A50E980` (Westberry Tech.)
+  * **Flash size:** 256 KB
+  * **SRAM size:** 36 KB
+* 1× funky black nylon braided 90° USB-C-to-USB-A cable
 * 1× keycap puller included (w/o switch puller)
 * 1× paper manual that tries to trick you into using the preinstalled keymap
 * **Stock keyboard weight:** 345g (≈0.76 lb)
 * **Total weight (w/ case & accessories):** ≈567g (≈1.25 lb)
-* **Retail price:** $39.99 USD (2026)
 
 ### Availability
 
@@ -142,7 +150,7 @@ The top-right corner key is a semantic `Backspace`, available on multiple layers
 |--------|----------|-------|
 | Tap | `Esc` ||
 | Tap-and-Hold | Close Active Window | macOS: `CMD‑W`; Linux/Microsoft Windows: `Alt-F4` |
-| Hold | Momentary Layer [**Operating System**](#operating-system) | Activates to appropriate operating-system layer while held; returns to **Base** on release |
+| Hold | Momentary Layer [**Operating System**](#operating-system-modes) | Activates to appropriate operating-system layer while held; returns to **Base** on release |
 
 #### Access to Mouse & Function Keys
 
@@ -392,7 +400,9 @@ The `camelCase` / `PascalCase` and `snake_case` / `SCREAMING_SNAKE_CASE` keys to
 
 An optional convenience layer centered on left‑hand navigation (`Home`, `Page Up`, `Page Down`, `End` under the home row) and a handful of shell‑adjacent shortcuts. The “terminal keys” are intentionally lightweight — more for comfort and fun than necessity — since shell history, aliases, and muscle memory usually handle most workflows.
 
-### Operating System
+### Operating System Modes
+
+By default, this keyboard is set to [Apple macOS](#apple-macos); switch it to Linux or Microsoft Windows via the [**Adjustment**](#adjustment-keyboard-settings) layer.
 
 #### Apple macOS
 
@@ -437,14 +447,16 @@ This mouse layer is typically accessed with a _left-palm tap_ from [**Base**](#b
 
 This layer serves as a secondary/fallback mouse input, useful when other pointing devices are unavailable or for mouse-driven terminal emulator interaction.
 
-### Doom Classic
+### _Doom_ (1993)
 
-![Doom Classic layer](assets/01_DOOM.png)
+![Doom (1993) layer](assets/01_DOOM.png)
 
-An optional compact gaming layer modeled after vanilla _Doom_ (1993), built around a tight movement cluster, dedicated strafing keys, and thumb‑based actions for firing, opening doors, and running. Quick weapon switching is handled through the [**Upper**](#upper-primary-number-layer) layer, and the layout also works as a simple arrows‑plus‑mouse‑keys mode using traditional T‑shaped clusters for general navigation.
+An optional compact gaming layer modeled after vanilla [_Doom_ (1993)](https://en.wikipedia.org/wiki/Doom_(1993_video_game)), built around a tight movement cluster, dedicated strafing keys, and thumb‑based actions for firing, opening doors, and running. Quick weapon switching is handled through the [**Upper**](#upper-primary-number-layer) layer, and the layout also works as a simple arrows‑plus‑mouse‑keys mode using traditional T‑shaped clusters for general navigation.
 
 > [!IMPORTANT]
-> Tested w/ [Chocolate Doom](https://www.chocolate-doom.org/wiki/index.php/Chocolate_Doom) v3.1.1 but keyboard settings modified for `previous weapon` and `next weapon` using `0` and `1`, respectively. It’s also a good idea to enable “Always run” to eliminate the need to continuously hold `Shift`. On macOS, `Pause` triggers screen-brightness-up instead, so this keymap binds the in-game Pause action to `Delete`.
+> Tested w/ [Chocolate Doom](https://www.chocolate-doom.org/wiki/index.php/Chocolate_Doom) v3.1.1 but keyboard settings modified for `previous weapon` and `next weapon` using `0` and `1`, respectively. It’s also a good idea to enable “Always run” to eliminate the need to continuously hold `Shift`.
+>
+> On macOS, `Pause` (and `F15`) triggers `screen-brightness-up`, so this keymap binds the in-game Pause action to `Delete`.[^Pause_and_Scroll_Lock_on_macOS]
 >
 > `RUN:` `chocolate-doom-setup`
 >
@@ -455,7 +467,11 @@ An optional compact gaming layer modeled after vanilla _Doom_ (1993), built arou
 > If using macOS `GOTO:` `Configure Keyboard` → `Other keys…` → `- Shortcut keys -` → Set `Pause game` to `Delete`
 
 > [!TIP]
-> Refer to the [manual image](assets/Classic_Doom_manual_screenshot-controls.jpg) for Classic Doom default controls. (Source: [gaming.stackexchange.com](https://gaming.stackexchange.com/questions/363261/what-are-the-original-controls-of-doom-1993))
+> Refer to the [instruction manual scan](assets/Classic_Doom_manual_screenshot-controls.jpg) for _Doom_ (1993) default controls.[^doom_1993_instruction_manual]
+
+[^doom_1993_instruction_manual]: _Doom_ (1993) instruction manual scan sourced from [gaming.stackexchange.com](https://gaming.stackexchange.com/questions/363261/what-are-the-original-controls-of-doom-1993).
+
+[^Pause_and_Scroll_Lock_on_macOS]: On macOS, `Pause` and `F15` → `screen-brightness-up`; `Scroll Lock` and `F14` → `screen-brightness-down`.
 
 ## Case Modes: Temporary Lexical Modes
 

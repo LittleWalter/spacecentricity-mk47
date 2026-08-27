@@ -10,9 +10,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
  * │ * % @ # │ , ; | & │ ;  LSFT │ .  LCTL │ p  LALT │    y    │    f    │ g  RALT │ l  RCTL │ r  RSFT │ ' ’ ~ ` │ ⌫  ⌫L ⌫w│
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │  ⇥   ⇤  │    a    │ o PROG_R│ e  VIM_R│ i  ARR_R│ESC MACOS│    d    │ h PROG_L│ t  VIM_L│ n PROG_L│    s    │    ↵    │
+ * │  ⇥   ⇤  │    a    │ o PROG_R│ e  VIM_R│ i  ARR_R│ESC    OS│    d    │ h PROG_L│ t  VIM_L│ n PROG_L│    s    │    ↵    │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │REP  AREP│ /  HYPR │ q   MEH │    j    │    k    │    x    │    b    │ m   TERM│    w    │ v   MEH │ z  HYPR │ " ‘ < > │
+ * │ REPEAT  │ /  HYPR │ q   MEH │    j    │    k    │    x    │    b    │ m   TERM│    w    │ v   MEH │ z  HYPR │ " ‘ < > │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │MOUSE  FN│🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │ u  LOWER│ ␣  OSM SFT  ↵   ⌘ │ c  UPPER│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
@@ -266,21 +266,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Classic Doom Layer
  * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
- * │ESC   y n│ Plasma  │ Rockets │    ↑    │Load Menu│ BFG 9000│Quit Game│Open Menu│Pointer ↑│ScrnSize-│ScrnSize+│ ⌫  ⌫L ⌫w│
+ * │ESC 🅧 y n│ Plasma  │ Rockets │    ↑    │ BFG 9000│  Pause  │Load Save│MsgToggle│Pointer ↑│ScrnSize-│ScrnSize+│ ⌫  QUIT │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │  ⇥   ⇤  │ Strife ←│    ←    │    ↓    │    →    │ Strife →│ Strife ←│Pointer ←│Pointer ↓│Pointer →│ Strife →│    ↵    │
+ * │⇥  C Mark│ Strife ←│    ←    │    ↓    │    →    │ Strife →│ Strife ←│Pointer ←│Pointer ↓│Pointer →│ Strife →│    ↵    │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │  Pause  │  Pistol │ Shotgun │ Strife ↓│ Knuckles│ ← Prev  │ → Next  │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │  Pause  │
+ * │RunToggle│  Pistol │ Shotgun │ Strife ↓│ Knuckles│ ← Prev  │ → Next  │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │RunToggle│
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │  BASE   │🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │Lft Click│         ␣         │Rgt Click│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
  */
 #ifdef MOUSEKEY_ENABLE
 [_DOOM] = LAYOUT_planck_mit(
-    DOOM_ESC,   KC_6,        KC_5,    KC_UP,       KC_F2,   KC_7,        KC_F10,      KC_F3,      MS_UP,   KC_MINS, KC_PLUS,     BSPC,
-    TAB,        STRAFE_LEFT, KC_LEFT, KC_DOWN,     KC_RGHT, STRAFE_RGHT, STRAFE_LEFT, MS_LEFT,    MS_DOWN, MS_RGHT, STRAFE_RGHT, ENT,
-    DOOM_PAUSE, KC_3,        KC_4,    STRAFE_DOWN, KC_2,    KC_1,        KC_0,        MS_WHLR,    MS_WHLU, MS_WHLD, MS_WHLL,     DOOM_PAUSE,
-    BASE,       MUTE,        VOLD,    VOLU,        MS_BTN1,      KC_SPC,              RCLK_UPPER, HOME,    PGDN,    PGUP,        END
+    DOOM_MENU, KC_6,        KC_5,    KC_UP,       KC_7,    DOOM_PAUSE,  DOOM_LOAD,   KC_8     ,  MS_UP,   KC_MINS, KC_PLUS,     DOOM_PREV,
+    DOOM_MAP,  STRAFE_LEFT, KC_LEFT, KC_DOWN,     KC_RGHT, STRAFE_RGHT, STRAFE_LEFT, MS_LEFT,    MS_DOWN, MS_RGHT, STRAFE_RGHT, ENT,
+    ____,      KC_3,        KC_4,    STRAFE_DOWN, KC_2,    KC_1,        KC_0,        MS_WHLR,    MS_WHLU, MS_WHLD, MS_WHLL,     ____,
+    BASE,      DOOM_MUTE,   VOLD,    VOLU,        MS_BTN1,      KC_SPC,              RCLK_UPPER, HOME,    PGDN,    PGUP,        END
 ),
 #endif
 

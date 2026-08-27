@@ -24,7 +24,7 @@ This page expands on the design decisions. It’s not required reading for using
   - [Terminal](#terminal)
   - [Apple macOS](#apple-macos)
   - [Mouse](#mouse)
-  - [Doom Classic](#doom-classic)
+  - [_Doom_ (1993)](#doom-1993)
 - [RGB Matrix for the Planck MIT](#rgb-matrix-for-the-planck-mit)
 
 ## Release Statement
@@ -553,13 +553,13 @@ I arranged the keys to make the learning curve as gentle as possible: **pointer 
 
 The only minor downsides are the need for two‑hand operation and the practice required to get fully comfortable with mouse‑key accuracy. For example, pressing two directional keys produces diagonal movement, which takes a little time to internalize. With practice, muscle memory takes over and it becomes surprisingly natural. (I still prefer a finger trackball as my primary pointing device, but this layer is invaluable when the rechargeable battery goes flat, especially on a desktop.)
 
-### Doom Classic
+### _Doom_ (1993)
 
-![Doom Classic layer](assets/01_DOOM.png)
+![Doom (1993) layer](assets/01_DOOM.png)
 
-And finally, the most important question: can the Planck play _Doom_? It sure does!
+And finally, the most important question: can the Planck play _Doom_ adequately without a traditional pointing device? It sure can!
 
-This layer is an optional game‑focused mode built around vanilla _Doom_ (1993) ports. It replaces the typing layout with a tight movement cluster, dedicated strafing keys, and thumb‑accessible actions so your hands never leave position during play. Arrow and strafe keys sit under the left hand, while Left Click, Right Click, Space, and Shift live on the thumbs for fast firing, opening doors, and running.
+This layer is an optional game‑focused mode built around vanilla [_Doom_ (1993)](https://en.wikipedia.org/wiki/Doom_(1993_video_game)) ports. It replaces the typing layout with a tight movement cluster, dedicated strafing keys, and thumb‑accessible actions so your hands never leave position during play. Arrow and strafe keys sit under the left hand, while Left Click, Right Click, Space, and Shift live on the thumbs for fast firing, opening doors, and running.
 
 Weapon switching stays consistent with the rest of your layout: holding the right‑thumb key momentarily opens **Upper**, letting you press `1`–`7` without adding number keys to this layer.
 

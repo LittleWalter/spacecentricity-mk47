@@ -130,7 +130,18 @@ bool rgb_matrix_indicators_user(void) {
     }
 
     switch (layer) {
-        // Change Base layer only if OSM Shift or Caps Lock is currently active
+        /* Base Layer
+         * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
+         * │ * % @ # │ , ; | & │ ;  LSFT │ .  LCTL │ p  LALT │    y    │    f    │ g  RALT │ l  RCTL │ r  RSFT │ ' ’ ~ ` │ ⌫  ⌫L ⌫w│
+         * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+         * │  ⇥   ⇤  │    a    │ o PROG_R│ e  VIM_R│ i  ARR_R│ESC    OS│    d    │ h PROG_L│ t  VIM_L│ n PROG_L│    s    │    ↵    │
+         * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+         * │ REPEAT  │ /  HYPR │ q   MEH │    j    │    k    │    x    │    b    │ m   TERM│    w    │ v   MEH │ z  HYPR │ " ‘ < > │
+         * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+         * │MOUSE  FN│🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │ u  LOWER│ ␣  OSM SFT  ↵   ⌘ │ c  UPPER│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
+         * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
+         * NOTE: RGB visual state modes are generally set here; Leader has a dedicated layer (see below)
+         */
         case _BASE:
             // OSM Shift
             if (set_on_osm_shift_or_caps_word_active()) {
@@ -601,11 +612,11 @@ bool rgb_matrix_indicators_user(void) {
 
         /* Classic Doom Layer
          * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
-         * │ESC   y n│ Plasma  │ Rockets │    ↑    │Load Menu│ BFG 9000│Quit Game│Open Menu│Pointer ↑│ScrnSize-│ScrnSize+│ ⌫  ⌫L ⌫w│
+         * │ESC 🅧 y n│ Plasma  │ Rockets │    ↑    │ BFG 9000│  Pause  │Load Save│MsgToggle│Pointer ↑│ScrnSize-│ScrnSize+│ ⌫  QUIT │
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-         * │  ⇥   ⇤  │ Strife ←│    ←    │    ↓    │    →    │ Strife →│ Strife ←│Pointer ←│Pointer ↓│Pointer →│ Strife →│    ↵    │
+         * │⇥  C Mark│ Strife ←│    ←    │    ↓    │    →    │ Strife →│ Strife ←│Pointer ←│Pointer ↓│Pointer →│ Strife →│    ↵    │
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-         * │  Pause  │  Pistol │ Shotgun │ Strife ↓│ Knuckles│ ← Prev  │ → Next  │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │  Pause  │
+         * │RunToggle│  Pistol │ Shotgun │ Strife ↓│ Knuckles│ ← Prev  │ → Next  │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │RunToggle│
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
          * │  BASE   │🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │Lft Click│         ␣         │Rgt Click│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
          * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘

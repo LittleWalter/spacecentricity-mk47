@@ -197,7 +197,11 @@
 #define DEL_OS      TD(TD_DEL_OS)
 
 // Doom Classic Keys
-#define DOOM_ESC TD(TD_DOOM_ESC)
+#define DOOM_MENU TD(TD_DOOM_MENU)
+#define DOOM_LOAD TD(TD_DOOM_LOAD)
+#define DOOM_MAP  TD(TD_DOOM_MAP)
+#define DOOM_MUTE TD(TD_DOOM_MUTE)
+#define DOOM_PREV TD(TD_DOOM_PREV)
 
 /*** Other Keycodes *******************************************/
 
@@ -218,7 +222,6 @@
 // ─────────────────────────────────────────────────────────────
 enum layers {
     _BASE,      // Modified Programmer Dvorak
-    _DOOM,      // Classic Doom layer
     _LOWER,     // Numpad (hold left thumb)
     _UPPER,     // Home row number and symbols layer (hold right thumb)
     _ADJ,       // Keyboard settings and adjustments (hold left thumb, then right thumb)
@@ -231,6 +234,7 @@ enum layers {
     _PROG_L,    // Programming-related bigrams (hold right ring finger on home row)
     _TERM,      // Terminal emulator macros (hold M key down, right index finger)
     _OS,        // Operating system shortcuts
+    _DOOM,      // Classic Doom layer
     _MOUSE,     // Mouse layer (tap left corner key w/ palm)
     _LEAD_ALPHA,// Leader alpha layer
     _LEAD_DIGIT,// Leader number layer

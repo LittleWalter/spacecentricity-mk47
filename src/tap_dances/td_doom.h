@@ -6,5 +6,18 @@
 // Custom Doom Keys
 // ─────────────────────────────
 
-void doom_esc_finished(tap_dance_state_t *state, void *user_data);
-void doom_esc_reset(tap_dance_state_t *state, void *user_data);
+void doom_menu_finished(tap_dance_state_t *state, void *user_data);
+void doom_menu_reset(tap_dance_state_t *state, void *user_data);
+
+void doom_load_finished(tap_dance_state_t *state, void *user_data);
+void doom_load_reset(tap_dance_state_t *state, void *user_data);
+
+void doom_map_finished(tap_dance_state_t *state, void *user_data);
+void doom_map_reset(tap_dance_state_t *state, void *user_data);
+
+void doom_mute_finished(tap_dance_state_t *state, void *user_data);
+void doom_mute_reset(tap_dance_state_t *state, void *user_data);
+
+void doom_prev_finished(tap_dance_state_t *state, void *user_data);
+void doom_prev_reset(tap_dance_state_t *state, void *user_data);
+
