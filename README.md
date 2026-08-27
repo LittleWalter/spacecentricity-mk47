@@ -1,6 +1,6 @@
 # 🌌 Spacecentricity — A Planck MIT Keymap for the Inland MK-47
 
-Spacecentricity is a maximalist modal keymap built around a modified Dvorak base, mirrored layers for navigation, Vim‑style editing/programming, and common operating system and application actions. It emphasizes home-position access (with heavy thumb usage) to high-frequency characters, movement keys, numbers, symbols, and common [programming n-grams](#programming) through macros and [tap dances](https://docs.qmk.fm/features/tap_dance). Key redundancy provides alternative ways to perform the same actions, helping reduce strain and fatigue.
+Spacecentricity is a maximalist modal keymap built around a modified Dvorak base, mirrored layers for navigation, Vim‑style editing/programming, and common OS/application actions. It emphasizes home-position access (with heavy thumb usage) to high-frequency characters, movement keys, numbers, symbols, and common [programming n-grams](#programming) through [macros](https://docs.qmk.fm/feature_macros) and [tap dances](https://docs.qmk.fm/features/tap_dance). Key redundancy provides alternative ways to perform the same actions, helping reduce strain and fatigue.
 
 Because this keymap treats keyboard firmware like a [finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine), each layer includes its own RGB matrix pattern, making it easy to see which layer or state is active at a glance. The RGB matrix indicates active modes such as Caps Lock (blinking red), One-Shot Shift (gold), [Case Modes](#case-modes-temporary-lexical-modes) (neon mint), and [Leader](/LEADER.md) sequences (navy blue).
 
@@ -69,9 +69,9 @@ The MK-47 is usable out of the box (aside from its stock keymap).
   * **Shape:** OEM-like profile
   * **Labels:** QWERTY primary labels w/ smaller secondary labels
 * 3× shine-through black keycaps
-  * 1× black 1u `Esc` (top row/`ROW0`)
-  * 1× black 1u `Enter` (home row/`ROW1`)
-  * 1× black 2u `Space` a.k.a. the “spacebar” (bottom row/`ROW3`)
+  * Black 1u `Esc` (top row/`ROW0`)
+  * Black 1u `Enter` (home row/`ROW1`)
+  * Black 2u `Space` a.k.a. the “spacebar” (bottom row/`ROW3`)
 * 1× black plastic case w/ **width×depth:** 235×83mm (9.25×3.27in)
   * **Angle:** 3–5° positive tilt
   * **Mount type:** tray/top-mounted PCB (6× small Philips screws, accessible after removing the keycaps)
@@ -82,11 +82,14 @@ The MK-47 is usable out of the box (aside from its stock keymap).
   * **Chip ID:** `0x3A50E980` (Westberry Tech.)
   * **Flash size:** 256 KB
   * **SRAM size:** 36 KB
+  * **Port(s):** USB-C[^usb-magnetic-adapters]
 * 1× funky black nylon braided 90° USB-C-to-USB-A cable
 * 1× keycap puller included (w/o switch puller)
 * 1× paper manual that tries to trick you into using the preinstalled keymap
 * **Stock keyboard weight:** 345g (≈0.76 lb)
 * **Total weight (w/ case & accessories):** ≈567g (≈1.25 lb)
+
+[^usb-magnetic-adapters]: Consider a magnetic USB-C adapter to reduce wear from repeated plug/unplug cycles, especially during travel.
 
 ### Availability
 
@@ -451,7 +454,7 @@ This layer serves as a secondary/fallback mouse input, useful when other pointin
 
 ![Doom (1993) layer](assets/01_DOOM.png)
 
-An optional compact gaming layer modeled after vanilla [_Doom_ (1993)](https://en.wikipedia.org/wiki/Doom_(1993_video_game)), built around a tight movement cluster, dedicated strafing keys, and thumb‑based actions for firing, opening doors, and running. Quick weapon switching is handled through the [**Upper**](#upper-primary-number-layer) layer, and the layout also works as a simple arrows‑plus‑mouse‑keys mode using traditional T‑shaped clusters for general navigation.
+An optional compact gaming layer modeled after vanilla [_Doom_ (1993)](https://en.wikipedia.org/wiki/Doom_(1993_video_game)), built around a tight movement cluster, dedicated strafing keys, and thumb‑based actions for firing and opening doors. Quick weapon switching is handled through the [**Upper**](#upper-primary-number-layer) layer and dedicated left-hand keys, and the layout also works as a simple arrows‑plus‑mouse‑keys mode using traditional T‑shaped clusters for general navigation.
 
 > [!IMPORTANT]
 > Tested w/ [Chocolate Doom](https://www.chocolate-doom.org/wiki/index.php/Chocolate_Doom) v3.1.1 but keyboard settings modified for `previous weapon` and `next weapon` using `0` and `1`, respectively. It’s also a good idea to enable “Always run” to eliminate the need to continuously hold `Shift`.
