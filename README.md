@@ -136,8 +136,8 @@ This keymap uses QMK’s [quad‑tap dance pattern](https://docs.qmk.fm/features
 
 The top three layers that make up the everyday typing environment:
 
-1. [**Base**](#base-modified-dvorak) — primary alpha layout
-2. [**Upper**](#upper-primary-number-layer) — numbers, symbols, and secondary characters
+1. [**Base**](#base-modified-dvorak) — primary alpha layout (modified [Dvorak Simplified](https://en.wikipedia.org/wiki/Dvorak_keyboard_layout))
+2. [**Upper**](#upper-primary-number-layer) — home row numbers (`ROW1`, [Programmer Dvorak](https://www.kaufmann.no/roland/dvorak/)-inspired), symbols, and secondary characters
 3. [**Arrows**](#arrows) — navigation, editing, common symbols (`,`, `_`, `!`, `\`, etc.), and frequently used diacritics
 
 #### Base: Modified Dvorak
@@ -164,7 +164,7 @@ The top-right corner key is a semantic `Backspace`, available on multiple layers
 |--------|----------|-------|
 | Tap | `Esc` ||
 | Tap-and-Hold | Close Active Window | macOS: `CMD‑W`; Linux/Microsoft Windows: `Alt-F4` |
-| Hold | Momentary Layer [**Operating System**](#operating-system-modes) | Activates to appropriate operating-system layer while held; returns to **Base** on release |
+| Hold | Momentary Layer [**Operating System**](#operating-system-modes) | Switches to the appropriate operating-system layer while held; returns to **Base** on release |
 
 ##### Access to Mouse & Function Keys
 
