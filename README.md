@@ -24,19 +24,21 @@ This keymap has an estimated user count of one.
   - [Availability](#availability)
 - [Layout: Userland Layers](#layout-userland-layers)
   - [Legend](#legend)
-  - [Base: Modified Dvorak](#base-modified-dvorak)
-  - [Lower: Numpad](#lower-numpad)
-  - [Upper: Primary Number Layer](#upper-primary-number-layer)
-  - [Adjustment: Keyboard Settings](#adjustment-keyboard-settings)
-  - [Function: `F1`–`F12`](#function-f1f12)
-  - [Arrows](#arrows)
-  - [Vim](#vim)
-  - [Programming](#programming)
-  - [Terminal](#terminal)
-  - [Operating System Modes](#operating-system-modes)
-    - [Apple macOS](#apple-macos)
-  - [Mouse](#mouse)
-  - [_Doom_ (1993)](#doom-1993)
+  - [Core Layers](#core-layers)
+    - [Base: Modified Dvorak](#base-modified-dvorak)
+    - [Lower: Numpad](#lower-numpad)
+    - [Upper: Primary Number Layer](#upper-primary-number-layer)
+    - [Adjustment: Keyboard Settings](#adjustment-keyboard-settings)
+    - [Function: `F1`–`F12`](#function-f1f12)
+    - [Arrows](#arrows)
+  - [Specialized Layers](#specialized-layers)
+    - [Vim](#vim)
+    - [Programming](#programming)
+    - [Terminal](#terminal)
+    - [Operating System Modes](#operating-system-modes)
+      - [Apple macOS](#apple-macos)
+    - [Mouse](#mouse)
+    - [_Doom_ (1993)](#doom-1993)
 - [Case Modes: Temporary Lexical Modes](#case-modes-temporary-lexical-modes)
 - [Using This Keymap with QMK](#using-this-keymap-with-qmk)
   - [Helper Scripts (Optional)](#-helper-scripts-optional)
@@ -129,7 +131,9 @@ This keymap uses QMK’s [quad‑tap dance pattern](https://docs.qmk.fm/features
 > [!NOTE]
 > See the [README](assets/README.md) for hex color values in the [`assets/`](assets/) directory.
 
-### Base: Modified Dvorak
+### Core Layers
+
+#### Base: Modified Dvorak
 
 ![Base: Modified Dvorak](assets/00_BASE.png)
 
@@ -137,7 +141,7 @@ Most layer keys are momentary holds.
 
 The [**Lower**](#lower-numpad) and [**Upper**](#upper-primary-number-layer) keys behave the same, but you can **lock** them with tap‑and‑hold and **unlock** with a tap back to **Base**.
 
-#### `Backspace` Key
+##### `Backspace` Key
 
 The top-right corner key is a semantic `Backspace`, available on multiple layers:
 
@@ -147,7 +151,7 @@ The top-right corner key is a semantic `Backspace`, available on multiple layers
 | Tap-and-Hold | Delete to beginning of line | Implemented as `LSFT‑LCTL‑Left` → `Backspace` |
 | Hold | Delete previous word |  macOS: `LALT-Backspace`; Linux/Microsoft Windows: `LCTL-Backspace` |
 
-#### `Esc` Key
+##### `Esc` Key
 
 | Action | Behavior | Notes |
 |--------|----------|-------|
@@ -155,7 +159,7 @@ The top-right corner key is a semantic `Backspace`, available on multiple layers
 | Tap-and-Hold | Close Active Window | macOS: `CMD‑W`; Linux/Microsoft Windows: `Alt-F4` |
 | Hold | Momentary Layer [**Operating System**](#operating-system-modes) | Activates to appropriate operating-system layer while held; returns to **Base** on release |
 
-#### Access to Mouse & Function Keys
+##### Access to Mouse & Function Keys
 
 The **bottom‑left corner key** toggles special modes:
 
@@ -166,17 +170,17 @@ The **bottom‑left corner key** toggles special modes:
 
 This key is not momentary — it switches layers rather than holding them.
 
-#### Media Cluster
+##### Media Cluster
 
 The media cluster lives out of the way on the bottom left. Note that  **Mute Tab** (`Ctrl‑M` on hold) works in Firefox and Firefox‑based browsers, but not in most Chromium‑based browsers. Screen‑brightness controls sit on Tap‑and‑Hold for convenient access from the top layer.
 
-#### Special Characters
+##### Special Characters
 
 The `*` key emits `×`(multiplication, not the letter _x_) on triple tap.
 
 The navigation cluster emits the arrow symbols on triple tap: `←`, `↓`, `↑`, `→`.
 
-### Lower: Numpad
+#### Lower: Numpad
 
 ![Lower: Numpad with hexadecimal](assets/02_LOWER.png)
 
@@ -186,13 +190,13 @@ Hold `1`–`6` for hexadecimal `A`–`F`.
 
 Momentary hold `0` to access [**Adjustment**](#adjustment-keyboard-settings) layer to change keyboard settings.
 
-### Upper: Primary Number Layer
+#### Upper: Primary Number Layer
 
 ![Upper: Primary Numpad Layer](assets/03_UPPER.png)
 
 Tap the **HELD** key when this layer is **locked** to return to [**Base**](#base-modified-dvorak).
 
-#### Caps Key
+##### Caps Key
 
 The Caps key provides three related text-entry modes, each with its own visual indicator on the [**Base**](#base-modified-dvorak) layer:
 
@@ -210,7 +214,7 @@ The Caps key provides three related text-entry modes, each with its own visual i
 >
 > `dot.case` works similarly: it transforms the spacebar into `.` and is primarily useful for naming long files.
 
-#### `Del` Key
+##### `Del` Key
 
 The top-right corner key provides a forward delete, analogous to the [**Base**](#base-modified-dvorak) layer’s semantic `Backspace`:
 
@@ -220,7 +224,7 @@ The top-right corner key provides a forward delete, analogous to the [**Base**](
 | Tap-and-Hold | Delete to end of line | Implemented as `LSFT‑LCTL‑Right` → `Del` |
 | Hold | Delete next word |  macOS: `LALT‑Del`; Linux/Windows: `LCTL‑Del` |
 
-#### Semantic Punctuation
+##### Semantic Punctuation
 
 Directly above the **HELD** key lives a prose‑oriented semantic punctuation key. It emits punctuation‑space bigrams, and for sentence‑ending marks it automatically capitalizes the next alphabetic character.
 
@@ -231,7 +235,7 @@ Directly above the **HELD** key lives a prose‑oriented semantic punctuation ke
 | Tap-and-Hold | `?␣` (question-space) | Triggers auto-capitalization |
 | Hold | `.␣` (period-space) | Triggers auto-capitalization |
 
-#### Special Characters
+##### Special Characters
 
 Smart quotes live on the lower row, inserting paired curly quotes with the cursor centered for fancy, typographic writing. Tap for double smart quotes; hold for single smart quotes. Use these macros if you prefer not to rely on OS‑ or app‑level substitutions.
 
@@ -250,7 +254,7 @@ Additional triple‑tap symbols: `+` → `×` (multiplication, not the letter _x
 > [!NOTE]
 > On macOS mode, the **vertical ellipsis** (⋮) has no direct keyboard shortcut and is produced with a macro that uses compact the [Emoji & Symbols popover](https://support.apple.com/guide/mac-help/use-emoji-and-symbols-on-mac-mchlp1560/mac). On Linux and Microsoft Windows modes, the Unicode character is sent directly.
 
-#### Leader Replay
+##### Leader Replay
 
 This keymap includes optional Leader Replay support, allowing you to repeat recent or favorited Leader actions using holds of the number keys (`0`–`9`).
 
@@ -258,7 +262,7 @@ Replay functionality can be enabled or disabled with the `@` toggle key, and the
 
 See [LEADER.md](/LEADER.md) for full details.
 
-### Adjustment: Keyboard Settings
+#### Adjustment: Keyboard Settings
 
 ![Adjustment: Keyboard Settings](assets/04_ADJ.png)
 
@@ -277,13 +281,13 @@ The backlight color indicates which OS is currently active:
 >
 > I’m unlikely to test Windows myself, but the functionality is included for completeness.
 
-### Function: `F1`–`F12`
+#### Function: `F1`–`F12`
 
 ![Function: F1–F12](assets/05_FN.png)
 
 Provides `F1`–`F12` and modifier combinations for shortcut execution. The home and top rows mirror the [**Upper**](#upper-primary-number-layer) layer’s number layout, and the lower row includes a redundant, standard linear layout for familiarity and ease of use.
 
-### Arrows
+#### Arrows
 
 ![Arrows: Right-Hand Side](assets/06_ARR_R.png)
 
@@ -329,7 +333,9 @@ Hold the center key to activate the application switcher. macOS uses `CMD`; Linu
 
 Tap `Tab` or `Shift–Tab` on the bottom row to navigate.
 
-### Vim
+### Specialized Layers
+
+#### Vim
 
 ![Vim: Right-Hand Side](assets/08_VIM_R.png)
 
@@ -385,7 +391,7 @@ Window‑resize commands omit the `Esc` prefix to preserve compatibility with `<
 | Tap-and-Hold | `zM` (close all folds in buffer) |
 | Hold | `zR` (open all folds in buffer) |
 
-### Programming
+#### Programming
 
 ![Programming: Right-Hand Side](assets/10_PROG_R.png)
 
@@ -397,17 +403,17 @@ C‑style programming keywords and operators are included for completeness. Many
 
 The `camelCase` / `PascalCase` and `snake_case` / `SCREAMING_SNAKE_CASE` keys toggle temporary [case modes](#case-modes-temporary-lexical-modes).
 
-### Terminal
+#### Terminal
 
 ![Terminal](assets/12_TERM.png)
 
 An optional convenience layer centered on left‑hand navigation (`Home`, `Page Up`, `Page Down`, `End` under the home row) and a handful of shell‑adjacent shortcuts. The “terminal keys” are intentionally lightweight — more for comfort and fun than necessity — since shell history, aliases, and muscle memory usually handle most workflows.
 
-### Operating System Modes
+#### Operating System Modes
 
 By default, this keyboard is set to [Apple macOS](#apple-macos); switch it to Linux or Microsoft Windows via the [**Adjustment**](#adjustment-keyboard-settings) layer.
 
-#### Apple macOS
+##### Apple macOS
 
 ![Apple macOS Layer](assets/13_MACOS.png)
 
@@ -442,7 +448,7 @@ The **center key** provides window and device controls:
 | Tap | Toggle application full-screen mode |
 | Hold | Lock Mac / iDevice |
 
-### Mouse
+#### Mouse
 
 ![Mouse Keys Layer](assets/14_MOUSE.png)
 
@@ -450,7 +456,7 @@ This mouse layer is typically accessed with a _left-palm tap_ from [**Base**](#b
 
 This layer serves as a secondary/fallback mouse input, useful when other pointing devices are unavailable or for mouse-driven terminal emulator interaction.
 
-### _Doom_ (1993)
+#### _Doom_ (1993)
 
 ![Doom (1993) layer](assets/01_DOOM.png)
 
