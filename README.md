@@ -32,11 +32,11 @@ This keymap has an estimated user count of one.
     - [Function: `F1`–`F12`](#function-f1f12)
     - [Arrows](#arrows)
   - [Specialized Layers](#specialized-layers)
+    - [Operating System Modes](#operating-system-modes)
+      - [Apple macOS](#apple-macos)
     - [Vim](#vim)
     - [Programming](#programming)
     - [Terminal](#terminal)
-    - [Operating System Modes](#operating-system-modes)
-      - [Apple macOS](#apple-macos)
     - [Mouse](#mouse)
     - [_Doom_ (1993)](#doom-1993)
 - [Case Modes: Temporary Lexical Modes](#case-modes-temporary-lexical-modes)
@@ -132,6 +132,14 @@ This keymap uses QMK’s [quad‑tap dance pattern](https://docs.qmk.fm/features
 > See the [README](assets/README.md) for hex color values in the [`assets/`](assets/) directory.
 
 ### Core Layers
+
+The top three layers that make up the everyday typing environment:
+
+1. [**Base**](#base-modified-dvorak) — primary alpha layout
+2. [**Upper**](#upper-primary-number-layer) — numbers, symbols, and secondary characters
+3. [**Arrows**](#arrows) — navigation, editing, common symbols (`,`, `_`, `!`, `\`, etc.), and frequently used diacritics
+
+The remaining layers are still useful, just less frequently accessed than these three.
 
 #### Base: Modified Dvorak
 
@@ -335,6 +343,47 @@ Tap `Tab` or `Shift–Tab` on the bottom row to navigate.
 
 ### Specialized Layers
 
+These optional layers extend the core environment for specific workflows.
+
+#### Operating System Modes
+
+By default, this keyboard is set to [Apple macOS](#apple-macos); switch it to Linux or Microsoft Windows via the [**Adjustment**](#adjustment-keyboard-settings) layer.
+
+##### Apple macOS
+
+![Apple macOS Layer](assets/13_MACOS.png)
+
+The **center-thumb key** (spacebar) opens core macOS functionality:
+
+| Action | Behavior |
+|--------|----------|
+| Tap | Toggle [Spotlight Search](https://en.wikipedia.org/wiki/Spotlight_(Apple)) |
+| Double Tap | Toggle [Emoji & Symbols Menu](https://support.apple.com/guide/mac-help/use-emoji-and-symbols-on-mac-mchlp1560/mac) |
+| Hold | Open [Finder](https://en.wikipedia.org/wiki/Finder_(software)) |
+
+The **right‑thumb key** provides quick file‑deletion actions:
+
+| Action | Behavior |
+|--------|----------|
+| Tap | Delete selected item(s) |
+| Tap-and-Hold | Empty the Trash (Finder); open clear browser data menu (Firefox, Chromium) |
+| Hold | Open the Trash folder in Finder |
+
+The **top‑right corner key** handles screen-capture shortcuts:
+
+| Action | Behavior |
+|--------|----------|
+| Tap | Partial screenshot |
+| Tap-and-Hold | Opens all screenshot options |
+| Hold | Full screenshot (all displays) |
+
+The **center key** provides window and device controls:
+
+| Action | Behavior |
+|--------|----------|
+| Tap | Toggle application full-screen mode |
+| Hold | Lock Mac / iDevice |
+
 #### Vim
 
 ![Vim: Right-Hand Side](assets/08_VIM_R.png)
@@ -408,45 +457,6 @@ The `camelCase` / `PascalCase` and `snake_case` / `SCREAMING_SNAKE_CASE` keys to
 ![Terminal](assets/12_TERM.png)
 
 An optional convenience layer centered on left‑hand navigation (`Home`, `Page Up`, `Page Down`, `End` under the home row) and a handful of shell‑adjacent shortcuts. The “terminal keys” are intentionally lightweight — more for comfort and fun than necessity — since shell history, aliases, and muscle memory usually handle most workflows.
-
-#### Operating System Modes
-
-By default, this keyboard is set to [Apple macOS](#apple-macos); switch it to Linux or Microsoft Windows via the [**Adjustment**](#adjustment-keyboard-settings) layer.
-
-##### Apple macOS
-
-![Apple macOS Layer](assets/13_MACOS.png)
-
-The **center-thumb key** (spacebar) opens core macOS functionality:
-
-| Action | Behavior |
-|--------|----------|
-| Tap | Toggle [Spotlight Search](https://en.wikipedia.org/wiki/Spotlight_(Apple)) |
-| Double Tap | Toggle [Emoji & Symbols Menu](https://support.apple.com/guide/mac-help/use-emoji-and-symbols-on-mac-mchlp1560/mac) |
-| Hold | Open [Finder](https://en.wikipedia.org/wiki/Finder_(software)) |
-
-The **right‑thumb key** provides quick file‑deletion actions:
-
-| Action | Behavior |
-|--------|----------|
-| Tap | Delete selected item(s) |
-| Tap-and-Hold | Empty the Trash (Finder); open clear browser data menu (Firefox, Chromium) |
-| Hold | Open the Trash folder in Finder |
-
-The **top‑right corner key** handles screen-capture shortcuts:
-
-| Action | Behavior |
-|--------|----------|
-| Tap | Partial screenshot |
-| Tap-and-Hold | Opens all screenshot options |
-| Hold | Full screenshot (all displays) |
-
-The **center key** provides window and device controls:
-
-| Action | Behavior |
-|--------|----------|
-| Tap | Toggle application full-screen mode |
-| Hold | Lock Mac / iDevice |
 
 #### Mouse
 

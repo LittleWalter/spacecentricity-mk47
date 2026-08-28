@@ -13,18 +13,21 @@ This page expands on the design decisions. It’s not required reading for using
 - [Thoughts on the Planck Form Factor](#thoughts-on-the-planck-form-factor)
 - [Bias](#bias)
 - [Layer Design Details](#layer-design-details)
-  - [Base: Modified Dvorak](#base-modified-dvorak)
-  - [Lower: Numpad](#lower-numpad)
-  - [Upper: Primary Number Layer](#upper-primary-number-layer)
-  - [Adjustment: Keyboard Settings](#adjustment-keyboard-settings)
-  - [Function: `F1`–`F12`](#function-f1f12)
-  - [Arrows](#arrows)
-  - [Vim](#vim)
-  - [Programming](#programming)
-  - [Terminal](#terminal)
-  - [Apple macOS](#apple-macos)
-  - [Mouse](#mouse)
-  - [_Doom_ (1993)](#doom-1993)
+  - [Core Layers](#core-layers)
+    - [Base: Modified Dvorak](#base-modified-dvorak)
+    - [Lower: Numpad](#lower-numpad)
+    - [Upper: Primary Number Layer](#upper-primary-number-layer)
+    - [Adjustment: Keyboard Settings](#adjustment-keyboard-settings)
+    - [Function: `F1`–`F12`](#function-f1f12)
+    - [Arrows](#arrows)
+  - [Specialized Layers](#specialized-layers)
+    - [Operating System Modes](#operating-system-modes)
+      - [Apple macOS](#apple-macos)
+    - [Vim](#vim)
+    - [Programming](#programming)
+    - [Terminal](#terminal)
+    - [Mouse](#mouse)
+    - [_Doom_ (1993)](#doom-1993)
 - [RGB Matrix for the Planck MIT](#rgb-matrix-for-the-planck-mit)
 
 ## Release Statement
@@ -47,7 +50,7 @@ There’s also a meaningful difference between the two common Planck variants. T
 
 Another variant is the Preonic, which adds an extra row to the Planck’s layout, and like the Planck, offers a choice of 58-key (2× 2u spacebars), 59-key (1× 2u spacebar), or 60-key (Grid) configurations. The most obvious use of the extra row is hosting a full number row on the base layer, rather than relegating numbers to a separate layer. (But holding a thumb key and tapping home-row digits — as this keymap does — is less fatiguing than reaching for a physically higher row.)
 
-The biggest trade‑off is that the Planck demands heavy layer usage and rewards people who enjoy modal workflows. For users who prefer dedicated keys or who struggle with ortholinear spacing, the learning curve can feel steep. But for those who embrace layers, symmetry, and thumb‑centric design, the Planck offers a uniquely efficient and expressive platform—especially when paired with programmable firmware like QMK or [ZMK](https://zmk.dev/) for wireless support, which adds even more power (and another notch of complexity — have “fun” debugging the logic of your keymap directly in the firmware, if that’s your thing).
+The biggest trade‑off is that the Planck demands heavy layer usage and rewards people who enjoy modal workflows. For users who prefer dedicated keys or who struggle with ortholinear spacing, the learning curve can feel steep. But for those who embrace layers, symmetry, and thumb‑centric design, the Planck offers a uniquely efficient and expressive platform—especially when paired with programmable firmware like QMK or [ZMK](https://zmk.dev/) for wireless support, which adds even more power (and another notch of complexity. Have “fun” debugging the logic of your keymap directly in the firmware, if that’s your thing).
 
 Getting into the nitty gritty of firmware like QMK or ZMK is the only true way to unlock what a custom keyboard is fully capable of — graphical tools like VIA inherently limit expressiveness in exchange for convenience.
 
@@ -161,13 +164,17 @@ Additional Linux support is planned for the future. I don’t use Windows much t
 
 ## Layer Design Details
 
-###  Base: Modified Dvorak
+### Core Layers
+
+All of the essential functionality of the firmware is contained in these layers, though [**Base**](#base-modified-dvorak), [**Upper**](#upper-primary-number-layer), and [**Arrows**](#arrows) see the most use.
+
+#### Base: Modified Dvorak
 
 ![Base: Modified Dvorak](assets/00_BASE.png)
 
 The **Base** layer packs in as much functionality as I can comfortably manage without overwhelming day‑to‑day typing. Quad tap‑dance keys aren’t ergonomically ideal, but they surface high‑use symbols on the top layer for times when I’d rather not reach into the symbol layers. Only a handful of commonly used symbols aren’t accessible directly from this layer.
 
-#### Alpha Keys
+##### Alpha Keys
 
 August Dvorak devised the original [Dvorak keyboard layout](https://en.wikipedia.org/wiki/Dvorak_keyboard_layout) layout in the 1930s. While it offers many advantages over QWERTY, it also includes some letter‑placement quirks for modern computer use. For example, `i` sits off the home position while `u` sits on it, despite their relative frequencies in English. With a programmable keyboard, it becomes possible to place keys in positions that make personal sense rather than following predefined layouts.
 
@@ -195,7 +202,7 @@ I’m also not using Colemak(-DH), Workman, or other modern ergonomic layouts. I
 
 [^alt-alpha]: Several modern ergonomic alpha layouts exist beyond Dvorak, including [Colemak](https://colemak.com/), [Colemak Mod-DH](https://colemakmods.github.io/mod-dh/), [Workman](https://workmanlayout.org/), Semimak, [Gallium](https://github.com/GalileoBlues/Gallium/), and the German‑optimized [Neo](https://www.neo-layout.org/) layout. These designs generally improve same‑finger avoidance, hand balance, and symbol ergonomics compared to both QWERTY and stock Dvorak. Spacecentricity uses a modified Dvorak base simply because it aligns well with my modal editing habits, thumb‑centric design, and long‑standing muscle memory. The broader principles in this keymap — mirrored layers, semantic editing, thumb‑driven modifiers, and modal workflows — can be adapted to any alpha layout, though the positions of core Vim commands would shift relative to my layout.
 
-#### Symbols
+##### Symbols
 
 The top‑left corner key bundles together a small set of symbols via tap dance that map neatly onto Vim motions. Each action produces a different symbol, and in Vim these symbols correspond to common navigation or macro‑related commands. This keeps a handful of powerful search and structural‑navigation tools on **Base**, especially handy if you spend time in Vim or Vim‑style environments like [Vimium](https://vimium.github.io/).
 
@@ -236,7 +243,7 @@ The lower-row `"` key gives **Base** access to straight double quote, `<`, `>`, 
 | Tap-and-Hold | `<` | Opening angle bracket; less-than operator; Vim: unindent (`<<`, `{count}<`), motions (`i<`, `a<`) |
 | Hold | `>` | Closing angle bracket; greater-than operator; Vim: indent (`>>`, `{count}>`), motions (`i>`, `a>`) |
 
-#### Modifiers
+##### Modifiers
 
 Top‑row modifiers provide easy access for the index, middle, and ring fingers, with additional options on the lower row for alternate holds and advanced shortcuts.
 
@@ -258,9 +265,9 @@ Top‑row modifiers provide easy access for the index, middle, and ring fingers,
 > conflict‑free custom shortcuts. Many users bind them to window managers,
 > automation tools, or global hotkeys.
 
-#### Layer Keys
+##### Layer Keys
 
-##### Home Row
+###### Home Row
 
 Mirrored layers sit directly on the home row and take precedence over modifiers, for fast access with minimal finger travel.
 
@@ -270,7 +277,7 @@ Mirrored layers sit directly on the home row and take precedence over modifiers,
 | `e`, `t` | Vim commands | Middle |
 | `o`, `n` | Programming n-grams | Ring |
 
-##### Thumb keys
+###### Thumb keys
 
 These keys follow the traditional Planck‑style thumb layers for numbers and symbols. The **Lower** layer functions as a dedicated numpad for rapid numeric entry, while the **Upper** layer provides home‑row numbers and general typing symbols.
 
@@ -282,7 +289,7 @@ These keys follow the traditional Planck‑style thumb layers for numbers and sy
 > [!NOTE]
 > QMK’s [Tri Layers](https://docs.qmk.fm/features/tri_layer) feature is not used to preserve key sequences of `Left Thumb → Right Thumb` (momentarily hold **Adjustment** layer) and `Right Thumb → Left Thumb` (jam the `Backspace` key).
 
-##### Bottom-Left Corner Key
+###### Bottom-Left Corner Key
 
 This key is primarily accessed via _left‑palm_ presses using a taller flat SA Row 3 keycap for quick entry and exit.
 
@@ -291,7 +298,7 @@ This key is primarily accessed via _left‑palm_ presses using a taller flat SA 
 | Tap | **Mouse** Layer |
 | Hold (≈350 ms or longer) | **Function** layer (`F1`–`F12`) |
 
-#### Navigation Cluster
+##### Navigation Cluster
 
 The navigation keys on the bottom row follow the Vim pattern of up, down, left, right.
 
@@ -307,7 +314,7 @@ This cluster is reused across several layers to keep navigation consistent and p
 
 In [Vimium](https://vimium.github.io/), `h`, `j`, `k`, `l` keys move the browser page around, making them especially nice to have on the right‑hand side.
 
-#### Media Cluster
+##### Media Cluster
 
 As a right‑handed typist, I find the left side of the bottom row to be the least accessible, which makes it a good place for useful but non‑essential media controls. These keys are assigned to the same location on multiple layers.
 
@@ -322,7 +329,7 @@ From left to right, the three media keys use the following tap‑dance behaviors
 
 I mostly use these keys for volume control and quick play/pause actions.
 
-#### Other Keys
+##### Other Keys
 
 * `Tab` on tap and `Shift-Tab` on hold live on the first column of home row.
 *  `Enter` is also available as a tap‑and‑hold gesture on the spacebar, offering an ergonomic alternative to the pinky key.
@@ -335,7 +342,7 @@ Since corner keys have a higher access cost, they should provide higher‑value 
 | Tap-and-Hold | Delete to beginning of line | Implemented as `LSFT‑LCTL‑Left` → `Backspace` |
 | Hold | Delete previous word |  macOS: `LALT-Backspace`; Linux/Windows: `LCTL-Backspace` |
 
-### Lower: Numpad
+#### Lower: Numpad
 
 ![Lower: Numpad with hexadecimal](assets/02_LOWER.png)
 
@@ -349,7 +356,7 @@ Rather than stuffing additional keys onto the left side, the Lower layer uses a 
 
 This layer can be **locked** from **Base**; hit the **HOLD** key to exit.
 
-### Upper: Primary Number Layer
+#### Upper: Primary Number Layer
 
 ![Upper: Primary Numpad Layer](assets/03_UPPER.png)
 
@@ -357,7 +364,7 @@ This is the workhorse layer for number and individual symbol input, except for `
 
 This layer can be **locked** from **Base**; hit the **HOLD** key to exit.
 
-#### Numbers
+##### Numbers
 
 The number layout is inspired by [Programmer Dvorak’s](https://www.kaufmann.no/roland/dvorak/) arrangement, with odds on the left hand and `0` plus the evens on the right.
 
@@ -367,7 +374,7 @@ Notable rearrangements:
   * `0` also jumps to the first column in Vim normal mode.
 * `8`, `9` are placed on the top row to allow for parentheses on center of home row.
 
-#### Symbols
+##### Symbols
 
 * Parentheses, brackets, and braces are arranged symmetrically and accessed primarily with the index and middle fingers as tap dances.
 * `“”` and `‘’` smart‑quote pairs insert with the cursor centered for typographic writing without relying on operating‑system auto‑substitution.
@@ -418,12 +425,12 @@ The `+` key provides the full set of basic arithmetic symbols on a single middle
 | Hold | `*` (multiplication) |
 | Triple Tap | `×` (Unicode multiplication symbol) |
 
-#### Other Keys
+##### Other Keys
 
 * `Backspace` is placed on the left thumb key, allowing home-position access.
 * Semantic `Del` is placed on the top-right key, where the analogous semantic `Backspace` is located on **Base**.
 
-### Adjustment: Keyboard Settings
+#### Adjustment: Keyboard Settings
 
 ![Adjustment: Keyboard Settings](assets/04_ADJ.png)
 
@@ -439,11 +446,11 @@ The **OS Mode** key defaults to Apple macOS and cycles RGB colors:
 
 Copy/paste/undo behavior should work properly when switching operating systems; however, virtual desktop navigation may not work, depending on your Linux desktop environment.
 
-### Function: `F1`–`F12`
+#### Function: `F1`–`F12`
 
 ![Function: F1–F12](assets/05_FN.png)
 
-#### F-Keys
+##### F-Keys
 
 To keep layer patterns consistent, the home‑row `F1`–`F12` keys mirror the numeric structure of **Upper**. The idea is simple: the same finger positions that produce numbers on **Upper** produce function keys here. This preserves a single mental model for two different layers, reducing cognitive load.
 
@@ -453,8 +460,7 @@ I briefly considered adding `F13`–`F24` for custom shortcuts using `Meh` and `
 
 As a macOS user, I rarely rely on function keys, so this layer stays intentionally minimal but still easy to reach. If I spend more time on desktop Linux, I may revisit and expand this layer.
 
-
-#### Modifiers
+##### Modifiers
 
 The top‑row modifiers mirror **Base**, maintaining consistency across layers. The thumb cluster provides `Hyper`, `CMD`/`Super`, and `Meh`, giving quick access to high‑chord shortcuts without awkward reaches.
 
@@ -491,13 +497,29 @@ Holding either index finger on the home row activates a mirrored arrow‑navigat
 
 [^macOS-app-switcher]: macOS Application Switcher tip sourced from [StackOverflow](https://superuser.com/questions/670252/cmdtab-app-switcher-is-on-the-wrong-monitor).
 
-#### English Loanwords
+##### English Loanwords
 
 Tap dances on the arrow layers provide combining accents and extended punctuation, making it easy to type accented characters that appear in English [loanwords](https://en.wikipedia.org/wiki/Loanword). These words most commonly originate from French, Spanish, and German, with a smaller set from Portuguese, where only a few retain their original accents. This includes forms such as à, á, â, ä, é, í, ñ, ó, ö, ú, and others. The accessibility of accented characters reduces the need for users to memorize platform‑specific shortcuts or Unicode values.
 
 In contemporary English writing, accented forms appear more consistently than in the past. Modern style guides and digital typography increasingly preserve the original spelling of borrowed words, especially in food, culture, and proper names. As a result, accented loanwords such as à la, à propos, vis-à-vis, voilà, café, crème brûlée, pâté, cliché, touché, résumé, déjà vu, naïve, über, doppelgänger, and jalapeño — along with place names like São Paulo and personal names like Zoë, Chloë, José, or Beyoncé — are now common in everyday text.
 
-### Vim
+### Specialized Layers
+
+#### Operating System Modes
+
+This part of the firmware is a work in progress…
+
+##### Apple macOS
+
+![Apple macOS Layer](assets/13_MACOS.png)
+
+This layer centralizes macOS actions that normally require awkward reaches, multi‑key chords, or leaving the keyboard entirely. Its goal is to make common system‑level tasks feel as fluid and low‑effort as text editing or navigation. Spotlight search, the emoji picker, Finder controls, screenshot tools, window management, and Trash operations all land in predictable positions that don’t break flow.
+
+Word and line movement follow the expected Vim pattern.
+
+Eventually, I’ll make a similar desktop Linux layer, with the **HOLD** on the opposite center key. This may be more challenging due to the wide variety of desktop environments and window managers, each with its own keyboard‑shortcut conventions.
+
+#### Vim
 
 ![Vim: Right-Hand Side](assets/08_VIM_R.png)
 
@@ -509,7 +531,7 @@ Assigning `Esc` to the thumbs provides multiple reliable ways to reach it from h
 
 Vim commands that benefit from an `Esc` prefix include a built‑in delay, and command‑line macros (`:`) use an additional delay. These pauses help accommodate plugin latency and improve execution reliability. Repeatable motions that rely on count prefixes are intentionally excluded to preserve `<count>movement` behavior.
 
-### Programming
+#### Programming
 
 ![Programming: Right-Hand Side](assets/10_PROG_R.png)
 
@@ -521,7 +543,7 @@ The programming keywords aren’t meant to dramatically speed up coding, but the
 
 I tried to choose a small, generic set of coding n‑grams that work well across a wide range of languages, mostly C‑style syntax. I also added surrounding whitespace where it makes sense to keep the output readable and consistent.
 
-### Terminal
+#### Terminal
 
 ![Terminal](assets/12_TERM.png)
 
@@ -533,17 +555,7 @@ As [Pascal Getreuer notes](https://getreuer.info/posts/keyboards/macros/index.ht
 
 I may eventually add a few `tmux` commands here, if they complement the navigation‑first design.
 
-### Apple macOS
-
-![Apple macOS Layer](assets/13_MACOS.png)
-
-This layer centralizes macOS actions that normally require awkward reaches, multi‑key chords, or leaving the keyboard entirely. Its goal is to make common system‑level tasks feel as fluid and low‑effort as text editing or navigation. Spotlight search, the emoji picker, Finder controls, screenshot tools, window management, and Trash operations all land in predictable positions that don’t break flow.
-
-Word and line movement follow the expected Vim pattern.
-
-Eventually, I’ll make a similar desktop Linux layer, with the **HOLD** on the opposite center key. This may be more challenging due to the wide variety of desktop environments and window managers, each with its own keyboard‑shortcut conventions.
-
-### Mouse
+#### Mouse
 
 ![Mouse Keys Layer](assets/14_MOUSE.png)
 
@@ -555,7 +567,7 @@ I arranged the keys to make the learning curve as gentle as possible: **pointer 
 
 The only minor downsides are the need for two‑hand operation and the practice required to get fully comfortable with mouse‑key accuracy. For example, pressing two directional keys produces diagonal movement, which takes a little time to internalize. With practice, muscle memory takes over and it becomes surprisingly natural. (I still prefer a finger trackball as my primary pointing device, but this layer is invaluable when the rechargeable battery goes flat, especially on a desktop.)
 
-### _Doom_ (1993)
+#### _Doom_ (1993)
 
 ![Doom (1993) layer](assets/01_DOOM.png)
 
