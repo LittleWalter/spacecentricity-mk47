@@ -26,11 +26,12 @@ This keymap has an estimated user count of one.
   - [Legend](#legend)
   - [Core Layers](#core-layers)
     - [Base: Modified Dvorak](#base-modified-dvorak)
-    - [Lower: Numpad](#lower-numpad)
     - [Upper: Primary Number Layer](#upper-primary-number-layer)
+    - [Arrows](#arrows)
+  - [Support Layers](#support-layers)
+    - [Lower: Numpad](#lower-numpad)
     - [Adjustment: Keyboard Settings](#adjustment-keyboard-settings)
     - [Function: `F1`–`F12`](#function-f1f12)
-    - [Arrows](#arrows)
   - [Specialized Layers](#specialized-layers)
     - [Operating System Modes](#operating-system-modes)
       - [Apple macOS](#apple-macos)
@@ -139,8 +140,6 @@ The top three layers that make up the everyday typing environment:
 2. [**Upper**](#upper-primary-number-layer) — numbers, symbols, and secondary characters
 3. [**Arrows**](#arrows) — navigation, editing, common symbols (`,`, `_`, `!`, `\`, etc.), and frequently used diacritics
 
-The remaining layers are still useful, just less frequently accessed than these three.
-
 #### Base: Modified Dvorak
 
 ![Base: Modified Dvorak](assets/00_BASE.png)
@@ -187,16 +186,6 @@ The media cluster lives out of the way on the bottom left. Note that  **Mute Tab
 The `*` key emits `×`(multiplication, not the letter _x_) on triple tap.
 
 The navigation cluster emits the arrow symbols on triple tap: `←`, `↓`, `↑`, `→`.
-
-#### Lower: Numpad
-
-![Lower: Numpad with hexadecimal](assets/02_LOWER.png)
-
-Tap the **HELD** key when this layer is **locked** to return to [**Base**](#base-modified-dvorak).
-
-Hold `1`–`6` for hexadecimal `A`–`F`.
-
-Momentary hold `0` to access [**Adjustment**](#adjustment-keyboard-settings) layer to change keyboard settings.
 
 #### Upper: Primary Number Layer
 
@@ -270,31 +259,6 @@ Replay functionality can be enabled or disabled with the `@` toggle key, and the
 
 See [LEADER.md](/LEADER.md) for full details.
 
-#### Adjustment: Keyboard Settings
-
-![Adjustment: Keyboard Settings](assets/04_ADJ.png)
-
-The **OS MODE** key switches the keyboard’s active operating‑system profile. It adjusts copy/paste behavior, special symbol mappings, and virtual desktop/workspace navigation to match the selected OS.
-
-The backlight color indicates which OS is currently active:
-
-| Color | OS |
-|-------|----|
-| 🔵 Blue  | Apple macOS (Default)|
-| 🟢 Green | Linux |
-| 🔴 Red   | Microsoft Windows |
-
-> [!WARNING]
-> Linux and Microsoft Windows behavior is currently untested!
->
-> I’m unlikely to test Windows myself, but the functionality is included for completeness.
-
-#### Function: `F1`–`F12`
-
-![Function: F1–F12](assets/05_FN.png)
-
-Provides `F1`–`F12` and modifier combinations for shortcut execution. The home and top rows mirror the [**Upper**](#upper-primary-number-layer) layer’s number layout, and the lower row includes a redundant, standard linear layout for familiarity and ease of use.
-
 #### Arrows
 
 ![Arrows: Right-Hand Side](assets/06_ARR_R.png)
@@ -340,6 +304,45 @@ The bottom-left corner key activates mnemonic Leader sequences. See [LEADER.md](
 Hold the center key to activate the application switcher. macOS uses `CMD`; Linux and Microsoft Windows uses `LALT`.
 
 Tap `Tab` or `Shift–Tab` on the bottom row to navigate.
+
+### Support Layers
+
+These layers are still useful, just less frequently accessed than the [Core Layers](#core-layers).
+
+#### Lower: Numpad
+
+![Lower: Numpad with hexadecimal](assets/02_LOWER.png)
+
+Tap the **HELD** key when this layer is **locked** to return to [**Base**](#base-modified-dvorak).
+
+Hold `1`–`6` for hexadecimal `A`–`F`.
+
+Momentary hold `0` to access [**Adjustment**](#adjustment-keyboard-settings) layer to change keyboard settings.
+
+#### Function: `F1`–`F12`
+
+![Function: F1–F12](assets/05_FN.png)
+
+Provides `F1`–`F12` and modifier combinations for shortcut execution. The home and top rows mirror the [**Upper**](#upper-primary-number-layer) layer’s number layout, and the lower row includes a redundant, standard linear layout for familiarity and ease of use.
+
+#### Adjustment: Keyboard Settings
+
+![Adjustment: Keyboard Settings](assets/04_ADJ.png)
+
+The **OS MODE** key switches the keyboard’s active operating‑system profile. It adjusts copy/paste behavior, special symbol mappings, and virtual desktop/workspace navigation to match the selected OS.
+
+The backlight color indicates which OS is currently active:
+
+| Color | OS |
+|-------|----|
+| 🔵 Blue  | Apple macOS (Default)|
+| 🟢 Green | Linux |
+| 🔴 Red   | Microsoft Windows |
+
+> [!WARNING]
+> Linux and Microsoft Windows behavior is currently untested!
+>
+> I’m unlikely to test Windows myself, but the functionality is included for completeness.
 
 ### Specialized Layers
 

@@ -15,11 +15,12 @@ This page expands on the design decisions. It’s not required reading for using
 - [Layer Design Details](#layer-design-details)
   - [Core Layers](#core-layers)
     - [Base: Modified Dvorak](#base-modified-dvorak)
-    - [Lower: Numpad](#lower-numpad)
     - [Upper: Primary Number Layer](#upper-primary-number-layer)
+    - [Arrows](#arrows)
+  - [Support Layers](#support-layers)
+    - [Lower: Numpad](#lower-numpad)
     - [Adjustment: Keyboard Settings](#adjustment-keyboard-settings)
     - [Function: `F1`–`F12`](#function-f1f12)
-    - [Arrows](#arrows)
   - [Specialized Layers](#specialized-layers)
     - [Operating System Modes](#operating-system-modes)
       - [Apple macOS](#apple-macos)
@@ -342,20 +343,6 @@ Since corner keys have a higher access cost, they should provide higher‑value 
 | Tap-and-Hold | Delete to beginning of line | Implemented as `LSFT‑LCTL‑Left` → `Backspace` |
 | Hold | Delete previous word |  macOS: `LALT-Backspace`; Linux/Windows: `LCTL-Backspace` |
 
-#### Lower: Numpad
-
-![Lower: Numpad with hexadecimal](assets/02_LOWER.png)
-
-Rather than stuffing additional keys onto the left side, the Lower layer uses a mostly mirrored numpad layout so either hand can handle numeric entry and arithmetic operators. The only exception is `0`, which is right‑hand‑only.
-
-* `A`–`F` are available by holding `1`–`6`, enabling hexadecimal input without switching layers.
-* Hold `0` to get access to the **Adjustment** layer for keyboard settings.
-* The bottom row largely copies **Base**, but the spacebar position outputs equality‑related symbols.
-* `Num Lock` is intentionally omitted. The navigation cluster already includes all of the off‑position keys—`Home`, `Page Down`, `Page Up`, `End`, and the arrow keys—so a Windows‑style `Num Lock` toggle isn’t necessary.
-* Top‑row modifiers are available for workflows that benefit from them, including [Windows Alt codes](https://en.wikipedia.org/wiki/Alt_code), [macOS Unicode Hex Input](https://en.wikipedia.org/wiki/Unicode_input), and various Linux shortcuts.
-
-This layer can be **locked** from **Base**; hit the **HOLD** key to exit.
-
 #### Upper: Primary Number Layer
 
 ![Upper: Primary Numpad Layer](assets/03_UPPER.png)
@@ -430,40 +417,6 @@ The `+` key provides the full set of basic arithmetic symbols on a single middle
 * `Backspace` is placed on the left thumb key, allowing home-position access.
 * Semantic `Del` is placed on the top-right key, where the analogous semantic `Backspace` is located on **Base**.
 
-#### Adjustment: Keyboard Settings
-
-![Adjustment: Keyboard Settings](assets/04_ADJ.png)
-
-The keyboard settings layer is the least developed, and most subject to rearrangement.
-
-The **OS Mode** key defaults to Apple macOS and cycles RGB colors:
-
-| Color | OS |
-|-------|----|
-| 🔵 Blue  | Apple macOS (Default)|
-| 🟢 Green | Linux |
-| 🔴 Red   | Microsoft Windows |
-
-Copy/paste/undo behavior should work properly when switching operating systems; however, virtual desktop navigation may not work, depending on your Linux desktop environment.
-
-#### Function: `F1`–`F12`
-
-![Function: F1–F12](assets/05_FN.png)
-
-##### F-Keys
-
-To keep layer patterns consistent, the home‑row `F1`–`F12` keys mirror the numeric structure of **Upper**. The idea is simple: the same finger positions that produce numbers on **Upper** produce function keys here. This preserves a single mental model for two different layers, reducing cognitive load.
-
-The only exception is `F10`, since there’s no such thing as `F0`. `F11` and `F12` sit on the left and right center keys, respectively, continuing the pattern of odds on the left and evens on the right.
-
-I briefly considered adding `F13`–`F24` for custom shortcuts using `Meh` and `Hyper`, but ultimately kept the standard `F1`–`F12` set. For users who expect a traditional layout, the lower row (Row 2) provides a familiar linear arrangement of all twelve function keys.
-
-As a macOS user, I rarely rely on function keys, so this layer stays intentionally minimal but still easy to reach. If I spend more time on desktop Linux, I may revisit and expand this layer.
-
-##### Modifiers
-
-The top‑row modifiers mirror **Base**, maintaining consistency across layers. The thumb cluster provides `Hyper`, `CMD`/`Super`, and `Meh`, giving quick access to high‑chord shortcuts without awkward reaches.
-
 ### Arrows
 
 ![Arrows: Right-Hand Side](assets/06_ARR_R.png)
@@ -502,6 +455,58 @@ Holding either index finger on the home row activates a mirrored arrow‑navigat
 Tap dances on the arrow layers provide combining accents and extended punctuation, making it easy to type accented characters that appear in English [loanwords](https://en.wikipedia.org/wiki/Loanword). These words most commonly originate from French, Spanish, and German, with a smaller set from Portuguese, where only a few retain their original accents. This includes forms such as à, á, â, ä, é, í, ñ, ó, ö, ú, and others. The accessibility of accented characters reduces the need for users to memorize platform‑specific shortcuts or Unicode values.
 
 In contemporary English writing, accented forms appear more consistently than in the past. Modern style guides and digital typography increasingly preserve the original spelling of borrowed words, especially in food, culture, and proper names. As a result, accented loanwords such as à la, à propos, vis-à-vis, voilà, café, crème brûlée, pâté, cliché, touché, résumé, déjà vu, naïve, über, doppelgänger, and jalapeño — along with place names like São Paulo and personal names like Zoë, Chloë, José, or Beyoncé — are now common in everyday text.
+
+### Support Layers
+
+#### Lower: Numpad
+
+![Lower: Numpad with hexadecimal](assets/02_LOWER.png)
+
+Rather than stuffing additional keys onto the left side, the Lower layer uses a mostly mirrored numpad layout so either hand can handle numeric entry and arithmetic operators. The only exception is `0`, which is right‑hand‑only.
+
+* `A`–`F` are available by holding `1`–`6`, enabling hexadecimal input without switching layers.
+* Hold `0` to get access to the **Adjustment** layer for keyboard settings.
+* The bottom row largely copies **Base**, but the spacebar position outputs equality‑related symbols.
+* `Num Lock` is intentionally omitted. The navigation cluster already includes all of the off‑position keys—`Home`, `Page Down`, `Page Up`, `End`, and the arrow keys—so a Windows‑style `Num Lock` toggle isn’t necessary.
+* Top‑row modifiers are available for workflows that benefit from them, including [Windows Alt codes](https://en.wikipedia.org/wiki/Alt_code), [macOS Unicode Hex Input](https://en.wikipedia.org/wiki/Unicode_input), and various Linux shortcuts.
+
+This layer can be **locked** from **Base**; hit the **HOLD** key to exit.
+
+#### Adjustment: Keyboard Settings
+
+![Adjustment: Keyboard Settings](assets/04_ADJ.png)
+
+The keyboard settings layer is the least developed, and most subject to rearrangement.
+
+The **OS Mode** key defaults to Apple macOS and cycles RGB colors:
+
+| Color | OS |
+|-------|----|
+| 🔵 Blue  | Apple macOS (Default)|
+| 🟢 Green | Linux |
+| 🔴 Red   | Microsoft Windows |
+
+Copy/paste/undo behavior should work properly when switching operating systems; however, virtual desktop navigation may not work, depending on your Linux desktop environment.
+
+#### Function: `F1`–`F12`
+
+![Function: F1–F12](assets/05_FN.png)
+
+##### F-Keys
+
+To keep layer patterns consistent, the home‑row `F1`–`F12` keys mirror the numeric structure of **Upper**. The idea is simple: the same finger positions that produce numbers on **Upper** produce function keys here. This preserves a single mental model for two different layers, reducing cognitive load.
+
+The only exception is `F10`, since there’s no such thing as `F0`. `F11` and `F12` sit on the left and right center keys, respectively, continuing the pattern of odds on the left and evens on the right.
+
+I briefly considered adding `F13`–`F24` for custom shortcuts using `Meh` and `Hyper`, but ultimately kept the standard `F1`–`F12` set. For users who expect a traditional layout, the lower row (Row 2) provides a familiar linear arrangement of all twelve function keys.
+
+As a macOS user, I rarely rely on function keys, so this layer stays intentionally minimal but still easy to reach. If I spend more time on desktop Linux, I may revisit and expand this layer.
+
+##### Modifiers
+
+The top‑row modifiers mirror **Base**, maintaining consistency across layers. The thumb cluster provides `Hyper`, `CMD`/`Super`, and `Meh`, giving quick access to high‑chord shortcuts without awkward reaches.
+
+
 
 ### Specialized Layers
 
