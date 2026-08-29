@@ -368,7 +368,7 @@ By default, this keyboard is set to [Apple macOS](#apple-macos); switch it to Li
 
 ![Apple macOS Layer](assets/13_MACOS.png)
 
-##### Center-Thumb Key
+###### Center-Thumb Key
 
 The **center-thumb key** (spacebar) opens core macOS functionality:
 
@@ -378,7 +378,7 @@ The **center-thumb key** (spacebar) opens core macOS functionality:
 | Double Tap | Toggle [Emoji & Symbols Menu](https://support.apple.com/guide/mac-help/use-emoji-and-symbols-on-mac-mchlp1560/mac) |
 | Hold | Open [Finder](https://en.wikipedia.org/wiki/Finder_(software)) |
 
-##### Right-Thumb Key
+###### Right-Thumb Key
 
 The **right‑thumb key** provides quick file‑deletion actions:
 
@@ -388,7 +388,7 @@ The **right‑thumb key** provides quick file‑deletion actions:
 | Tap-and-Hold | Empty the Trash (Finder); open clear browser data menu (Firefox, Chromium) |
 | Hold | Open the Trash folder in Finder |
 
-##### Top-Right Corner Key
+###### Top-Right Corner Key
 
 The **top‑right corner key** handles screen-capture shortcuts:
 
@@ -398,7 +398,7 @@ The **top‑right corner key** handles screen-capture shortcuts:
 | Tap-and-Hold | Opens all screenshot options |
 | Hold | Full screenshot (all displays) |
 
-##### Center Key
+###### Center Key
 
 The **center key** provides window and device controls:
 
