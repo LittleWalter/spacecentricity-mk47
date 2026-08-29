@@ -17,19 +17,37 @@
     "\ny\n\nn\n\n\n␛\n🅧\nMENU",
     {
       "c": "#ddd3c0",
-      "a": 5,
       "fa": [
-        1,
-        1,
+        0,
+        6,
         0,
         6,
         0,
         0,
-        6
+        6,
+        1,
+        1,
+        6,
+        1
       ]
     },
-    "SWITCH\nplasma\n\n\n\n\n6",
-    "SWITCH\nchaingun\n\n\n\n\n5",
+    "\n\n\n\n\n\n\n🔵\nSWITCH\n7\nplasma",
+    {
+      "fa": [
+        0,
+        6,
+        0,
+        6,
+        0,
+        0,
+        6,
+        2,
+        1,
+        6,
+        1
+      ]
+    },
+    "\n\n\n\n\n\n\n🌀\nSWITCH\n5\nchaingun",
     {
       "c": "#3DED97",
       "a": 7,
@@ -40,25 +58,30 @@
     "↑",
     {
       "c": "#ddd3c0",
+      "a": 0,
+      "fa": [
+        9,
+        0,
+        0,
+        6,
+        0,
+        0,
+        6,
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "\n\n\n8\nrkt\nbfg\n6\n\nSWITCH\n🚀\n☢️",
+    {
+      "c": "#cccccc",
       "a": 5,
       "fa": [
         1,
         1,
         0,
-        0,
-        0,
-        0,
-        6
-      ]
-    },
-    "SWITCH\nBFG\n\n\n\n\n7",
-    {
-      "c": "#cccccc",
-      "fa": [
-        1,
-        1,
-        0,
-        0,
+        6,
         0,
         0,
         5
@@ -76,10 +99,7 @@
         0,
         0,
         4,
-        2,
-        0,
-        0,
-        0
+        2
       ]
     },
     "LOAD\n⚡️\n\nSAVE\nSTATE\n\n↺\n💾",
@@ -128,14 +148,7 @@
       "a": 4,
       "fa": [
         4,
-        5,
-        0,
-        1,
-        0,
-        0,
-        6,
-        0,
-        0
+        5
       ]
     },
     "⌫\n🚪"
@@ -233,16 +246,20 @@
     "STRAFE\n\n\n\nALT\n\n→",
     {
       "c": "#cccccc",
-      "a": 7,
       "fa": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
         9
       ]
     },
-    "↵"
+    "\nCONFIRM\n\n\n\n\n↵"
   ],
   [
     {
-      "a": 5,
       "fa": [
         1,
         1,
@@ -255,12 +272,27 @@
     },
     "RUN\nTOGGLE\n\n\n\n\n🏃",
     {
-      "c": "#ddd3c0"
+      "c": "#ddd3c0",
+      "a": 4,
+      "fa": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        2,
+        1,
+        1,
+        6,
+        1
+      ]
     },
-    "SWITCH\npistol\n\n\n\n\n3",
-    "SWITCH\nshotgun\n\n\ndouble\n\n4",
+    "\n\n\n\nsaw\n\n🪚\n👊\nSWITCH\n2\nknuckles",
+    "\n\n\n\ndouble\n\n\n💥\nSWITCH\n4\nshotgun",
     {
       "c": "#FFE082",
+      "a": 5,
       "fa": [
         1,
         1,
@@ -274,6 +306,7 @@
     "STRAFE\n\n\n\nALT\n\n↓",
     {
       "c": "#ddd3c0",
+      "a": 4,
       "fa": [
         1,
         1,
@@ -281,11 +314,16 @@
         0,
         0,
         0,
-        6
+        9,
+        1,
+        1,
+        6,
+        1
       ]
     },
-    "SWITCH\nknuckles\n\n\nsaw\n\n2",
+    "\n\n\n\n\n\n\n🔫\nSWITCH\n3\npistol",
     {
+      "a": 5,
       "fa": [
         1,
         2,

@@ -20,6 +20,9 @@ typedef struct {
     uint16_t timer;
 } caps_lock_t;
 
+ // Default breathe cycle, ms — pass explicitly, or override per-call
+#define RGB_BREATHE_PERIOD 4000
+
 // ─────────────────────────────────────────────────────────────
 // RGB Preview Window: Used When Hitting RGB Keys on _FN
 // ─────────────────────────────────────────────────────────────

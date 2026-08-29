@@ -66,15 +66,15 @@ One thing that would make it even more travel-friendly: built-in Bluetooth and/o
 The MK-47 is usable out of the box (aside from its stock keymap).
 
 * 47× Huano Red Linear MX-style switches — 3-pin, 45g actuation (2mm pre-travel), 60g bottom-out, 4.0mm travel
-  * Surprisingly decent 🍒 clones
+  * **Authenticity:** surprisingly decent 🍒 clones
 * 44× shine-through white keycaps
   * **Material:** probably ABS plastic
-  * **Shape:** OEM-like profile
+  * **Shape:** OEM-like profile (❓ maybe similar to Cherry profile)
   * **Labels:** QWERTY primary labels w/ smaller secondary labels
 * 3× shine-through black keycaps
-  * Black 1u `Esc` (top row/`ROW0`)
-  * Black 1u `Enter` (home row/`ROW1`)
-  * Black 2u `Space` a.k.a. the “spacebar” (bottom row/`ROW3`)
+  * **`Esc`:** black, 1u (top row/`ROW0`)
+  * **`Enter`:** black, 1u (home row/`ROW1`)
+  * **`Space`:** black, 2u, a.k.a. the “spacebar” (bottom row/`ROW3`)
 * 1× black plastic case w/ **width×depth:** 235×83mm (9.25×3.27in)
   * **Angle:** 3–5° positive tilt
   * **Mount type:** tray/top-mounted PCB (6× small Philips screws, accessible after removing the keycaps)
@@ -82,15 +82,17 @@ The MK-47 is usable out of the box (aside from its stock keymap).
 * 1× Planck MIT-style PCB
   * **Switch sockets:** MX hotswap (📌 3/5-pin compatible)
   * **RGB LEDs:** North-facing
-  * **Chip ID:** `0x3A50E980` (Westberry Tech.)
-  * **Flash size:** 256 KB
+  * **MCU:**  Westberry Tech. [`WB32FQ95xx`](https://www.westberrytech.com/uploads/file/WB32FQ95xx/EN_RM2905025_WB32FQ95xx_V01.pdf), Arm® 32-bit Cortex-M3
+    * **Chip ID:** `0x3A50E980`
+  * **Flash size:** 256 KB (🌌 plenty of space to work with)
   * **SRAM size:** 36 KB
-  * **Port(s):** USB-C[^usb-magnetic-adapters]
-* 1× funky black nylon braided 90° USB-C-to-USB-A cable
-* 1× keycap puller included (w/o switch puller)
-* 1× paper manual that tries to trick you into using the preinstalled keymap
+  * **Port(s):** USB-C (USB 2.0)[^usb-magnetic-adapters]
+* Accessories & extras
+  * 1× funky black nylon braided 90° USB-C-to-USB-A cable
+  * 1× keycap puller included (w/o switch puller)
+  * 1× paper manual that tries to trick you into using the preinstalled keymap
 * **Stock keyboard weight:** 345g (≈0.76 lb)
-* **Total weight (w/ case & accessories):** ≈567g (≈1.25 lb)
+* **Approx. total weight (w/ case & accessories):** ≈567g (≈1.25 lb)
 
 [^usb-magnetic-adapters]: Consider a magnetic USB-C adapter to reduce wear from repeated plug/unplug cycles, especially during travel.
 
@@ -108,7 +110,7 @@ Each layer is presented as a rendered diagram generated with [keyboard-layout-ed
 > [!IMPORTANT]
 > On macOS, this keymap is designed to be used with the **ABC – Extended** input source. Other layouts may alter how Option‑based characters or dead‑key sequences behave, leading to inconsistent output. Apple provides this input source for English‑language users who need a more complete set of diacritical marks and international symbols without switching to a separate language layout. This input source does not interfere with standard system shortcuts.
 >
-> Because Linux and Microsoft Windows accept Unicode directly from [HID](https://en.wikipedia.org/wiki/Human_interface_device), the standard US layout works correctly when the keyboard is used in those modes.
+> Because Linux and Microsoft Windows accept Unicode directly from [HID](https://en.wikipedia.org/wiki/Human_interface_device), the standard US layout should work correctly when the keyboard is used in those modes — though this is largely untested on my end.
 
 > [!TIP]
 > [**Base**](#base-modified-dvorak), [**Upper**](#upper-primary-number-layer), and [**Arrows**](#arrows) are the most frequently used layers. Most of the remaining layers and state mechanics exist to assist workflow rather than get in the way — the [**Mouse**](#mouse) layer, for example, comes in handy when the battery dies on a wireless pointing device. [Leader](/LEADER.md) sequences can be toggled on/off via the [**Adjustment**](#adjustment-keyboard-settings) layer.
@@ -179,7 +181,17 @@ This key is not momentary — it switches layers rather than holding them.
 
 ##### Media Cluster
 
-The media cluster lives out of the way on the bottom left. Note that  **Mute Tab** (`Ctrl‑M` on hold) works in Firefox and Firefox‑based browsers, but not in most Chromium‑based browsers. Screen‑brightness controls sit on Tap‑and‑Hold for convenient access from the top layer.
+The Media keys live on the left-hand side of the bottom row (`ROW3`), out of the way, but easily accessible.
+
+| Action | Behavior |
+|--------|----------|
+| Tap | Mute, Volume Down, Volume Up |
+| Double Tap | Play/Pause, Previous Track, Next Track |
+| Tap-and-Hold | Stop, Screen Brightness Down, Screen Brightness Up |
+| Hold | Mute Tab (`LCTL-M` for Firefox), Volume Down, Volume Up (repeats while held) |
+
+> [!WARNING]
+> Mute Tab (`LCTL-M`) works in Firefox and Firefox-based browser, but not in most Chromium-based browsers.
 
 ##### Special Characters
 

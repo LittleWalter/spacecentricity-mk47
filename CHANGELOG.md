@@ -23,6 +23,12 @@
 
 ---
 
+## 2026-08/28-FR
+- ***Doom*** (1993)
+  - `BUGFIX`: `KC_8` → `KC_F8`
+  - Updated `README.md` and related PNG
+- Polishing documentation.
+
 ## 2026-08/27-TH
 - ***Doom*** (1993)
   - Tinkering w/ layout by adding more tap dances.

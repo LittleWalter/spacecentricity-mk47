@@ -94,6 +94,30 @@ static bool leader_flash_check(void) {
 }
 #endif
 
+// Returns 0-255 brightness following a triangle wave over period_ms.
+static uint8_t rgb_breathe_brightness(uint16_t period_ms) {
+    uint16_t t    = timer_read() % period_ms;
+    uint16_t half = period_ms / 2;
+
+    if (t < half) {
+        return (t * 255) / half;
+    } else {
+        return 255 - ((t - half) * 255) / half;
+    }
+}
+
+// Sets a key to breathe between off and (r,g,b) over period_ms. Scaling each
+// channel independently (vs. picking a fixed color per brightness step) means
+// this works for any color macro without a dedicated function per color.
+static void set_layer_key_breathe(uint8_t key_index, uint16_t period_ms,
+                                   uint8_t r, uint8_t g, uint8_t b) {
+    uint8_t brightness = rgb_breathe_brightness(period_ms);
+    rgb_matrix_set_color(key_index,
+                          (r * brightness) / 255,
+                          (g * brightness) / 255,
+                          (b * brightness) / 255);
+}
+
 // ─────────────────────────────────────────────────────────────
 // RGB Matrix
 // ─────────────────────────────────────────────────────────────
@@ -572,7 +596,7 @@ bool rgb_matrix_indicators_user(void) {
          * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
          * │   CUT   │UNDO REDO│  PASTE  │  COPY   │ SEL ALL │DESKTOP ←│DESKTOP →│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │ ⌫  ⌫L ⌫w│
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-         * │  ⇥   ⇤  │AppSwitch│Mid Click│Lft Click│Rgt Click│   ESC   │  DOOM   │Pointer ←│Pointer ↓│Pointer ↑│Pointer →│    ↵    │
+         * │  ⇥   ⇤  │AppSwitch│Mid Click│Lft Click│Rgt Click│   ESC   │DOOM 1993│Pointer ←│Pointer ↓│Pointer ↑│Pointer →│    ↵    │
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
          * │DESKTOP ←│  TAB ←  │  TAB →  │  Back   │ Forward │  TAB ←  │  TAB →  │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │DESKTOP →│
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
@@ -608,17 +632,19 @@ bool rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color(LED_ROW0_RIGHT_MIDDLE, GREEN); // Page Down
             rgb_matrix_set_color(LED_ROW0_RIGHT_RING,   GREEN); // Page Up
             rgb_matrix_set_color(LED_ROW0_RIGHT_PINKY,  GREEN); // End
+            // Doom (1993): Enter Hell at your own risk…
+            set_layer_key_breathe(LED_ROW1_RIGHT_CENTER, RGB_BREATHE_PERIOD, RED); // Open the Gate to Doom…
             break;
 
-        /* Classic Doom Layer
+        /* Doom (1993) Layer
          * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
-         * │ESC 🅧 y n│ Plasma  │ Rockets │    ↑    │ BFG 9000│  Pause  │Load Save│MsgToggle│Pointer ↑│ScrnSize-│ScrnSize+│ ⌫  QUIT │
+         * │ESC 🅧 y n│ Plasma  │ Chaingun│    ↑    │PlasmaBFG│  Pause  │Load Save│MsgToggle│Pointer ↑│ScrnSize-│ScrnSize+│ ⌫  QUIT │
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
          * │⇥  C Mark│ Strife ←│    ←    │    ↓    │    →    │ Strife →│ Strife ←│Pointer ←│Pointer ↓│Pointer →│ Strife →│    ↵    │
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-         * │RunToggle│  Pistol │ Shotgun │ Strife ↓│ Knuckles│ ← Prev  │ → Next  │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │RunToggle│
+         * │RunToggle│ Knuckles│ Shotgun │ Strife ↓│  Pistol │ ← Prev  │ → Next  │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │RunToggle│
          * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-         * │  BASE   │🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │Lft Click│         ␣         │Rgt Click│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
+         * │  BASE   │🔇⏯ ⏹  🕹️ │🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │Lft Click│         ␣         │Rgt Click│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
          * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
          * NOTE: No need for RGB logic when the layer is inactive due to mouse keys
          */
@@ -638,8 +664,8 @@ bool rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color(LED_ROW1_RIGHT_MIDDLE, SPRING_GREEN); // Move Down
             rgb_matrix_set_color(LED_ROW1_RIGHT_RING,   SPRING_GREEN); // Move Right
             // Mouse Button Keys (Interact)
-            rgb_matrix_set_color(LED_THUMB_LEFT,  ORANGE); // Left Click
-            rgb_matrix_set_color(LED_THUMB_RIGHT, ORANGE); // Right Click
+            rgb_matrix_set_color(LED_THUMB_LEFT,  SPRING_GREEN); // Left Click
+            rgb_matrix_set_color(LED_THUMB_RIGHT, SPRING_GREEN); // Right Click
             // Arrow Keys
             rgb_matrix_set_color(LED_ROW0_LEFT_MIDDLE, GREEN); // Up
             rgb_matrix_set_color(LED_ROW1_LEFT_RING,   GREEN); // Left

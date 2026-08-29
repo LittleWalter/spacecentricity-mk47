@@ -264,22 +264,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ____, ____, ____, ____, ____,          LAUNCHER_OS,        DEL_OS,        ____,          ____,        ____,          ____
 ),
 
-/* Classic Doom Layer
+/* Doom (1993) Layer
  * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
- * │ESC 🅧 y n│ Plasma  │ Rockets │    ↑    │ BFG 9000│  Pause  │Load Save│MsgToggle│Pointer ↑│ScrnSize-│ScrnSize+│ ⌫  QUIT │
+ * │ESC 🅧 y n│ Plasma  │ Chaingun│    ↑    │PlasmaBFG│  Pause  │Load Save│MsgToggle│Pointer ↑│ScrnSize-│ScrnSize+│ ⌫  QUIT │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │⇥  C Mark│ Strife ←│    ←    │    ↓    │    →    │ Strife →│ Strife ←│Pointer ←│Pointer ↓│Pointer →│ Strife →│    ↵    │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │RunToggle│  Pistol │ Shotgun │ Strife ↓│ Knuckles│ ← Prev  │ → Next  │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │RunToggle│
+ * │RunToggle│ Knuckles│ Shotgun │ Strife ↓│  Pistol │ ← Prev  │ → Next  │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │RunToggle│
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │  BASE   │🔇⏯ ⏹ C+M│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │Lft Click│         ␣         │Rgt Click│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
+ * │  BASE   │🔇⏯ ⏹  🕹️ │🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │Lft Click│         ␣         │Rgt Click│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
  */
 #ifdef MOUSEKEY_ENABLE
 [_DOOM] = LAYOUT_planck_mit(
-    DOOM_MENU, KC_6,        KC_5,    KC_UP,       KC_7,    DOOM_PAUSE,  DOOM_LOAD,   KC_8     ,  MS_UP,   KC_MINS, KC_PLUS,     DOOM_PREV,
+    DOOM_MENU, KC_7,        KC_5,    KC_UP,       KC_6,    DOOM_PAUSE,  DOOM_LOAD,   KC_F8,      MS_UP,   KC_MINS, KC_PLUS,     DOOM_PREV,
     DOOM_MAP,  STRAFE_LEFT, KC_LEFT, KC_DOWN,     KC_RGHT, STRAFE_RGHT, STRAFE_LEFT, MS_LEFT,    MS_DOWN, MS_RGHT, STRAFE_RGHT, ENT,
-    ____,      KC_3,        KC_4,    STRAFE_DOWN, KC_2,    KC_1,        KC_0,        MS_WHLR,    MS_WHLU, MS_WHLD, MS_WHLL,     ____,
+    ____,      KC_2,        KC_4,    STRAFE_DOWN, KC_3,    KC_1,        KC_0,        MS_WHLR,    MS_WHLU, MS_WHLD, MS_WHLL,     ____,
     BASE,      DOOM_MUTE,   VOLD,    VOLU,        MS_BTN1,      KC_SPC,              RCLK_UPPER, HOME,    PGDN,    PGUP,        END
 ),
 #endif
@@ -288,7 +288,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
  * │   CUT   │UNDO REDO│  PASTE  │  COPY   │ SEL ALL │DESKTOP ←│DESKTOP →│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │ ⌫  ⌫L ⌫w│
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │  ⇥   ⇤  │AppSwitch│Mid Click│Lft Click│Rgt Click│   ESC   │  DOOM   │Pointer ←│Pointer ↓│Pointer ↑│Pointer →│    ↵    │
+ * │  ⇥   ⇤  │AppSwitch│Mid Click│Lft Click│Rgt Click│   ESC   │DOOM 1993│Pointer ←│Pointer ↓│Pointer ↑│Pointer →│    ↵    │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │DESKTOP ←│  TAB ←  │  TAB →  │  Back   │ Forward │  TAB ←  │  TAB →  │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │DESKTOP →│
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
