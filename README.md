@@ -72,21 +72,21 @@ The MK-47 is usable out of the box (aside from its stock keymap).
   * **Shape:** OEM-like profile (❓ maybe similar to Cherry profile)
   * **Labels:** QWERTY primary labels w/ smaller secondary labels
 * 3× shine-through black keycaps
-  * **`Esc`:** black, 1u (top row/`ROW0`)
-  * **`Enter`:** black, 1u (home row/`ROW1`)
-  * **`Space`:** black, 2u, a.k.a. the “spacebar” (bottom row/`ROW3`)
+  * **`Esc`:** black, 1u (🔼 top row/`ROW0`)
+  * **`Enter`:** black, 1u (🏠 home row/`ROW1`)
+  * **`Space`:** black, 2u, a.k.a. the “spacebar” (🔽 bottom row/`ROW3`)
 * 1× black plastic case w/ **width×depth:** 235×83mm (9.25×3.27in)
   * **Angle:** 3–5° positive tilt
   * **Mount type:** tray/top-mounted PCB (6× small Philips screws, accessible after removing the keycaps)
   * **No stock foam:** standoffs leave room inside for adding sound-dampening material
 * 1× Planck MIT-style PCB
   * **Switch sockets:** MX hotswap (📌 3/5-pin compatible)
-  * **RGB LEDs:** North-facing
-  * **MCU:**  Westberry Tech. [`WB32FQ95xx`](https://www.westberrytech.com/uploads/file/WB32FQ95xx/EN_RM2905025_WB32FQ95xx_V01.pdf), Arm® 32-bit Cortex-M3
+  * **RGB LEDs:** 47× (🧭 north-facing)
+  * **MCU:**  Westberry Tech. [`WB32FQ95xx`](https://www.westberrytech.com/uploads/file/WB32FQ95xx/EN_RM2905025_WB32FQ95xx_V01.pdf) (🔲 Arm® 32-bit Cortex-M3)
     * **Chip ID:** `0x3A50E980`
-  * **Flash size:** 256 KB (🌌 plenty of space to work with)
-  * **SRAM size:** 36 KB
-  * **Port(s):** USB-C (USB 2.0)[^usb-magnetic-adapters]
+    * **Flash size:** 256 KB (🌌 plenty of space to work with)
+    * **SRAM size:** 36 KB
+  * **Port(s):** USB-C (USB 2.0)[^usb-magnetic-adapters], centered on the rear edge
 * Accessories & extras
   * 1× funky black nylon braided 90° USB-C-to-USB-A cable
   * 1× keycap puller included (w/o switch puller)
@@ -281,7 +281,7 @@ Spanish punctuation and combining diacritics sit on the home row for light multi
 
 The bottom-left corner key activates mnemonic Leader sequences. See [LEADER.md](/LEADER.md) for the full list of available actions.
 
-**Center Keys**
+##### Center Keys
 
 | Action | Behavior |
 |--------|----------|
@@ -290,7 +290,7 @@ The bottom-left corner key activates mnemonic Leader sequences. See [LEADER.md](
 | Tap-and-Hold | `ˋ` (combining grave) |
 | Hold | `´` (combining acute) |
 
-**Ring-Finger Keys**
+##### Ring-Finger Keys
 
 | Action | Behavior |
 |--------|----------|
@@ -299,7 +299,7 @@ The bottom-left corner key activates mnemonic Leader sequences. See [LEADER.md](
 | Tap-and-Hold | `˜` (combining tilde) |
 | Hold | `¨` (combining umlaut) |
 
-**Lower Row Accent Keys**
+##### Lower Row Accent Key
 
 | Action | Behavior |
 |--------|----------|
@@ -311,7 +311,7 @@ The bottom-left corner key activates mnemonic Leader sequences. See [LEADER.md](
 > [!WARNING]
 > On macOS, the lower row combining marks rely on the **ABC – Extended** input source. Other layouts do not provide the required dead‑key sequences and will produce incorrect output.
 
-**Application Switching**
+##### Application Switching
 
 Hold the center key to activate the application switcher. macOS uses `CMD`; Linux and Microsoft Windows uses `LALT`.
 
@@ -368,6 +368,8 @@ By default, this keyboard is set to [Apple macOS](#apple-macos); switch it to Li
 
 ![Apple macOS Layer](assets/13_MACOS.png)
 
+##### Center-Thumb Key
+
 The **center-thumb key** (spacebar) opens core macOS functionality:
 
 | Action | Behavior |
@@ -375,6 +377,8 @@ The **center-thumb key** (spacebar) opens core macOS functionality:
 | Tap | Toggle [Spotlight Search](https://en.wikipedia.org/wiki/Spotlight_(Apple)) |
 | Double Tap | Toggle [Emoji & Symbols Menu](https://support.apple.com/guide/mac-help/use-emoji-and-symbols-on-mac-mchlp1560/mac) |
 | Hold | Open [Finder](https://en.wikipedia.org/wiki/Finder_(software)) |
+
+##### Right-Thumb Key
 
 The **right‑thumb key** provides quick file‑deletion actions:
 
@@ -384,6 +388,8 @@ The **right‑thumb key** provides quick file‑deletion actions:
 | Tap-and-Hold | Empty the Trash (Finder); open clear browser data menu (Firefox, Chromium) |
 | Hold | Open the Trash folder in Finder |
 
+##### Top-Right Corner Key
+
 The **top‑right corner key** handles screen-capture shortcuts:
 
 | Action | Behavior |
@@ -391,6 +397,8 @@ The **top‑right corner key** handles screen-capture shortcuts:
 | Tap | Partial screenshot |
 | Tap-and-Hold | Opens all screenshot options |
 | Hold | Full screenshot (all displays) |
+
+##### Center Key
 
 The **center key** provides window and device controls:
 
@@ -409,7 +417,7 @@ These layers provide ergonomic access to common Vim navigation, window managemen
 
 Movements that interact with counts (`<number>movement`) intentionally omit the `Esc` prefix to preserve numeric prefixes and avoid breaking repeatable motions.
 
-**Home Row Navigation Cluster**
+##### Home Row Navigation Cluster
 
 | Action | Behavior |
 |--------|----------|
@@ -420,7 +428,7 @@ Movements that interact with counts (`<number>movement`) intentionally omit the 
 
 WORD and wrapped‑line motions omit the `Esc` prefix to maintain compatibility with `<count>`‑prefixed movements.
 
-**Bottom Row Navigation Cluster**
+##### Bottom Row Navigation Cluster
 
 | Action | Behavior |
 |--------|----------|
@@ -431,14 +439,14 @@ WORD and wrapped‑line motions omit the `Esc` prefix to maintain compatibility 
 
 Window‑resize commands omit the `Esc` prefix to preserve compatibility with `<count>`‑based resizing.
 
-**Center Navigation Cluster**
+##### Center Navigation Cluster
 
 | Action | Behavior |
 |---------|----------|
 | Tap | `zt`, `zz`, `zb` (scroll viewport to top / center / bottom) |
 | Hold | `H`, `M`, `L` (move cursor to top / middle / bottom of screen) |
 
-**Semantic Deletion Key**
+##### Semantic Deletion Key
 
 | Action | Behavior | Notes |
 |--------|----------|-------|
@@ -447,7 +455,7 @@ Window‑resize commands omit the `Esc` prefix to preserve compatibility with `<
 | Tap-and-Hold | `d^` (delete to beginning of line) | Deletes everything back to the first non‑whitespace character |
 | Hold | `d$` (delete to end of line) | Deletes everything to the right of (and under) the cursor |
 
-**Folds**
+##### Folds
 
 | Action | Behavior |
 |---------|----------|
@@ -485,12 +493,16 @@ This layer serves as a secondary/fallback mouse input, useful when other pointin
 
 ![Doom (1993) layer](assets/01_DOOM.png)
 
-An optional compact gaming layer modeled after vanilla [_Doom_ (1993)](https://en.wikipedia.org/wiki/Doom_(1993_video_game)), built around a tight movement cluster, dedicated strafing keys, and thumb‑based actions for firing and opening doors. Quick weapon switching is handled through the [**Upper**](#upper-primary-number-layer) layer and dedicated left-hand keys, and the layout also works as a simple arrows‑plus‑mouse‑keys mode using traditional T‑shaped clusters for general navigation.
+An optional compact gaming layer modeled after vanilla [_Doom_ (1993)](https://en.wikipedia.org/wiki/Doom_(1993_video_game)), built around a tight movement cluster, dedicated strafing keys, and thumb‑based actions for firing and opening doors. Quick weapon switching is handled through the [**Upper**](#upper-primary-number-layer) layer and dedicated number keys (mostly on the left-hand side).
+
+The layout also works as a simple arrows‑plus‑mouse‑keys mode using traditional T‑shaped clusters for general navigation.
+
+Remember, there’s always room for _Doom_.
 
 > [!IMPORTANT]
 > Tested w/ [Chocolate Doom](https://www.chocolate-doom.org/wiki/index.php/Chocolate_Doom) v3.1.1 but keyboard settings modified for `previous weapon` and `next weapon` using `0` and `1`, respectively. It’s also a good idea to enable “Always run” to eliminate the need to continuously hold `Shift`.
 >
-> On macOS, `Pause` (and `F15`) triggers `screen-brightness-up`, so this keymap binds the in-game Pause action to `Delete`.[^Pause_and_Scroll_Lock_on_macOS]
+> On macOS, `Pause` (and `F15`) triggers `screen-brightness-up`, so this keymap binds the in-game Pause action to `Delete`.[^pause_and_scroll_lock_on_macos]
 >
 > `RUN:` `chocolate-doom-setup`
 >
@@ -505,7 +517,7 @@ An optional compact gaming layer modeled after vanilla [_Doom_ (1993)](https://e
 
 [^doom_1993_instruction_manual]: _Doom_ (1993) instruction manual scan sourced from [gaming.stackexchange.com](https://gaming.stackexchange.com/questions/363261/what-are-the-original-controls-of-doom-1993).
 
-[^Pause_and_Scroll_Lock_on_macOS]: On macOS, `Pause` and `F15` → `screen-brightness-up`; `Scroll Lock` and `F14` → `screen-brightness-down`.
+[^pause_and_scroll_lock_on_macos]: On macOS, `Pause` and `F15` → `screen-brightness-up`; `Scroll Lock` and `F14` → `screen-brightness-down`.
 
 ## Case Modes: Temporary Lexical Modes
 
