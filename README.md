@@ -146,6 +146,8 @@ The top three layers that make up the everyday typing environment:
 
 ![Base: Modified Dvorak](assets/00_BASE.png)
 
+The “Base” is the default layer, using a modified Dvorak alpha arrangement.
+
 Most layer keys are momentary holds.
 
 The [**Lower**](#lower-numpad) and [**Upper**](#upper-primary-number-layer) keys behave the same, but you can **lock** them with tap‑and‑hold and **unlock** with a tap back to **Base**.
@@ -202,6 +204,8 @@ The navigation cluster emits the arrow symbols on triple tap: `←`, `↓`, `↑
 #### Upper: Primary Number Layer
 
 ![Upper: Primary Numpad Layer](assets/03_UPPER.png)
+
+Home row-based digits and secondary symbols.
 
 Tap the **HELD** key when this layer is **locked** to return to [**Base**](#base-modified-dvorak).
 
@@ -277,10 +281,7 @@ See [LEADER.md](/LEADER.md) for full details.
 
 ![Arrows: Left-Hand Side](assets/07_ARR_L.png)
 
-Spanish punctuation and combining diacritics sit on the home row for light multilingual support.
-
-The bottom-left corner key activates mnemonic Leader sequences. See [LEADER.md](/LEADER.md) for the full list of available actions.
-
+Home row-based navigation, common symbols, application shortcuts, and diacritics — including Spanish punctuation and combining marks for light multilingual support.
 ##### Center Keys
 
 | Action | Behavior |
@@ -317,6 +318,12 @@ Hold the center key to activate the application switcher. macOS uses `CMD`; Linu
 
 Tap `Tab` or `Shift–Tab` on the bottom row to navigate.
 
+##### Leader Sequences
+
+The bottom-left corner key activates mnemonic [Leader](https://docs.qmk.fm/features/leader_key) sequences while holding the right index finger on home row.
+
+See [LEADER.md](/LEADER.md) for the full list of available actions.
+
 ### Support Layers
 
 These layers are still useful, just less frequently accessed than the [Core Layers](#core-layers).
@@ -336,6 +343,9 @@ Momentary hold `0` to access [**Adjustment**](#adjustment-keyboard-settings) lay
 ![Function: F1–F12](assets/05_FN.png)
 
 Provides `F1`–`F12` and modifier combinations for shortcut execution. The home and top rows mirror the [**Upper**](#upper-primary-number-layer) layer’s number layout, and the lower row includes a redundant, standard linear layout for familiarity and ease of use.
+
+> [!NOTE]
+> Function keys see more use on Linux and Microsoft Windows than macOS. For some reason, spamming `F5` to refresh is a satisfying activity on some operating sytems.
 
 #### Adjustment: Keyboard Settings
 
@@ -601,6 +611,8 @@ These scripts are entirely optional — the build script simply wraps QMK’s CL
 
 This keymap is actively maintained and may evolve over time as layouts, layers, and features are refined, added, or removed.
 
-Most layers are fairly stable at this point, but some of the more specialized/optional ones (such as [**Adjustment**](#adjustment-keyboard-settings), [**Terminal**](#terminal), and [**Programming**](#programming)) may be reworked, consolidated, or removed as the design continues to mature.
+Unresolved bugs are likely to exist within this QMK keyboard firmware.
 
-This keymap has not been tested on Linux or Microsoft Windows operating systems.
+Most layers are fairly stable at this point, but some of the more specialized or optional ones may be reworked, consolidated, or removed as the design continues to mature. For instance, [**Adjustment**](#adjustment-keyboard-settings), [**Terminal**](#terminal), [**Programming**](#programming), and [**Doom** (1993)](#doom-1993) are likely to change more than most of the other layers.
+
+This keymap has not been tested on Linux or Microsoft Windows.

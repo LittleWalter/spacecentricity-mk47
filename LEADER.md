@@ -1,4 +1,4 @@
-# QMK Leader Sequences
+ss QMK Leader Sequences
 
 QMK includes [Leader Key functionality](https://docs.qmk.fm/features/leader_key), inspired by [Vim’s “leader” concept](https://stackoverflow.com/questions/1764263/what-is-the-leader-in-a-vimrc-file). A Leader key allows you to trigger multi‑key mnemonic sequences that expand into actions, text, or macros.
 
@@ -8,7 +8,7 @@ Spacecentricity provides a curated set of Leader sequences for emoji and symbol 
 * Optional — they never interfere with normal typing
 * Low‑risk — unlikely to be triggered accidentally and can be disabled
 
-Leader sequences may contain up to three keys, not counting the Leader key itself. This keeps them fast to type while still allowing a rich vocabulary of shortcuts.
+Leader sequences may contain up to three keys, not counting the Leader key itself. This keeps them fast to type while accomodating a rich vocabulary of shortcuts.
 
 ## Table of Contents
 
@@ -24,9 +24,9 @@ Leader sequences may contain up to three keys, not counting the Leader key itsel
 
 ## Implementation Details
 
-To avoid conflicts with tap‑dance, mod‑tap, and layer‑tap behaviors, this keymap activates a dedicated alphabet‑only layer while processing Leader sequences. Because this temporary layer exposes only letters and a limited set of safe symbols, some characters—such as numbers and certain punctuation—are unavailable for use in Leader sequences.
+To avoid conflicts with tap-dance, mod-tap, and layer-tap behavior, this keymap activates a dedicated letters-only layer while processing Leader sequences. Because this temporary layer exposes only letters and a limited set of safe symbols, some characters—such as numbers and certain punctuation—are unavailable for use in Leader sequences.[^leader-numbers-layer]
 
-While the Leader layer is active, the RGB matrix shifts to a dim navy blue to indicate that it is waiting for a Leader sequence. When the sequence completes, the keyboard briefly flashes green on success or red on failure before returning to normal per‑layer lighting.
+While the Leader layer is active, the RGB matrix shifts to a dim navy blue to indicate that it is waiting for a Leader sequence. When the sequence completes, the keyboard briefly flashes green on success or red on failure before returning to the normal per-layer lighting.
 
 | Leader State              | Color    | RGB Value   | Meaning                                    |
 |---------------------------|----------|-------------|--------------------------------------------|
@@ -45,11 +45,13 @@ The toggle key provides immediate visual feedback so you always know whether Lea
 | 🔵 Navy  | Leader sequences **enabled** (default) |
 | 🔴 Red   | Leader sequences **disabled** |
 
-When Leader mode is disabled, the keyboard will not enter the temporary Leader layer, will not wait for sequences, and will not replay previous sequences. This is useful if you want to prevent accidental activations or if you’re using software that conflicts with Leader timing.
+When Leader mode is disabled, the keyboard will not enter the temporary Leader layer, wait for sequences, or replay previous sequences from [**History**](#leader-history) or [**Favorites**](#leader-favorites). This is useful for preventing accidental activations or when using software that conflicts with Leader timing.
+
+[^leader-numbers-layer]: A dedicated “Leader numbers” layer is already defined in [`./src/core/keymap.c`](./src/core/keymap.c). As of August 2026, it is not currently used because there is not yet a clear use case or a good location for number-related Leader sequences. In other words, I just haven’t thought about too much at this point
 
 ## Leader Replay
 
-Leader actions can be replayed from either **History** or **Favorites** via the holds of the **Upper** layer’s number keys.
+Leader actions can be replayed from either [**History**](#leader-history) or [**Favorites**](#leader-favorites) via the holds of the **Upper** layer’s number keys.
 
 ![Upper: Primary Numpad Layer](assets/03_UPPER.png)
 
