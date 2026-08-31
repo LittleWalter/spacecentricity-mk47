@@ -62,7 +62,7 @@ for arg in "$@"; do
         -c|--clean|--clear)
             CLEAN=1
             ;;
-        --clean-only)
+        --clean-only|--clear-only)
             CLEAN_ONLY=1
             ;;
         -s|--status)
