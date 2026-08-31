@@ -216,7 +216,7 @@ The navigation cluster emits the arrow symbols on triple tap: `←`, `↓`, `↑
 
 #### Upper: Primary Number Layer
 
-![Upper: Primary Numpad Layer](assets/03_UPPER.png)
+![Upper: Primary Number Layer](assets/03_UPPER.png)
 
 Home row-based digits and secondary symbols.
 
@@ -263,7 +263,12 @@ Directly above the **HELD** key lives a prose‑oriented semantic punctuation ke
 
 ##### Special Characters
 
-Smart quotes live on the lower row. They insert paired curly quotes with the cursor centered between them for convenient typographic writing. Tap for double smart quotes; hold for single smart quotes. These macros are useful if you prefer not to rely on OS- or app-level text substitutions.
+Smart quotes live on the lower row, handy if you’d rather not depend on OS- or app-level text substitution.
+
+| Action | Behavior | Notes |
+|--------|----------|-------|
+| Tap | `“”` | Insert matching pair of double curly quotes w/ cursor centered. |
+| Hold | `‘’` | Insert matching pair of single curly quotes w/ cursor centered. |
 
 The . key remains in the standard Dvorak position, with additional dot-related tap dances:
 
@@ -354,20 +359,14 @@ These layers are still useful, just less frequently accessed than the [Core Laye
 
 ![Lower: Numpad with hexadecimal](assets/02_LOWER.png)
 
-Tap the **HELD** key when this layer is **locked** to return to [**Base**](#base-modified-dvorak).
+An alternative number-input layer using the familiar numeric keypad pattern.
 
-Hold `1`–`6` for hexadecimal `A`–`F`.
-
-Momentary hold `0` to access [**Adjustment**](#adjustment-keyboard-settings) layer to change keyboard settings.
-
-#### Function: `F1`–`F12`
-
-![Function: F1–F12](assets/05_FN.png)
-
-Provides `F1`–`F12` and modifier combinations for keyboard shortcuts. The home and top rows mirror the [**Upper**](#upper-primary-number-layer) layer’s number layout, and the lower row (`ROW2`) includes a redundant, standard left-to-right linear layout for familiarity and ease of use.
-
-> [!NOTE]
-> Function keys see more use on Linux and Microsoft Windows than macOS. For some reason, spamming `F5` to refresh is a satisfying activity on some operating systems.
+| Action | Key(s)  | Behavior |
+|--------|---------|----------|
+| Tap    | `0`–`9` | Digit keycodes `KC_P0`–`KC_P9` ([QMK Number Pad](https://docs.qmk.fm/keycodes_basic#number-pad)) |
+|        | `BASE`  | 🔓 ___Unlock___ to return to [**Base**](#base-modified-dvorak). |
+| Hold   | `0`     | Momentary hold [**Adjustment**](#adjustment-keyboard-settings) layer to change keyboard settings. |
+|        | `1`–`6` | Hexadecimal `A`–`F` |
 
 #### Adjustment: Keyboard Settings
 
@@ -387,6 +386,15 @@ The backlight color indicates which OS is currently active:
 > Linux and Microsoft Windows behavior is currently untested!
 >
 > I’m unlikely to test Windows myself, but the functionality is included for completeness.
+
+#### Function: `F1`–`F12`
+
+![Function: F1–F12](assets/05_FN.png)
+
+Provides `F1`–`F12` and modifier combinations for keyboard shortcuts. The home and top rows mirror the [**Upper**](#upper-primary-number-layer) layer’s number layout, and the lower row (`ROW2`) includes a redundant, standard left-to-right linear layout for familiarity and ease of use.
+
+> [!NOTE]
+> Function keys see more use on Linux and Microsoft Windows than macOS. For some reason, spamming `F5` to refresh is a satisfying activity on some operating systems.
 
 ### Specialized Layers
 

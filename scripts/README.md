@@ -45,13 +45,13 @@ cd ~/path/to/keymap/scripts
 
 ### Options
 
-| Flag | Description |
-|------|-------------|
-| `-c`, `--clean` | Remove QMK build artifacts before building |
-| `--clean-only` | Clean and exit without building |
-| `-f`, `--flash` | Flash the firmware after building |
-| `-s`, `--status` | Show symlink and QMK status and exit |
-| `-h`, `--help` | Show help message |
+| Flag                           | Description |
+|--------------------------------|-------------|
+| `-c`, `--clean`, `--clear`     | Remove QMK build artifacts before building |
+| `--clean-only`, `--clear-only` | Clean build artifacts and exit without building |
+| `-f`, `--flash`                | Flash the firmware after building |
+| `-s`, `--status`               | Show symlink and QMK status and exit |
+| `-h`, `--help`                 | Show help message |
 
 ### Example Runs
 

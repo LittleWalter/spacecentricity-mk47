@@ -23,6 +23,10 @@
 
 ---
 
+## 2026-08/31-MO
+- `CHANGE`: Refactored `scripts/build.sh` to accept `--clear` and `--clear-only` flags
+- More documentation polish; fleshing out some more key tables in main `README`.
+
 ## 2026-08/30-SU
 - **Doom** (1993)
   - `CHANGE:` Swapped game state key with message toggle key.

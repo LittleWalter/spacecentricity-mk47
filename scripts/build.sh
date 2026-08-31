@@ -20,11 +20,11 @@ By default:
         \$HOME/qmk_firmware
 
 Options:
-  -c, --clean         Remove QMK build artifacts before building
-  --clean-only        Clean and exit without building
-  -f, --flash         Flash the firmware after building
-  -s, --status        Show symlink/QMK status and exit
-  -h, --help          Show this help message and exit
+  -c, --clean, --clear        Remove QMK build artifacts before building
+  --clean-only, --clear-only  Clean and exit without building
+  -f, --flash                 Flash the firmware after building
+  -s, --status                Show symlink/QMK status and exit
+  -h, --help                  Show this help message and exit
 
 Examples:
   $(basename "$0")                  # Build spacecentricity
@@ -59,7 +59,7 @@ for arg in "$@"; do
         -f|--flash)
             FLASH=1
             ;;
-        -c|--clean)
+        -c|--clean|--clear)
             CLEAN=1
             ;;
         --clean-only)

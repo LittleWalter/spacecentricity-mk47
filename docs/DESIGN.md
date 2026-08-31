@@ -60,7 +60,7 @@ The biggest trade-off is that the Planck demands heavy layer usage and rewards p
 [^ergonomics-of-planck]: It’s probably worth mentioning that I don’t really consider the Planck form factor “ergonomic” in the same sense as keyboards that feature split layouts, flexible tenting angles, columnar stagger, and/or concave keywells, though modern sculpted keycap profiles such as KLP Lamé
  can provide some of the benefits of the latter. I’d consider the Planck a semi-ergonomic form factor by virtue of its small size, programmability, and ortholinear grid, and it may work particularly well for a niche subset of users who don’t mind unibody keyboards. For some, the Planck might make a great secondary travel device that beats built-in laptop keyboards.
 
-[^why-learn-qmk]: Why bother writing keyboard-centric C code when fancy GUI tools exist? Getting into the nitty-gritty of firmware like QMK or ZMK is one of the best ways to unlock the full expressive potential of a custom keyboard. Graphical tools like VIA trade some of that expressiveness for convenience.
+[^why-learn-qmk]: Why bother writing keyboard-centric C code when fancy GUI tools exist? Getting into the nitty-gritty of firmware like QMK or ZMK is one of the best ways to unlock the full expressive potential of a custom keyboard. Graphical tools like VIA trade some of that expressiveness for convenience. At this point, ortholinear oddities such as the [Epomaker Hack70](https://epomaker.com/products/epomaker-hack70) have no appeal to me, due more to the lack of QMK or ZMK support than the bizarre 2u/3u keys — proprietary firmware forks are a dealbreaker. (Not to mention Epomaker also has [QMK licensing issues](https://docs.qmk.fm/license_violations).)
 
 ## Bias
 
