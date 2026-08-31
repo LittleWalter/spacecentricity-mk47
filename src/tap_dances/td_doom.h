@@ -21,3 +21,5 @@ void doom_mute_reset(tap_dance_state_t *state, void *user_data);
 void doom_prev_finished(tap_dance_state_t *state, void *user_data);
 void doom_prev_reset(tap_dance_state_t *state, void *user_data);
 
+void doom_6_finished(tap_dance_state_t *state, void *user_data);
+void doom_6_reset(tap_dance_state_t *state, void *user_data);

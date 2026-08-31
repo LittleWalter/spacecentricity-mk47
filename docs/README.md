@@ -1,6 +1,6 @@
-# `./src/`
+# `./docs/`
 
-The base path of the QMK firmware source code.
+This directory wrangles Markdown documentation away from the project root.
 
 ## 🗺️ Project Directory Map: You Are Here → 📍 (w/ Description)
 
@@ -9,9 +9,11 @@ The base path of the QMK firmware source code.
 ├── assets/           → Visual documentation & layout data, mostly PNGs
 │   └── json/         → Machine-readable layout definitions for keyboard-layout-editor.com
 │
-├── docs/             → Advanced firmware documentation
+├── docs/ 📍 (Advanced firmware documentation)
 │   ├── DESIGN.md     → Design notes
-│   └── LEADER.md     → Leader key documentation
+│   ├── LEADER.md     → Leader key documentation
+│   │
+│   └── README.md     → This Markdown file 👋
 │
 ├── scripts/          → Build & “(un)installation” tooling
 │   ├── build.sh      → The firmware build script, wraps `qmk`
@@ -20,13 +22,11 @@ The base path of the QMK firmware source code.
 │   │
 │   └── README.md     → Tooling documentation
 │
-├── src/ 📍 (Source code)
+├── src/              → Source code
 │   ├── core/         → Fundamental keymap definitions
 │   ├── features/     → Reusable behaviors & features
 │   ├── macros/       → Higher-level macros & system integrations
-│   ├── tap_dances/   → Semantic groups of tap-dance actions
-│   │
-│   └── README.md     → This Markdown file 👋
+│   └── tap_dances/   → Semantic groups of tap-dance actions
 │
 ├── build             → Project root wrapper/stub that invokes scripts/build.sh
 │

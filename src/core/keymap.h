@@ -196,12 +196,13 @@
 #define SCRNSHOT_OS TD(TD_SCRNSHOT_OS)
 #define DEL_OS      TD(TD_DEL_OS)
 
-// Doom Classic Keys
+// Doom (1993) Keys
 #define DOOM_MENU TD(TD_DOOM_MENU)
 #define DOOM_LOAD TD(TD_DOOM_LOAD)
 #define DOOM_MAP  TD(TD_DOOM_MAP)
 #define DOOM_MUTE TD(TD_DOOM_MUTE)
 #define DOOM_PREV TD(TD_DOOM_PREV)
+#define DOOM_6    TD(TD_DOOM_6)
 
 /*** Other Keycodes *******************************************/
 

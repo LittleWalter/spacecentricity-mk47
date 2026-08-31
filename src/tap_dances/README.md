@@ -1,4 +1,4 @@
-# `./src/tap_dances`
+# `./src/tap_dances/`
 
 This directory wrangles individual tap dances into logical groups based on their semantic meanings, with each group split into a C header/source file pair.
 

@@ -11,8 +11,8 @@ print_help() {
 |_.__/ \__,_|_|_|\__,_(_)___/_| |_|
 Usage: $(basename "$0") [keymap_name] [options]
 
-Convenience wrapper for building, cleaning, flashing, and checking the
-status of this keymap inside your QMK firmware checkout.
+A POSIX-compliant convenience wrapper for building, cleaning, flashing, and
+checking the status of this keymap inside your QMK firmware checkout.
 
 By default:
   - The keymap name is: spacecentricity
@@ -27,10 +27,18 @@ Options:
   -h, --help          Show this help message and exit
 
 Examples:
-  $(basename "$0")
-  $(basename "$0") my_keymap_name
-  $(basename "$0") --clean --flash
-  QMK_PATH=~/Projects/qmk_firmware $(basename "$0") -s
+  $(basename "$0")                  # Build spacecentricity
+  $(basename "$0") -f               # Build and flash spacecentricity
+  $(basename "$0") my_keymap_name   # Build a given keymap name
+  $(basename "$0") --clean --flash  # Clean build artifacts, then flash spacecentricity
+  QMK_PATH=~/Projects/qmk_firmware $(basename "$0") -s  # Display status w/ custom QMK path
+
+  From Project Root:
+    ./build
+    ./build -f             
+    ./build my_keymap_name
+    ./build --clean --flash
+    QMK_PATH=~/Projects/qmk_firmware ./build -s
 EOF
 }
 

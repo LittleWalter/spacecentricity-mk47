@@ -3,7 +3,7 @@
 #include "src/macros/mac_doom.h"
 
 // ─────────────────────────────────────────────────────────────
-// Doom Classic Tap Dance Function Definitions
+// Doom (1993) Tap Dance Function Definitions
 // ─────────────────────────────────────────────────────────────
 
 // ──────────────────────────────
@@ -13,7 +13,7 @@
 // Create static `doom_menu_tap_dance` for TD_DOOM_MEN
 TD_DEF(doom_menu);
 
-// Send the appropriate Doom Classic command for TD_DOOM_MENU
+// Send the appropriate Doom (1993) command for TD_DOOM_MENU
 void doom_menu_finished(tap_dance_state_t *state, void *user_data) {
     TD_STATE_SET(doom_menu);
     switch (TD_STATE(doom_menu)) {
@@ -55,7 +55,7 @@ void doom_menu_reset(tap_dance_state_t *state, void *user_data) {
 // Create static `doom_load_tap_dance` for TD_DOOM_LOAD
 TD_DEF(doom_load);
 
-// Send the appropriate Doom Classic command for TD_DOOM_LOAD
+// Send the appropriate Doom (1993) command for TD_DOOM_LOAD
 void doom_load_finished(tap_dance_state_t *state, void *user_data) {
     TD_STATE_SET(doom_load);
     switch (TD_STATE(doom_load)) {
@@ -93,7 +93,7 @@ void doom_load_reset(tap_dance_state_t *state, void *user_data) {
 // Create static `doom_map_tap_dance` for TD_DOOM_MAP
 TD_DEF(doom_map);
 
-// Send the appropriate Doom Classic command for TD_DOOM_MAP
+// Send the appropriate Doom (1993) command for TD_DOOM_MAP
 void doom_map_finished(tap_dance_state_t *state, void *user_data) {
     TD_STATE_SET(doom_map);
     switch (TD_STATE(doom_map)) {
@@ -166,7 +166,7 @@ void doom_mute_reset(tap_dance_state_t *state, void *user_data) {
 // Create static `doom_prev_tap_dance` for TD_DOOM_PREV
 TD_DEF(doom_prev);
 
-// Send the appropriate Doom Classic command for TD_DOOM_PREV
+// Send the appropriate Doom (1993) command for TD_DOOM_PREV
 void doom_prev_finished(tap_dance_state_t *state, void *user_data) {
     TD_STATE_SET(doom_prev);
     switch (TD_STATE(doom_prev)) {
@@ -193,4 +193,42 @@ void doom_prev_reset(tap_dance_state_t *state, void *user_data) {
         default: break;
     }
     TD_RESET(doom_prev);
+}
+
+// ──────────────────────────────
+// TD_DOOM_6                6   8 (Switch: Rocket (Tap), BFG 9000 (Hold)
+// ──────────────────────────────
+
+// Create static `doom_6_tap_dance` for TD_DOOM_6
+TD_DEF(doom_6);
+
+// Send the appropriate Doom (1993) command for TD_DOOM_6
+void doom_6_finished(tap_dance_state_t *state, void *user_data) {
+    TD_STATE_SET(doom_6);
+    switch (TD_STATE(doom_6)) {
+        case TD_SINGLE_HOLD:
+            register_and_update(KC_8); // 
+            break;
+        case TD_TRIPLE_TAP:        tap_code16(KC_6);          // fallthru
+        case TD_DOUBLE_TAP:                                   // fallthru
+        case TD_DOUBLE_HOLD:                                  // fallthru
+        case TD_DOUBLE_SINGLE_TAP: tap_code16(KC_6);          // fallthru
+        case TD_SINGLE_TAP:        register_and_update(KC_6);
+                                   break;
+        default: break;
+    }
+}
+
+// Release any keys pressed by TD_DOOM_6 and reset the state
+void doom_6_reset(tap_dance_state_t *state, void *user_data) {
+    switch (TD_STATE(doom_6)) {
+        case TD_SINGLE_HOLD: unregister_code16(KC_8); break;
+        case TD_TRIPLE_TAP:
+        case TD_DOUBLE_TAP:
+        case TD_DOUBLE_HOLD:
+        case TD_DOUBLE_SINGLE_TAP:
+        case TD_SINGLE_TAP:  unregister_code16(KC_6); break;
+        default: break;
+    }
+    TD_RESET(doom_6);
 }

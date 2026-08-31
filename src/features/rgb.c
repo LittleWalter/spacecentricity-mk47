@@ -636,18 +636,18 @@ bool rgb_matrix_indicators_user(void) {
             set_layer_key_breathe(LED_ROW1_RIGHT_CENTER, RGB_BREATHE_PERIOD, RED); // Open the Gate to Doom…
             break;
 
-        /* Doom (1993) Layer
-         * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
-         * │ESC 🅧 y n│ Plasma  │ Chaingun│    ↑    │PlasmaBFG│  Pause  │Load Save│MsgToggle│Pointer ↑│ScrnSize-│ScrnSize+│ ⌫  QUIT │
-         * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-         * │⇥  C Mark│ Strife ←│    ←    │    ↓    │    →    │ Strife →│ Strife ←│Pointer ←│Pointer ↓│Pointer →│ Strife →│    ↵    │
-         * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-         * │RunToggle│ Knuckles│ Shotgun │ Strife ↓│  Pistol │ ← Prev  │ → Next  │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │RunToggle│
-         * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-         * │  BASE   │🔇⏯ ⏹  🕹️ │🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │Lft Click│         ␣         │Rgt Click│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
-         * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
-         * NOTE: No need for RGB logic when the layer is inactive due to mouse keys
-         */
+       /* Doom (1993) Layer
+        * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
+        * │ESC 🅧 y n│ Pistol  │ Chaingun│    ↑    │RocketBFG│  Pause  │MsgToggle│Load Save│Pointer ↑│ScrnSize-│ScrnSize+│ ⌫  QUIT │
+        * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+        * │⇥  C Mark│ Strife ←│    ←    │    ↓    │    →    │ Strife →│ Strife ←│Pointer ←│Pointer ↓│Pointer →│ Strife →│    ↵    │
+        * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+        * │RunToggle│ Knuckles│ Shotgun │ Strife ↓│ Plasma  │ ← Prev  │ → Next  │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │RunToggle│
+        * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+        * │  BASE   │🔇 ⏯ ⏹  🕹️│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │Lft Click│         ␣         │Rgt Click│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
+        * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
+        * NOTE: No need for RGB logic when the layer is inactive due to mouse keys
+        */
        case _DOOM:
             rgb_off();
             // Exit Mouse Mode Layer: Tap Bottom Left Key

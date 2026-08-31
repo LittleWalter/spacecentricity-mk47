@@ -45,17 +45,22 @@ Most people will likely be better served by something more minimal. For instance
 
 The Planck’s biggest strength is its size. A 40% unibody board is extremely portable, easy to pack, and requires only a single cable: no split halves, no extra connectors, no desk sprawl. That simplicity makes it ideal as a travel board or a compact daily driver. As a bonus, inexpensive Nintendo Switch cases or even some stethoscope cases will neatly fit the board, often with room for cables and other accessories.
 
-The ortholinear grid also encourages a stable, centered typing posture. Because the board is so small, your hands can reliably stay close together in the same home position if the firmware is designed to minimize travel. Some users report increased ulnar deviation on small unibody layouts, but this varies widely. I personally don't experience wrist twisting on the Planck, and the compact footprint actually helps me maintain a neutral posture. Split keyboards are the ergonomic rage these days, and rightfully so. That said, I don't gain much from one myself, though I'd still recommend one for most typists who have the option.[^ergonomics-of-planck]
+The ortholinear grid also makes it easy to maintain a stable, centered typing posture. Because the board is so small, your hands can reliably stay close to the home position if the firmware is designed to minimize travel. Some users report increased ulnar deviation on small unibody layouts, but this varies widely. I personally don’t experience wrist twisting on the Planck, and the compact footprint actually helps me maintain a neutral posture. Split keyboards are the ergonomic rage these days, and rightfully so. That said, I don’t gain much from one myself, though I’d still recommend one for most typists who have the option.[^ergonomics-of-planck]
 
-There’s also a meaningful difference between the two common Planck variants. The 47‑key MIT layout uses a 2u spacebar, while the 48‑key Grid layout replaces it with two 1u keys. Some people prefer the Grid version because it offers more flexibility for thumb keys and layer access, while others like the MIT layout’s simplicity and larger spacebar. Spacecentricity is designed around the MIT variant, but the underlying ideas translate well to the 48‑key version.
+There’s also a meaningful difference between the two common Planck variants. The 47-key MIT layout uses a 2u spacebar, while the 48-key Grid layout replaces it with two 1u keys. Some people prefer the Grid version because it offers more flexibility for thumb keys and layer access, while others like the MIT layout’s simplicity and larger spacebar. Spacecentricity is designed around the MIT variant, but the underlying ideas translate well to the 48-key version.
 
-Another variant is the Preonic, which adds an extra row to the Planck’s layout, and like the Planck, offers a choice of 58-key (2× 2u spacebars), 59-key (1× 2u spacebar), or 60-key (Grid) configurations. The most obvious use of the extra row is hosting a full number row on the base layer, rather than relegating numbers to a separate layer. (But holding a thumb key and tapping home-row digits — as this keymap does — is less fatiguing than reaching for a physically higher row.)
+The 47-key Planck MIT layout has enough room for useful extras, such as [directional](#navigation-cluster) and [media keys](#media-cluster), on the [**Base**](#base-modified-dvorak) layer. On a smaller keyboard, such as the 42- or 36-key [Corne](https://github.com/foostan/crkbd), those functions would likely have to live on another layer. _(Not that you need these keys on the default/top layer; it’s just nice to have them there.)_
 
-The biggest trade‑off is that the Planck demands heavy layer usage and rewards people who enjoy modal workflows. For users who prefer dedicated keys or who struggle with ortholinear spacing, the learning curve can feel steep. But for those who embrace layers, symmetry, and thumb‑centric design, the Planck offers a uniquely efficient and expressive platform—especially when paired with programmable firmware like QMK or [ZMK](https://zmk.dev/) for wireless support, which adds even more power (and another notch of complexity. Have “fun” debugging the logic of your keymap directly in the firmware, if that’s your thing).
+The Planck MIT layout also taught me how to use a “thumb cluster” of only three keys. This makes adjusting to keyboards such as the [ZSA Voyager](https://www.zsa.io/voyager), with its controversial four thumb keys, a little easier.
 
-Getting into the nitty gritty of firmware like QMK or ZMK is the only true way to unlock what a custom keyboard is fully capable of — graphical tools like VIA inherently limit expressiveness in exchange for convenience.
+If 47 or 48 keys aren’t enough, there’s the Preonic variant, which adds an extra row to the Planck’s layout and, like the Planck, offers a choice of 58-key (2×2u spacebars), 59-key (1×2u spacebar), or 60-key (Grid) configurations. The most obvious use of the extra row is hosting a full number row on the base layer rather than relegating numbers to a separate layer. In my opinion, holding a thumb key and tapping home-row digits can be less fatiguing than reaching for a physically higher row.
 
-[^ergonomics-of-planck]: It’s probably worth mentioning that I don’t really consider the Planck form factor “ergonomic” in the same sense as keyboards that feature split layouts, flexible tenting angles, columnar stagger, and/or concave keywells, though modern sculpted keycap profiles such as [KLP Lamé](https://github.com/braindefender/KLP-Lame-Keycaps/) can provide some of the benefits of the latter. The Planck is a semi-ergonomic layout by virtue of its small size, programmability, and ortholinear grid, and it may work particularly well for a niche subset of users that don’t mind unibody keyboards. For some, the Planck might make a great secondary travel device that beats built-in laptop keyboards.
+The biggest trade-off is that the Planck demands heavy layer usage and rewards people who enjoy modal workflows. For users who prefer more dedicated keys or who struggle with ortholinear spacing, the learning curve can feel steep. But for those who embrace layers, symmetry, and thumb-centric design, the Planck offers a uniquely efficient and expressive platform—especially when paired with programmable firmware like QMK or ZMK for wireless support, which adds even more power—and another notch of complexity. Have “fun” debugging the logic of your keymap directly in the firmware, if that’s your thing.[^why-learn-qmk]
+
+[^ergonomics-of-planck]: It’s probably worth mentioning that I don’t really consider the Planck form factor “ergonomic” in the same sense as keyboards that feature split layouts, flexible tenting angles, columnar stagger, and/or concave keywells, though modern sculpted keycap profiles such as KLP Lamé
+ can provide some of the benefits of the latter. I’d consider the Planck a semi-ergonomic form factor by virtue of its small size, programmability, and ortholinear grid, and it may work particularly well for a niche subset of users who don’t mind unibody keyboards. For some, the Planck might make a great secondary travel device that beats built-in laptop keyboards.
+
+[^why-learn-qmk]: Why bother writing keyboard-centric C code when fancy GUI tools exist? Getting into the nitty-gritty of firmware like QMK or ZMK is one of the best ways to unlock the full expressive potential of a custom keyboard. Graphical tools like VIA trade some of that expressiveness for convenience.
 
 ## Bias
 
@@ -301,19 +306,19 @@ This key is primarily accessed via _left‑palm_ presses using a taller flat SA 
 
 ##### Navigation Cluster
 
-The navigation keys on the bottom row follow the Vim pattern of up, down, left, right.
+The navigation keys on the bottom row follow Vim’s `hjkl` movement pattern and are repeated across multiple layers.
 
 | Action | Behavior |
 |--------|----------|
 | Tap | `Home`, `Page Down`, `Page Up`, `End` |
 | Double Tap | `^`, `}`, `{`, `$` Vim movement keys |
 | Tap-and-Hold | `h`, `j`, `k`, `l` Vim movement keys |
-| Hold | `←`, `↓`, `↑`, `→` arrow keys |
-| Triple Tap | `←`, `↓`, `↑`, `→` arrow symbols |
+| Hold | `←`, `↓`, `↑`, `→` arrow movement keys |
+| Triple Tap | `←`, `↓`, `↑`, `→` Unicode arrow symbols |
 
-This cluster is reused across several layers to keep navigation consistent and predictable. On the **Base** layer, it provides access to movement keys without switching layers, which is useful for one‑handed navigation when you’re not in home position.
+This cluster is reused across several layers to keep navigation consistent and predictable. On the [**Base**](#base-modified-dvorak) layer, it provides access to movement keys without switching layers, which is useful for one‑handed navigation when you’re not in home position.
 
-In [Vimium](https://vimium.github.io/), `h`, `j`, `k`, `l` keys move the browser page around, making them especially nice to have on the right‑hand side.
+In [Vimium](https://vimium.github.io/), `hjkl` keys move the browser page around, making them especially nice to have on the right‑hand side.
 
 ##### Media Cluster
 
@@ -349,7 +354,7 @@ Since corner keys have a higher access cost, they should provide higher‑value 
 
 This is the workhorse layer for number and individual symbol input, except for `?`, `!`, `-`, `_`, and `\` which live on the more accessible arrow layers. I regularly use the comma–space bigram, but rely on the arrow layers for the comma itself.
 
-This layer can be **locked** from **Base**; hit the **HOLD** key to exit.
+This layer can be **locked** from [**Base**](#base-modified-dvorak); hit the **HOLD** key to exit.
 
 ##### Numbers
 
@@ -366,7 +371,7 @@ Notable rearrangements:
 * Parentheses, brackets, and braces are arranged symmetrically and accessed primarily with the index and middle fingers as tap dances.
 * `“”` and `‘’` smart‑quote pairs insert with the cursor centered for typographic writing without relying on operating‑system auto‑substitution.
   * This lower-row key is tucked out of the way to reduce accidental activation.
-* The bottom row largely copies **Base**, but the spacebar position outputs equality‑related symbols.
+* The bottom row largely copies [**Base**](#base-modified-dvorak), but the spacebar position outputs equality‑related symbols.
 
 Above the **HELD** key sits a semantic punctuation tap‑dance key:
 
@@ -465,12 +470,12 @@ In contemporary English writing, accented forms appear more consistently than in
 Rather than stuffing additional keys onto the left side, the Lower layer uses a mostly mirrored numpad layout so either hand can handle numeric entry and arithmetic operators. The only exception is `0`, which is right‑hand‑only.
 
 * `A`–`F` are available by holding `1`–`6`, enabling hexadecimal input without switching layers.
-* Hold `0` to get access to the **Adjustment** layer for keyboard settings.
-* The bottom row largely copies **Base**, but the spacebar position outputs equality‑related symbols.
+* Hold `0` to get access to the [**Adjustment**](#adjustment-keyboard-settings) layer for keyboard settings.
+* The bottom row largely copies [**Base**](#base-modified-dvorak), but the spacebar position outputs equality‑related symbols.
 * `Num Lock` is intentionally omitted. The navigation cluster already includes all of the off‑position keys—`Home`, `Page Down`, `Page Up`, `End`, and the arrow keys—so a Windows‑style `Num Lock` toggle isn’t necessary.
 * Top‑row modifiers are available for workflows that benefit from them, including [Windows Alt codes](https://en.wikipedia.org/wiki/Alt_code), [macOS Unicode Hex Input](https://en.wikipedia.org/wiki/Unicode_input), and various Linux shortcuts.
 
-This layer can be **locked** from **Base**; hit the **HOLD** key to exit.
+This layer can be **locked** from [**Base**](#base-modified-dvorak); hit the **HOLD** key to exit.
 
 #### Adjustment: Keyboard Settings
 
@@ -494,19 +499,17 @@ Copy/paste/undo behavior should work properly when switching operating systems; 
 
 ##### F-Keys
 
-To keep layer patterns consistent, the home‑row `F1`–`F12` keys mirror the numeric structure of **Upper**. The idea is simple: the same finger positions that produce numbers on **Upper** produce function keys here. This preserves a single mental model for two different layers, reducing cognitive load.
+To keep layer patterns consistent, the home‑row `F1`–`F12` keys mirror the numeric structure of [**Upper**](#upper-primary-number-layer). The idea is simple: the same finger positions that produce numbers on [**Upper**](#upper-primary-number-layer) produce function keys here. This preserves a single mental model for two different layers, reducing cognitive load.
 
 The only exception is `F10`, since there’s no such thing as `F0`. `F11` and `F12` sit on the left and right center keys, respectively, continuing the pattern of odds on the left and evens on the right.
 
 I briefly considered adding `F13`–`F24` for custom shortcuts using `Meh` and `Hyper`, but ultimately kept the standard `F1`–`F12` set. For users who expect a traditional layout, the lower row (Row 2) provides a familiar linear arrangement of all twelve function keys.
 
-As a macOS user, I rarely rely on function keys, so this layer stays intentionally minimal but still easy to reach. If I spend more time on desktop Linux, I may revisit and expand this layer.
+As a macOS user, I rarely rely on function keys, so this layer stays intentionally minimal but still easy to reach. If I spend more time on desktop Linux, I may revisit and expand it. For now, the keys are available for completeness, albeit slightly buried behind a palm-key layer.
 
 ##### Modifiers
 
-The top‑row modifiers mirror **Base**, maintaining consistency across layers. The thumb cluster provides `Hyper`, `CMD`/`Super`, and `Meh`, giving quick access to high‑chord shortcuts without awkward reaches.
-
-
+The top‑row modifiers mirror [**Base**](#base-modified-dvorak), maintaining consistency across layers. The thumb cluster provides `Hyper`, `CMD`/`Super`, and `Meh`, giving quick access to high‑chord shortcuts without awkward reaches.
 
 ### Specialized Layers
 
@@ -580,7 +583,7 @@ And finally, the most important question: can the Planck play _Doom_ adequately 
 
 This layer is an optional game‑focused mode built around vanilla [_Doom_ (1993)](https://en.wikipedia.org/wiki/Doom_(1993_video_game)) ports. It replaces the typing layout with a tight movement cluster, dedicated strafing keys, and thumb‑accessible actions so your hands never leave position during play. Arrow and strafe keys sit under the left hand, while Left Click, Right Click, Space, and Shift live on the thumbs for fast firing, opening doors, and running.
 
-Weapon switching stays consistent with the rest of your layout: holding the right‑thumb key momentarily opens **Upper**, letting you press `1`–`7` without adding number keys to this layer.
+Weapon switching stays consistent with the rest of your layout: holding the right‑thumb key momentarily opens **Upper**, letting you press `0`–`8` without adding number keys to this layer.
 
 Arrows and mouse controls also make this layer usable for lightweight general navigation, using traditional T‑shaped clusters.
 
@@ -667,9 +670,9 @@ For this project, layers with static RGB patterns are designed to indicate which
 
 Keys highlighted in red represent actions with higher consequence — such as deletion, exiting, or indicating that `Caps Lock` is active.
 
-When `Caps Lock` is active, the **Base** layer is illuminated with a blinking red pattern to provide an immediate, unmistakable visual indicator. When the one‑shot `Shift` key is active, the **Base** layer shifts to a golden yellow to reflect the modified typing state.
+When `Caps Lock` is active, the [**Base**](#base-modified-dvorak) layer is illuminated with a blinking red pattern to provide an immediate, unmistakable visual indicator. When the one‑shot `Shift` key is active, the [**Base**](#base-modified-dvorak) layer shifts to a golden yellow to reflect the modified typing state.
 
-When the **Adjustment** layer is active, per‑layer RGB is suspended whenever an RGB‑related key is pressed, ensuring changes are immediately visible. After about three seconds of inactivity, per‑layer RGB automatically resumes.
+When the [**Adjustment**](#adjustment-keyboard-settings) layer is active, per‑layer RGB is suspended whenever an RGB‑related key is pressed, ensuring changes are immediately visible. After about three seconds of inactivity, per‑layer RGB automatically resumes.
 
 > [!TIP]
-> To turn the **Base** layer’s lighting off while keeping per‑key effects active, lower the RGB brightness while in the **Adjustment** layer.
+> To turn the [**Base**](#base-modified-dvorak) layer’s lighting off while keeping per‑key effects active, lower the RGB brightness while in the [**Adjustment**](#adjustment-keyboard-settings) layer.

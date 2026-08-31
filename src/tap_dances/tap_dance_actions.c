@@ -179,6 +179,7 @@ tap_dance_action_t tap_dance_actions[TD_COUNT] = {
     [TD_DOOM_MAP]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, doom_map_finished,  doom_map_reset),
     [TD_DOOM_MUTE] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, doom_mute_finished, doom_mute_reset),
     [TD_DOOM_PREV] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, doom_prev_finished, doom_prev_reset),
+    [TD_DOOM_6]    = ACTION_TAP_DANCE_FN_ADVANCED(NULL, doom_6_finished,    doom_6_reset),
 };
 
 /* Return an integer that corresponds to what kind of tap dance should be executed.

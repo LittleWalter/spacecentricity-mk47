@@ -11,9 +11,9 @@ print_help() {
 |_|_| |_|___/\__\__,_|_|_(_)___/_| |_|
 Usage: $(basename "$0") [keymap_name] [options]
 
-This script creates a symbolic link from your QMK keymaps directory
-to the root of this keymap repository. It allows QMK to use this
-keymap without copying files into the QMK tree.
+This POSIX-complaint script creates a symbolic link from your QMK 
+keymaps directory to the root of this keymap repository. It allows
+QMK to use this keymap without copying files into the QMK tree.
 
 By default:
   - The keymap name is: spacecentricity

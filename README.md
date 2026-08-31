@@ -1,11 +1,5 @@
 # 🌌 Spacecentricity — A Planck MIT Keymap for the Inland MK-47
 
-Spacecentricity is a maximalist modal keymap built around a modified Dvorak base, mirrored layers for navigation, Vim‑style editing/programming, and common OS/application actions. It emphasizes home-position access (with heavy thumb usage) to high-frequency characters, movement keys, numbers, symbols, and common [programming n-grams](#programming) through [macros](https://docs.qmk.fm/feature_macros) and [tap dances](https://docs.qmk.fm/features/tap_dance). Key redundancy provides alternative ways to perform the same actions, helping reduce strain and fatigue.
-
-Because this keymap treats keyboard firmware like a [finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine), each layer includes its own RGB matrix pattern, making it easy to see which layer or state is active at a glance. The RGB matrix indicates active modes such as Caps Lock (blinking red), One-Shot Shift (gold), [Case Modes](#case-modes-temporary-lexical-modes) (neon mint), and [Leader](/LEADER.md) sequences (navy blue).
-
-This keymap has an estimated user count of one.
-
 [![QMK](https://img.shields.io/badge/QMK-compatible-00A3E0?logo=qmk&logoColor=white)](https://qmk.fm/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Last Commit](https://img.shields.io/github/last-commit/LittleWalter/spacecentricity-mk47)](https://github.com/LittleWalter/spacecentricity-mk47/commits/main)
@@ -14,8 +8,13 @@ This keymap has an estimated user count of one.
 [![OctoCounts](https://api.octocounts.com/badge/LittleWalter/spacecentricity-mk47/branch/main?lang=C+Header)](https://octocounts.com/github/LittleWalter/spacecentricity-mk47/tree/main)
 [![OctoCounts](https://api.octocounts.com/badge/LittleWalter/spacecentricity-mk47/branch/main?lang=Shell)](https://octocounts.com/github/LittleWalter/spacecentricity-mk47/tree/main)
 
+Spacecentricity is a maximalist modal keymap built around a modified Dvorak base, mirrored layers for navigation, Vim‑style editing/programming, and common OS/application actions. It emphasizes home-position access (with heavy thumb usage) to high-frequency characters, movement keys, numbers, symbols, and common [programming n-grams](#programming) through [macros](https://docs.qmk.fm/feature_macros) and [tap dances](https://docs.qmk.fm/features/tap_dance). Key redundancy provides alternative ways to perform the same actions, helping reduce strain and fatigue.
+
+Because this keymap treats keyboard firmware like a [finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine), each layer includes its own RGB matrix pattern, making it easy to see which layer or state is active at a glance. The RGB matrix indicates active modes such as Caps Lock (blinking red), One-Shot Shift (gold), [Case Modes](#case-modes-temporary-lexical-modes) (neon mint), and [Leader](./docs/LEADER.md) sequences (navy blue).
+
+This keymap has an estimated user count of one.
 > [!NOTE]
-> See [design notes](DESIGN.md) for deeper explanations of key placement and layer philosophy.
+> See [design notes](./docs/DESIGN.md) for deeper explanations of key placement and layer philosophy.
 
 ## Table of Contents
 
@@ -69,6 +68,7 @@ The MK-47 is usable out of the box (aside from its stock keymap).
   * **Authenticity:** surprisingly decent 🍒 clones
 * 44× shine-through white keycaps
   * **Material:** probably ABS plastic
+  * **Thickness:** 1.1mm
   * **Shape:** OEM-like profile (❓ maybe similar to Cherry profile)
   * **Labels:** QWERTY primary labels w/ smaller secondary labels
 * 3× shine-through black keycaps
@@ -113,7 +113,7 @@ Each layer is presented as a rendered diagram generated with [keyboard-layout-ed
 > Because Linux and Microsoft Windows accept Unicode directly from [HID](https://en.wikipedia.org/wiki/Human_interface_device), the standard US layout should work correctly when the keyboard is used in those modes — though this is largely untested on my end.
 
 > [!TIP]
-> [**Base**](#base-modified-dvorak), [**Upper**](#upper-primary-number-layer), and [**Arrows**](#arrows) are the most frequently used layers. Most of the remaining layers and state mechanics exist to assist workflow rather than get in the way — the [**Mouse**](#mouse) layer, for example, comes in handy when the battery dies on a wireless pointing device. [Leader](/LEADER.md) sequences can be toggled on/off via the [**Adjustment**](#adjustment-keyboard-settings) layer.
+> [**Base**](#base-modified-dvorak), [**Upper**](#upper-primary-number-layer), and [**Arrows**](#arrows) are the most frequently used layers. Most of the remaining layers and state mechanics exist to assist workflow rather than get in the way — the [**Mouse**](#mouse) layer, for example, comes in handy when the battery dies on a wireless pointing device. [Leader](./docs/LEADER.md) sequences can be toggled on/off via the [**Adjustment**](#adjustment-keyboard-settings) layer.
 
 ### Legend
 
@@ -127,6 +127,7 @@ This keymap uses QMK’s [quad‑tap dance pattern](https://docs.qmk.fm/features
 | **2** | Double Tap |
 | **3** | Tap-and-Hold |
 | **4** | Hold |
+| **5** | Triple Tap (not shown) |
 
 > [!NOTE]
 > Triple‑tap actions are supported but not shown in the diagram because they are used only for rare or “deep‑storage” functions. When a key includes a triple‑tap action, it is mentioned in that key’s description.
@@ -166,9 +167,9 @@ The top-right corner key is a semantic `Backspace`, available on multiple layers
 
 | Action | Behavior | Notes |
 |--------|----------|-------|
-| Tap | `Esc` ||
+| Tap | `Esc` | Vim: easy, symmetric access to exit modes |
 | Tap-and-Hold | Close Active Window | macOS: `CMD‑W`; Linux/Microsoft Windows: `Alt-F4` |
-| Hold | Momentary Layer [**Operating System**](#operating-system-modes) | Switches to the appropriate operating-system layer while held; returns to **Base** on release |
+| Hold | Momentary Layer [**Operating System**](#operating-system-modes) | Switches to the appropriate operating-system layer while held; returns to [**Base**](#base-modified-dvorak) on release |
 
 ##### Access to Mouse & Function Keys
 
@@ -194,6 +195,18 @@ The Media keys live on the left-hand side of the bottom row (`ROW3`), out of the
 
 > [!WARNING]
 > Mute Tab (`LCTL-M`) works in Firefox and Firefox-based browser, but not in most Chromium-based browsers.
+
+##### Navigation Cluster
+
+The navigation keys on the bottom row follow Vim’s `hjkl` movement pattern and are repeated across multiple layers.
+
+| Action | Behavior |
+|--------|----------|
+| Tap | `Home`, `Page Down`, `Page Up`, `End` |
+| Double Tap | `^`, `}`, `{`, `$` Vim movement keys |
+| Tap-and-Hold | `h`, `j`, `k`, `l` Vim movement keys |
+| Hold | `←`, `↓`, `↑`, `→` arrow movement keys |
+| Triple Tap | `←`, `↓`, `↑`, `→` Unicode arrow symbols |
 
 ##### Special Characters
 
@@ -250,22 +263,28 @@ Directly above the **HELD** key lives a prose‑oriented semantic punctuation ke
 
 ##### Special Characters
 
-Smart quotes live on the lower row, inserting paired curly quotes with the cursor centered for fancy, typographic writing. Tap for double smart quotes; hold for single smart quotes. Use these macros if you prefer not to rely on OS‑ or app‑level substitutions.
+Smart quotes live on the lower row. They insert paired curly quotes with the cursor centered between them for convenient typographic writing. Tap for double smart quotes; hold for single smart quotes. These macros are useful if you prefer not to rely on OS- or app-level text substitutions.
 
-The `.` key remains in the standard Dvorak position but includes additional dot‑related tap dances:
+The . key remains in the standard Dvorak position, with additional dot-related tap dances:
 
-| Action | Behavior |
-|--------|----------|
-| Tap | `.` (dot/period) |
-| Double Tap | `…` (horizontal ellipsis) |
-| Tap-and-Hold | `⋮` (vertical ellipsis) |
-| Hold | `•` (bullet) |
-| Triple Tap | `·` (centered dot) |
+| Action | Behavior | Notes |
+|--------|----------|-------|
+| Tap | `.` (dot/period) | Normal punctuation; used constantly in prose and code. |
+| Double Tap | `…` (horizontal ellipsis) | For pauses, trailing thoughts, omissions, or an intentionally unfinished sentence. |
+| Tap-and-Hold | `⋮` (vertical ellipsis) | Useful for indicating omitted vertical content, continuation in a list, or “more” in a vertical UI. |
+| Hold | `•` (bullet) | Handy for lists, callouts, or inline bullet points without switching layers or using a menu. |
+| Triple Tap | `·` (middle dot) | The centered dot is useful as a typographic separator or the mathematical [dot product](https://en.wikipedia.org/wiki/Dot_product) symbol. |
 
-Additional triple‑tap symbols: `+` → `×` (multiplication, not the letter _x_), `[` → `≤`, `]` → `≥`.
+Additional triple-tap symbols:
+
+| Key | Symbol | Notes |
+|-----|--------|-------|
+| `+` |  `×`   | Multiplication sign; avoids using the letter x when writing dimensions or mathematical expressions. |
+| `[` |  `≤`   | Less-than-or-equal-to; convenient for math, technical writing, and comparisons. |
+| `]` |  `≥`   | Greater-than-or-equal-to; convenient for math, technical writing, and comparisons. |
 
 > [!NOTE]
-> On macOS mode, the **vertical ellipsis** (⋮) has no direct keyboard shortcut and is produced with a macro that uses compact the [Emoji & Symbols popover](https://support.apple.com/guide/mac-help/use-emoji-and-symbols-on-mac-mchlp1560/mac). On Linux and Microsoft Windows modes, the Unicode character is sent directly.
+> In macOS mode, the vertical ellipsis (⋮) has no direct keyboard shortcut. It is produced by a macro that opens the compact Emoji & Symbols popover and selects the character. In Linux and Windows modes, the Unicode character is sent directly.
 
 ##### Leader Replay
 
@@ -273,7 +292,8 @@ This keymap includes optional Leader Replay support, allowing you to repeat rece
 
 Replay functionality can be enabled or disabled with the `@` toggle key, and the same key also switches between _History_ and _Favorites_ replay modes.
 
-See [LEADER.md](/LEADER.md) for full details.
+> [!TIP]
+> See [`./docs/LEADER.md`](./docs/LEADER.md) for full details on executing [QMK Leader](https://docs.qmk.fm/features/leader_key) sequences.
 
 #### Arrows
 
@@ -282,6 +302,7 @@ See [LEADER.md](/LEADER.md) for full details.
 ![Arrows: Left-Hand Side](assets/07_ARR_L.png)
 
 Home row-based navigation, common symbols, application shortcuts, and diacritics — including Spanish punctuation and combining marks for light multilingual support.
+
 ##### Center Keys
 
 | Action | Behavior |
@@ -322,7 +343,8 @@ Tap `Tab` or `Shift–Tab` on the bottom row to navigate.
 
 The bottom-left corner key activates mnemonic [Leader](https://docs.qmk.fm/features/leader_key) sequences while holding the right index finger on home row.
 
-See [LEADER.md](/LEADER.md) for the full list of available actions.
+> [!TIP]
+> See [`./docs/LEADER.md`](./docs/LEADER.md) for the full list of available [QMK Leader](https://docs.qmk.fm/features/leader_key) sequences.
 
 ### Support Layers
 
@@ -342,10 +364,10 @@ Momentary hold `0` to access [**Adjustment**](#adjustment-keyboard-settings) lay
 
 ![Function: F1–F12](assets/05_FN.png)
 
-Provides `F1`–`F12` and modifier combinations for shortcut execution. The home and top rows mirror the [**Upper**](#upper-primary-number-layer) layer’s number layout, and the lower row includes a redundant, standard linear layout for familiarity and ease of use.
+Provides `F1`–`F12` and modifier combinations for keyboard shortcuts. The home and top rows mirror the [**Upper**](#upper-primary-number-layer) layer’s number layout, and the lower row (`ROW2`) includes a redundant, standard left-to-right linear layout for familiarity and ease of use.
 
 > [!NOTE]
-> Function keys see more use on Linux and Microsoft Windows than macOS. For some reason, spamming `F5` to refresh is a satisfying activity on some operating sytems.
+> Function keys see more use on Linux and Microsoft Windows than macOS. For some reason, spamming `F5` to refresh is a satisfying activity on some operating systems.
 
 #### Adjustment: Keyboard Settings
 
@@ -611,7 +633,7 @@ These scripts are entirely optional — the build script simply wraps QMK’s CL
 
 This keymap is actively maintained and may evolve over time as layouts, layers, and features are refined, added, or removed.
 
-Unresolved bugs are likely to exist within this QMK keyboard firmware.
+Unresolved bugs, and incomplete functionality, are likely to exist within this QMK keyboard firmware.
 
 Most layers are fairly stable at this point, but some of the more specialized or optional ones may be reworked, consolidated, or removed as the design continues to mature. For instance, [**Adjustment**](#adjustment-keyboard-settings), [**Terminal**](#terminal), [**Programming**](#programming), and [**Doom** (1993)](#doom-1993) are likely to change more than most of the other layers.
 

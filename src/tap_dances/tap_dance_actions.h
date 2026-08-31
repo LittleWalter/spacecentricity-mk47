@@ -157,6 +157,7 @@ enum {                 // │  Tap   │ 2xTap  │Tap+Hold│  Hold  │ Notes
     TD_DOOM_MAP,       // │Open Map│        │ Clear  │Mark Map│ DOOM: Clear marks on Tap+Hold
     TD_DOOM_MUTE,      // │  Mute  │Pl/Pause│  Stop  │Doom Snd│ DOOM: Open sound menu to control fx and music volume
     TD_DOOM_PREV,      // │  Bspc  │        │QuitGame│        │ DOOM: F7 to quit current game
+    TD_DOOM_6,         // │   6    │        │        │   8    │ DOOM: Rocket (Tap), BFG 9000 (Hold)
 
     TD_COUNT // Sentinel value for tap_dance_actions array
 };

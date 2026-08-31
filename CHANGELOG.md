@@ -23,6 +23,12 @@
 
 ---
 
+## 2026-08/30-SU
+- **Doom** (1993)
+  - `CHANGE:` Swapped game state key with message toggle key.
+  - `NEW:` Added `6` (Tap), `8` (Hold) to switch to Rockets and BFG 9000.
+- Minor documentation refinements.
+
 ## 2026-08/28-FR
 - ***Doom*** (1993)
   - `BUGFIX`: `KC_8` → `KC_F8`

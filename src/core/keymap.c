@@ -266,20 +266,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Doom (1993) Layer
  * ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
- * │ESC 🅧 y n│ Plasma  │ Chaingun│    ↑    │PlasmaBFG│  Pause  │Load Save│MsgToggle│Pointer ↑│ScrnSize-│ScrnSize+│ ⌫  QUIT │
+ * │ESC 🅧 y n│ Pistol  │ Chaingun│    ↑    │RocketBFG│  Pause  │MsgToggle│Load Save│Pointer ↑│ScrnSize-│ScrnSize+│ ⌫  QUIT │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
  * │⇥  C Mark│ Strife ←│    ←    │    ↓    │    →    │ Strife →│ Strife ←│Pointer ←│Pointer ↓│Pointer →│ Strife →│    ↵    │
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │RunToggle│ Knuckles│ Shotgun │ Strife ↓│  Pistol │ ← Prev  │ → Next  │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │RunToggle│
+ * │RunToggle│ Knuckles│ Shotgun │ Strife ↓│ Plasma  │ ← Prev  │ → Next  │ Wheel → │ Wheel ↑ │ Wheel ↓ │ Wheel ← │RunToggle│
  * ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┴─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
- * │  BASE   │🔇⏯ ⏹  🕹️ │🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │Lft Click│         ␣         │Rgt Click│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
+ * │  BASE   │🔇 ⏯ ⏹  🕹️│🔉⏮ 🔅🔉 │🔊⏭ 🔆🔊 │Lft Click│         ␣         │Rgt Click│ ⇱ ^ h ← │ ⇟ } j ↓ │ ⇞ { k ↑ │ ⇲ $ l → │
  * └─────────┴─────────┴─────────┴─────────┴─────────┴───────────────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
  */
 #ifdef MOUSEKEY_ENABLE
 [_DOOM] = LAYOUT_planck_mit(
-    DOOM_MENU, KC_7,        KC_5,    KC_UP,       KC_6,    DOOM_PAUSE,  DOOM_LOAD,   KC_F8,      MS_UP,   KC_MINS, KC_PLUS,     DOOM_PREV,
+    DOOM_MENU, KC_3,        KC_5,    KC_UP,       DOOM_6,  DOOM_PAUSE,  KC_F8,       DOOM_LOAD,  MS_UP,   KC_MINS, KC_PLUS,     DOOM_PREV,
     DOOM_MAP,  STRAFE_LEFT, KC_LEFT, KC_DOWN,     KC_RGHT, STRAFE_RGHT, STRAFE_LEFT, MS_LEFT,    MS_DOWN, MS_RGHT, STRAFE_RGHT, ENT,
-    ____,      KC_2,        KC_4,    STRAFE_DOWN, KC_3,    KC_1,        KC_0,        MS_WHLR,    MS_WHLU, MS_WHLD, MS_WHLL,     ____,
+    ____,      KC_2,        KC_4,    STRAFE_DOWN, KC_7,    KC_1,        KC_0,        MS_WHLR,    MS_WHLU, MS_WHLD, MS_WHLL,     ____,
     BASE,      DOOM_MUTE,   VOLD,    VOLU,        MS_BTN1,      KC_SPC,              RCLK_UPPER, HOME,    PGDN,    PGUP,        END
 ),
 #endif

@@ -1,4 +1,4 @@
-# `./src/macros`
+# `./src/macros/`
 
 This directory wrangles macro sequences into logical groups based on their semantic meanings, with each group split into a C header/source file pair.
 

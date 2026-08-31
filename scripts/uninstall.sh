@@ -11,9 +11,9 @@ print_help() {
  \__,_|_| |_|_|_| |_|___/\__\__,_|_|_(_)___/_| |_|
 Usage: $(basename "$0") [keymap_name] [options]
 
-This script removes the symbolic link from your QMK keymaps directory
-that was created by the install script. It does NOT delete any files
-from this repository — only the symlink inside your QMK tree.
+This POSIX-compliant script removes the symbolic link from your QMK keymaps 
+directory that was created by the install script. It does NOT delete any 
+files from this repository — only the symlink inside your QMK tree.
 
 By default:
   - The keymap name is: spacecentricity

@@ -1,4 +1,4 @@
-ss QMK Leader Sequences
+# QMK Leader Sequences
 
 QMK includes [Leader Key functionality](https://docs.qmk.fm/features/leader_key), inspired by [Vim’s “leader” concept](https://stackoverflow.com/questions/1764263/what-is-the-leader-in-a-vimrc-file). A Leader key allows you to trigger multi‑key mnemonic sequences that expand into actions, text, or macros.
 
@@ -47,7 +47,7 @@ The toggle key provides immediate visual feedback so you always know whether Lea
 
 When Leader mode is disabled, the keyboard will not enter the temporary Leader layer, wait for sequences, or replay previous sequences from [**History**](#leader-history) or [**Favorites**](#leader-favorites). This is useful for preventing accidental activations or when using software that conflicts with Leader timing.
 
-[^leader-numbers-layer]: A dedicated “Leader numbers” layer is already defined in [`./src/core/keymap.c`](./src/core/keymap.c). As of August 2026, it is not currently used because there is not yet a clear use case or a good location for number-related Leader sequences. In other words, I just haven’t thought about too much at this point
+[^leader-numbers-layer]: A dedicated “Leader numbers” layer is already defined in [`../src/core/keymap.c`](../src/core/keymap.c). As of August 2026, it is not currently used because there is not yet a clear use case or a good location for number-related Leader sequences. In other words, I just haven’t thought about too much at this point
 
 ## Leader Replay
 
