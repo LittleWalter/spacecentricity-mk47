@@ -639,10 +639,10 @@ These scripts are entirely optional — the build script simply wraps QMK’s CL
 
 ## ⚠️ Layout Stability
 
-This keymap is actively maintained and may evolve over time as layouts, layers, and features are refined, added, or removed.
+This keymap is actively maintained (intermittently) and may evolve over time as layouts, layers, and features are refined, added, or removed.
 
-Unresolved bugs, and incomplete functionality, are likely to exist within this QMK keyboard firmware.
+Unresolved bugs and incomplete functionality are likely to exist within this QMK keyboard firmware.
 
-Most layers are fairly stable at this point, but some of the more specialized or optional ones may be reworked, consolidated, or removed as the design continues to mature. For instance, [**Adjustment**](#adjustment-keyboard-settings), [**Terminal**](#terminal), [**Programming**](#programming), and [**Doom** (1993)](#doom-1993) are likely to change more than most of the other layers.
+Most layers are fairly stable at this point, but some of the more specialized or optional ones may be reworked, consolidated, or removed as the design continues to mature. For instance, [**Adjustment**](#adjustment-keyboard-settings), [**Terminal**](#terminal), [**Programming**](#programming), and [___Doom___ (1993)](#doom-1993) are likely to change more than most of the other layers.
 
 This keymap has not been tested on Linux or Microsoft Windows.

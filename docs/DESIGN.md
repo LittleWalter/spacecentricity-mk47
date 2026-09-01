@@ -176,7 +176,7 @@ All of the essential functionality of the firmware is contained in these layers,
 
 #### Base: Modified Dvorak
 
-![Base: Modified Dvorak](assets/00_BASE.png)
+![Base: Modified Dvorak](../assets/00_BASE.png)
 
 The **Base** layer packs in as much functionality as I can comfortably manage without overwhelming day‑to‑day typing. Quad tap‑dance keys aren’t ergonomically ideal, but they surface high‑use symbols on the top layer for times when I’d rather not reach into the symbol layers. Only a handful of commonly used symbols aren’t accessible directly from this layer.
 
@@ -350,7 +350,7 @@ Since corner keys have a higher access cost, they should provide higher‑value 
 
 #### Upper: Primary Number Layer
 
-![Upper: Primary Numpad Layer](assets/03_UPPER.png)
+![Upper: Primary Numpad Layer](../assets/03_UPPER.png)
 
 This is the workhorse layer for number and individual symbol input, except for `?`, `!`, `-`, `_`, and `\` which live on the more accessible arrow layers. I regularly use the comma–space bigram, but rely on the arrow layers for the comma itself.
 
@@ -424,9 +424,9 @@ The `+` key provides the full set of basic arithmetic symbols on a single middle
 
 ### Arrows
 
-![Arrows: Right-Hand Side](assets/06_ARR_R.png)
+![Arrows: Right-Hand Side](../assets/06_ARR_R.png)
 
-![Arrows: Left-Hand Side](assets/07_ARR_L.png)
+![Arrows: Left-Hand Side](../assets/07_ARR_L.png)
 
 Holding either index finger on the home row activates a mirrored arrow‑navigation layer. These layers provide the most accessible versions of several high‑frequency symbols, including `,`, `-`, `_`, `?`, `!`, and `\`.
 
@@ -465,7 +465,7 @@ In contemporary English writing, accented forms appear more consistently than in
 
 #### Lower: Numpad
 
-![Lower: Numpad with hexadecimal](assets/02_LOWER.png)
+![Lower: Numpad with hexadecimal](../assets/02_LOWER.png)
 
 Rather than stuffing additional keys onto the left side, the Lower layer uses a mostly mirrored numpad layout so either hand can handle numeric entry and arithmetic operators. The only exception is `0`, which is right‑hand‑only.
 
@@ -479,7 +479,7 @@ This layer can be **locked** from [**Base**](#base-modified-dvorak); hit the **H
 
 #### Adjustment: Keyboard Settings
 
-![Adjustment: Keyboard Settings](assets/04_ADJ.png)
+![Adjustment: Keyboard Settings](../assets/04_ADJ.png)
 
 The keyboard settings layer is the least developed, and most subject to rearrangement.
 
@@ -495,7 +495,7 @@ Copy/paste/undo behavior should work properly when switching operating systems; 
 
 #### Function: `F1`–`F12`
 
-![Function: F1–F12](assets/05_FN.png)
+![Function: F1–F12](../assets/05_FN.png)
 
 ##### F-Keys
 
@@ -519,7 +519,7 @@ This part of the firmware is a work in progress…
 
 ##### Apple macOS
 
-![Apple macOS Layer](assets/13_MACOS.png)
+![Apple macOS Layer](../assets/13_MACOS.png)
 
 This layer centralizes macOS actions that normally require awkward reaches, multi‑key chords, or leaving the keyboard entirely. Its goal is to make common system‑level tasks feel as fluid and low‑effort as text editing or navigation. Spotlight search, the emoji picker, Finder controls, screenshot tools, window management, and Trash operations all land in predictable positions that don’t break flow.
 
@@ -529,9 +529,9 @@ Eventually, I’ll make a similar desktop Linux layer, with the **HOLD** on the 
 
 #### Vim
 
-![Vim: Right-Hand Side](assets/08_VIM_R.png)
+![Vim: Right-Hand Side](../assets/08_VIM_R.png)
 
-![Vim: Left-Hand Side](assets/09_VIM_L.png)
+![Vim: Left-Hand Side](../assets/09_VIM_L.png)
 
 These mirrored layers are designed for use with a mostly vanilla Vim setup. The focus is on movement, navigation, and viewport adjustments to reduce editing friction and keep your hands anchored on home row.
 
@@ -541,9 +541,9 @@ Vim commands that benefit from an `Esc` prefix include a built‑in delay, and c
 
 #### Programming
 
-![Programming: Right-Hand Side](assets/10_PROG_R.png)
+![Programming: Right-Hand Side](../assets/10_PROG_R.png)
 
-![Programming: Left-Hand Side](assets/11_PROG_L.png)
+![Programming: Left-Hand Side](../assets/11_PROG_L.png)
 
 These mirrored layers provide quick access to programming‑centric symbols and structures. Quotes, parentheses, brackets, braces, comparison operators, and common control‑flow keywords are arranged near the home row for minimal travel.
 
@@ -553,7 +553,7 @@ I tried to choose a small, generic set of coding n‑grams that work well across
 
 #### Terminal
 
-![Terminal](assets/12_TERM.png)
+![Terminal](../assets/12_TERM.png)
 
 This layer centers on left‑hand navigation keys, with a handful of optional terminal‑focused macros layered in for convenience.
 
@@ -565,7 +565,7 @@ I may eventually add a few `tmux` commands here, if they complement the navigati
 
 #### Mouse
 
-![Mouse Keys Layer](assets/14_MOUSE.png)
+![Mouse Keys Layer](../assets/14_MOUSE.png)
 
 This layer is meant for short bursts of pointer use or as a fallback when a wireless mouse, trackball, or trackpad disconnects. It lets you make quick adjustments — selecting text, clicking UI elements, manipulating windows — without leaving home position.
 
@@ -577,7 +577,7 @@ The only minor downsides are the need for two‑hand operation and the practice 
 
 #### _Doom_ (1993)
 
-![Doom (1993) layer](assets/01_DOOM.png)
+![Doom (1993) layer](../assets/01_DOOM.png)
 
 And finally, the most important question: can the Planck play _Doom_ adequately without a traditional pointing device? It sure can!
 
@@ -591,7 +591,7 @@ This layer serves as a generic gaming template that you can refactor into your p
 
 ## RGB Matrix for the Planck MIT
 
-![RGB matrix values of a Planck MIT keyboard](assets/RGB_Matrix_Planck_MIT.png)
+![RGB matrix values of a Planck MIT keyboard](../assets/RGB_Matrix_Planck_MIT.png)
 
 The image above shows the physical LED numbering used by QMK’s RGB Matrix system for the Planck MIT. These indices are fixed by the PCB and firmware, so having a visual reference makes it easier to target specific LEDs when writing animations, effects, or per‑key lighting. In this project, the diagram serves as the basis for defining per‑layer RGB patterns.
 
