@@ -26,6 +26,7 @@
 ## 2026-08/31-MO
 - `CHANGE`: Refactored `scripts/build.sh` to accept `--clear` and `--clear-only` flags
 - More documentation polish; fleshing out some more key tables in main `README`.
+- `DOCS`: Fixed image paths in `docs/DESIGN.md` and `docs/LEADER.md`.
 
 ## 2026-08/30-SU
 - **Doom** (1993)

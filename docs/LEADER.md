@@ -34,7 +34,7 @@ While the Leader layer is active, the RGB matrix shifts to a dim navy blue to in
 | Sequence successful       | 🟢 Green | `0, 255, 0` | A valid Leader sequence was recognized     |
 | Sequence failed / timeout | 🔴 Red   | `255, 0, 0` | No matching sequence or sequence timed out |
 
-![Adjustment: Keyboard Settings](assets/04_ADJ.png)
+![Adjustment: Keyboard Settings](../assets/04_ADJ.png)
 
 To enable or disable all Leader functionality—including sequence entry and sequence replay—tap the **Leader Toggle** key on the **Adjustment** layer.
 
@@ -53,7 +53,7 @@ When Leader mode is disabled, the keyboard will not enter the temporary Leader l
 
 Leader actions can be replayed from either [**History**](#leader-history) or [**Favorites**](#leader-favorites) via the holds of the **Upper** layer’s number keys.
 
-![Upper: Primary Numpad Layer](assets/03_UPPER.png)
+![Upper: Primary Numpad Layer](../assets/03_UPPER.png)
 
 The `@` key toggles replay modes and provides visual feedback:
 
