@@ -119,7 +119,7 @@ Each layer is presented as a rendered diagram generated with [keyboard-layout-ed
 
 ![Keyboard Image Legends/key](assets/legend.png)
 
-This keymap uses QMK’s [quad‑tap dance pattern](https://docs.qmk.fm/features/tap_dance), allowing up to four distinct actions per key:
+This keymap uses QMK's [quad‑tap dance pattern](https://docs.qmk.fm/features/tap_dance), allowing up to four distinct actions per key — occasionally five, via an additional triple-tap action.
 
 | Position | Action |
 |----------|--------|

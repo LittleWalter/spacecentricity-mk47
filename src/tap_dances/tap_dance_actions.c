@@ -1,3 +1,9 @@
+// ─────────────────────────────────────────────────────────────
+// Spacecentricity — A Planck MIT Keymap for the Inland MK-47
+// Copyright © 2026 LittleWalter
+// SPDX-License-Identifier: MIT
+// ─────────────────────────────────────────────────────────────
+
 #include "tap_dance_actions.h"
 #include "td_chars.h"
 #include "td_control.h"

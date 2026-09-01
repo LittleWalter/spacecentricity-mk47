@@ -1,3 +1,9 @@
+// ─────────────────────────────────────────────────────────────
+// Spacecentricity — A Planck MIT Keymap for the Inland MK-47
+// Copyright © 2026 LittleWalter
+// SPDX-License-Identifier: MIT
+// ─────────────────────────────────────────────────────────────
+
 /*
  * td_terminal.c — Tap Dance definitions for terminal and shell command shortcuts.
  *

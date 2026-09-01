@@ -11,8 +11,8 @@ print_help() {
 |_.__/ \__,_|_|_|\__,_(_)___/_| |_|
 Usage: $(basename "$0") [keymap_name] [options]
 
-A POSIX-compliant convenience wrapper for building, cleaning, flashing, and
-checking the status of this keymap inside your QMK firmware checkout.
+A POSIX-compliant convenience wrapper for building, cleaning, flashing, linting,
+and checking the status of this keymap inside your QMK firmware checkout.
 
 By default:
   - The keymap name is: spacecentricity
@@ -23,8 +23,13 @@ Options:
   -c, --clean, --clear        Remove QMK build artifacts before building
   --clean-only, --clear-only  Clean and exit without building
   -f, --flash                 Flash the firmware after building
-  -s, --status                Show symlink/QMK status and exit
   -h, --help                  Show this help message and exit
+  -l, --lint                  Lint the keymap before building
+  --strict                    Treat lint warnings as errors (requires --lint)
+  -s, --status                Show symlink/QMK status and exit
+
+Environment:
+  QMK_PATH                    Path to your QMK checkout (default: $HOME/qmk_firmware)
 
 Examples:
   $(basename "$0")                  # Build spacecentricity
@@ -43,11 +48,13 @@ EOF
 }
 
 # Defaults
-KEYMAP_NAME=""
-FLASH=0
 CLEAN=0
 CLEAN_ONLY=0
+FLASH=0
+KEYMAP_NAME=""
+LINT=0
 STATUS_ONLY=0
+STRICT=0
 
 # Parse flags + positional keymap name
 for arg in "$@"; do
@@ -65,9 +72,16 @@ for arg in "$@"; do
         --clean-only|--clear-only)
             CLEAN_ONLY=1
             ;;
+        -l|--lint)
+            LINT=1
+            ;;
+        --strict)
+            STRICT=1
+            ;;
         -s|--status)
             STATUS_ONLY=1
             ;;
+
         -*)
             # ignore other flags
             ;;
@@ -167,6 +181,25 @@ if [ "$FLASH" -eq 1 ]; then
 
     echo "✅ Flash completed successfully."
     exit 0
+fi
+
+# -------------------------
+# Lint
+# -------------------------
+if [ "$LINT" -eq 1 ]; then
+    echo "🔍 Linting keymap..."
+    if [ "$STRICT" -eq 1 ]; then
+        qmk lint -kb "$KEYBOARD" -km "$KEYMAP_NAME" --strict
+    else
+        qmk lint -kb "$KEYBOARD" -km "$KEYMAP_NAME"
+    fi
+    STATUS=$?
+
+    if [ "$STATUS" -ne 0 ]; then
+        echo "❌ Lint failed. Aborting."
+        exit "$STATUS"
+    fi
+    echo "✅ Lint completed."
 fi
 
 # -------------------------

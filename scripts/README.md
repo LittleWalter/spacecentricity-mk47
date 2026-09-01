@@ -50,8 +50,10 @@ cd ~/path/to/keymap/scripts
 | `-c`, `--clean`, `--clear`     | Remove QMK build artifacts before building |
 | `--clean-only`, `--clear-only` | Clean build artifacts and exit without building |
 | `-f`, `--flash`                | Flash the firmware after building |
-| `-s`, `--status`               | Show symlink and QMK status and exit |
 | `-h`, `--help`                 | Show help message |
+| `-l`, `--lint`                 | Lint the keymap before building |
+| `--strict`                     | Treat lint warnings as errors (requires `--lint`) |
+| `-s`, `--status`               | Show symlink and QMK status and exit |
 
 ### Example Runs
 
@@ -68,6 +70,7 @@ cd ~/path/to/keymap/scripts
 Display help messages with options `-h` and `--help`:
 
 ```bash
+./add_license_header.sh --help
 ./install.sh -h
 ./uninstall.sh --help
 ./build.sh --help
@@ -89,3 +92,15 @@ For example, modify your Bash or Zsh configuration to include:
 ```bash
 export QMK_PATH="$HOME/path/to/qmk_firmware"
 ```
+
+## ⚖️ Add/Remove License Headers
+
+Add or remove a predefined license headers to each `.h` and `.c` file in `src/`.
+
+```bash
+# add missing headers to all files in src/ files
+./add_license_header.sh              
+ # remove all headers from src/ files
+./add_license_header.sh --remove-all
+```
+

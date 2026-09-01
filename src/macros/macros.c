@@ -1,3 +1,9 @@
+// ─────────────────────────────────────────────────────────────
+// Spacecentricity — A Planck MIT Keymap for the Inland MK-47
+// Copyright © 2026 LittleWalter
+// SPDX-License-Identifier: MIT
+// ─────────────────────────────────────────────────────────────
+
 #include "macros.h"
 
 // Prose/programming n-gram helper, with optional left key(s) and centered newline

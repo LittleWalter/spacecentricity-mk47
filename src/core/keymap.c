@@ -1,3 +1,9 @@
+/ ─────────────────────────────────────────────────────────────
+// Spacecentricity — A Planck MIT Keymap for the Inland MK-47
+// Copyright © 2026 LittleWalter
+// SPDX-License-Identifier: MIT
+// ─────────────────────────────────────────────────────────────
+
 #include QMK_KEYBOARD_H
 #include "keymap.h"
 #include "custom_keys.h"
