@@ -9,6 +9,7 @@ print_help() {
 | '_ \| | | | | |/ _\` | / __| '_ \\
 | |_) | |_| | | | (_| |_\__ \ | | |
 |_.__/ \__,_|_|_|\__,_(_)___/_| |_|
+
 Usage: $(basename "$0") [keymap_name] [options]
 
 A POSIX-compliant convenience wrapper for building, cleaning, flashing, linting,

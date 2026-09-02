@@ -16,7 +16,7 @@ These scripts are optional, but they make it easier to keep this firmware in its
 
 - [`install.sh`](#install-sh)
 - [`uninstall.sh`](#uninstall-sh)
-- [`build.sh`](#-build-sh)
+- [`build.sh`](#build-sh)
   - [Options](#options)
   - [Example Runs](#example-runs)
 - [Help](#help)
@@ -51,7 +51,7 @@ cd ~/path/to/keymap/scripts
 <a id="build-sh"></a>
 ## 🔨 `build.sh`
 
-A unified convenience wrapper for building, cleaning, flashing, and checking the status of this keymap inside your QMK firmware tree.
+A unified convenience wrapper for building, cleaning, flashing, linting, and checking the status of this keymap inside your QMK firmware tree.
 
 ```bash
 cd ~/path/to/keymap/scripts
@@ -97,7 +97,7 @@ Display help messages with options `-h` and `--help`:
 <a id="man-pages"></a>
 ### 📖 Man Pages
 
-Install this project's man pages — covering `install.sh`, `uninstall.sh`, `build.sh`, and `license_headers.sh` — into your local man page directory, so they're accessible via `man <script_name>`.
+Install this project's optional [man pages](https://en.wikipedia.org/wiki/Man_page) — covering `install.sh`, `uninstall.sh`, `build.sh`, and `license_headers.sh` — into your local man page directory, so they're accessible via `man <script_name>`.
 
 ```bash
 cd ~/path/to/keymap/scripts
@@ -107,6 +107,8 @@ cd ~/path/to/keymap/scripts
 > [!NOTE]
 > Man pages are installed to `~/.local/share/man/man1`. If `man` can't find them after installation, add this to your shell configuration:
 > `export MANPATH="$HOME/.local/share/man:$MANPATH"`
+>
+> These filenames are unlikely to conflict with existing man pages, but you can check beforehand with `man -w <script-name>.sh` to confirm nothing's already installed under that name.
 
 ### Removing Man Pages
 

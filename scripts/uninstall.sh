@@ -9,6 +9,7 @@ print_help() {
 | | | | '_ \| | '_ \/ __| __/ _\` | | | / __| '_ \\
 | |_| | | | | | | | \__ \ || (_| | | |_\__ \ | | |
  \__,_|_| |_|_|_| |_|___/\__\__,_|_|_(_)___/_| |_|
+
 Usage: $(basename "$0") [keymap_name] [options]
 
 This POSIX-compliant script removes the symbolic link from your QMK keymaps 

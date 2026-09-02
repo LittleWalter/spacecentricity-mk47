@@ -19,7 +19,7 @@ This keymap has an estimated user count of one.
 ## Table of Contents
 
 - [The Keyboard](#the-keyboard)
-  - [Inside the Box](#inside-the-box
+  - [Inside the Box](#inside-the-box)
   - [Availability](#availability)
 - [Layout: Userland Layers](#layout-userland-layers)
   - [Legend](#legend)
@@ -42,7 +42,7 @@ This keymap has an estimated user count of one.
 - [Case Modes: Temporary Lexical Modes](#case-modes-temporary-lexical-modes)
 - [Using This Keymap with QMK](#using-this-keymap-with-qmk)
   - [Helper Scripts (Optional)](#-helper-scripts-optional)
-- [Layout Stability](#-layout-stability)
+- [Layout Stability](#layout-stability)
 
 ## The Keyboard
 
@@ -640,6 +640,7 @@ These scripts are entirely optional — think of `scripts/build.sh` as alternati
 > [!NOTE]
 > For details on available scripts and how to use them, see the [README](./scripts/README.md) in [`scripts/`](./scripts) or run the available scripts w/ the `-h`/`--help` flags.
 
+<a id="layout-stability"></a>
 ## ⚠️ Layout Stability
 
 This keymap is actively maintained (intermittently) and may evolve over time as layouts, layers, and features are refined, added, or removed.

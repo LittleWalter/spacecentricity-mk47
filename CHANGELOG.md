@@ -23,6 +23,12 @@
 
 ---
 
+## 2026-09-02 (Wednesday)
+- `DOCS:` Added optional man pages for the build tools: `build.sh`, `install.sh`, `uninstall.sh`, and `license_headers.sh`.
+- `scripts`
+  - `NEW:` Added `scripts/install_man.sh` to install and remove the man pages for the build tools in [`./docs/man/`](./docs/man/).
+  - Updated related documentation; added ToC to [`./scripts/README.md`](./scripts/README.md).
+
 ## 2026-08-31 (Monday)
 
 - `scripts`

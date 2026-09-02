@@ -3,11 +3,23 @@
 # docs/man into the user's local man page directory.
 
 print_help() {
+    cat <<'ASCII_ART'
+ _           _        _ _                               _
+(_)         | |      | | |                             | |
+ _ _ __  ___| |_ __ _| | |  _ __ ___   __ _ _ __    ___| |__ 
+| | '_ \/ __| __/ _` | | | | '_ ` _ \ / _` | '_ \  / __| '_ \
+| | | | \__ \ || (_| | | | | | | | | | (_| | | | |_\__ \ | | |
+|_|_| |_|___/\__\__,_|_|_| |_| |_| |_|\__,_|_| |_(_)___/_| |_|
+                       ______
+                      |______|
+
+ASCII_ART
+
     cat <<EOF
 Usage: $(basename "$0") [options]
 
 Installs (or removes) the man pages in docs/man into your local man
-page directory, so they're accessible via 'man <page-name>'.
+page directory, so they're accessible via 'man <script-name>.sh'.
 
 Options:
   -i, --install   Install man pages (default)
@@ -18,6 +30,15 @@ Examples:
   $(basename "$0")           # Install man pages
   $(basename "$0") --install # Same as above, explicit
   $(basename "$0") --remove  # Remove installed man pages
+
+Tips:
+  Before running this script, check man page namespace conflicts:
+    man -w <script-name>.sh
+  After installing man pages:
+    man build.sh
+    man install.sh
+    man uninstall.sh
+    man license_headers.sh
 EOF
 }
 
