@@ -1,0 +1,72 @@
+.Dd $Mdocdate$
+.Dt INSTALL.SH 1
+.Os
+.Sh NAME
+.Nm install.sh
+.Nd symlink the Spacecentricity keymap into a QMK checkout
+.Sh SYNOPSIS
+.Nm
+.Op Ar keymap_name
+.Op Fl h | Fl -help
+.Sh DESCRIPTION
+.Nm
+is an optional POSIX-compliant script that creates a symbolic link from your QMK
+keymaps directory to the root of this keymap repository, allowing QMK
+to build this keymap without copying files into the QMK source tree.
+.Pp
+By default:
+.Bl -bullet
+.It
+The keymap name is
+.Sq spacecentricity .
+.It
+The QMK checkout is assumed to be at
+.Pa $HOME/qmk_firmware .
+.El
+.Pp
+These defaults may be overridden:
+.Bl -tag -width Ds
+.It Keymap name
+Passed as a positional argument:
+.Bd -literal -offset indent
+install.sh my_keymap_name
+.Ed
+.It QMK root path
+Set via the
+.Ev QMK_PATH
+environment variable:
+.Bd -literal -offset indent
+QMK_PATH=/path/to/qmk_firmware install.sh
+.Ed
+.El
+.Sh OPTIONS
+.Bl -tag -width Ds
+.It Fl h , Fl -help
+Show the help message and exit.
+.El
+.Sh ENVIRONMENT
+.Bl -tag -width Ds
+.It Ev QMK_PATH
+Path to your QMK firmware checkout.
+Defaults to
+.Pa $HOME/qmk_firmware .
+.El
+.Sh EXAMPLES
+.Bd -literal
+install.sh
+install.sh my_keymap_name
+QMK_PATH=~/Projects/qmk_firmware install.sh
+.Ed
+.Pp
+After installation, build the firmware with:
+.Bd -literal -offset indent
+qmk compile -kb inland/mk47 -km <keymap_name>
+.Ed
+.Sh SEE ALSO
+.Xr build.sh 1 ,
+.Xr uninstall.sh 1 ,
+.Xr license_headers.sh 1
+.Sh AUTHORS
+.An LittleWalter
+
+Source code: https://github.com/LittleWalter/spacecentricity-mk47

@@ -1,0 +1,76 @@
+.Dd $Mdocdate$
+.Dt BUILD.SH 1
+.Os
+.Sh NAME
+.Nm build.sh
+.Nd build, flash, lint, clean, or check status of the Spacecentricity keymap (QMK firmware)
+.Sh SYNOPSIS
+.Nm
+.Op Ar keymap_name
+.Op Fl c | Fl -clean | Fl -clear
+.Op Fl -clean-only | Fl -clear-only
+.Op Fl f | Fl -flash
+.Op Fl l | Fl -lint
+.Op Fl -strict
+.Op Fl s | Fl -status
+.Op Fl h | Fl -help
+.Sh DESCRIPTION
+.Nm
+is an optional POSIX-compliant convenience wrapper for building, cleaning,
+flashing, linting, and checking the symlink/QMK status of this keymap
+inside your QMK firmware checkout.
+
+This script streamlines common workflows into a single‑command interface by reducing repetitive steps and cognitive overhead.
+.Pp
+By default:
+.Bl -bullet
+.It
+The keymap name is
+.Sq spacecentricity .
+.It
+The QMK checkout is assumed to be at
+.Pa $HOME/qmk_firmware .
+.El
+.Sh OPTIONS
+.Bl -tag -width Ds
+.It Fl c , Fl -clean , Fl -clear
+Remove QMK build artifacts before building.
+.It Fl -clean-only , Fl -clear-only
+Clean build artifacts and exit without building.
+.It Fl f , Fl -flash
+Flash the firmware after building.
+.It Fl h , Fl -help
+Show the help message and exit.
+.It Fl l , Fl -lint
+Lint the keymap before building.
+.It Fl -strict
+Treat lint warnings as errors.
+Requires
+.Fl -lint .
+.It Fl s , Fl -status
+Show symlink/QMK status and exit.
+.El
+.Sh ENVIRONMENT
+.Bl -tag -width Ds
+.It Ev QMK_PATH
+Path to your QMK firmware checkout.
+Defaults to
+.Pa $HOME/qmk_firmware .
+.El
+.Sh EXAMPLES
+.Bd -literal
+build.sh                  # Build spacecentricity
+build.sh -f               # Build and flash spacecentricity
+build.sh my_keymap_name   # Build a given keymap name
+build.sh --clean --flash  # Clean build artifacts, then flash spacecentricity
+QMK_PATH=~/Projects/qmk_firmware build.sh -s
+.Ed
+.TP
+.Sh SEE ALSO
+.Xr install.sh 1 ,
+.Xr uninstall.sh 1 ,
+.Xr license_headers.sh 1
+.Sh AUTHORS
+.An LittleWalter
+
+Source code: https://github.com/LittleWalter/spacecentricity-mk47

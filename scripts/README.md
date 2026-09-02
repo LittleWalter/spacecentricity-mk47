@@ -12,6 +12,19 @@ These scripts are optional, but they make it easier to keep this firmware in its
 > If you run into permission issues, fix them with:
 > `chmod +x scripts/*.sh`
 
+## Table of Contents
+
+- [`install.sh`](#install-sh)
+- [`uninstall.sh`](#uninstall-sh)
+- [`build.sh`](#-build-sh)
+  - [Options](#options)
+  - [Example Runs](#example-runs)
+- [Help](#help)
+  - [Man Pages](#man-pages)
+- [Custom QMK Path](#custom-qmk-path)
+- [`license_headers.sh`](#license-headers-sh-add-remove-copyright-license-headers)
+
+<a id="install-sh"></a>
 ## 📝 `install.sh`
 
 Creates a symlink in your QMK keymaps directory pointing to the root of this repository.
@@ -23,6 +36,7 @@ cd ~/path/to/keymap/scripts
 ./install.sh [keymap_name]
 ```
 
+<a id="uninstall-sh"></a>
 ## 🗑️ `uninstall.sh`
 
 Removes the symlink created by `install.sh`.
@@ -34,6 +48,7 @@ cd ~/path/to/keymap/scripts
 ./uninstall.sh [keymap_name]
 ```
 
+<a id="build-sh"></a>
 ## 🔨 `build.sh`
 
 A unified convenience wrapper for building, cleaning, flashing, and checking the status of this keymap inside your QMK firmware tree.
@@ -67,6 +82,7 @@ cd ~/path/to/keymap/scripts
 ./build.sh --status        # check symlink and QMK paths
 ```
 
+<a id="help"></a>
 ## ❓ Help
 
 Display help messages with options `-h` and `--help`:
@@ -78,6 +94,35 @@ Display help messages with options `-h` and `--help`:
 ./license_headers.sh --help
 ```
 
+<a id="man-pages"></a>
+### 📖 Man Pages
+
+Install this project's man pages — covering `install.sh`, `uninstall.sh`, `build.sh`, and `license_headers.sh` — into your local man page directory, so they're accessible via `man <script_name>`.
+
+```bash
+cd ~/path/to/keymap/scripts
+./install_man.sh
+```
+
+> [!NOTE]
+> Man pages are installed to `~/.local/share/man/man1`. If `man` can't find them after installation, add this to your shell configuration:
+> `export MANPATH="$HOME/.local/share/man:$MANPATH"`
+
+### Removing Man Pages
+
+```bash
+./install_man.sh --remove
+```
+
+### Options
+
+| Flag                | Description |
+|----------------------|-------------|
+| `-i`, `--install`    | Install man pages (default) |
+| `-r`, `--remove`     | Remove installed man pages |
+| `-h`, `--help`       | Show help message |
+
+<a id="custom-qmk-path"></a>
 ## 📁 Custom QMK Path
 
 If your QMK checkout is not in `~/qmk_firmware`, set `QMK_PATH`:
@@ -95,6 +140,7 @@ For example, modify your Bash or Zsh configuration to include:
 export QMK_PATH="$HOME/path/to/qmk_firmware"
 ```
 
+<a id="license-headers-sh-add-remove-copyright-license-headers"></a>
 ## ⚖️ `license_headers.sh`: Add/Remove Copyright & License Headers
 
 Adds or removes predefined license headers on each `.h` and `.c` file in `src/`.

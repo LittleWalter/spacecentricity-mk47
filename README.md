@@ -19,7 +19,7 @@ This keymap has an estimated user count of one.
 ## Table of Contents
 
 - [The Keyboard](#the-keyboard)
-  - [Inside the Box](#inside-the-box)
+  - [Inside the Box](#inside-the-box
   - [Availability](#availability)
 - [Layout: Userland Layers](#layout-userland-layers)
   - [Legend](#legend)
@@ -151,7 +151,7 @@ The “Base” is the default layer, using a modified Dvorak alpha arrangement.
 
 Most layer keys are momentary holds.
 
-The [**Lower**](#lower-numpad) and [**Upper**](#upper-primary-number-layer) keys behave the same, but you can **lock** them with tap‑and‑hold and **unlock** with a tap back to **Base**.
+The [**Lower**](#lower-numpad) and [**Upper**](#upper-primary-number-layer) keys behave the same, but you can **lock** them with tap‑and‑hold and **unlock** with a tap back to [**Base**](#base-modified-dvorak).
 
 ##### `Backspace` Key
 
@@ -210,9 +210,11 @@ The navigation keys on the bottom row follow Vim’s `hjkl` movement pattern and
 
 ##### Special Characters
 
-The `*` key emits `×`(multiplication, not the letter _x_) on triple tap.
+Additional triple-tap symbols on [**Base**](#base-modified-dvorak):
 
-The navigation cluster emits the arrow symbols on triple tap: `←`, `↓`, `↑`, `→`.
+| Key | Symbol | Notes |
+|-----|--------|-------|
+| `*` |   `×`  | Multiplication sign and [cross product](https://simple.wikipedia.org/wiki/Cross_product) symbol; avoids using the letter _x_ when writing dimensions or mathematical expressions. |
 
 #### Upper: Primary Number Layer
 
@@ -280,7 +282,7 @@ The . key remains in the standard Dvorak position, with additional dot-related t
 | Hold | `•` (bullet) | Handy for lists, callouts, or inline bullet points without switching layers or using a menu. |
 | Triple Tap | `·` (middle dot) | The centered dot is useful as a typographic separator or the mathematical [dot product](https://en.wikipedia.org/wiki/Dot_product) symbol. |
 
-Additional triple-tap symbols:
+Additional triple-tap symbols on [**Upper**](#upper-primary-number-layer):
 
 | Key | Symbol | Notes |
 |-----|--------|-------|

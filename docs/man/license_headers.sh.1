@@ -1,0 +1,58 @@
+.Dd $Mdocdate$
+.Dt LICENSE_HEADERS.SH 1
+.Os
+.Sh NAME
+.Nm license_headers.sh
+.Nd add or remove copyright and license headers on source files
+.Sh SYNOPSIS
+.Nm
+.Op Fl a | Fl -add
+.Op Fl r | Fl -remove-all
+.Op Fl h | Fl -help
+.Sh DESCRIPTION
+.Nm
+is an optional POSIX-compliant script that adds or removes a standard copyright and license header on every
+.Pa .c
+and
+.Pa .h
+file under
+.Pa src/ .
+
+Must be invoked from the project root.
+.Sh OPTIONS
+.Bl -tag -width Ds
+.It Fl a , Fl -add
+Add the header to files that don't already have it.
+This is the default behavior when no mode flag is given.
+.It Fl r , Fl -remove-all
+Remove the header from files where it exactly matches the
+header defined in the script.
+.It Fl h , Fl -help
+Show the help message and exit.
+.El
+.Sh EXAMPLES
+.Bd -literal
+./scripts/license_headers.sh              # Add headers where missing
+./scripts/license_headers.sh --add        # Same as above, explicit
+./scripts/license_headers.sh --remove-all # Remove headers where present
+.Ed
+.Sh TRICKS & TIPS
+After this script successfully completes, run
+.Dl ./build --lint
+to verify formatting and confirm all license-header checks pass.
+
+To modify the copyright or license text itself, first remove all
+existing headers with
+.Fl -remove-all ,
+edit the header definition within the script, then re-run with
+.Fl -add .
+
+.Sh SEE ALSO
+.Xr build.sh 1 ,
+.Xr install.sh 1 ,
+.Xr uninstall.sh 1
+
+.Sh AUTHORS
+.An LittleWalter
+
+.Lk https://github.com/LittleWalter/spacecentricity-mk47
