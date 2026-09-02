@@ -23,31 +23,37 @@
 
 ---
 
-## 2026-08/31-MO
+## 2026-08-31 (Monday)
+
 - `scripts`
-  - `CHANGE:` Refactored `scripts/build.sh` to accept `--clear` and `--clear-only` flags
-  - `NEW:` Added `scripts/add_license_headers.sh` to add/remove predefined copyright and license header.
-- More documentation polish; fleshing out some more key tables in main `README`.
+  - `CHANGE:` Refactored `scripts/build.sh` to accept `--clear` and `--clear-only` flags.
+  - `NEW:` Added `scripts/add_license_headers.sh` to add predefined copyright and license headers.
+  - `NEW:` Added `scripts/build.sh --lint` (plus the optional `--strict` flag to treat warnings as errors) for QMK linting support.
+- `DOCS:` More documentation polish; fleshed out additional key tables in the main `README`.
 - `DOCS:` Fixed image paths in `docs/DESIGN.md` and `docs/LEADER.md`.
 
-## 2026-08/30-SU
+## 2026-08-30 (Sunday)
+
 - **Doom** (1993)
   - `CHANGE:` Swapped game state key with message toggle key.
   - `NEW:` Added `6` (Tap), `8` (Hold) to switch to Rockets and BFG 9000.
 - Minor documentation refinements.
 
-## 2026-08/28-FR
+## 2026-08-28 (Friday)
+
 - ***Doom*** (1993)
   - `BUGFIX`: `KC_8` → `KC_F8`
   - Updated `README.md` and related PNG
 - Polishing documentation.
 
-## 2026-08/27-TH
+## 2026-08-27 (Thursday)
+
 - ***Doom*** (1993)
   - Tinkering w/ layout by adding more tap dances.
   - [ ]`TODO:` Write the logic for “Run Toggle.” 2× keys are currently assigned to `KC_NO`.
 
-## 2026-08/25-TU
+## 2026-08-25 (Tuesday)
+
 - **Adjustment**: Added RGB (navy) to the Print **Leader** Favorites & History
 - ***Doom*** (1993)
   - `BUGFIX:` Added guard to ***Doom*** (1993) RGB layer definition to exclude when `MOUSE_ENABLE` is set to `no` for RGB Matrix state.
@@ -56,7 +62,8 @@
   - `NEW:` Added `F10` to the top row, removing the unassigned `8` key.
   - Tinkering w/ digit arrangement.
 
-## 2026-08/24-MO
+## 2026-08-24 (Monday)
+
 - **Leader**: fixed state output-related bugs.
   - `BUGFIX:` Displaying `Leader off` message twice on `★as` to print “all saved” in Favorites and History.
   - `BUGFIX:` Displaying surround character **Leader** sequences improperly (now suppressingthe effects of an unintended left arrow), e.g., `<>`, `()`, etc.
@@ -65,7 +72,8 @@
   - Enabled color LEDS for `Tab` (`YELLOW`) and `Esc` (`RED`).
   - Filled out `KC_NO` keys w/ `0`–`9` weapon changes and `-`/`+` to zoom screen out/in.
 
-## 2026-08/23-SU
+## 2026-08-23 (Sunday)
+
 - ***Doom*** (1993) → `BUGFIX:` Removed mod-tap `LSFT` for `SPC` key. Fixed responsiveness of door-opening actions possibly regarding MT key issues.
   - `NEW:` Added `F2` and `F3` to open the load and save menus, respectively. Top row, index fingers.
 - **macOS** → Swapped tap dances around on the delete key (right thumb); `Tap+Hold` → Open Trash folder in Finder, `Hold` → Empty Trash.
@@ -76,24 +84,28 @@
   - To print both use `★as` for “all saved”.
   - [x] Find and fix any remaining output bugs; update docs when mostly done.
 
-## 2026-08/20-TH
+## 2026-08-20 (Thursday
+
 - Added more Markdown files for `src` project path and subdirectories.
 - **Mouse**: Filled in _ROW1_ blanks w/ tab previous/next.
 - **Base**: Too many typos…
   - Removed tap dance for `.` key; it is only mod-tap for `LCTL`.
   - Removed tap dance for `;` key; it is only mod-tap for `LSFT`.
 
-## 2026-08/17-MO
+## 2026-08-17 (Monday)
+
 - Cleaned up documentation.
 - Fixed ***Doom*** (1993) layer bug w/r/t **UPPER** layer.
 
-## 2026-08/16-SU
+## 2026-08-16 (Sunday)
+
 - Swapped one-shot shift on **BASE** for [QMK’s repeat key](https://docs.qmk.fm/features/repeat_key)
   - `TODO:` Reimplement QMK’s functionality to be compatible with tap dance.
 - Moved one-shot shift to space key on double tap.
 - Added left strafe key to ***Doom*** (1993) layer for right-hand use.
 
-## 2026-05/03-SU
+## 2026-05-03 (Sundoy)
+
 - Added **Temporary Lexical Case Modes**, a text‑transformation system for programming, shell, and writing workflows.
   - Case modes:
     - `camelCase` / `PascalCase`
@@ -112,12 +124,14 @@
   - Added `…` on double tap, `⋮` on tap-and-hold for `.`.
   - Added `;␣` on double tap, `:␣` on tap-and-hold for `;`.
 
-## 2026-04/26-SU
+## 2026-04-26 (Sunday)
+
 - Added global _Leader Key toggle_ on the **Adjustment** layer
   - Toggle key visual feedback: 🔵 Navy = enabled (default), 🔴 Red = disabled
 - Added _symbol Leader sequences_ (prefixed with `␣` / space) as the foundation for an expanded symbol library
 
-## 2026‑04/24‑FR
+## 2026‑04-24 (Friday)
+
 - Implemented RGB Matrix feedback for Leader sequences, including green flashes for successful completions and red flashes for failures or time‑outs.
 - Expanded the Leader emoji set with several new sequences.
   - Completed full coverage for `a`–`z` and added select two‑character combinations.
@@ -130,17 +144,20 @@
 - Introduced preprocessor guards across the keymap to ensure optional QMK features (RGB Matrix, Caps Word, Leader, Mouse Keys) can be safely disabled without breaking the build.
   - Tap Dance remains unguarded because it is a core dependency of this keymap.
 
-## 2026-04/18-SA
+## 2026-04-18 (Saturday)
+
 - Added experimental support for the [QMK Leader Key](https://docs.qmk.fm/features/leader_key), including a new alpha‑only layer for sequence handling.
   - The Leader key is triggered from the bottom‑corner key on the **Arrow** layers.
   - See [LEADER.md](LEADER.md) for documentation on available sequences.
 
-## 2026-04/16-TH
+## 2026-04-16 (Thursday)
+
 - Updated **Vim** layers with a new semantic‑deletion key that mirrors `Backspace` and `Del`.
 - Converted `Caps Lock` on **Upper** to a tap dance: tap activates `Caps Word`; hold toggles `Caps Lock`.
   - RGB of **Base** is gold when `Caps Word` is active.
 
-## 2026-04/15-WE
+## 2026-04-15 (Wednesday)
+
 - Updated `Backspace` and `Del` keys to use semantic behaviors:
   - Tap: delete character (`Backspace`/`Del`)
   - Tap-and-Hold: delete to beginning/end of line
@@ -149,7 +166,8 @@
   - Added mouse‑wheel keys on the right side of the lower row in a Vim‑style arrangement.
   - Added a `Backspace` tap‑dance key to the top‑right corner.
 
-## 2026-04/14-TU
+## 2026-04-14 (Tuesday)
+
 - Added application switching keys on **Arrow** and **Mouse** layers.
   - Uses `CMD` for macOS; otherwise `LALT`.
   - Tap `TAB`/`LSFT-TAB` to navigate the menu on bottow row of **Arrow** layers and home row **Mouse**.
@@ -157,7 +175,8 @@
   - All end-of-sentence bigrams support auto-capitalizing the next character via oneshot `LSFT`.
   - Removed `;␣` and `:␣` because they appear less frequently in prose; I noticed I didn’t really use these bigrams much.
 
-## 2026-04/13-MO
+## 2026-04-13 (Monday)
+
 - Added the ***Doom*** (1993) layer (first draft). The layer is accessible via a tap on the **Mouse** layer, a center key on home row.
 - Updated arrow‑key layers and expanded multilingual support.
   - Added cursor‑centered angle quotation marks: `«|»` and `‹|›`.
@@ -165,6 +184,7 @@
   - Reorganized combining accents: grave is now on `?`, tilde on `!`, improving mnemonic grouping.
 - Updated Markdown docs, including `DESIGN.md`.
 
-## 2026-04/10-FR
+## 2026-04-10 (Friday)
+
 - Initial release.
 - Untested for Linux and Microsoft Windows.

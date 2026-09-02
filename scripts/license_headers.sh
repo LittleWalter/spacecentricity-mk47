@@ -4,30 +4,26 @@
 
 print_help() {
     cat <<'ASCII_ART'
-            _      _         
-           | |    | |        
-  __ _   __| |  __| |        
- / _` | / _` | / _` |        
-| (_| || (_| || (_| |        
- \__,_| \__,_| \__,_|        
-           _  _       ______
-          | |(_)     |______|
-          | | _   ___   ___  _ __    ___   ___
-          | || | / __| / _ \| '_ \  / __| / _ \
-          | || || (__ |  __/| | | || (__ |  __/
-          |_||_| \___| \___||_| |_| \___| \___|  ______
-                    _                       _   |______|                _
-                   | |                     | |                         | |
-                   | |__    ___   __ _   __| |  ___  _ __  ___     ___ | |__
-                   | '_ \  / _ \ / _` | / _` | / _ \| '__|/ __|   / __|| '_ \
-                   | | | ||  __/| (_| || (_| ||  __/| |   \__ \ _ \__ \| | | |
-                   |_| |_| \___| \__,_| \__,_| \___||_|   |___/(_)|___/|_| |_|                                             
+ _  _                               
+| |(_)                              
+| | _   ___   ___  _ __   ___   ___ 
+| || | / __| / _ \| '_ \ / __| / _ \
+| || || (__ |  __/| | | |\__ \|  __/
+|_||_| \___| \___||_| |_||___/ \___|   ______
+          _                       _   |______|                _
+         | |                     | |                         | |
+         | |__    ___   __ _   __| |  ___  _ __  ___     ___ | |__
+         | '_ \  / _ \ / _` | / _` | / _ \| '__|/ __|   / __|| '_ \
+         | | | ||  __/| (_| || (_| ||  __/| |   \__ \ _ \__ \| | | |
+         |_| |_| \___| \__,_| \__,_| \___||_|   |___/(_)|___/|_| |_|                                             
 ASCII_ART
 
     cat <<EOF
-Usage: $(basename "$0") [options]
+Usage: ./scripts/$(basename "$0") [options]
 
 Adds or removes a standard license header on every .c/.h file under src/.
+
+Invoke this script from the project root.
 
 Options:
   -a, --add          Add the header to files that don't already have it (default)
@@ -35,9 +31,13 @@ Options:
   -h, --help         Show this help message and exit
 
 Examples:
-  $(basename "$0")              # Add header where missing
-  $(basename "$0") --add        # Same as above, explicit
-  $(basename "$0") --remove-all # Remove header where present
+  ./scripts/$(basename "$0")              # Add headers where missing
+  ./scripts/$(basename "$0") --add        # Same as above, explicit
+  ./scripts/$(basename "$0") --remove-all # Remove headers where present
+
+Tips:
+  When this script successfully completes, you can run \`./build --lint\` to
+  clean up and verify the formatting of the project’s codebase.
 EOF
 }
 

@@ -1,6 +1,8 @@
-# 🔧 Keymap Symlink Management Scripts
+# 🔧 Build Scripts/Tools for QMK
 
-For convenience, this directory contains small POSIX-compliant helper scripts for installing, removing, and working with the symlink that connects this keymap repository to your local QMK firmware checkout. These scripts are optional, but they make it easier to keep this keymap in its own repository while still using it with QMK.
+For convenience, this directory contains small POSIX-compliant helper scripts for installing, removing, and working with the symlink that connects this keymap repository to your local QMK firmware checkout.
+
+These scripts are optional, but they make it easier to keep this firmware in its own repository while still using it with QMK.
 
 > [!NOTE]
 > `keymap_name` is optional and defaults to `spacecentricity`.
@@ -70,10 +72,10 @@ cd ~/path/to/keymap/scripts
 Display help messages with options `-h` and `--help`:
 
 ```bash
-./add_license_header.sh --help
 ./install.sh -h
 ./uninstall.sh --help
 ./build.sh --help
+./license_headers.sh --help
 ```
 
 ## 📁 Custom QMK Path
@@ -93,14 +95,23 @@ For example, modify your Bash or Zsh configuration to include:
 export QMK_PATH="$HOME/path/to/qmk_firmware"
 ```
 
-## ⚖️ Add/Remove License Headers
+## ⚖️ `license_headers.sh`: Add/Remove Copyright & License Headers
 
-Add or remove a predefined license headers to each `.h` and `.c` file in `src/`.
+Adds or removes predefined license headers on each `.h` and `.c` file in `src/`.
+
+Edit the script directly to change the header content.
+
+After adding headers to each source file, you can run `./build --lint` without warnings or errors.
 
 ```bash
-# add missing headers to all files in src/ files
-./add_license_header.sh              
- # remove all headers from src/ files
-./add_license_header.sh --remove-all
+# Invoke `license_headers.sh` from the project root
+
+# Add missing license headers to all files in src/
+./scripts/license_headers.sh
+
+# Remove all headers from all files in src/
+./scripts/license_headers.sh --remove-all
 ```
 
+> [!TIP]
+> To modify the copyright and license header, first remove the current headers with `./scripts/license_headers.sh --remove-all`, _then_ edit the header section within `./scripts/license_headers.sh`.

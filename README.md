@@ -631,8 +631,9 @@ This repo includes small [POSIX](https://en.wikipedia.org/wiki/POSIX)‑complian
 * Building and flashing the keymap
 * Cleaning previous build artifacts
 * Checking QMK paths and symlink status
+* Linting the codebase against QMK standards
 
-These scripts are entirely optional — the build script simply wraps QMK’s CLI — but they streamline common workflows if you prefer a single‑command interface and want to reduce repetitive steps and cognitive overhead.
+These scripts are entirely optional — think of `scripts/build.sh` as alternative shorthand for the `qmk` CLI — but they streamline common workflows if you prefer a single‑command interface and want to reduce repetitive steps and cognitive overhead.
 
 > [!NOTE]
 > For details on available scripts and how to use them, see the [README](./scripts/README.md) in [`scripts/`](./scripts) or run the available scripts w/ the `-h`/`--help` flags.
