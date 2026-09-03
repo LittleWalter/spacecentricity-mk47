@@ -13,6 +13,7 @@ This directory keeps Markdown documentation separate from the project root.
 │   ├── man/                          → Man pages for build tooling
 │   │   ├── build.sh.1                → Man page for ../../scripts/build.sh
 │   │   ├── install.sh.1              → Man page for ../../scripts/install.sh
+│   │   ├── install_man.sh.1          → Man page for ../../scripts/install_man.sh
 │   │   ├── license_headers.sh.1      → Man page for ../../scripts/license_headers.sh
 │   │   └── uninstall.sh.1            → Man page for ../../scripts/uninstall.sh
 │   │
@@ -24,6 +25,7 @@ This directory keeps Markdown documentation separate from the project root.
 ├── scripts/                    → Build & “(un)installation” tooling
 │   ├── build.sh                → The firmware build script, wraps `qmk`
 │   ├── install.sh              → Create the project symlink
+│   ├── install_man.sh          → Copy build tooling man pages: $HOME/.local/share/man/man1
 │   ├── uninstall.sh            → Remove the project symlink
 │   ├── license_headers.sh      → Add/remove predefined license headers in `src/`
 │   │

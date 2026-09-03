@@ -1,0 +1,65 @@
+.Dd $Mdocdate$
+.Dt INSTALL_MAN.SH 1
+.Os
+.Sh NAME
+.Nm install_man.sh
+.Nd install or remove man pages for Spacecentricity’s helper scripts (QMK firmware)
+.Sh SYNOPSIS
+.Nm
+.Op Fl i | Fl -install
+.Op Fl r | Fl -remove
+.Op Fl h | Fl -help
+.Sh DESCRIPTION
+.Nm
+installs (or removes) the man pages in
+.Pa docs/man
+into your local man page directory, making them accessible via
+.Ic man Ns Ao Ar script-name Ac Ns .sh .
+.Pp
+With no options,
+.Nm
+defaults to installing the man pages.
+.Sh OPTIONS
+.Bl -tag -width Ds
+.It Fl i , Fl -install
+Install man pages. This is the default behavior when no options are given.
+.It Fl r , Fl -remove
+Remove previously installed man pages.
+.It Fl h , Fl -help
+Show the help message and exit.
+.El
+.Sh EXAMPLES
+Install man pages:
+.Pp
+.Dl install_man.sh
+.Pp
+Install man pages explicitly:
+.Pp
+.Dl install_man.sh --install
+.Pp
+Remove installed man pages:
+.Pp
+.Dl install_man.sh --remove
+.Sh TRICKS & TIPS
+Before running this script, check for man page namespace conflicts:
+.Pp
+.Dl man -w Ao Ar script-name Ac Ns .sh
+.Pp
+After installing man pages, view them with:
+.Pp
+.Dl man build.sh
+.Dl man install.sh
+.Dl man uninstall.sh
+.Dl man license_headers.sh
+.Dl man install_man.sh
+.Sh SEE ALSO
+.Xr build.sh 1 ,
+.Xr install.sh 1 ,
+.Xr uninstall.sh 1 ,
+.Xr install_man.sh 1 ,
+.Xr license_headers.sh 1
+
+.Sh AUTHORS
+.An LittleWalter
+
+.Lk https://github.com/LittleWalter/spacecentricity-mk47

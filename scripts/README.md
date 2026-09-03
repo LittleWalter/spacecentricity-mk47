@@ -31,6 +31,8 @@ These scripts are optional, but they make it easier to keep this firmware in its
 
 Creates a symlink in your QMK keymaps directory pointing to the root of this repository.
 
+Asks user to install the [optional man pages](#man-pages) for each of the scripts.
+
 ### Usage
 
 ```bash
@@ -42,6 +44,8 @@ cd ~/path/to/keymap/scripts
 ## 🗑️ `uninstall.sh`
 
 Removes the symlink created by `install.sh`.
+
+Automatically removes the optionally installed [man pages](#man-pages) for the project’s scripts.
 
 ### Usage
 
@@ -94,12 +98,13 @@ Display help messages with options `-h` and `--help`:
 ./uninstall.sh --help
 ./build.sh --help
 ./license_headers.sh --help
+./install_man.sh --help
 ```
 
 <a id="man-pages"></a>
 ### 📖 Man Pages
 
-Install this project's optional [man pages](https://en.wikipedia.org/wiki/Man_page) — covering `install.sh`, `uninstall.sh`, `build.sh`, and `license_headers.sh` — into your local man page directory, so they're accessible via `man <script_name>`.
+Install this project's optional [man pages](https://en.wikipedia.org/wiki/Man_page) — covering `install.sh`, `uninstall.sh`, `build.sh`, `license_headers.sh`, and `install_man.sh` — into your local man page directory, so they're accessible via `man <script_name>`.
 
 <a id="installing-man-pages"></a>
 #### Installing Man Pages (`install_man.sh`)
@@ -136,6 +141,7 @@ man build.sh
 man install.sh
 man uninstall.sh
 man license_headers.sh
+man install_man.sh
 ```
 
 <a id="custom-qmk-path"></a>

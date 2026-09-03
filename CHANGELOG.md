@@ -25,7 +25,7 @@
 
 ## 2026-09-02 (Wednesday)
 - `DOCS:`
-  - `NEW:` Added optional man pages for the build tools: `build.sh`, `install.sh`, `uninstall.sh`, and `license_headers.sh`.
+  - `NEW:` Added optional man pages for the build tools: `build.sh`, `install.sh`, `uninstall.sh`, `license_headers.sh`, and `install_man.sh`.
   - `NEW:` Added fun _Doom_ (1993) box-style top graphic for fun.
 - `scripts`
   - `NEW:` Added `scripts/install_man.sh` to install and remove the man pages for the build tools in [`./docs/man/`](./docs/man/).

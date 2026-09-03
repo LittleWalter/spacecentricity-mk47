@@ -64,13 +64,21 @@ build.sh -f               # Build and flash spacecentricity
 build.sh my_keymap_name   # Build a given keymap name
 build.sh --clean --flash  # Clean build artifacts, then flash spacecentricity
 QMK_PATH=~/Projects/qmk_firmware build.sh -s
+.Sh TRICKS & TIPS
+Use the stub in the project's root to invoke
+.Pa scripts/build.sh
+directly. For example, to build and flash the keyboard firmware:
+.Pp
+.Dl ./build -f
 .Ed
 .TP
 .Sh SEE ALSO
 .Xr install.sh 1 ,
 .Xr uninstall.sh 1 ,
+.Xr install_man.sh 1 ,
 .Xr license_headers.sh 1
+
 .Sh AUTHORS
 .An LittleWalter
 
-Source code: https://github.com/LittleWalter/spacecentricity-mk47
+.Lk https://github.com/LittleWalter/spacecentricity-mk47

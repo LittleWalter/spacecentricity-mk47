@@ -17,7 +17,6 @@ and
 .Pa .h
 file under
 .Pa src/ .
-
 Must be invoked from the project root.
 .Sh OPTIONS
 .Bl -tag -width Ds
@@ -32,26 +31,27 @@ Show the help message and exit.
 .El
 .Sh EXAMPLES
 .Bd -literal
-./scripts/license_headers.sh              # Add headers where missing
-./scripts/license_headers.sh --add        # Same as above, explicit
-./scripts/license_headers.sh --remove-all # Remove headers where present
+\&./scripts/license_headers.sh              # Add headers where missing
+\&./scripts/license_headers.sh --add        # Same as above, explicit
+\&./scripts/license_headers.sh --remove-all # Remove headers where present
 .Ed
 .Sh TRICKS & TIPS
 After this script successfully completes, run
+.Pp
 .Dl ./build --lint
+.Pp
 to verify formatting and confirm all license-header checks pass.
-
+.Pp
 To modify the copyright or license text itself, first remove all
 existing headers with
 .Fl -remove-all ,
 edit the header definition within the script, then re-run with
 .Fl -add .
-
 .Sh SEE ALSO
 .Xr build.sh 1 ,
 .Xr install.sh 1 ,
+.Xr install_man.sh 1 ,
 .Xr uninstall.sh 1
-
 .Sh AUTHORS
 .An LittleWalter
 
