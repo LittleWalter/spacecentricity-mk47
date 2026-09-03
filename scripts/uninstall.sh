@@ -52,10 +52,18 @@ esac
 KEYMAP_NAME="${1:-spacecentricity}"
 QMK_PATH="${QMK_PATH:-$HOME/qmk_firmware}" # Check if user has alternate QMK root
 TARGET="$QMK_PATH/keyboards/inland/mk47/keymaps/$KEYMAP_NAME"
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+MAN_SCRIPT="$SCRIPT_DIR/install_man.sh"
 
 if [ -L "$TARGET" ]; then
     rm "$TARGET"
     echo "Symlink removed: $TARGET"
 else
     echo "No symlink found at $TARGET"
+fi
+
+if [ -f "$MAN_SCRIPT" ]; then
+    sh "$MAN_SCRIPT" --remove
+else
+    echo "Note: install_man.sh not found at $MAN_SCRIPT — skipping man page removal" >&2
 fi

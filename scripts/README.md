@@ -21,6 +21,8 @@ These scripts are optional, but they make it easier to keep this firmware in its
   - [Example Runs](#example-runs)
 - [Help](#help)
   - [Man Pages](#man-pages)
+    - [Installing Man Pages (`install_man.sh`)](#installing-man-pages)
+    - [Removing Man Pages](#removing-man-pages)
 - [Custom QMK Path](#custom-qmk-path)
 - [`license_headers.sh`](#license-headers-sh-add-remove-copyright-license-headers)
 
@@ -99,6 +101,9 @@ Display help messages with options `-h` and `--help`:
 
 Install this project's optional [man pages](https://en.wikipedia.org/wiki/Man_page) — covering `install.sh`, `uninstall.sh`, `build.sh`, and `license_headers.sh` — into your local man page directory, so they're accessible via `man <script_name>`.
 
+<a id="installing-man-pages"></a>
+#### Installing Man Pages (`install_man.sh`)
+
 ```bash
 cd ~/path/to/keymap/scripts
 ./install_man.sh
@@ -110,19 +115,28 @@ cd ~/path/to/keymap/scripts
 >
 > These filenames are unlikely to conflict with existing man pages, but you can check beforehand with `man -w <script-name>.sh` to confirm nothing's already installed under that name.
 
-### Removing Man Pages
+#### Removing Man Pages
 
 ```bash
 ./install_man.sh --remove
 ```
 
-### Options
+#### Options
 
 | Flag                | Description |
 |----------------------|-------------|
 | `-i`, `--install`    | Install man pages (default) |
 | `-r`, `--remove`     | Remove installed man pages |
 | `-h`, `--help`       | Show help message |
+
+#### Example Runs
+
+```bash
+man build.sh
+man install.sh
+man uninstall.sh
+man license_headers.sh
+```
 
 <a id="custom-qmk-path"></a>
 ## 📁 Custom QMK Path

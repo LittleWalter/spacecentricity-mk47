@@ -1,4 +1,5 @@
-# 🌌 Spacecentricity — A Planck MIT Keymap for the Inland MK-47
+<!-- # 🌌 Spacecentricity — A Planck MIT Keymap for the Inland MK-47 -->
+![Spacecentrity — A Planck MIT Keymap for the Inland MK-47](./assets/Spacecentricity_Doom.1993.game.box.png)
 
 [![QMK](https://img.shields.io/badge/QMK-compatible-00A3E0?logo=qmk&logoColor=white)](https://qmk.fm/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)

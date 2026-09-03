@@ -45,16 +45,16 @@
 /*** LT/TO Keycodes: Layers ***********************************/
 
 // TIP: LT only supports layers 0-15
-                                      // │   Tap   │  Hold   │
-#define ESC_MACOS LT(_MACOS,  KC_ESC) // │   ESC   │  macOS  │
-#define E_VIM_R   LT(_VIM_R,  KC_E)   // │    e    │ Vim RHS │
-#define H_ARR_L   LT(_ARR_L,  KC_H)   // │    h    │ArrowsLHS│
-#define I_ARR_R   LT(_ARR_R,  KC_I)   // │    i    │ArrowsRHS│
-#define M_TERM    LT(_TERM,   KC_M)   // │    m    │ Terminal│
-#define N_PROG_L  LT(_PROG_L, KC_N)   // │    n    │CodingLHS│
-#define O_PROG_R  LT(_PROG_R, KC_O)   // │    o    │CodingRHS│
-#define T_VIM_L   LT(_VIM_L,  KC_T)   // │    t    │ Vim LHS │
-#define ZERO_ADJ  LT(_ADJ,    KC_P0)  // │ Numpad 0│  F1-F12 │
+                                     // │   Tap   │  Hold   │
+#define ESC_OS   LT(_OS,     KC_ESC) // │   ESC   │   OS    │
+#define E_VIM_R  LT(_VIM_R,  KC_E)   // │    e    │ Vim RHS │
+#define H_ARR_L  LT(_ARR_L,  KC_H)   // │    h    │ArrowsLHS│
+#define I_ARR_R  LT(_ARR_R,  KC_I)   // │    i    │ArrowsRHS│
+#define M_TERM   LT(_TERM,   KC_M)   // │    m    │ Terminal│
+#define N_PROG_L LT(_PROG_L, KC_N)   // │    n    │CodingLHS│
+#define O_PROG_R LT(_PROG_R, KC_O)   // │    o    │CodingRHS│
+#define T_VIM_L  LT(_VIM_L,  KC_T)   // │    t    │ Vim LHS │
+#define ZERO_ADJ LT(_ADJ,    KC_P0)  // │ Numpad 0│  F1-F12 │
 
 #define RCLK_UPPER LT(_UPPER, MS_BTN2) // Doom
 
