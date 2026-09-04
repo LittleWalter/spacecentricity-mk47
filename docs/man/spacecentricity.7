@@ -3,36 +3,37 @@
 .Os
 .Sh NAME
 .Nm spacecentricity
-.Nd Spacecentricity project utilities and QMK firmware development
+.Nd overview of the Spacecentricity project utilities and QMK firmware workflow
 .Sh DESCRIPTION
 .Nm
-is a maximalist QMK firmware implementation. This document contains an
-overview of the collection of POSIX-compliant shell utilities for
-maintaining the project and its integration with QMK.
+refers to the Spacecentricity project: a maximalist QMK keymap
+implementation, together with the collection of POSIX-compliant shell
+utilities used to build and maintain it.
 .Pp
-The project utilities are located in the
+The project utilities live in
 .Pa scripts/
-directory. Together they provide a small command suite for installing
-and removing the keymap, installing project documentation, maintaining
-license headers, and building and testing the firmware.
+and provide a small command suite for installing and removing the
+keymap, installing project documentation, maintaining license headers,
+and building, testing, or flashing the firmware.
 .Pp
-Each utility is independently documented in its own manual page.
+This page gives an overview of how the utilities relate to one
+another. Each utility is documented in full on its own manual page.
 .Sh UTILITIES
 .Bl -tag -width "license_headers.sh"
 .It Xr install.sh 1
 Create a symbolic link from the QMK keymap directory to the
 Spacecentricity keymap.
 .It Xr uninstall.sh 1
-Remove the Spacecentricity keymap symlink and any project manual pages
-installed by
+Remove the Spacecentricity keymap symlink and any project manual
+pages installed by
 .Xr install_man.sh 1 .
 .It Xr install_man.sh 1
 Install or remove the project's manual pages.
 .It Xr license_headers.sh 1
-Add or remove copyright and license headers from project source files.
+Add or remove copyright and license headers on project source files.
 .It Xr build.sh 1
-Build, flash, lint, clean, check status, or open the QMK debug console
-for the Spacecentricity keymap.
+Build, flash, lint, clean, check status, or open the QMK debug
+console for the Spacecentricity keymap.
 .El
 .Sh QMK INTEGRATION
 The project targets the
@@ -43,43 +44,44 @@ By default, the QMK checkout is expected to be at
 .Pa $HOME/qmk_firmware .
 This location may be overridden with the
 .Ev QMK_PATH
-environment variable.
+environment variable, accepted by every utility that touches the QMK
+tree.
 .Pp
-The Spacecentricity keymap is exposed to QMK through a symbolic link
-rather than by copying project files into the QMK source tree. This
-allows the working copy to remain in the project repository while QMK
-operates on it from its expected keymap path.
+The keymap is exposed to QMK through a symbolic link rather than by
+copying project files into the QMK source tree. This keeps the
+working copy in the project repository while QMK builds from its
+expected keymap path.
 .Sh WORKFLOW
-A typical project workflow consists of:
+A typical project workflow:
 .Bl -enum
 .It
-Run
-.Xr install.sh 1
-to link the keymap into the QMK checkout.
+Link the keymap into the QMK checkout:
+.Pp
+.Dl install.sh
 .It
-Run
-.Xr install_man.sh 1
-to install the project manual pages.
+Install the project manual pages:
+.Pp
+.Dl install_man.sh
 .It
-Use
-.Xr build.sh 1
-to build, lint, check, or flash the firmware.
+Build, lint, check status, or flash the firmware as needed:
+.Pp
+.Dl build.sh -f
 .It
-Use
-.Xr license_headers.sh 1
-when maintaining source-file license headers.
+Maintain source-file license headers when adding or editing files:
+.Pp
+.Dl license_headers.sh
 .It
-Run
-.Xr uninstall.sh 1
-to remove the QMK integration and installed manual pages.
-.It
-Periodically update the QMK firmware checkout with
-.Ic git pull
-to keep the local QMK tree current.
+Remove the QMK integration and installed manual pages when done:
+.Pp
+.Dl uninstall.sh
 .El
+.Pp
+Keep the QMK firmware checkout itself current independently, using
+.Xr git 1
+inside the QMK tree.
 .Sh PROJECT ROOT
-The project root provides convenience stubs for selected utilities.
-In particular, the
+The project root provides a convenience stub for the most frequently
+used utility. The
 .Pa build
 stub invokes
 .Xr build.sh 1
@@ -92,34 +94,31 @@ For example:
 \&./build --check
 .Ed
 .Sh DOCUMENTATION
-The project manual pages are maintained in
+Project manual pages are maintained in
 .Pa docs/man/
 using the
 .Xr mdoc 7
-format.
-.Pp
-The manual pages may be installed with
+format, and may be installed with
 .Xr install_man.sh 1
-and removed as part of
+or removed as part of
 .Xr uninstall.sh 1 .
 .Pp
-The installed pages provide detailed command reference for each project
-utility, while
-.Nm
-serves as an overview of how the utilities relate to one another.
+The individual pages provide detailed command reference for each
+utility; this manual page serves as the overview tying them together.
 .Sh FILES
 .Bl -tag -width "scripts/license_headers.sh"
 .It Pa scripts/
 Project shell utilities.
 .It Pa docs/man/
-Project manual pages in
+Project manual pages, in
 .Xr mdoc 7
 source format.
 .It Pa $HOME/qmk_firmware
-Default QMK firmware checkout.
+Default QMK firmware checkout location.
 .El
 .Sh SEE ALSO
 .Xr sh 1 ,
+.Xr git 1 ,
 .Xr mdoc 7 ,
 .Xr build.sh 1 ,
 .Xr install.sh 1 ,

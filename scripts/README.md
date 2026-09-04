@@ -74,15 +74,15 @@ cd ~/path/to/keymap/scripts
 
 | Flag                           | Description                                       |
 |--------------------------------|---------------------------------------------------|
-| -c, --clean, --clear           | Remove QMK build artifacts before building        |
-| --clean-only, --clear-only     | Clean and exit without building                   |
-| -C, --check                    | Run status check + strict lint in one pass        |
-| -d, --console                  | Open the QMK HID debug console                    |
-| -f, --flash                    | Build and flash the firmware                      |
-| -h, --help                     | Show this help message and exit                   |
-| -l, --lint                     | Lint the keymap before building                   |
-| -S, --strict                   | Treat lint warnings as errors (requires `--lint)` |
-| -s, --status                   | Show symlink/QMK status and exit                  |
+| `-c`, `--clean`, `--clear`     | Remove QMK build artifacts before building        |
+| `--clean-only`, `--clear-only` | Clean and exit without building                   |
+| `-C`, `--check`                | Run status check + strict lint in one pass        |
+| `-d`, `--console`              | Open the QMK HID debug console                    |
+| `-f`, `--flash`                | Build and flash the firmware                      |
+| `-h`, `--help`                 | Show this help message and exit                   |
+| `-l`, `--lint`                 | Lint the keymap before building                   |
+| `-S`, `--strict`               | Treat lint warnings as errors (requires `--lint`) |
+| `-s`, `--status`               | Show symlink/QMK status and exit                  |
 
 ### Example Runs
 

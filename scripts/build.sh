@@ -166,6 +166,7 @@ fi
 # -------------------------
 if [ "$CONSOLE" -eq 1 ]; then
     echo "🖥️  Opening QMK HID console..."
+    echo "💡 Enable debug output on the keyboard (hold the debug-toggle key) to see live output."
     qmk console
     exit $?
 fi
