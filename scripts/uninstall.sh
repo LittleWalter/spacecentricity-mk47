@@ -16,6 +16,9 @@ This POSIX-compliant script removes the symbolic link from your QMK keymaps
 directory that was created by the install script. It does NOT delete any 
 files from this repository — only the symlink inside your QMK tree.
 
+This script also removes any optional man pages previously installed by
+install_man.sh.
+
 By default:
   - The keymap name is: spacecentricity
   - The QMK checkout is assumed to be at:

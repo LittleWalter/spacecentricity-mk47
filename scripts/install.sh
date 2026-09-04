@@ -9,25 +9,37 @@ print_help() {
 | | '_ \/ __| __/ _\` | | | / __| '_ \\
 | | | | \__ \ || (_| | | |_\__ \ | | |
 |_|_| |_|___/\__\__,_|_|_(_)___/_| |_|
+
 Usage: $(basename "$0") [keymap_name] [options]
-This POSIX-complaint script creates a symbolic link from your QMK 
+
+This POSIX-complaint script creates a symbolic link from your QMK
 keymaps directory to the root of this keymap repository. It allows
 QMK to use this keymap without copying files into the QMK tree.
+
+This script prompts you to install the optional man pages for this
+keymap’s helper scripts, and invokes install_man.sh if you confirm.
+
 By default:
   - The keymap name is: spacecentricity
   - The QMK checkout is assumed to be at:
         \$HOME/qmk_firmware
+
 You can override these defaults:
+
   Keymap name as an argument:
       $(basename "$0") my_keymap_name
+
   QMK root path (environment variable):
       QMK_PATH=/path/to/qmk_firmware $(basename "$0")
+
 Options:
   -h, --help    Show this help message and exit
+
 Examples:
   $(basename "$0")
   $(basename "$0") my_keymap_name
   QMK_PATH=~/Projects/qmk_firmware $(basename "$0")
+
 After installation, build your firmware with:
   qmk compile -kb inland/mk47 -km <keymap_name>
 EOF

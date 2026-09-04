@@ -23,17 +23,22 @@
 
 ---
 
+## 2026-09-03 (Thursday)
+- `scripts/`
+  - `NEW:` Added `--check` flag to `scripts/build.sh` to check the symlink then run `--lint --strict`.
+  - `DOCS:` Updated `--help` output of `scripts/` and related Markdown.
+
 ## 2026-09-02 (Wednesday)
 - `DOCS:`
   - `NEW:` Added optional man pages for the build tools: `build.sh`, `install.sh`, `uninstall.sh`, `license_headers.sh`, and `install_man.sh`.
   - `NEW:` Added fun _Doom_ (1993) box-style top graphic for fun.
-- `scripts`
+- `scripts/`
   - `NEW:` Added `scripts/install_man.sh` to install and remove the man pages for the build tools in [`./docs/man/`](./docs/man/).
   - Updated related documentation; added ToC to [`./scripts/README.md`](./scripts/README.md).
 
 ## 2026-08-31 (Monday)
 
-- `scripts`
+- `scripts/`
   - `CHANGE:` Refactored `scripts/build.sh` to accept `--clear` and `--clear-only` flags.
   - `NEW:` Added `scripts/add_license_headers.sh` to add predefined copyright and license headers.
   - `NEW:` Added `scripts/build.sh --lint` (plus the optional `--strict` flag to treat warnings as errors) for QMK linting support.

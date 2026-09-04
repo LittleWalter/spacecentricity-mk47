@@ -14,6 +14,10 @@ is an optional POSIX-compliant script that creates a symbolic link from your QMK
 keymaps directory to the root of this keymap repository, allowing QMK
 to build this keymap without copying files into the QMK source tree.
 .Pp
+Optional man pages for this keymap’s helper scripts can be installed
+separately with
+.Xr install_man.sh 1 .
+.Pp
 By default:
 .Bl -bullet
 .It
@@ -67,8 +71,8 @@ qmk compile -kb inland/mk47 -km <keymap_name>
 .Xr uninstall.sh 1 ,
 .Xr install_man.sh 1 ,
 .Xr license_headers.sh 1
-
 .Sh AUTHORS
 .An LittleWalter
-
+.Sh SOURCE CODE
 .Lk https://github.com/LittleWalter/spacecentricity-mk47
+

@@ -9,7 +9,8 @@ This directory keeps Markdown documentation separate from the project root.
 ├── assets/           → Visual documentation & layout data, mostly PNGs
 │   └── json/         → Machine-readable layout definitions for keyboard-layout-editor.com
 │
-├── docs/ 📍 (Advanced firmware documentation)
+├── docs/ 📍 (Advanced firmware & build tooling documentation)
+├── docs/             → Advanced firmware & build tooling documentation
 │   ├── man/                          → Man pages for build tooling
 │   │   ├── build.sh.1                → Man page for ../../scripts/build.sh
 │   │   ├── install.sh.1              → Man page for ../../scripts/install.sh
@@ -22,12 +23,12 @@ This directory keeps Markdown documentation separate from the project root.
 │   │
 │   └── README.md     → This Markdown file 👋
 │
-├── scripts/                    → Build & “(un)installation” tooling
-│   ├── build.sh                → The firmware build script, wraps `qmk`
-│   ├── install.sh              → Create the project symlink
-│   ├── install_man.sh          → Copy build tooling man pages: $HOME/.local/share/man/man1
-│   ├── uninstall.sh            → Remove the project symlink
-│   ├── license_headers.sh      → Add/remove predefined license headers in `src/`
+├── scripts/                → Build & “(un)installation” tooling
+│   ├── build.sh            → The firmware build script, wraps `qmk`
+│   ├── install.sh          → Create the project symlink
+│   ├── install_man.sh      → Copy build tooling man pages to $HOME/.local/share/man/man1
+│   ├── uninstall.sh        → Remove the project symlink
+│   ├── license_headers.sh  → Add/remove predefined license headers in `src/`
 │   │
 │   └── README.md     → Tooling documentation
 │

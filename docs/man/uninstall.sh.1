@@ -19,6 +19,9 @@ This script does
 delete any files from this repository; it only removes the symlink
 inside the QMK tree.
 .Pp
+This script also removes any optional man pages previously installed by
+.Xr install_man.sh 1 .
+.Pp
 By default:
 .Bl -bullet
 .It
@@ -72,8 +75,7 @@ keyboards/<keyboard>/<revision>/keymaps/
 .Xr install.sh 1 ,
 .Xr install_man.sh 1 ,
 .Xr license_headers.sh 1
-
 .Sh AUTHORS
 .An LittleWalter
-
+.Sh SOURCE CODE
 .Lk https://github.com/LittleWalter/spacecentricity-mk47

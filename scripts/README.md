@@ -72,6 +72,7 @@ cd ~/path/to/keymap/scripts
 |--------------------------------|-------------|
 | `-c`, `--clean`, `--clear`     | Remove QMK build artifacts before building |
 | `--clean-only`, `--clear-only` | Clean build artifacts and exit without building |
+| `--check`                      | Run status check + strict lint in one pass |
 | `-f`, `--flash`                | Flash the firmware after building |
 | `-h`, `--help`                 | Show help message |
 | `-l`, `--lint`                 | Lint the keymap before building |
@@ -85,6 +86,7 @@ cd ~/path/to/keymap/scripts
 ./build.sh my_keymap       # build w/ custom keymap name
 ./build.sh --clean-only    # remove cached build files
 ./build.sh --clean --flash # clean, build, and flash
+./build.sh --check         # verify symlink and lint cleanliness together
 ./build.sh --status        # check symlink and QMK paths
 ```
 

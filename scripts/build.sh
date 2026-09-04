@@ -23,6 +23,7 @@ By default:
 Options:
   -c, --clean, --clear        Remove QMK build artifacts before building
   --clean-only, --clear-only  Clean and exit without building
+  --check                     Run status check + strict lint in one pass
   -f, --flash                 Flash the firmware after building
   -h, --help                  Show this help message and exit
   -l, --lint                  Lint the keymap before building
@@ -49,6 +50,7 @@ EOF
 }
 
 # Defaults
+CHECK_ONLY=0
 CLEAN=0
 CLEAN_ONLY=0
 FLASH=0
@@ -69,6 +71,9 @@ for arg in "$@"; do
             ;;
         -c|--clean|--clear)
             CLEAN=1
+            ;;
+        --check)
+            CHECK_ONLY=1
             ;;
         --clean-only|--clear-only)
             CLEAN_ONLY=1
@@ -100,7 +105,7 @@ QMK_PATH="${QMK_PATH:-$HOME/qmk_firmware}"
 KEYBOARD="inland/mk47"
 TARGET="$QMK_PATH/keyboards/$KEYBOARD/keymaps/$KEYMAP_NAME"
 
-# -------------------------
+## -------------------------
 # Status check function
 # -------------------------
 show_status() {
@@ -149,6 +154,32 @@ if [ ! -L "$TARGET" ]; then
     echo "   $TARGET"
     echo "   Run ./install.sh to link this keymap into QMK."
     exit 1
+fi
+
+# -------------------------
+# Combined check (status + strict lint)
+# -------------------------
+if [ "$CHECK_ONLY" -eq 1 ]; then
+    show_status
+    STATUS_RESULT=$?
+    echo
+
+    if [ "$STATUS_RESULT" -ne 0 ]; then
+        echo "❌ Status check failed. Skipping lint."
+        exit 1
+    fi
+
+    echo "🔍 Linting keymap (strict)..."
+    qmk lint -kb "$KEYBOARD" -km "$KEYMAP_NAME" --strict
+    LINT_RESULT=$?
+
+    if [ "$LINT_RESULT" -ne 0 ]; then
+        echo "❌ Lint failed."
+        exit "$LINT_RESULT"
+    fi
+
+    echo "✅ Check complete: symlink OK, lint passed."
+    exit 0
 fi
 
 # -------------------------
