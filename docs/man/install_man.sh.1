@@ -11,10 +11,14 @@
 .Op Fl h | Fl -help
 .Sh DESCRIPTION
 .Nm
-installs (or removes) the man pages in
+is an optional POSIX-compliant script for installing or removing this project’s man pages.
+.Pp
+It copies the pages in
 .Pa docs/man
 into your local man page directory, making them accessible via
-.Ic man Ns Ao Ar script-name Ac Ns .sh .
+.Ic man ,
+e.g.,
+.Ic man build.sh .
 .Pp
 With no options,
 .Nm
