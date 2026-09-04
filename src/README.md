@@ -19,7 +19,7 @@ The base path of the QMK firmware source code.
 │   ├── install.sh          → Create the project symlink
 │   ├── install_man.sh      → Copy build tooling man pages: $HOME/.local/share/man/man1
 │   ├── uninstall.sh        → Remove the project symlink
-│   ├── license_headers.sh  → Add/remove predefined license headers in `src/`
+│   ├── license_headers.sh  → Add/remove license headers in `src/` and root-level `keymap.c` stub.
 │   │
 │   └── README.md           → Tooling documentation
 │

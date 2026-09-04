@@ -7,7 +7,7 @@
 .Sh SYNOPSIS
 .Nm
 .Op Fl i | Fl -install
-.Op Fl r | Fl -remove
+.Op Fl r | Fl -remove | Fl -remove-all
 .Op Fl h | Fl -help
 .Sh DESCRIPTION
 .Nm
@@ -44,7 +44,7 @@ Install man pages explicitly:
 Remove installed man pages:
 .Pp
 .Dl install_man.sh --remove
-.Sh TRICKS & TIPS
+.Sh TIPS
 Before running this script, check for man page namespace conflicts:
 .Pp
 .Dl man -w Ao Ar script-name Ac Ns .sh

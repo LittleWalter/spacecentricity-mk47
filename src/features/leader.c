@@ -1,8 +1,9 @@
-// ─────────────────────────────────────────────────────────────
-// Spacecentricity — A Planck MIT Keymap for the Inland MK-47
+// ─────────────────────────────────────────────────────────────────
+// Spacecentricity v0.1.0 — A Planck MIT Keymap for the Inland MK-47
 // Copyright © 2026 LittleWalter
 // SPDX-License-Identifier: MIT
-// ─────────────────────────────────────────────────────────────
+// Source: https://github.com/LittleWalter/spacecentricity-mk47
+// ─────────────────────────────────────────────────────────────────
 
 // REF: https://rgoulter.com/blog/posts/programming/2024-06-16-using-the-qmk-leader-key-for-fancy-keyboard-functionality.html
 

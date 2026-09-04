@@ -7,7 +7,7 @@
 .Sh SYNOPSIS
 .Nm
 .Op Fl a | Fl -add
-.Op Fl r | Fl -remove-all
+.Op Fl r | Fl -remove | Fl -remove-all
 .Op Fl h | Fl -help
 .Sh DESCRIPTION
 .Nm
@@ -16,7 +16,10 @@ is an optional POSIX-compliant script that adds or removes a standard copyright 
 and
 .Pa .h
 file under
-.Pa src/ .
+.Pa src/ ,
+plus the root-level
+.Pa keymap.c
+stub.
 .Pp
 Must be invoked from the project root.
 .Sh OPTIONS
@@ -24,7 +27,7 @@ Must be invoked from the project root.
 .It Fl a , Fl -add
 Add the header to files that don't already have it.
 This is the default behavior when no mode flag is given.
-.It Fl r , Fl -remove-all
+.It Fl r , Fl -remove , Fl -remove-all
 Remove the header from files where it exactly matches the
 header defined in the script.
 .It Fl h , Fl -help
@@ -36,7 +39,7 @@ Show the help message and exit.
 \&./scripts/license_headers.sh --add        # Same as above, explicit
 \&./scripts/license_headers.sh --remove-all # Remove headers where present
 .Ed
-.Sh TRICKS & TIPS
+.Sh TIPS
 After this script successfully completes, run
 .Pp
 .Dl ./build --lint

@@ -17,11 +17,12 @@ These scripts are optional, but they make it easier to keep this firmware in its
 - [`install.sh`](#install-sh)
 - [`uninstall.sh`](#uninstall-sh)
 - [`build.sh`](#build-sh)
-  - [Options](#options)
+  - [Options](#build-options)
   - [Example Runs](#example-runs)
 - [Help](#help)
-  - [Man Pages](#man-pages)
-    - [Installing Man Pages (`install_man.sh`)](#installing-man-pages)
+  - [Man Pages (`install_man.sh`)](#man-pages)
+    - [Options](#man-page-options)
+    - [Installing Man Pages](#installing-man-pages)
     - [Removing Man Pages](#removing-man-pages)
 - [Custom QMK Path](#custom-qmk-path)
 - [`license_headers.sh`](#license-headers-sh-add-remove-copyright-license-headers)
@@ -65,19 +66,23 @@ cd ~/path/to/keymap/scripts
 ```
 > [!TIP]
 > You can use the `build` wrapper in the project root without running `./scripts/build.sh` directly.
+>
+> This script should be able to handle 90%+ of `qmk` command scenarios.
 
+<a id="build-options"></a>
 ### Options
 
-| Flag                           | Description |
-|--------------------------------|-------------|
-| `-c`, `--clean`, `--clear`     | Remove QMK build artifacts before building |
-| `--clean-only`, `--clear-only` | Clean build artifacts and exit without building |
-| `--check`                      | Run status check + strict lint in one pass |
-| `-f`, `--flash`                | Flash the firmware after building |
-| `-h`, `--help`                 | Show help message |
-| `-l`, `--lint`                 | Lint the keymap before building |
-| `--strict`                     | Treat lint warnings as errors (requires `--lint`) |
-| `-s`, `--status`               | Show symlink and QMK status and exit |
+| Flag                           | Description                                       |
+|--------------------------------|---------------------------------------------------|
+| -c, --clean, --clear           | Remove QMK build artifacts before building        |
+| --clean-only, --clear-only     | Clean and exit without building                   |
+| -C, --check                    | Run status check + strict lint in one pass        |
+| -d, --console                  | Open the QMK HID debug console                    |
+| -f, --flash                    | Build and flash the firmware                      |
+| -h, --help                     | Show this help message and exit                   |
+| -l, --lint                     | Lint the keymap before building                   |
+| -S, --strict                   | Treat lint warnings as errors (requires `--lint)` |
+| -s, --status                   | Show symlink/QMK status and exit                  |
 
 ### Example Runs
 
@@ -88,6 +93,7 @@ cd ~/path/to/keymap/scripts
 ./build.sh --clean --flash # clean, build, and flash
 ./build.sh --check         # verify symlink and lint cleanliness together
 ./build.sh --status        # check symlink and QMK paths
+./build.sh --console       # run the QMK HID debug console: hit the “debug key” on your keymap!
 ```
 
 <a id="help"></a>
@@ -104,20 +110,31 @@ Display help messages with options `-h` and `--help`:
 ```
 
 <a id="man-pages"></a>
-### 📖 Man Pages
+### 📖 Man Pages (`install_man.sh`)
 
-Install this project's optional [man pages](https://en.wikipedia.org/wiki/Man_page) — covering `install.sh`, `uninstall.sh`, `build.sh`, `license_headers.sh`, and `install_man.sh` — into your local man page directory, so they're accessible via `man <script_name>`.
+Install this project’s optional [manual pages](https://en.wikipedia.org/wiki/Man_page) — covering `install.sh`, `uninstall.sh`, `build.sh`, `license_headers.sh`, and `install_man.sh` — into your local man page directory, so they’re accessible via `man <script_name>.sh`.
+
+Additionally, `spacecentricity.7` is installed to `~/.local/share/man/man7/` as an overview of the project’s scripts and development utilities.
+
+<a id="man-page-options"></a>
+#### Options
+
+| Flag                             | Description                    |
+|----------------------------------|--------------------------------|
+| `-i`, `--install`                | Install man pages (default)    |
+| `-r`, `--remove`, `--remove-all` | Remove installed man pages     |
+| `-h`, `--help`                   | Show help message and exit     |
 
 <a id="installing-man-pages"></a>
-#### Installing Man Pages (`install_man.sh`)
+#### Installing Man Pages
 
 ```bash
 cd ~/path/to/keymap/scripts
 ./install_man.sh
 ```
 
-> [!NOTE]
-> Man pages are installed to `~/.local/share/man/man1`. If `man` can't find them after installation, add this to your shell configuration:
+> [!NOTE] 
+> Man pages are installed to `~/.local/share/man/man1` and `~/.local/share/man/man7`. If `man` can't find them after installation, add this to your shell configuration:
 > `export MANPATH="$HOME/.local/share/man:$MANPATH"`
 >
 > These filenames are unlikely to conflict with existing man pages, but you can check beforehand with `man -w <script-name>.sh` to confirm nothing's already installed under that name.
@@ -128,22 +145,15 @@ cd ~/path/to/keymap/scripts
 ./install_man.sh --remove
 ```
 
-#### Options
-
-| Flag                | Description |
-|----------------------|-------------|
-| `-i`, `--install`    | Install man pages (default) |
-| `-r`, `--remove`     | Remove installed man pages |
-| `-h`, `--help`       | Show help message |
-
 #### Example Runs
 
 ```bash
-man build.sh
-man install.sh
-man uninstall.sh
-man license_headers.sh
-man install_man.sh
+man spacecentricity    # overview of build tools & friends
+man build.sh           # how to use the main build script
+man install.sh         # how to install spacecentricity
+man uninstall.sh       # how to uninstall spacecentricity
+man license_headers.sh # how to add/remove copyright & license headers
+man install_man.sh     # how to install these handy man pages
 ```
 
 <a id="custom-qmk-path"></a>
@@ -167,7 +177,7 @@ export QMK_PATH="$HOME/path/to/qmk_firmware"
 <a id="license-headers-sh-add-remove-copyright-license-headers"></a>
 ## ⚖️ `license_headers.sh`: Add/Remove Copyright & License Headers
 
-Adds or removes predefined license headers on each `.h` and `.c` file in `src/`.
+Adds or removes predefined license headers on each `.h` and `.c` file in `src/`, plus the root-level keymap.c` stub.
 
 Edit the script directly to change the header content.
 

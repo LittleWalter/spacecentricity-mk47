@@ -23,11 +23,12 @@ By default:
 Options:
   -c, --clean, --clear        Remove QMK build artifacts before building
   --clean-only, --clear-only  Clean and exit without building
-  --check                     Run status check + strict lint in one pass
-  -f, --flash                 Flash the firmware after building
+  -C, --check                 Run status check + strict lint in one pass
+  -d, --console               Open the QMK HID debug console
+  -f, --flash                 Build and flash the firmware
   -h, --help                  Show this help message and exit
   -l, --lint                  Lint the keymap before building
-  --strict                    Treat lint warnings as errors (requires --lint)
+  -S, --strict                Treat lint warnings as errors (requires --lint)
   -s, --status                Show symlink/QMK status and exit
 
 Environment:
@@ -53,6 +54,7 @@ EOF
 CHECK_ONLY=0
 CLEAN=0
 CLEAN_ONLY=0
+CONSOLE=0
 FLASH=0
 KEYMAP_NAME=""
 LINT=0
@@ -72,16 +74,19 @@ for arg in "$@"; do
         -c|--clean|--clear)
             CLEAN=1
             ;;
-        --check)
+        -C|--check)
             CHECK_ONLY=1
             ;;
         --clean-only|--clear-only)
             CLEAN_ONLY=1
             ;;
+         -d|--console)
+            CONSOLE=1
+            ;;
         -l|--lint)
             LINT=1
             ;;
-        --strict)
+        -S|--strict)
             STRICT=1
             ;;
         -s|--status)
@@ -154,6 +159,15 @@ if [ ! -L "$TARGET" ]; then
     echo "   $TARGET"
     echo "   Run ./install.sh to link this keymap into QMK."
     exit 1
+fi
+
+# -------------------------
+# Console (QMK HID debug console)
+# -------------------------
+if [ "$CONSOLE" -eq 1 ]; then
+    echo "🖥️  Opening QMK HID console..."
+    qmk console
+    exit $?
 fi
 
 # -------------------------

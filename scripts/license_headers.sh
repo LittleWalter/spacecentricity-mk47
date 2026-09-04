@@ -1,6 +1,5 @@
 #!/bin/sh
-# add_license_headers.sh — prepends (or removes) a license header on all .c/.h
-# files under src/.
+# license_headers.sh — prepends (or removes) a license header on all .c/.h
 
 print_help() {
     cat <<'ASCII_ART'
@@ -22,14 +21,15 @@ ASCII_ART
     cat <<EOF
 Usage: ./scripts/$(basename "$0") [options]
 
-Adds or removes a standard license header on every .c/.h file under src/.
+Adds or removes a standard license header on every .c/.h file under src/,
+plus the root-level keymap.c stub.
 
 Invoke this script from the project root.
 
 Options:
-  -a, --add          Add the header to files that don't already have it (default)
-  -r, --remove-all   Remove the header from files where it exactly matches
-  -h, --help         Show this help message and exit
+  -a, --add                   Add the header to files that don't already have it (default)
+  -r, --remove, --remove-all  Remove the header from files where it exactly matches
+  -h, --help                  Show this help message and exit
 
 Examples:
   ./scripts/$(basename "$0")              # Add headers where missing
@@ -42,11 +42,12 @@ Tips:
 EOF
 }
 
-HEADER="// ─────────────────────────────────────────────────────────────
-// Spacecentricity — A Planck MIT Keymap for the Inland MK-47
+HEADER="// ─────────────────────────────────────────────────────────────────
+// Spacecentricity v0.1.0 — A Planck MIT Keymap for the Inland MK-47
 // Copyright © 2026 LittleWalter
 // SPDX-License-Identifier: MIT
-// ─────────────────────────────────────────────────────────────
+// Source: https://github.com/LittleWalter/spacecentricity-mk47
+// ─────────────────────────────────────────────────────────────────
 "
 
 HEADER_LINES=$(printf '%s\n' "$HEADER" | wc -l | tr -d ' ')
@@ -68,23 +69,36 @@ for arg in "$@"; do
         -a|--add)
             MODE="add"
             ;;
-        -r|--remove-all)
+        -r|--remove|--remove-all)
             MODE="remove"
             ;;
     esac
 done
 
+# Collect target files: everything under src/, plus the root keymap.c stub.
+TARGET_FILES=$(find src -type f \( -name "*.c" -o -name "*.h" \))
+if [ -f "keymap.c" ]; then
+    TARGET_FILES=$(printf '%s\n%s\n' "$TARGET_FILES" "keymap.c")
+fi
+
 if [ "$MODE" = "add" ]; then
-    find src -type f \( -name "*.c" -o -name "*.h" \) | while read -r file; do
-        if ! head -n "$HEADER_LINES" "$file" | grep -q "Copyright"; then
+    printf '%s\n' "$TARGET_FILES" | while read -r file; do
+        [ -z "$file" ] && continue
+
+        TOP_TMP=$(mktemp)
+        head -n "$HEADER_LINES" "$file" > "$TOP_TMP"
+
+        if ! cmp -s "$TOP_TMP" "$HEADER_FILE"; then
             tmp=$(mktemp)
             printf '%s\n' "$HEADER" | cat - "$file" > "$tmp"
             mv "$tmp" "$file"
             echo "✅ Added header: $file"
         fi
+        rm -f "$TOP_TMP"
     done
 else
-    find src -type f \( -name "*.c" -o -name "*.h" \) | while read -r file; do
+    printf '%s\n' "$TARGET_FILES" | while read -r file; do
+        [ -z "$file" ] && continue
         TOP_TMP=$(mktemp)
         head -n "$HEADER_LINES" "$file" > "$TOP_TMP"
 

@@ -23,6 +23,15 @@
 
 ---
 
+## 2026-09-04 (Friday)
+- `scripts/`
+  - `NEW:` Added `d` / `--console` flags to run `qmk console`.
+  - `NEW:` Added `C` shorthand flag to `--check`.
+  - `NEW:` Added `S` shorthand flag to `--strict` (must be used w/ `--lint`).
+  - Refactored flags using `--remove` to have the triple of `-r`, `--remove`, and `--remove-all`.
+- `DOCS:` Updated related documentation.
+
+
 ## 2026-09-03 (Thursday)
 - `scripts/`
   - `NEW:` Added `--check` flag to `scripts/build.sh` to check the symlink then run `--lint --strict`.

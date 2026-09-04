@@ -3,25 +3,27 @@
 .Os
 .Sh NAME
 .Nm build.sh
-.Nd build, flash, lint, clean, or check status of the Spacecentricity keymap (QMK firmware)
+.Nd build, flash, lint, clean, check status, or open a debug console for the Spacecentricity keymap (QMK firmware)
 .Sh SYNOPSIS
 .Nm
 .Op Ar keymap_name
 .Op Fl c | Fl -clean | Fl -clear
 .Op Fl -clean-only | Fl -clear-only
-.Op Fl -check
+.Op Fl C | Fl -check
+.Op Fl d | Fl -console
 .Op Fl f | Fl -flash
 .Op Fl l | Fl -lint
-.Op Fl -strict
+.Op Fl S | Fl -strict
 .Op Fl s | Fl -status
 .Op Fl h | Fl -help
 .Sh DESCRIPTION
 .Nm
 is an optional POSIX-compliant convenience wrapper for building, cleaning,
-flashing, linting, and checking the symlink/QMK status of this keymap
-inside your QMK firmware checkout.
+flashing, linting, checking the symlink/QMK status, and opening a debug
+console for this keymap inside your QMK firmware checkout.
 .Pp
-This script streamlines common workflows into a single‑command interface by reducing repetitive steps and cognitive overhead.
+This script streamlines common workflows into a single-command
+interface by reducing repetitive steps and cognitive overhead.
 .Pp
 By default:
 .Bl -bullet
@@ -38,21 +40,25 @@ The QMK checkout is assumed to be at
 Remove QMK build artifacts before building.
 .It Fl -clean-only , Fl -clear-only
 Clean build artifacts and exit without building.
-.It Fl -check
+.It Fl C , Fl -check
 Run a symlink/status check and a strict lint pass together, then exit.
 Equivalent to running
 .Fl -status
 followed by
 .Fl -lint Fl -strict .
+.It Fl d , Fl -console
+Open the QMK HID debug console
+.Pq Ic qmk console
+to view live debug output from the keyboard, then exit.
 .It Fl f , Fl -flash
-Flash the firmware after building.
+Build and flash the firmware.
 .It Fl h , Fl -help
 Show the help message and exit.
 .It Fl l , Fl -lint
 Lint the keymap before building.
-.It Fl -strict
+.It Fl S , Fl -strict
 Treat lint warnings as errors.
-Requires
+This option affects the lint operation and requires
 .Fl -lint .
 .It Fl s , Fl -status
 Show symlink/QMK status and exit.
@@ -71,14 +77,19 @@ build.sh -f               # Build and flash spacecentricity
 build.sh my_keymap_name   # Build a given keymap name
 build.sh --clean --flash  # Clean build artifacts, then flash spacecentricity
 build.sh --check          # Verify symlink and lint cleanliness together
+build.sh -d               # Open the QMK debug console
+build.sh --console        # Same as above
 QMK_PATH=~/Projects/qmk_firmware build.sh -s
 .Ed
-.Sh TRICKS & TIPS
+.Sh TIPS
 Use the stub in the project's root to invoke
 .Pa scripts/build.sh
 directly. For example, to build and flash the keyboard firmware:
 .Pp
 .Dl ./build -f
+.Pp
+Think of this script as a convenient command grammar for common
+QMK operations.
 .Sh SEE ALSO
 .Xr install.sh 1 ,
 .Xr uninstall.sh 1 ,
