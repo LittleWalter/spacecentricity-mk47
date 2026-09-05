@@ -34,6 +34,21 @@ Remove previously installed man pages.
 .It Fl h , Fl -help
 Show the help message and exit.
 .El
+.Sh ENVIRONMENT
+.Bl -tag -width Ds
+.It Ev QMK_PATH
+Path to your QMK firmware checkout.
+Defaults to
+.Pa $HOME/qmk_firmware .
+.It Ev SPACECENTRICITY_BANNER
+Set to
+.Sq false
+or
+.Sq 0
+to suppress the ASCII art banner by default, without needing
+.Fl -no-banner
+on every invocation.
+.El
 .Sh EXAMPLES
 Install man pages:
 .Pp

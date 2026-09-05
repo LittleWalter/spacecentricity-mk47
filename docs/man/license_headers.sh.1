@@ -32,8 +32,14 @@ Suppress the ASCII art banner for this invocation.
 .It Fl r , Fl -remove , Fl -remove-all
 Remove the header from files where it exactly matches the
 header defined in the script.
-.It Fl h , Fl -help
-Show the help message and exit.
+.It Fl s , Fl -stamp-version Ar VERSION
+Stamp
+.Ar VERSION
+into the header instead of using
+.Pa config.h
+data.
+Also accepts
+.Fl -stamp-version Ns = Ns Ar VERSION .
 .El
 .Sh EXAMPLES
 .Bd -literal

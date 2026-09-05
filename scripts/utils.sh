@@ -20,6 +20,6 @@ get_version() {
     if [ -n "$MAJOR" ] && [ -n "$MINOR" ] && [ -n "$PATCH" ]; then
         echo "${MAJOR}.${MINOR}.${PATCH}"
     else
-        echo "unknown"
+        echo "(unknown)"
     fi
 }

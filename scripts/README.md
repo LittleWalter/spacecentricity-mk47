@@ -1,16 +1,22 @@
-# 🔧 Build Scripts/Tools for QMK
+# 🔧 Build Environment: Scripts & Tools for QMK
 
 For convenience, this directory contains small POSIX-compliant helper scripts for installing, removing, and working with the symlink that connects this keymap repository to your local QMK firmware checkout.
 
-These scripts are optional, but they make it easier to keep this firmware in its own repository while still using it with QMK.
+These scripts are optional, but they make it easier to keep this firmware in its own repository while still using it with QMK.[^keep-it-simple]
+
+See `man spacecentricity` (once [man pages are installed](#man-pages)) for a full overview of how these scripts relate to one another.
 
 > [!NOTE]
+> These scripts assume you already have a working QMK firmware checkout. If you haven't set one up yet, see [QMK's official setup guide](https://docs.qmk.fm/#/newbs_getting_started).
+>
 > `keymap_name` is optional and defaults to `spacecentricity`.
 
 > [!TIP]
 > The helper scripts are committed with executable permissions.
 > If you run into permission issues, fix them with:
 > `chmod +x scripts/*.sh`
+
+[^keep-it-simple]: The goal is to keep the whole build tooling lean — under 1k SLOC of shell.
 
 ## Table of Contents
 
@@ -33,6 +39,7 @@ These scripts are optional, but they make it easier to keep this firmware in its
 - [Environment Variables](#environment-variables)
   - [Custom QMK Path](#custom-qmk-path)
   - [Suppress ASCII Art Banners](#suppress-ascii-art-banners)
+  - [MANPATH for Installed Man Pages](#manpath)
 - [`license_headers.sh`](#license-headers-sh-add-remove-copyright-license-headers)
   - [Usage](#license-headers-sh-usage)
   - [Options](#license-headers-sh-options)
@@ -43,7 +50,7 @@ These scripts are optional, but they make it easier to keep this firmware in its
 
 Creates a symlink in your QMK keymaps directory pointing to the root of this repository.
 
-Asks user to install the [optional man pages](#man-pages) for each of the scripts.
+Asks user to install the [optional man pages](#man-pages) for this project's scripts.
 
 <a id="install-sh-usage"></a>
 ### Usage
@@ -56,10 +63,10 @@ cd ~/path/to/keymap/scripts
 <a id="install-sh-options"></a>
 ### Options
 
-| Flag                                 | Description                             |
-|--------------------------------------|-----------------------------------------|
-| `-h`, `--help`                       | Show this help message and exit         |
-| `-n`, `--no-banner`, `--skip-banner` | Suppress the ASCII art banner on output |
+| Flag                                 | Description                              |
+|--------------------------------------|------------------------------------------|
+| `-h`, `--help`                       | Show the help message and exit           |
+| `-n`, `--no-banner`, `--skip-banner` | Suppress the ASCII art banner on output  |
 
 <a id="uninstall-sh"></a>
 ## 🗑️ `uninstall.sh`
@@ -79,10 +86,10 @@ cd ~/path/to/keymap/scripts
 <a id="uninstall-sh-options"></a>
 ### Options
 
-| Flag                                 | Description                             |
-|--------------------------------------|-----------------------------------------|
-| `-h`, `--help`                       | Show this help message and exit         |
-| `-n`, `--no-banner`, `--skip-banner` | Suppress the ASCII art banner on output |
+| Flag                                 | Description                              |
+|--------------------------------------|------------------------------------------|
+| `-h`, `--help`                       | Show the help message and exit           |
+| `-n`, `--no-banner`, `--skip-banner` | Suppress the ASCII art banner on output  |
 
 <a id="build-sh"></a>
 ## 🔨 `build.sh`
@@ -111,7 +118,7 @@ cd ~/path/to/keymap/scripts
 | `-C`, `--check`                      | Run status check + strict lint in one pass        |
 | `-d`, `--console`                    | Open the QMK HID debug console                    |
 | `-f`, `--flash`                      | Build and flash the firmware                      |
-| `-h`, `--help`                       | Show this help message and exit                   |
+| `-h`, `--help`                       | Show the help message and exit                    |
 | `-l`, `--lint`                       | Lint the keymap before building                   |
 | `-n`, `--no-banner`, `--skip-banner` | Suppress the ASCII art banner on output           |
 | `-S`, `--strict`                     | Treat lint warnings as errors (requires `--lint`) |
@@ -153,12 +160,12 @@ Additionally, `spacecentricity.7` is installed to `~/.local/share/man/man7/` as 
 <a id="man-page-options"></a>
 #### Options
 
-| Flag                                 | Description                             |
-|--------------------------------------|-----------------------------------------|
-| `-i`, `--install`                    | Install man pages (default)             |
-| `-n`, `--no-banner`, `--skip-banner` | Suppress the ASCII art banner on output |
-| `-r`, `--remove`, `--remove-all`     | Remove installed man pages              |
-| `-h`, `--help`                       | Show help message and exit              |
+| Flag                                 | Description                              |
+|--------------------------------------|------------------------------------------|
+| `-i`, `--install`                    | Install man pages (default)              |
+| `-n`, `--no-banner`, `--skip-banner` | Suppress the ASCII art banner on output  |
+| `-r`, `--remove`, `--remove-all`     | Remove installed man pages               |
+| `-h`, `--help`                       | Show the help message and exit           |
 
 <a id="man-pages-installing"></a>
 #### Installing Man Pages
@@ -169,8 +176,7 @@ cd ~/path/to/keymap/scripts
 ```
 
 > [!NOTE]
-> Man pages are installed to `~/.local/share/man/man1` and `~/.local/share/man/man7`. If `man` can't find them after installation, add this to your shell configuration:
-> `export MANPATH="$HOME/.local/share/man:$MANPATH"`
+> Man pages are installed to `~/.local/share/man/man1` and `~/.local/share/man/man7`. If `man` can't find them after installation, see [MANPATH for Installed Man Pages](#manpath) below.
 >
 > These filenames are unlikely to conflict with existing man pages, but you can check beforehand with `man -w <script-name>.sh` to confirm.
 
@@ -187,14 +193,17 @@ cd ~/path/to/keymap/scripts
 ```bash
 man spacecentricity    # overview of build tools & friends
 man build.sh           # how to use the main build script
-man install.sh         # how to install spacecentricity
-man uninstall.sh       # how to uninstall spacecentricity
+man install.sh         # how to install spacecentricity's build environment
+man uninstall.sh       # how to uninstall spacecentricity's build environment
 man license_headers.sh # how to add/remove copyright & license headers
-man install_man.sh     # how to install these handy man pages
+man install_man.sh     # how to install/uninstall these handy man pages
 ```
 
 <a id="environment-variables"></a>
 ## 🌎 Environment Variables
+
+Project-wide environment variables used across the shell scripts. Define these variables to override
+default behavior in your shell configuration, e.g., [Bash](https://www.gnu.org/software/bash/) (`~/.bashrc`), [Zsh](https://www.zsh.org/) (`~/.zshrc` or `~/.zshenv`).
 
 <a id="custom-qmk-path"></a>
 ### 📁 Custom QMK Path
@@ -232,6 +241,15 @@ For a one-off suppression instead of a persistent setting, use the `--no-banner`
 ./build.sh --no-banner
 ```
 
+<a id="manpath"></a>
+### 📖 MANPATH for Installed Man Pages
+
+If `man` can't find the installed man pages after running `install_man.sh`, add this to your shell configuration:
+
+```bash
+export MANPATH="$HOME/.local/share/man:$MANPATH"
+```
+
 <a id="license-headers-sh-add-remove-copyright-license-headers"></a>
 ## ⚖️ `license_headers.sh`: Add/Remove Copyright & License Headers
 
@@ -252,12 +270,13 @@ cd ~/path/to/keymap/scripts
 <a id="license-headers-sh-options"></a>
 ### Options
 
-| Flag                                  | Description                                                  |
-|---------------------------------------|--------------------------------------------------------------|
-| `-a`, `--add`                         | Add the header to files that don't already have it (default) |
-| `-n`, `--no-banner`, `--skip-banner`  | Suppress the ASCII art banner on output                      |
-| `-r`, `--remove`, `--remove-all`      | Remove the header from files where it exactly matches        |
-| `-h`, `--help`                        | Show help message and exit                                   |
+| Flag                                     | Description                                                  |
+|------------------------------------------|--------------------------------------------------------------|
+| `-a`, `--add`                            | Add the header to files that don't already have it (default) |
+| `-h`, `--help`                           | Show the help message and exit                               |
+| `-n`, `--no-banner`, `--skip-banner`     | Suppress the ASCII art banner on output                      |
+| `-r`, `--remove`, `--remove-all`         | Remove the header from files where it exactly matches        |
+| `-s`, `--stamp-version`, `--set-version` | Stamp `VERSION` into the header instead of using `config.h` data (also accepts `--stamp-version=VERSION`), where `VERSION` is a `MAJOR.MINOR.PATCH` string |
 
 <a id="license-headers-sh-example-runs"></a>
 ### Example Runs

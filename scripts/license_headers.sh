@@ -41,11 +41,11 @@ plus the root-level keymap.c stub.
 Invoke this script from the project root.
 
 Options:
-  -a, --add                       Add the header to files that don't already have it (default)
-  -n, --no-banner, --skip-banner  Suppress the ASCII art banner on output
-  -r, --remove, --remove-all      Remove the header from files where it exactly matches
-  -v, --version VERSION           Stamp VERSION into the header instead of using config.h data
-                                   (also accepts --version=VERSION)
+  -a, --add                           Add the header to files that don't already have it (default)
+  -n, --no-banner, --skip-banner      Suppress the ASCII art banner on output
+  -r, --remove, --remove-all          Remove the header from files where it exactly matches
+  -s, --stamp-version, --set-version  Stamp VERSION into the header instead of using config.h data
+                                       (also accepts --stamp-version=MAJOR.MINOR.PATCH)
   -h, --help                      Show this help message and exit
 
 Environment:
@@ -56,7 +56,7 @@ Examples:
   ./scripts/$(basename "$0")                     # Add headers where missing
   ./scripts/$(basename "$0") --add               # Same as above, explicit
   ./scripts/$(basename "$0") --remove-all        # Remove headers where present
-  ./scripts/$(basename "$0") -v 0.9.0            # Stamp header with v0.9.0 instead of get_version()
+  ./scripts/$(basename "$0") -v 0.9.0            # Stamp header with v0.9.0 instead of config.h data
   ./scripts/$(basename "$0") --version=0.9.0-rc1 # Same, long-flag form
 
 Tips:
@@ -73,7 +73,6 @@ EOF
 NO_BANNER=0
 MODE="add"
 VERSION_OVERRIDE=""
-DATE="$(date "+%Y-%m-%d (%A)")"
 
 # Allow SPACECENTRICITY_BANNER=false (or 0) to suppress the banner by default,
 # without requiring --no-banner on every invocation.
@@ -98,7 +97,7 @@ while [ $# -gt 0 ]; do
         -r|--remove|--remove-all)
             MODE="remove"
             ;;
-        -v|--version)
+        -s|--stamp-version|--set-version)
             if [ -z "$2" ]; then
                 echo "❌ $1 requires an argument" >&2
                 exit 1
