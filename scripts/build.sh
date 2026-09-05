@@ -288,16 +288,95 @@ fi
 # -------------------------
 # Build
 # -------------------------
-echo "🔨 Building firmware..."
-qmk compile -kb "$KEYBOARD" -km "$KEYMAP_NAME"
+
+# Set this to the actual flash size for the mk47's MCU (WB32FQ95).
+# Check your QMK checkout's linker script to confirm the real value:
+#   find "$QMK_PATH" -path "*wb32*" -iname "*.ld"
+FLASH_TOTAL_BYTES=262144  # 256KB — confirm against the .ld file above before trusting this
+
+BUILD_LOG=$(mktemp)
+START_TIME=$(date +%s)
+
+qmk compile -kb "$KEYBOARD" -km "$KEYMAP_NAME" >"$BUILD_LOG" 2>&1 &
+BUILD_PID=$!
+
+# Fancy rotating spinner
+SPINNER_FRAMES='◒ ◐ ◓ ◑'
+FRAME_INDEX=0
+
+format_elapsed() {
+    _secs="$1"
+    _m=$((_secs / 60))
+    _s=$((_secs % 60))
+    if [ "$_m" -gt 0 ]; then
+        printf '%dm%02ds' "$_m" "$_s"
+    else
+        printf '%ds' "$_s"
+    fi
+}
+
+if [ -t 1 ]; then
+    printf '◒ Compiling…'
+    while kill -0 "$BUILD_PID" 2>/dev/null; do
+        FRAME=$(printf '%s' "$SPINNER_FRAMES" | awk -v i="$FRAME_INDEX" '{print $((i % NF) + 1)}')
+
+        NOW=$(date +%s)
+        LIVE_ELAPSED=$((NOW - START_TIME))
+        LIVE_FMT=$(format_elapsed "$LIVE_ELAPSED")
+
+        printf '\r%s Compiling… (%s) ' "$FRAME" "$LIVE_FMT"
+        FRAME_INDEX=$((FRAME_INDEX + 1))
+        sleep 0.15
+    done
+    printf '\r%*s\r' 30 ''  # clear the spinner line (widened to cover the timer text too)
+fi
+
+wait "$BUILD_PID"
 STATUS=$?
 
-echo
+END_TIME=$(date +%s)
+ELAPSED=$((END_TIME - START_TIME))
+ELAPSED_FMT=$(format_elapsed "$ELAPSED")
+
+BUILD_OUTPUT=$(cat "$BUILD_LOG")
+rm -f "$BUILD_LOG"
+
 if [ "$STATUS" -ne 0 ]; then
-    echo "❌ Build failed."
+    echo "❌ Build failed after ${ELAPSED_FMT}:"
+    printf '%s\n' "$BUILD_OUTPUT" | tail -n 20
     exit "$STATUS"
 fi
 
-echo "✅ Build completed successfully."
+echo "✅ Build completed successfully in ${ELAPSED_FMT}."
+
+SIZE_BYTES=$(printf '%s\n' "$BUILD_OUTPUT" | awk '/^[[:space:]]*[0-9]+[[:space:]]+[0-9]+[[:space:]]+[0-9]+[[:space:]]+[0-9]+[[:space:]]+[0-9a-f]+[[:space:]]/ {print $4; exit}')
+
+if [ -n "$SIZE_BYTES" ]; then
+    PERCENT=$(awk -v used="$SIZE_BYTES" -v total="$FLASH_TOTAL_BYTES" 'BEGIN { printf "%.1f", (used / total) * 100 }')
+    USED_KB=$(awk -v b="$SIZE_BYTES" 'BEGIN { printf "%.1f", b / 1024 }')
+    TOTAL_KB=$(awk -v b="$FLASH_TOTAL_BYTES" 'BEGIN { printf "%.0f", b / 1024 }')
+
+    BAR_WIDTH=30
+    FILLED=$(awk -v pct="$PERCENT" -v w="$BAR_WIDTH" 'BEGIN { printf "%d", (pct / 100) * w }')
+    [ "$FILLED" -gt "$BAR_WIDTH" ] && FILLED="$BAR_WIDTH"
+    EMPTY=$((BAR_WIDTH - FILLED))
+
+    BAR=$(printf '%*s' "$FILLED" '' | tr ' ' '█')
+    BAR="${BAR}$(printf '%*s' "$EMPTY" '' | tr ' ' '░')"
+
+    echo "📦 Firmware size: ${USED_KB}KB / ${TOTAL_KB}KB (${PERCENT}%)"
+    echo "   [${BAR}]"
+fi
+
+FIRMWARE_BASENAME="$(printf '%s' "$KEYBOARD" | tr '/' '_')_${KEYMAP_NAME}"
+FIRMWARE_FILE=$(find "$QMK_PATH" -maxdepth 1 -type f \
+    \( -name "${FIRMWARE_BASENAME}.bin" -o -name "${FIRMWARE_BASENAME}.hex" -o -name "${FIRMWARE_BASENAME}.uf2" \) \
+    2>/dev/null | head -n 1)
+
+if [ -n "$FIRMWARE_FILE" ]; then
+    echo "📍 Binary: $FIRMWARE_FILE"
+else
+    echo "⚠️  Could not locate compiled binary (expected ${FIRMWARE_BASENAME}.[bin|hex|uf2] in $QMK_PATH)"
+fi
 
 exit 0
