@@ -1,5 +1,7 @@
-// Version track this QMK firmware
-#define SPACECENTRICITY_VERSION 0.1.0
+// Version tracking for this QMK firmware
+#define SPACECENTRICITY_VERSION_MAJOR 0
+#define SPACECENTRICITY_VERSION_MINOR 1
+#define SPACECENTRICITY_VERSION_PATCH 0
 
 // Enable 32-layer support
 #define LAYER_STATE_32BIT

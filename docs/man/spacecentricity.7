@@ -35,6 +35,38 @@ Add or remove copyright and license headers on project source files.
 Build, flash, lint, clean, check status, or open the QMK debug
 console for the Spacecentricity keymap.
 .El
+.Sh GLOBAL OPTIONS
+The following options are supported across the project utilities:
+.Bl -tag -width Ds
+.It Fl h , Fl -help
+Show a help message and exit.
+.It Fl -n , Fl -no-banner , Fl -skip-banner
+Suppress the ASCII art banner on output.
+.El
+.Pp
+The banner may also be suppressed persistently, without passing a
+flag, by setting the
+.Ev SPACECENTRICITY_BANNER
+environment variable to
+.Sq false
+or
+.Sq 0 .
+.Sh ENVIRONMENT
+The following environment variables are supported across the project utilities:
+.Bl -tag -width Ds
+.It Ev QMK_PATH
+Path to your QMK firmware checkout.
+Defaults to
+.Pa $HOME/qmk_firmware .
+.It Ev SPACECENTRICITY_BANNER
+Set to
+.Sq false
+or
+.Sq 0
+to suppress the ASCII art banner by default, without needing
+.Fl -no-banner
+on every invocation.
+.El
 .Sh QMK INTEGRATION
 The project targets the
 .Qq inland/mk47

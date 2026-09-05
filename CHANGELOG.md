@@ -23,11 +23,17 @@
 
 ---
 
+## 2026-09-05 (Saturday)
+- `scripts/`
+  - `NEW:` Added `-n` / `--no-banner` / `--skip-banner` flags to skip the ASCII art banners.
+  - `NEW:` Added `SPACECENTRICITY_BANNER` environment variable; set to `false` or `0` to auto-skip banners.
+  - `DOCS:` Updated related Markdown and man pages.
+
 ## 2026-09-04 (Friday)
 - `scripts/`
-  - `NEW:` Added `d` / `--console` flags to run `qmk console`.
-  - `NEW:` Added `C` shorthand flag to `--check`.
-  - `NEW:` Added `S` shorthand flag to `--strict` (must be used w/ `--lint`).
+  - `NEW:` Added `-d` / `--console` flags to run `qmk console`.
+  - `NEW:` Added `-C` shorthand flag to `--check`.
+  - `NEW:` Added `-S` shorthand flag to `--strict` (must be used w/ `--lint`).
   - Refactored flags using `--remove` to have the triple of `-r`, `--remove`, and `--remove-all`.
 - `DOCS:` Updated related documentation.
 

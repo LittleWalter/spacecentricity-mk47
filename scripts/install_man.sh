@@ -2,29 +2,45 @@
 # install_man.sh — installs or removes this project's man pages from
 # docs/man into the user's local man page directory.
 
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+PROJECT_ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
+CONFIG_FILE="$PROJECT_ROOT/config.h"
+
+. "$SCRIPT_DIR/utils.sh"
+
+print_banner() {
+    VERSION=$(get_version)
+
+    cat <<BANNER
+ _              _           _  _                                       _     
+(_)            | |         | || |                                     | |    
+ _  _ __   ___ | |_   __ _ | || |     _ __ ___    __ _  _ __      ___ | |__  
+| || '_ \\ / __|| __| / _\` || || |    | '_ \` _ \\  / _\` || '_ \\    / __|| '_ \\ 
+| || | | |\\__ \\| |_ | (_| || || |    | | | | | || (_| || | | | _ \\__ \\| | | |
+|_||_| |_||___/ \\__| \\__,_||_||_|    |_| |_| |_| \\__,_||_| |_|(_)|___/|_| |_|
+                                ______                                         
+                               |______|            for Spacecentricity v${VERSION}
+BANNER
+}
+
 print_help() {
-    cat <<'ASCII_ART'
- _           _        _ _                               _
-(_)         | |      | | |                             | |
- _ _ __  ___| |_ __ _| | |  _ __ ___   __ _ _ __    ___| |__
-| | '_ \/ __| __/ _` | | | | '_ ` _ \ / _` | '_ \  / __| '_ \
-| | | | \__ \ || (_| | | | | | | | | (_| | | | |_\__ \ | | |
-|_|_| |_|___/\__\__,_|_|_| |_| |_| |_|\__,_|_| |_(_)___/_| |_|
-                       ______
-                      |______|
-
-ASCII_ART
-
+    print_banner
     cat <<EOF
+
 Usage: $(basename "$0") [options]
 
 Installs (or removes) the man pages in docs/man into your local man
 page directory, so they're accessible via 'man <script-name>.sh'.
 
 Options:
-  -i, --install                 Install man pages (default)
-  -r, --remove, --remove-all    Remove previously installed man pages
-  -h, --help                    Show this help message and exit
+  -i, --install                   Install man pages (default)
+  -n, --no-banner, --skip-banner  Suppress the ASCII art banner on output
+  -r, --remove, --remove-all      Remove previously installed man pages
+  -h, --help                      Show this help message and exit
+
+Environment:
+  QMK_PATH                    Path to your QMK checkout (default: $HOME/qmk_firmware)
+  SPACECENTRICITY_BANNER      Set to "false" or "0" to suppress the banner by default
 
 Examples:
   $(basename "$0")           # Install man pages
@@ -44,12 +60,22 @@ Tips:
 EOF
 }
 
+# Defaults
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 PROJECT_ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
 MAN_SRC_DIR="$PROJECT_ROOT/docs/man"
 MAN_DEST_ROOT="$HOME/.local/share/man"
 MAN_DEST_DIR="$MAN_DEST_ROOT/man1"
 MAN_DEST_DIR_7="$MAN_DEST_ROOT/man7"
+NO_BANNER=0
+
+# Allow SPACECENTRICITY_BANNER=false (or 0) to suppress the banner by default,
+# without requiring --no-banner on every invocation.
+case "$SPACECENTRICITY_BANNER" in
+    [Ff][Aa][Ll][Ss][Ee]|0)
+        NO_BANNER=1
+        ;;
+esac
 
 MODE="install"
 for arg in "$@"; do
@@ -61,11 +87,20 @@ for arg in "$@"; do
         -i|--install)
             MODE="install"
             ;;
+        -n|--no-banner|--skip-banner)
+            NO_BANNER=1
+            ;;
         -r|--remove|--remove-all)
             MODE="remove"
             ;;
     esac
 done
+
+# Display the ASCII banner (default)
+if [ "$NO_BANNER" -eq 0 ]; then
+    print_banner
+    echo
+fi
 
 if [ ! -d "$MAN_SRC_DIR" ]; then
     echo "❌ Man page source directory not found: $MAN_SRC_DIR"

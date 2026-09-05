@@ -56,6 +56,11 @@ Build and flash the firmware.
 Show the help message and exit.
 .It Fl l , Fl -lint
 Lint the keymap before building.
+.It Fl n , Fl -no-banner , Fl -skip-banner
+Suppress the ASCII art banner for this invocation.
+Overrides
+.Ev SPACECENTRICITY_BANNER
+when set.
 .It Fl S , Fl -strict
 Treat lint warnings as errors.
 This option affects the lint operation and requires
@@ -69,17 +74,27 @@ Show symlink/QMK status and exit.
 Path to your QMK firmware checkout.
 Defaults to
 .Pa $HOME/qmk_firmware .
+.It Ev SPACECENTRICITY_BANNER
+Set to
+.Sq false
+or
+.Sq 0
+to suppress the ASCII art banner by default, without needing
+.Fl -no-banner
+on every invocation.
 .El
 .Sh EXAMPLES
 .Bd -literal
 build.sh                  # Build spacecentricity
 build.sh -f               # Build and flash spacecentricity
+build.sh --no-banner -f   # Build and flash without the banner
 build.sh my_keymap_name   # Build a given keymap name
 build.sh --clean --flash  # Clean build artifacts, then flash spacecentricity
 build.sh --check          # Verify symlink and lint cleanliness together
 build.sh -d               # Open the QMK debug console
 build.sh --console        # Same as above
-QMK_PATH=~/Projects/qmk_firmware build.sh -s
+QMK_PATH=~/Projects/qmk_firmware build.sh -s  # Display status w/ custom QMK path
+SPACECENTRICITY_BANNER=false build.sh         # Skip banner via environment variable
 .Ed
 .Sh TIPS
 Use the stub in the project's root to invoke

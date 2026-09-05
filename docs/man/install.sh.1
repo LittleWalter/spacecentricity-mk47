@@ -47,6 +47,8 @@ QMK_PATH=/path/to/qmk_firmware install.sh
 .Bl -tag -width Ds
 .It Fl h , Fl -help
 Show the help message and exit.
+.It Fl n , Fl -no-banner , Fl -skip-banner
+Suppress the ASCII art banner for this invocation.
 .El
 .Sh ENVIRONMENT
 .Bl -tag -width Ds
@@ -54,17 +56,26 @@ Show the help message and exit.
 Path to your QMK firmware checkout.
 Defaults to
 .Pa $HOME/qmk_firmware .
+.It Ev SPACECENTRICITY_BANNER
+Set to
+.Sq false
+or
+.Sq 0
+to suppress the ASCII art banner by default, without needing
+.Fl -no-banner
+on every invocation.
 .El
 .Sh EXAMPLES
 .Bd -literal
-install.sh
-install.sh my_keymap_name
-QMK_PATH=~/Projects/qmk_firmware install.sh
+install.sh                # set up as "spacecentricity" w/ QMK path set as ~/qmk_firmware/
+install.sh my_keymap_name # set up as "my_keymap_name" w/ QMK path set as ~/qmk_firmware/
+QMK_PATH=~/Projects/qmk_firmware install.sh    # set custom QMK path using defaults
+SPACECENTRICITY_BANNER=false $(basename "$0")  # skip banner via environment variable
 .Ed
 .Pp
 After installation, build the firmware with:
 .Bd -literal -offset indent
-qmk compile -kb inland/mk47 -km <keymap_name>
+cd path/to/spacecentricity/ && ./build <keymap_name> # runs `qmk compile -kb inland/mk47 -km <keymap_name>`
 .Ed
 .Sh SEE ALSO
 .Xr build.sh 1 ,

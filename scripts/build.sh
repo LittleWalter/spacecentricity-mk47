@@ -1,14 +1,28 @@
 #!/bin/sh
 # A wrapper for `qmk` to centralize repeated commands
 
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+PROJECT_ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
+CONFIG_FILE="$PROJECT_ROOT/config.h"
+
+. "$SCRIPT_DIR/utils.sh"
+
+print_banner() {
+    VERSION=$(get_version)
+
+    cat <<BANNER
+ _             _  _      _          _     
+| |           (_)| |    | |        | |    
+| |__   _   _  _ | |  __| |    ___ | |__  
+| '_ \\ | | | || || | / _\` |   / __|| '_ \\ 
+| |_) || |_| || || || (_| | _ \\__ \\| | | |
+|_.__/  \\__,_||_||_| \\__,_|(_)|___/|_| |_| for Spacecentricity v${VERSION}
+BANNER
+}
+
 print_help() {
+    print_banner
     cat <<EOF
- _           _ _     _       _
-| |         (_) |   | |     | |
-| |__  _   _ _| | __| |  ___| |__
-| '_ \| | | | | |/ _\` | / __| '_ \\
-| |_) | |_| | | | (_| |_\__ \ | | |
-|_.__/ \__,_|_|_|\__,_(_)___/_| |_|
 
 Usage: $(basename "$0") [keymap_name] [options]
 
@@ -21,25 +35,29 @@ By default:
         \$HOME/qmk_firmware
 
 Options:
-  -c, --clean, --clear        Remove QMK build artifacts before building
-  --clean-only, --clear-only  Clean and exit without building
-  -C, --check                 Run status check + strict lint in one pass
-  -d, --console               Open the QMK HID debug console
-  -f, --flash                 Build and flash the firmware
-  -h, --help                  Show this help message and exit
-  -l, --lint                  Lint the keymap before building
-  -S, --strict                Treat lint warnings as errors (requires --lint)
-  -s, --status                Show symlink/QMK status and exit
+  -c, --clean, --clear            Remove QMK build artifacts before building
+  --clean-only, --clear-only      Clean and exit without building
+  -C, --check                     Run status check + strict lint in one pass
+  -d, --console                   Open the QMK HID debug console
+  -f, --flash                     Build and flash the firmware
+  -h, --help                      Show this help message and exit
+  -l, --lint                      Lint the keymap before building
+  -n, --no-banner, --skip-banner  Suppress the ASCII art banner on output
+  -S, --strict                    Treat lint warnings as errors (requires --lint)
+  -s, --status                    Show symlink/QMK status and exit
 
 Environment:
-  QMK_PATH                    Path to your QMK checkout (default: $HOME/qmk_firmware)
+  QMK_PATH                Path to your QMK checkout (default: $HOME/qmk_firmware)
+  SPACECENTRICITY_BANNER  Set to "false" or "0" to suppress the banner by default
 
 Examples:
   $(basename "$0")                  # Build spacecentricity
   $(basename "$0") -f               # Build and flash spacecentricity
+  $(basename "$0") --no-banner -f   # Build and flash without the banner
   $(basename "$0") my_keymap_name   # Build a given keymap name
   $(basename "$0") --clean --flash  # Clean build artifacts, then flash spacecentricity
   QMK_PATH=~/Projects/qmk_firmware $(basename "$0") -s  # Display status w/ custom QMK path
+  SPACECENTRICITY_BANNER=false $(basename "$0")  # Skip banner via environment variable
 
   From Project Root:
     ./build
@@ -58,8 +76,17 @@ CONSOLE=0
 FLASH=0
 KEYMAP_NAME=""
 LINT=0
+NO_BANNER=0
 STATUS_ONLY=0
 STRICT=0
+
+# Allow SPACECENTRICITY_BANNER=false (or 0) to suppress the banner by default,
+# without requiring --no-banner on every invocation.
+case "$SPACECENTRICITY_BANNER" in
+    [Ff][Aa][Ll][Ss][Ee]|0)
+        NO_BANNER=1
+        ;;
+esac
 
 # Parse flags + positional keymap name
 for arg in "$@"; do
@@ -86,6 +113,9 @@ for arg in "$@"; do
         -l|--lint)
             LINT=1
             ;;
+        -n|--no-banner|--skip-banner)
+            NO_BANNER=1
+            ;;
         -S|--strict)
             STRICT=1
             ;;
@@ -105,12 +135,18 @@ for arg in "$@"; do
     esac
 done
 
+# Display the ASCII banner (default)
+if [ "$NO_BANNER" -eq 0 ]; then
+    print_banner
+    echo
+fi
+
 KEYMAP_NAME="${KEYMAP_NAME:-spacecentricity}"
 QMK_PATH="${QMK_PATH:-$HOME/qmk_firmware}"
 KEYBOARD="inland/mk47"
 TARGET="$QMK_PATH/keyboards/$KEYBOARD/keymaps/$KEYMAP_NAME"
 
-## -------------------------
+# -------------------------
 # Status check function
 # -------------------------
 show_status() {

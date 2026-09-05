@@ -15,17 +15,28 @@ These scripts are optional, but they make it easier to keep this firmware in its
 ## Table of Contents
 
 - [`install.sh`](#install-sh)
+  - [Usage](#install-sh-usage)
+  - [Options](#install-sh-options)
 - [`uninstall.sh`](#uninstall-sh)
+  - [Usage](#uninstall-sh-usage)
+  - [Options](#uninstall-sh-options)
 - [`build.sh`](#build-sh)
-  - [Options](#build-options)
-  - [Example Runs](#example-runs)
+  - [Usage](#build-sh-usage)
+  - [Options](#build-sh-options)
+  - [Example Runs](#build-sh-example-runs)
 - [Help](#help)
-  - [Man Pages (`install_man.sh`)](#man-pages)
+  - [`install_man.sh` (Manual Pages)](#man-pages)
     - [Options](#man-page-options)
-    - [Installing Man Pages](#installing-man-pages)
-    - [Removing Man Pages](#removing-man-pages)
-- [Custom QMK Path](#custom-qmk-path)
+    - [Installing Man Pages](#man-pages-installing)
+    - [Removing Man Pages](#man-pages-removing)
+    - [Example Runs](#man-page-example-runs)
+- [Environment Variables](#environment-variables)
+  - [Custom QMK Path](#custom-qmk-path)
+  - [Suppress ASCII Art Banners](#suppress-ascii-art-banners)
 - [`license_headers.sh`](#license-headers-sh-add-remove-copyright-license-headers)
+  - [Usage](#license-headers-sh-usage)
+  - [Options](#license-headers-sh-options)
+  - [Example Runs](#license-headers-sh-example-runs)
 
 <a id="install-sh"></a>
 ## 📝 `install.sh`
@@ -34,6 +45,7 @@ Creates a symlink in your QMK keymaps directory pointing to the root of this rep
 
 Asks user to install the [optional man pages](#man-pages) for each of the scripts.
 
+<a id="install-sh-usage"></a>
 ### Usage
 
 ```bash
@@ -41,13 +53,22 @@ cd ~/path/to/keymap/scripts
 ./install.sh [keymap_name]
 ```
 
+<a id="install-sh-options"></a>
+### Options
+
+| Flag                                 | Description                             |
+|--------------------------------------|-----------------------------------------|
+| `-h`, `--help`                       | Show this help message and exit         |
+| `-n`, `--no-banner`, `--skip-banner` | Suppress the ASCII art banner on output |
+
 <a id="uninstall-sh"></a>
 ## 🗑️ `uninstall.sh`
 
 Removes the symlink created by `install.sh`.
 
-Automatically removes the optionally installed [man pages](#man-pages) for the project’s scripts.
+Automatically removes the optionally installed [man pages](#man-pages) for the project's scripts.
 
+<a id="uninstall-sh-usage"></a>
 ### Usage
 
 ```bash
@@ -55,10 +76,21 @@ cd ~/path/to/keymap/scripts
 ./uninstall.sh [keymap_name]
 ```
 
+<a id="uninstall-sh-options"></a>
+### Options
+
+| Flag                                 | Description                             |
+|--------------------------------------|-----------------------------------------|
+| `-h`, `--help`                       | Show this help message and exit         |
+| `-n`, `--no-banner`, `--skip-banner` | Suppress the ASCII art banner on output |
+
 <a id="build-sh"></a>
 ## 🔨 `build.sh`
 
-A unified convenience wrapper for building, cleaning, flashing, linting, and checking the status of this keymap inside your QMK firmware tree.
+A unified convenience wrapper for this keymap's QMK workflow. Handles building, cleaning, flashing, linting, debugging, and status checks.
+
+<a id="build-sh-usage"></a>
+### Usage
 
 ```bash
 cd ~/path/to/keymap/scripts
@@ -69,31 +101,33 @@ cd ~/path/to/keymap/scripts
 >
 > This script should be able to handle 90%+ of `qmk` command scenarios.
 
-<a id="build-options"></a>
+<a id="build-sh-options"></a>
 ### Options
 
-| Flag                           | Description                                       |
-|--------------------------------|---------------------------------------------------|
-| `-c`, `--clean`, `--clear`     | Remove QMK build artifacts before building        |
-| `--clean-only`, `--clear-only` | Clean and exit without building                   |
-| `-C`, `--check`                | Run status check + strict lint in one pass        |
-| `-d`, `--console`              | Open the QMK HID debug console                    |
-| `-f`, `--flash`                | Build and flash the firmware                      |
-| `-h`, `--help`                 | Show this help message and exit                   |
-| `-l`, `--lint`                 | Lint the keymap before building                   |
-| `-S`, `--strict`               | Treat lint warnings as errors (requires `--lint`) |
-| `-s`, `--status`               | Show symlink/QMK status and exit                  |
+| Flag                                 | Description                                       |
+|--------------------------------------|---------------------------------------------------|
+| `-c`, `--clean`, `--clear`           | Remove QMK build artifacts before building        |
+| `--clean-only`, `--clear-only`       | Clean and exit without building                   |
+| `-C`, `--check`                      | Run status check + strict lint in one pass        |
+| `-d`, `--console`                    | Open the QMK HID debug console                    |
+| `-f`, `--flash`                      | Build and flash the firmware                      |
+| `-h`, `--help`                       | Show this help message and exit                   |
+| `-l`, `--lint`                       | Lint the keymap before building                   |
+| `-n`, `--no-banner`, `--skip-banner` | Suppress the ASCII art banner on output           |
+| `-S`, `--strict`                     | Treat lint warnings as errors (requires `--lint`) |
+| `-s`, `--status`                     | Show symlink/QMK status and exit                  |
 
+<a id="build-sh-example-runs"></a>
 ### Example Runs
 
 ```bash
-./build.sh                 # build w/ defaults
-./build.sh my_keymap       # build w/ custom keymap name
-./build.sh --clean-only    # remove cached build files
-./build.sh --clean --flash # clean, build, and flash
-./build.sh --check         # verify symlink and lint cleanliness together
-./build.sh --status        # check symlink and QMK paths
-./build.sh --console       # run the QMK HID debug console: hit the “debug key” on your keymap!
+build.sh                 # build w/ defaults
+build.sh my_keymap       # build w/ custom keymap name
+build.sh --clean-only    # remove cached build files
+build.sh --clean --flash # clean, build, and flash
+build.sh --check         # verify symlink and lint cleanliness together
+build.sh --status        # check symlink and QMK paths
+build.sh -d              # open the QMK HID debug console
 ```
 
 <a id="help"></a>
@@ -110,22 +144,23 @@ Display help messages with options `-h` and `--help`:
 ```
 
 <a id="man-pages"></a>
-### 📖 Man Pages (`install_man.sh`)
+### 📖 `install_man.sh` (Manual Pages)
 
-Install this project’s optional [manual pages](https://en.wikipedia.org/wiki/Man_page) — covering `install.sh`, `uninstall.sh`, `build.sh`, `license_headers.sh`, and `install_man.sh` — into your local man page directory, so they’re accessible via `man <script_name>.sh`.
+Install this project's optional [manual pages](https://en.wikipedia.org/wiki/Man_page) — covering `install.sh`, `uninstall.sh`, `build.sh`, `license_headers.sh`, and `install_man.sh` — into your local man page directory, so they're accessible via `man <script_name>.sh`.
 
-Additionally, `spacecentricity.7` is installed to `~/.local/share/man/man7/` as an overview of the project’s scripts and development utilities.
+Additionally, `spacecentricity.7` is installed to `~/.local/share/man/man7/` as an overview of the project's scripts and development utilities.
 
 <a id="man-page-options"></a>
 #### Options
 
-| Flag                             | Description                    |
-|----------------------------------|--------------------------------|
-| `-i`, `--install`                | Install man pages (default)    |
-| `-r`, `--remove`, `--remove-all` | Remove installed man pages     |
-| `-h`, `--help`                   | Show help message and exit     |
+| Flag                                 | Description                             |
+|--------------------------------------|-----------------------------------------|
+| `-i`, `--install`                    | Install man pages (default)             |
+| `-n`, `--no-banner`, `--skip-banner` | Suppress the ASCII art banner on output |
+| `-r`, `--remove`, `--remove-all`     | Remove installed man pages              |
+| `-h`, `--help`                       | Show help message and exit              |
 
-<a id="installing-man-pages"></a>
+<a id="man-pages-installing"></a>
 #### Installing Man Pages
 
 ```bash
@@ -133,18 +168,20 @@ cd ~/path/to/keymap/scripts
 ./install_man.sh
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > Man pages are installed to `~/.local/share/man/man1` and `~/.local/share/man/man7`. If `man` can't find them after installation, add this to your shell configuration:
 > `export MANPATH="$HOME/.local/share/man:$MANPATH"`
 >
-> These filenames are unlikely to conflict with existing man pages, but you can check beforehand with `man -w <script-name>.sh` to confirm nothing's already installed under that name.
+> These filenames are unlikely to conflict with existing man pages, but you can check beforehand with `man -w <script-name>.sh` to confirm.
 
+<a id="man-pages-removing"></a>
 #### Removing Man Pages
 
 ```bash
 ./install_man.sh --remove
 ```
 
+<a id="man-page-example-runs"></a>
 #### Example Runs
 
 ```bash
@@ -156,8 +193,11 @@ man license_headers.sh # how to add/remove copyright & license headers
 man install_man.sh     # how to install these handy man pages
 ```
 
+<a id="environment-variables"></a>
+## 🌎 Environment Variables
+
 <a id="custom-qmk-path"></a>
-## 📁 Custom QMK Path
+### 📁 Custom QMK Path
 
 If your QMK checkout is not in `~/qmk_firmware`, set `QMK_PATH`:
 
@@ -174,14 +214,53 @@ For example, modify your Bash or Zsh configuration to include:
 export QMK_PATH="$HOME/path/to/qmk_firmware"
 ```
 
+<a id="suppress-ascii-art-banners"></a>
+### 🏁 Suppress ASCII Art Banners
+
+Are you tired of having fun? Skip the ASCII art banners output by the build scripts.
+
+Add to your Bash or Zsh configuration:
+```bash
+# Set the variable to "false" in your shell config to always skip the top banner
+export SPACECENTRICITY_BANNER=false
+# Alternatively, use "0"
+export SPACECENTRICITY_BANNER=0
+```
+
+For a one-off suppression instead of a persistent setting, use the `--no-banner` (or `-n`/`--skip-banner`) flag directly:
+```bash
+./build.sh --no-banner
+```
+
 <a id="license-headers-sh-add-remove-copyright-license-headers"></a>
 ## ⚖️ `license_headers.sh`: Add/Remove Copyright & License Headers
 
-Adds or removes predefined license headers on each `.h` and `.c` file in `src/`, plus the root-level keymap.c` stub.
+Adds or removes predefined license headers on each `.h` and `.c` file in `src/`, plus the root-level `keymap.c` stub.
 
 Edit the script directly to change the header content.
 
 After adding headers to each source file, you can run `./build --lint` without warnings or errors.
+
+<a id="license-headers-sh-usage"></a>
+### Usage
+
+```bash
+cd ~/path/to/keymap/scripts
+./license_headers.sh [options]
+```
+
+<a id="license-headers-sh-options"></a>
+### Options
+
+| Flag                                  | Description                                                  |
+|---------------------------------------|--------------------------------------------------------------|
+| `-a`, `--add`                         | Add the header to files that don't already have it (default) |
+| `-n`, `--no-banner`, `--skip-banner`  | Suppress the ASCII art banner on output                      |
+| `-r`, `--remove`, `--remove-all`      | Remove the header from files where it exactly matches        |
+| `-h`, `--help`                        | Show help message and exit                                   |
+
+<a id="license-headers-sh-example-runs"></a>
+### Example Runs
 
 ```bash
 # Invoke `license_headers.sh` from the project root
