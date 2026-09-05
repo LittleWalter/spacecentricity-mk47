@@ -7,7 +7,9 @@
 .Sh SYNOPSIS
 .Nm
 .Op Fl a | Fl -add
+.Op Fl n | Fl -no-banner | Fl -skip-banner
 .Op Fl r | Fl -remove | Fl -remove-all
+.Op Fl s | Fl -stamp-version | Fl -set-version Ar VERSION
 .Op Fl h | Fl -help
 .Sh DESCRIPTION
 .Nm
@@ -32,14 +34,21 @@ Suppress the ASCII art banner for this invocation.
 .It Fl r , Fl -remove , Fl -remove-all
 Remove the header from files where it exactly matches the
 header defined in the script.
-.It Fl s , Fl -stamp-version Ar VERSION
+.It Fl s , Fl -stamp-version , Fl -set-version Ar VERSION
 Stamp
 .Ar VERSION
 into the header instead of using
 .Pa config.h
 data.
 Also accepts
-.Fl -stamp-version Ns = Ns Ar VERSION .
+.Fl -stamp-version Ns = Ns Ar VERSION
+and
+.Fl -set-version Ns = Ns Ar VERSION ,
+where
+.Ar VERSION
+is a version string in
+.Sy MAJOR.MINOR.PATCH
+format (e.g., 0.1.0).
 .El
 .Sh EXAMPLES
 .Bd -literal
