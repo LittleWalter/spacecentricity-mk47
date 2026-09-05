@@ -1,4 +1,4 @@
-# 🔧 Build Environment: Scripts & Tools for QMK
+# 🔧 Build Environment: Helper Scripts for QMK
 
 For convenience, this directory contains small POSIX-compliant helper scripts for installing, removing, and working with the symlink that connects this keymap repository to your local QMK firmware checkout.
 
@@ -16,7 +16,7 @@ See `man spacecentricity` (once [man pages are installed](#man-pages)) for a ful
 > If you run into permission issues, fix them with:
 > `chmod +x scripts/*.sh`
 
-[^keep-it-simple]: The goal is to keep the whole build tooling lean — under 1k SLOC of shell.
+[^keep-it-simple]: The goal is to keep the whole build tooling lean — under 1k [SLOC](https://en.wikipedia.org/wiki/Source_lines_of_code) of shell.
 
 ## Table of Contents
 
@@ -50,10 +50,10 @@ See `man spacecentricity` (once [man pages are installed](#man-pages)) for a ful
 
 Creates a symlink in your QMK keymaps directory pointing to the root of this repository.
 
-Asks user to install the [optional man pages](#man-pages) for this project's scripts.
+Asks user to install the [optional man pages](#man-pages) for this project’s scripts.
 
 <a id="install-sh-usage"></a>
-### Usage
+### ℹ Usage
 
 ```bash
 cd ~/path/to/keymap/scripts
@@ -61,7 +61,7 @@ cd ~/path/to/keymap/scripts
 ```
 
 <a id="install-sh-options"></a>
-### Options
+### ⋮ Options
 
 | Flag                                 | Description                              |
 |--------------------------------------|------------------------------------------|
@@ -73,10 +73,10 @@ cd ~/path/to/keymap/scripts
 
 Removes the symlink created by `install.sh`.
 
-Automatically removes the optionally installed [man pages](#man-pages) for the project's scripts.
+Automatically removes the [optionally man pages](#man-pages) for this project’s scripts.
 
 <a id="uninstall-sh-usage"></a>
-### Usage
+### ℹ Usage
 
 ```bash
 cd ~/path/to/keymap/scripts
@@ -84,7 +84,7 @@ cd ~/path/to/keymap/scripts
 ```
 
 <a id="uninstall-sh-options"></a>
-### Options
+### ⋮ Options
 
 | Flag                                 | Description                              |
 |--------------------------------------|------------------------------------------|
@@ -97,7 +97,7 @@ cd ~/path/to/keymap/scripts
 A unified convenience wrapper for this keymap's QMK workflow. Handles building, cleaning, flashing, linting, debugging, and status checks.
 
 <a id="build-sh-usage"></a>
-### Usage
+### ℹ Usage
 
 ```bash
 cd ~/path/to/keymap/scripts
@@ -109,7 +109,7 @@ cd ~/path/to/keymap/scripts
 > This script should be able to handle 90%+ of `qmk` command scenarios.
 
 <a id="build-sh-options"></a>
-### Options
+### ⋮ Options
 
 | Flag                                 | Description                                       |
 |--------------------------------------|---------------------------------------------------|
@@ -125,7 +125,7 @@ cd ~/path/to/keymap/scripts
 | `-s`, `--status`                     | Show symlink/QMK status and exit                  |
 
 <a id="build-sh-example-runs"></a>
-### Example Runs
+### ❯ Example Runs
 
 ```bash
 build.sh                 # build w/ defaults
@@ -158,17 +158,17 @@ Install this project's optional [manual pages](https://en.wikipedia.org/wiki/Man
 Additionally, `spacecentricity.7` is installed to `~/.local/share/man/man7/` as an overview of the project's scripts and development utilities.
 
 <a id="man-page-options"></a>
-#### Options
+#### ⋮ Options
 
 | Flag                                 | Description                              |
 |--------------------------------------|------------------------------------------|
 | `-i`, `--install`                    | Install man pages (default)              |
+| `-h`, `--help`                       | Show the help message and exit           |
 | `-n`, `--no-banner`, `--skip-banner` | Suppress the ASCII art banner on output  |
 | `-r`, `--remove`, `--remove-all`     | Remove installed man pages               |
-| `-h`, `--help`                       | Show the help message and exit           |
 
 <a id="man-pages-installing"></a>
-#### Installing Man Pages
+#### ＋ Installing Man Pages
 
 ```bash
 cd ~/path/to/keymap/scripts
@@ -181,14 +181,14 @@ cd ~/path/to/keymap/scripts
 > These filenames are unlikely to conflict with existing man pages, but you can check beforehand with `man -w <script-name>.sh` to confirm.
 
 <a id="man-pages-removing"></a>
-#### Removing Man Pages
+#### − Removing Man Pages
 
 ```bash
 ./install_man.sh --remove
 ```
 
 <a id="man-page-example-runs"></a>
-#### Example Runs
+#### ❯ Example Runs
 
 ```bash
 man spacecentricity    # overview of build tools & friends
@@ -260,7 +260,7 @@ Edit the script directly to change the header content.
 After adding headers to each source file, you can run `./build --lint` without warnings or errors.
 
 <a id="license-headers-sh-usage"></a>
-### Usage
+### ℹ Usage
 
 ```bash
 cd ~/path/to/keymap/scripts
@@ -268,7 +268,7 @@ cd ~/path/to/keymap/scripts
 ```
 
 <a id="license-headers-sh-options"></a>
-### Options
+### ⋮ Options
 
 | Flag                                     | Description                                                  |
 |------------------------------------------|--------------------------------------------------------------|
@@ -279,7 +279,7 @@ cd ~/path/to/keymap/scripts
 | `-s`, `--stamp-version`, `--set-version` | Stamp `VERSION` into the header instead of using `config.h` data (also accepts `--stamp-version=VERSION`), where `VERSION` is a `MAJOR.MINOR.PATCH` string |
 
 <a id="license-headers-sh-example-runs"></a>
-### Example Runs
+### ❯ Example Runs
 
 ```bash
 # Invoke `license_headers.sh` from the project root

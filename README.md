@@ -42,7 +42,7 @@ This keymap has an estimated user count of one.
     - [_Doom_ (1993)](#doom-1993)
 - [Case Modes: Temporary Lexical Modes](#case-modes-temporary-lexical-modes)
 - [Using This Keymap with QMK](#using-this-keymap-with-qmk)
-  - [Build Environment: Helper Scripts](#build-environment)
+  - [Build Environment: Helper Scripts for QMK](#build-environment)
 - [Layout Stability](#layout-stability)
 
 ## The Keyboard
@@ -627,7 +627,7 @@ qmk flash -kb inland/mk47 -km spacecentricity
 > To enter bootloader mode and install the new firmware, hold the **top-left key** down while plugging the keyboard in. Alternatively, press the key assigned to `QK_BOOTLOADER`/`QK_BOOT` on the keymap.
 
 <a id="build-environment"></a>
-### 🔧 Build Environment: Helper Scripts
+### 🔧 Build Environment: Helper Scripts for QMK
 
 This repo includes small [POSIX](https://en.wikipedia.org/wiki/POSIX)‑compliant scripts in [`scripts/`](./scripts) that automate common tasks, including:
 
