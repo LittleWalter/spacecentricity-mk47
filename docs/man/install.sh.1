@@ -71,12 +71,19 @@ on every invocation.
 install.sh                # set up as "spacecentricity" w/ QMK path set as ~/qmk_firmware/
 install.sh my_keymap_name # set up as "my_keymap_name" w/ QMK path set as ~/qmk_firmware/
 QMK_PATH=~/Projects/qmk_firmware install.sh    # set custom QMK path using defaults
-SPACECENTRICITY_BANNER=false $(basename "$0")  # skip banner via environment variable
+SPACECENTRICITY_BANNER=false install.sh        # skip banner via environment variable
 .Ed
-.Pp
+.Sh TIPS
 After installation, build the firmware with:
 .Bd -literal -offset indent
-cd path/to/spacecentricity/ && ./build <keymap_name> # runs `qmk compile -kb inland/mk47 -km <keymap_name>`
+cd path/to/spacecentricity/ && ./build <keymap_name>
+.Ed
+.Pp
+This replaces having to remember the raw
+.Ic qmk
+invocation:
+.Bd -literal -offset indent
+qmk compile -kb inland/mk47 -km <keymap_name>
 .Ed
 .Sh SEE ALSO
 .Xr build.sh 1 ,
@@ -88,4 +95,3 @@ cd path/to/spacecentricity/ && ./build <keymap_name> # runs `qmk compile -kb inl
 .An LittleWalter
 .Sh SOURCE CODE
 .Lk https://github.com/LittleWalter/spacecentricity-mk47
-

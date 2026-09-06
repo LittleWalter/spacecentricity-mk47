@@ -58,8 +58,13 @@ Examples:
   $(basename "$0") my_keymap_name
   QMK_PATH=~/Projects/qmk_firmware $(basename "$0")
 
-After installation, build your firmware with:
-  qmk compile -kb inland/mk47 -km <keymap_name>
+Tips:
+  After installation, build your firmware with:
+    ./build <keymap_name>             # Invoke project root stub to run build script
+    ./scripts/build.sh <keymap_name>  # Call build script directly
+
+  This replaces having to remember the raw qmk invocation:
+    qmk compile -kb inland/mk47 -km <keymap_name>
 EOF
 }
 
