@@ -16,12 +16,12 @@
 .Op Fl n | Fl -no-banner | Fl -skip-banner
 .Op Fl S | Fl -strict
 .Op Fl s | Fl -status
+.Op Fl v | Fl -verbose | Fl -verbose Ns = Ns Ar N
 .Op Fl h | Fl -help
 .Sh DESCRIPTION
 .Nm
 is an optional POSIX-compliant convenience wrapper for building, cleaning,
 flashing, linting, checking the symlink/QMK status, and opening a debug
-console for this keymap inside your QMK firmware checkout.
 .Pp
 This script streamlines common workflows into a single-command
 interface by reducing repetitive steps and cognitive overhead.
@@ -68,6 +68,27 @@ This option affects the lint operation and requires
 .Fl -lint .
 .It Fl s , Fl -status
 Show symlink/QMK status and exit.
+.It Fl v , Fl -verbose
+Show full, live
+.Ic qmk compile
+output during the build instead of the default spinner and elapsed-time
+indicator.
+.It Fl -verbose Ns = Ns Ar N
+.Ar N
+lines of live
+.Ic qmk compile
+output during the build, redrawn in place as the build progresses.
+.Pp
+If
+.Ar N
+exceeds the current terminal height, or the terminal height cannot be
+determined, this falls back to the same full-output behavior as
+.Fl -verbose
+with no argument.
+If
+.Ar N
+is not a valid non-negative integer, a warning is printed and the same
+fallback occurs.
 .El
 .Sh ENVIRONMENT
 .Bl -tag -width Ds
@@ -94,6 +115,8 @@ build.sh --clean --flash  # Clean build artifacts, then flash spacecentricity
 build.sh --check          # Verify symlink and lint cleanliness together
 build.sh -d               # Open the QMK debug console
 build.sh --console        # Same as above
+build.sh -v               # Build with full live qmk compile output
+build.sh --verbose=10     # Build with a scrolling 10-line output window
 QMK_PATH=~/Projects/qmk_firmware build.sh -s  # Display status w/ custom QMK path
 SPACECENTRICITY_BANNER=false build.sh         # Skip banner via environment variable
 .Ed
@@ -106,6 +129,13 @@ directly. For example, to build and flash the keyboard firmware:
 .Pp
 Think of this script as a convenient command grammar for common
 QMK operations.
+.Pp
+For a quick peek at compile progress without the full firehose of
+.Ic qmk compile
+output, try
+.Fl -verbose Ns = Ns Ar N
+with a small
+.Ar N .
 .Sh SEE ALSO
 .Xr install.sh 1 ,
 .Xr uninstall.sh 1 ,

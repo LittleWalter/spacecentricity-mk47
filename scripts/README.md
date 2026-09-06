@@ -111,18 +111,20 @@ cd ~/path/to/keymap/scripts
 <a id="build-sh-options"></a>
 ### ⋮ Options
 
-| Flag                                 | Description                                       |
-|--------------------------------------|---------------------------------------------------|
-| `-c`, `--clean`, `--clear`           | Remove QMK build artifacts before building        |
-| `--clean-only`, `--clear-only`       | Clean and exit without building                   |
-| `-C`, `--check`                      | Run status check + strict lint in one pass        |
-| `-d`, `--console`                    | Open the QMK HID debug console                    |
-| `-f`, `--flash`                      | Build and flash the firmware                      |
-| `-h`, `--help`                       | Show the help message and exit                    |
-| `-l`, `--lint`                       | Lint the keymap before building                   |
-| `-n`, `--no-banner`, `--skip-banner` | Suppress the ASCII art banner on output           |
-| `-S`, `--strict`                     | Treat lint warnings as errors (requires `--lint`) |
-| `-s`, `--status`                     | Show symlink/QMK status and exit                  |
+| Flag                                 | Description                                              |
+|--------------------------------------|----------------------------------------------------------|
+| `-c`, `--clean`, `--clear`           | Remove QMK build artifacts before building               |
+| `--clean-only`, `--clear-only`       | Clean and exit without building                          |
+| `-C`, `--check`                      | Run status check + strict lint in one pass               |
+| `-d`, `--console`                    | Open the QMK HID debug console                           |
+| `-f`, `--flash`                      | Build and flash the firmware                             |
+| `-h`, `--help`                       | Show the help message and exit                           |
+| `-l`, `--lint`                       | Lint the keymap before building                          |
+| `-n`, `--no-banner`, `--skip-banner` | Suppress the ASCII art banner on output                  |
+| `-S`, `--strict`                     | Treat lint warnings as errors (requires `--lint`)        |
+| `-s`, `--status`                     | Show symlink/QMK status and exit                         |
+| `-v`, `--verbose`                    | Show full live qmk compile output instead of the spinner |
+| `--verbose=N`                        | Show a scrolling N-line window of live output (falls back to full output if N exceeds terminal height) |
 
 <a id="build-sh-example-runs"></a>
 ### ❯ Example Runs

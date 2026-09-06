@@ -26,9 +26,12 @@
 ## 2026-09-05 (Saturday)
 - `scripts/`
   - `NEW:` Added `-n` / `--no-banner` / `--skip-banner` flags to skip the ASCII art banners.
+  - `NEW:` Added `-v` / `--verbose` flags to show the full live `qmk compile` output instead of spinner.
+  - `NEW:` Added `--verbose=N` to show a scrolling N-line window of live output (falls back to full output if N exceeds terminal height).
   - `NEW:` Added `SPACECENTRICITY_BANNER` environment variable; set to `false` or `0` to auto-skip banners.
   - `DOCS:` Updated related Markdown and man pages.
   - `CHANGE:` Cleaned up the output of `scripts/build.sh`, added spinner and elapsed time while compiling firmware.
+  - The build environment should be fairly complete at this point and under 1k SLOC target length.
 
 ## 2026-09-04 (Friday)
 - `scripts/`

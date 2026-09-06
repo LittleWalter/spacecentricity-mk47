@@ -45,6 +45,9 @@ Options:
   -n, --no-banner, --skip-banner  Suppress the ASCII art banner on output
   -S, --strict                    Treat lint warnings as errors (requires --lint)
   -s, --status                    Show symlink/QMK status and exit
+  -v, --verbose                   Show full live qmk compile output instead of the spinner
+  --verbose=N                     Show a scrolling N-line window of live output
+                                   (falls back to full output if N exceeds terminal height)
 
 Environment:
   QMK_PATH                Path to your QMK checkout (default: $HOME/qmk_firmware)
@@ -56,6 +59,8 @@ Examples:
   $(basename "$0") --no-banner -f   # Build and flash without the banner
   $(basename "$0") my_keymap_name   # Build a given keymap name
   $(basename "$0") --clean --flash  # Clean build artifacts, then flash spacecentricity
+  $(basename "$0") -v               # Build with full live compile output
+  $(basename "$0") --verbose=10     # Build with a scrolling 10-line output window
   QMK_PATH=~/Projects/qmk_firmware $(basename "$0") -s  # Display status w/ custom QMK path
   SPACECENTRICITY_BANNER=false $(basename "$0")  # Skip banner via environment variable
 
@@ -64,6 +69,8 @@ Examples:
     ./build -f             
     ./build my_keymap_name
     ./build --clean --flash
+    ./build -v
+    ./build --verbose=10
     QMK_PATH=~/Projects/qmk_firmware ./build -s
 EOF
 }
@@ -79,6 +86,8 @@ LINT=0
 NO_BANNER=0
 STATUS_ONLY=0
 STRICT=0
+VERBOSE=0
+VERBOSE_WINDOW=""
 
 # Allow SPACECENTRICITY_BANNER=false (or 0) to suppress the banner by default,
 # without requiring --no-banner on every invocation.
@@ -121,6 +130,14 @@ for arg in "$@"; do
             ;;
         -s|--status)
             STATUS_ONLY=1
+            ;;
+        --verbose=*)
+            VERBOSE=1
+            VERBOSE_WINDOW="${arg#*=}"
+            ;;
+        -v|--verbose)
+            VERBOSE=1
+            VERBOSE_WINDOW=""
             ;;
 
         -*)
@@ -294,16 +311,6 @@ fi
 #   find "$QMK_PATH" -path "*wb32*" -iname "*.ld"
 FLASH_TOTAL_BYTES=262144  # 256KB — confirm against the .ld file above before trusting this
 
-BUILD_LOG=$(mktemp)
-START_TIME=$(date +%s)
-
-qmk compile -kb "$KEYBOARD" -km "$KEYMAP_NAME" >"$BUILD_LOG" 2>&1 &
-BUILD_PID=$!
-
-# Fancy rotating spinner
-SPINNER_FRAMES='◒ ◐ ◓ ◑'
-FRAME_INDEX=0
-
 format_elapsed() {
     _secs="$1"
     _m=$((_secs / 60))
@@ -315,24 +322,91 @@ format_elapsed() {
     fi
 }
 
-if [ -t 1 ]; then
-    printf '◒ Compiling…'
-    while kill -0 "$BUILD_PID" 2>/dev/null; do
-        FRAME=$(printf '%s' "$SPINNER_FRAMES" | awk -v i="$FRAME_INDEX" '{print $((i % NF) + 1)}')
-
-        NOW=$(date +%s)
-        LIVE_ELAPSED=$((NOW - START_TIME))
-        LIVE_FMT=$(format_elapsed "$LIVE_ELAPSED")
-
-        printf '\r%s Compiling… (%s) ' "$FRAME" "$LIVE_FMT"
-        FRAME_INDEX=$((FRAME_INDEX + 1))
-        sleep 0.15
-    done
-    printf '\r%*s\r' 30 ''  # clear the spinner line (widened to cover the timer text too)
+# Resolve verbose window size against actual terminal height.
+# Falls back to full-output mode if the requested window is invalid or too tall.
+if [ "$VERBOSE" -eq 1 ] && [ -n "$VERBOSE_WINDOW" ]; then
+    case "$VERBOSE_WINDOW" in
+        ''|*[!0-9]*)
+            echo "⚠️  --verbose=$VERBOSE_WINDOW is not a valid line count; using full verbose output." >&2
+            VERBOSE_WINDOW=""
+            ;;
+        0)
+            echo "⚠️  --verbose=0 is not a valid line count; using full verbose output." >&2
+            VERBOSE_WINDOW=""
+            ;;
+        *)
+            TERM_LINES=$(tput lines 2>/dev/null)
+            case "$TERM_LINES" in
+                ''|*[!0-9]*) TERM_LINES=24 ;;  # tput unavailable or non-numeric: conservative fallback
+            esac
+            if [ "$VERBOSE_WINDOW" -gt "$TERM_LINES" ]; then
+                VERBOSE_WINDOW=""  # requested window exceeds terminal height
+            fi
+            ;;
+    esac
 fi
 
-wait "$BUILD_PID"
-STATUS=$?
+BUILD_LOG=$(mktemp)
+START_TIME=$(date +%s)
+
+if [ "$VERBOSE" -eq 1 ] && [ -z "$VERBOSE_WINDOW" ]; then
+    # Full streamed output
+    STATUS_FILE=$(mktemp)
+    { qmk compile -kb "$KEYBOARD" -km "$KEYMAP_NAME" 2>&1; echo $? > "$STATUS_FILE"; } | tee "$BUILD_LOG"
+    STATUS=$(cat "$STATUS_FILE")
+    rm -f "$STATUS_FILE"
+
+elif [ "$VERBOSE" -eq 1 ] && [ -n "$VERBOSE_WINDOW" ] && [ -t 1 ]; then
+    # Scrolling windowed output
+    qmk compile -kb "$KEYBOARD" -km "$KEYMAP_NAME" >"$BUILD_LOG" 2>&1 &
+    BUILD_PID=$!
+
+    PREV_LINES=0
+    while kill -0 "$BUILD_PID" 2>/dev/null; do
+        WINDOW_TEXT=$(tail -n "$VERBOSE_WINDOW" "$BUILD_LOG" 2>/dev/null)
+        WINDOW_LINE_COUNT=$(printf '%s\n' "$WINDOW_TEXT" | wc -l | tr -d ' ')
+
+        [ "$PREV_LINES" -gt 0 ] && printf '\033[%dA' "$PREV_LINES"
+        printf '\033[J'
+        printf '%s\n' "$WINDOW_TEXT"
+
+        PREV_LINES="$WINDOW_LINE_COUNT"
+        sleep 0.2
+    done
+
+    wait "$BUILD_PID"
+    STATUS=$?
+
+    [ "$PREV_LINES" -gt 0 ] && printf '\033[%dA' "$PREV_LINES"
+    printf '\033[J'
+
+else
+    # Quiet mode: spinner only
+    qmk compile -kb "$KEYBOARD" -km "$KEYMAP_NAME" >"$BUILD_LOG" 2>&1 &
+    BUILD_PID=$!
+
+    SPINNER_FRAMES='◒ ◐ ◓ ◑'
+    FRAME_INDEX=0
+
+    if [ -t 1 ]; then
+        printf '◒ Compiling…'
+        while kill -0 "$BUILD_PID" 2>/dev/null; do
+            FRAME=$(printf '%s' "$SPINNER_FRAMES" | awk -v i="$FRAME_INDEX" '{print $((i % NF) + 1)}')
+
+            NOW=$(date +%s)
+            LIVE_ELAPSED=$((NOW - START_TIME))
+            LIVE_FMT=$(format_elapsed "$LIVE_ELAPSED")
+
+            printf '\r%s Compiling… (%s) ' "$FRAME" "$LIVE_FMT"
+            FRAME_INDEX=$((FRAME_INDEX + 1))
+            sleep 0.15
+        done
+        printf '\r%*s\r' 30 ''  # clear the spinner line (widened to cover the timer text too)
+    fi
+
+    wait "$BUILD_PID"
+    STATUS=$?
+fi
 
 END_TIME=$(date +%s)
 ELAPSED=$((END_TIME - START_TIME))
@@ -343,7 +417,9 @@ rm -f "$BUILD_LOG"
 
 if [ "$STATUS" -ne 0 ]; then
     echo "❌ Build failed after ${ELAPSED_FMT}:"
-    printf '%s\n' "$BUILD_OUTPUT" | tail -n 20
+    if [ "$VERBOSE" -eq 0 ]; then
+        printf '%s\n' "$BUILD_OUTPUT" | tail -n 20
+    fi
     exit "$STATUS"
 fi
 
